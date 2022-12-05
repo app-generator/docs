@@ -31,7 +31,8 @@ const config = {
 	baseUrl: "/",
 	onBrokenLinks: "throw",
 	onBrokenMarkdownLinks: "warn",
-	favicon: "https://appseed-srv1.com/appseed-v2/media/common/favicon.png",
+	// favicon: "https://appseed-srv1.com/appseed-v2/media/common/favicon.png",
+	favicon: "/assets/favicon1.png",
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
@@ -61,14 +62,15 @@ const config = {
 					sidebarPath: require.resolve("./sidebars.js"),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
-					editUrl: "https://github.com/app-generator/docs-v2",
+					editUrl: "https://github.com/app-generator/docs-v2/tree/main/",
 				},
-				blog: {
-					showReadingTime: true,
-					// Please change this to your repo.
-					// Remove this to remove the "edit this page" links.
-					editUrl: "https://github.com/app-generator/docs-v2",
-				},
+				blog: false,
+				// blog: {
+				// 	showReadingTime: true,
+				// 	// Please change this to your repo.
+				// 	// Remove this to remove the "edit this page" links.
+				// 	editUrl: "https://github.com/app-generator/docs-v2",
+				// },
 				theme: {
 					customCss: require.resolve("./src/css/custom.css"),
 				},
@@ -112,13 +114,16 @@ const config = {
 					// src: "/assets/logo1-light.svg",
 					src: "/assets/logo2-light.svg",
 					// src: "/assets/logo3-light.svg",
+					// src: "/assets/logo4-light.svg",
+					// src: "/assets/logo5-light.svg",
 					// srcDark: "/assets/logo-dark.svg",
 					// srcDark: "/assets/logo1-dark.svg",
 					srcDark: "/assets/logo2-dark.svg",
 					// srcDark: "/assets/logo3-dark.svg",
-					// src: "/assets/logo4.svg",
-					width: 142,
-					height: 142,
+					// srcDark: "/assets/logo4-dark.svg",
+					// srcDark: "/assets/logo5-dark.svg",
+					// width: 142,
+					// height: 142,
 				},
 				hideOnScroll: true,
 				items: [
