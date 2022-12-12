@@ -1,0 +1,11 @@
+{
+	"label": "FREE SAMPLES",
+	"position": 7,
+	"collapsed": false,
+	"collapsible": false,
+	"className": "section-title",
+	"link": {
+		"type": "generated-index",
+		"description": "Free Samples"
+	}
+}

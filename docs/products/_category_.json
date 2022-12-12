@@ -1,0 +1,11 @@
+{
+	"label": "PRODUCTS",
+	"position": 5,
+	"collapsed": false,
+	"collapsible": false,
+	"className": "section-title",
+	"link": {
+		"type": "generated-index",
+		"description": "Products"
+	}
+}

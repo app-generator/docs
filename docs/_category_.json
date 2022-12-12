@@ -1,0 +1,12 @@
+{
+	"label": "Quick Links",
+	"position": 3,
+	"collapsed": false,
+	"collapsible": false,
+	"className": "section-title-home",
+	"link": {
+		"type": "generated-index",
+		"slug": "/home",
+		"description": "Here are the articles in this section"
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"label": "FEATURES",
+	"position": 6,
+	"collapsed": false,
+	"collapsible": false,
+	"className": "section-title",
+	"link": {
+		"type": "generated-index",
+		"description": "Features"
+	}
+}

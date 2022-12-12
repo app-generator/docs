@@ -1,0 +1,14 @@
+{
+	"label": "API Servers",
+	"position": 1,
+	"collapsed": true,
+	"collapsible": true,
+	"className": "section-sub-title",
+	"link": {
+		"type": "generated-index",
+		"slug": "boilerplate-code/api-server",
+		"description": "Here are the articles in this section",
+		"keywords": ["api-server", "boilerplate-code"],
+		"image": "https://user-images.githubusercontent.com/51070104/204030603-db09a5f3-41ef-4cc4-8564-07abb9a64f53.png"
+	}
+}

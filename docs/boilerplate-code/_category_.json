@@ -1,0 +1,12 @@
+{
+	"label": "BOILERPLATE CODE",
+	"position": 3,
+	"collapsed": false,
+	"collapsible": false,
+	"className": "section-title",
+	"link": {
+		"type": "generated-index",
+		"slug": "/boilerplate-code",
+		"description": "Here are the articles in this section"
+	}
+}
