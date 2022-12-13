@@ -5,6 +5,8 @@
  */
 
 /* Fonts */
+/* @import url(fragments.css); */
+/* @import "tailwindcss/tailwind.css"; */
 
 @font-face {
 	font-family: Inter var;
@@ -35,6 +37,9 @@ pre,
 code {
 	font-variant-ligatures: none;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* You can override the default Infima variables here. */
 
@@ -61,6 +66,7 @@ code {
 	--ifm-toc-border-color: #dedede;
 	--ifm-navbar-link-color: #ffff;
 	--ifm-navbar-background-color: #1f1a32 !important;
+	/* --ifm-navbar-background-color: #ec407a !important; */
 
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
@@ -77,6 +83,7 @@ code {
 	--ifm-toc-border-color: #2e2e2e;
 	--ifm-background-color: #1f1a32 !important;
 	--ifm-navbar-background-color: #1f1a32 !important;
+	/* --ifm-navbar-background-color: #ec407a !important; */
 	--ifm-footer-background-color: #1f1a32 !important;
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
@@ -193,7 +200,8 @@ html[data-theme="dark"] .discord-icon::before {
 
 .menu__link,
 .menu__caret {
-	border-radius: 0.5rem;
+	/* border-radius: 0.8rem; */
+	border-radius: 0;
 }
 
 .theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-1.menu__list-item {
@@ -232,7 +240,8 @@ html[data-theme="dark"] .discord-icon::before {
 }
 
 .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2 ul.menu__list {
-	border-left: 1px solid var(--ifm-color-primary);
+	/* border-left: 1px solid var(--ifm-color-primary); */
+	border-left: 1px solid #ccc;
 	padding-left: 0px;
 	margin-left: 16px;
 	margin-bottom: 24px;
@@ -270,7 +279,9 @@ html[data-theme="dark"] .discord-icon::before {
 }
 ul.menu__list > li > a.menu__link--active {
 	border-radius: 0;
+	background: var(--ifm-menu-color-background-hover);
 	border-right: 1px solid var(--ifm-color-primary);
+	/* border-left: 1px solid var(--ifm-color-primary); */
 }
 /* Card */
 /* html[data-theme="dark"] .card {

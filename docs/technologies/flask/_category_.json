@@ -1,0 +1,13 @@
+{
+	"label": "Flask",
+	"position": 3,
+	"collapsed": true,
+	"collapsible": true,
+	"className": "section-sub-title",
+	"link": {
+		"type": "generated-index",
+		"description": "Flask related topics",
+		"slug": "technologies/flask",
+		"keywords": ["technologies", "flask"]
+	}
+}

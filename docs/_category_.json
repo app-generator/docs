@@ -1,12 +1,12 @@
 {
-	"label": "Quick Links",
-	"position": 3,
+	"label": "QUICK LINKS",
+	"position": 1,
 	"collapsed": false,
 	"collapsible": false,
-	"className": "section-title-home",
+	"className": "section-title",
 	"link": {
 		"type": "generated-index",
-		"slug": "/home",
+		"slug": "/quick-links",
 		"description": "Here are the articles in this section"
 	}
 }

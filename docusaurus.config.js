@@ -31,7 +31,8 @@ const config = {
 	baseUrl: "/",
 	// onBrokenLinks: "throw",
 	onBrokenLinks: "ignore",
-	onBrokenMarkdownLinks: "warn",
+	// onBrokenMarkdownLinks: "warn",
+	onBrokenMarkdownLinks: "ignore",
 	// favicon: "https://appseed-srv1.com/appseed-v2/media/common/favicon.png",
 	favicon: "/assets/favicon1.png",
 
@@ -50,7 +51,18 @@ const config = {
 	// themes: ["@docusaurus/theme-live-codeblock"],
 	plugins: [
 		// "docusaurus-plugin-sass",
-		// @docusaurus/plugin-google-analytics (Not necessary because it automatically gets added)
+		// @docusaurus/plugin-google-analytics (Not necessary because it automatically gets added),
+		async function myPlugin(context, options) {
+			return {
+				name: "docusaurus-tailwindcss",
+				configurePostCss(postcssOptions) {
+					// Appends TailwindCSS and AutoPrefixer.
+					postcssOptions.plugins.push(require("tailwindcss"));
+					postcssOptions.plugins.push(require("autoprefixer"));
+					return postcssOptions;
+				},
+			};
+		},
 	],
 	presets: [
 		[
@@ -142,6 +154,12 @@ const config = {
 							{
 								// type: "doc",
 								// docId: "app-generator",
+								to: "introduction",
+								label: "Introduction",
+							},
+							{
+								// type: "doc",
+								// docId: "app-generator",
 								to: "app-generator",
 								label: "App Generator",
 							},
@@ -160,8 +178,8 @@ const config = {
 							{
 								// type: "doc",
 								// docId: "boilerplate-code/api-server",
-								to: "/boilerplate-code/api-server",
-								label: "API Servers",
+								to: "/boilerplate-code",
+								label: "Boilerplate-Code",
 							},
 						],
 					},

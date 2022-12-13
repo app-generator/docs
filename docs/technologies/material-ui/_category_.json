@@ -1,13 +1,13 @@
 {
-	"label": "API Servers",
-	"position": 1,
+	"label": "Material UI",
+	"position": 5,
 	"collapsed": true,
 	"collapsible": true,
 	"className": "section-sub-title",
 	"link": {
 		"type": "generated-index",
-		"slug": "boilerplate-code/api-server",
-		"description": "Here are the articles in this section",
+		"description": "technologies",
+		"slug": "technologies/material-ui",
 		"keywords": ["api-server", "boilerplate-code"]
 	}
 }
