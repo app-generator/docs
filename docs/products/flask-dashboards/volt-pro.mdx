@@ -189,13 +189,16 @@ The project is coded using a simple and intuitive structure presented below:
 The entry point of the project is the `run.py` file where the project configuration is bundled. The `most important files` that make the project functional are listed below:
 
 - `run.py` is the application entry point
+
   - read the `Debug` flag from `.env`
   - import the `db` object from `apps` packag
 
     e
+
   - import the `create_app` helper from `apps
 
     `
+
 - `Flask` application is built by `create_app`
   - If `Debug=True` - SQLite is used (development mode)
   - If `Debug=False` - SQLite is used (production mode)
@@ -365,7 +368,7 @@ At this point, the app should use `MySql` for the persistence layer.
 
 ### 👉 Static Assets for `production`
 
-As explained in the [Static Assets](volt-pro.md#static-assets) section, the assets are managed via:
+As explained in the [Static Assets](volt-pro.mdx#static-assets) section, the assets are managed via:
 
 - `apps/static/assets` - the folder where `JS`, `CSS`, and `images` files are saved
 - `ASSETS_ROOT` - environment variable, that defaults to `/static/assets` if not defined

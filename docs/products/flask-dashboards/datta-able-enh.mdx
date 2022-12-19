@@ -10,7 +10,7 @@ description: >-
 
 <SubHeading> Dashboard built by AppSeed in Flask on top of Datta Able design - Manual Coded Version. </SubHeading>
 
-This product is manualy coded on top of the generated version [Datta Able PRO](datta-able-pro.md)
+This product is manualy coded on top of the generated version [Datta Able PRO](datta-able-pro.mdx)
 
 > Version: **1.0.13** - release date `2022-07-20`
 
@@ -214,13 +214,16 @@ When credentials are defined, the app enables the `LOGIN with Twitter` button on
 The entry point of the project is the `run.py` file where the project configuration is bundled. The `most important files` that make the project functional are listed below:
 
 - `run.py` is the application entry point
+
   - read the `Debug` flag from `.env`
   - import the `db` object from `apps` packag
 
     e
+
   - import the `create_app` helper from `apps
 
     `
+
 - `Flask` application is built by `create_app`
   - If `Debug=True` - SQLite is used (development mode)
   - If `Debug=False` - SQLite is used (production mode)
