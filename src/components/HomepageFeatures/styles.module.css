@@ -9,3 +9,15 @@
 	height: 100px;
 	width: 100px;
 }
+.Color210 {
+	color: hsl(210, 12%, 80%);
+}
+.Bg04 {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.Bg251 {
+	background-color: rgba(251, 251, 251, 0.2);
+}
+.Bg204 {
+	background-color: hsl(204, 30%, 20%);
+}

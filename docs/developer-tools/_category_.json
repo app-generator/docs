@@ -6,6 +6,7 @@
 	"className": "section-title",
 	"link": {
 		"type": "generated-index",
+		"slug": "developer-tools",
 		"description": "developer Tools"
 	}
 }

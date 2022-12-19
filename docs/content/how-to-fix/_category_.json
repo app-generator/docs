@@ -1,0 +1,12 @@
+{
+	"label": "How to Fix",
+	"position": 13,
+	"collapsed": true,
+	"collapsible": true,
+	"className": "section-subtitle",
+	"link": {
+		"type": "generated-index",
+		"slug": "content/how-to-fix",
+		"description": "Here are the articles in this section"
+	}
+}

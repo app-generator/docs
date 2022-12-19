@@ -1,22 +1,21 @@
 ---
+sidebar_position: 20
 description: Short introduction to uWSGI server and architecture
 ---
 
 # What IS uWsgi
 
+<SubHeading> Short introduction to uWSGI server and architecture</SubHeading>
+
 The **uWSGI** project aims at developing a full stack for building hosting services. Application servers (for various programming languages and protocols), proxies, process managers, and monitors are all implemented using a common API and a common configuration style. Thanks to its pluggable architecture it can be extended to support more platforms and languages.
 
-* [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) - official documentation
-
-
+- [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) - official documentation
 
 ### uWSGI Components
 
-* The Core (implements configuration, processes management, sockets creation, monitoring, logging, shared memory areas, ipc, cluster membership)
-* Request plugins (implement application server interfaces for various languages and platforms: WSGI, PSGI, Rack, Lua WSAPI, CGI, PHP, Go …)
-* Gateways (implement load balancers, proxies and routers)
-
-
+- The Core (implements configuration, processes management, sockets creation, monitoring, logging, shared memory areas, ipc, cluster membership)
+- Request plugins (implement application server interfaces for various languages and platforms: WSGI, PSGI, Rack, Lua WSAPI, CGI, PHP, Go …)
+- Gateways (implement load balancers, proxies and routers)
 
 ### Quickstart for Python
 
@@ -100,5 +99,5 @@ By visiting port `9090` in the browser, we should see `Hello World` message serv
 
 ### uWSGI Resources
 
-* [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) - the official website
-* [What is the point of uWSGI?](https://stackoverflow.com/questions/38601440/what-is-the-point-of-uwsgi)
+- [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) - the official website
+- [What is the point of uWSGI?](https://stackoverflow.com/questions/38601440/what-is-the-point-of-uwsgi)

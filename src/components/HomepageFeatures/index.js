@@ -35,7 +35,7 @@ function Feature({ Svg, title, description }) {
 					<Svg className={styles.featureSvg} role="img" style={animationStyles.bounce} />
 				</div>
 				<div className="text--center padding-horiz--md">
-					<h3>{title}</h3>
+					<h3 className="text-base">{title}</h3>
 					<p>{description}</p>
 				</div>
 			</div>
@@ -48,6 +48,12 @@ export default function HomepageFeatures() {
 		<StyleRoot>
 			<section className={styles.features}>
 				<div className="container">
+					<div className="max-w-4xl Md:mx-60 lg:mx-64 text-center mb-12">
+						<h2 className="text-3xl leading-9 font-extrabold md:text-4xl md:leading-10">Built for Developers</h2>
+						<div className="flex justify-center text-center">
+							<p className="leading-6">We provide tested seed projects coded in different patterns and technologies by our team of experts on top of modern UI Kits.</p>
+						</div>
+					</div>
 					<div className="row">
 						{FeatureList.map((props, idx) => (
 							<Feature key={idx} {...props} />

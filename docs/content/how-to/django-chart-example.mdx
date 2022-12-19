@@ -1,11 +1,13 @@
 ---
+sidebar_position: 13
 description: How To showcase information in Django
 ---
 
 # Django Chart Example
 
-To display data on a chart, you must extract data from your model or anywhere else and send it to the JS function as JSON. For example, I did this through the following work flow:
+<SubHeading>How To showcase information in Django</SubHeading>
 
+To display data on a chart, you must extract data from your model or anywhere else and send it to the JS function as JSON. For example, I did this through the following work flow:
 
 > **Step #1 -** Make a Model
 
@@ -26,13 +28,9 @@ class Sale(models.Model):
         verbose_name_plural = 'sales'
 ```
 
-
-
 **Import Data**
 
 I used [`django-import-export`](https://django-import-export.readthedocs.io/en/latest/installation.html) package to add data through csv, xls, and etc.
-
-
 
 **Extract Data**
 
@@ -41,7 +39,7 @@ In this part, I want to display the annual sales information for each product in
 ```python
 # Example
 data = {
-    'YEAR1': {'PRODUCT_NAME1': 'AMOUNT', 'PRODUCT_NAME2': 'AMOUNT', 'PRODUCT_NAME3': 'AMOUNT'}, 
+    'YEAR1': {'PRODUCT_NAME1': 'AMOUNT', 'PRODUCT_NAME2': 'AMOUNT', 'PRODUCT_NAME3': 'AMOUNT'},
     'YEAR2': {'PRODUCT_NAME1': 'AMOUNT', 'PRODUCT_NAME2': 'AMOUNT', 'PRODUCT_NAME3': 'AMOUNT'},
     'YEAR3': {'PRODUCT_NAME1': 'AMOUNT', 'PRODUCT_NAME2': 'AMOUNT', 'PRODUCT_NAME3': 'AMOUNT'},
 }
@@ -77,9 +75,7 @@ class Sale(models.Model):
         return data, labels
 ```
 
-
-
-> **Step #2 -**  Create View
+> **Step #2 -** Create View
 
 In `view.py`, we just need to call this function and create the structure needed for the chart. As follows:
 
@@ -157,4 +153,3 @@ In your template, just call your chart and send the data to JS Function. For exa
 ```
 
 In this example, I used `Morris.Bar` Chart to display the information.
-

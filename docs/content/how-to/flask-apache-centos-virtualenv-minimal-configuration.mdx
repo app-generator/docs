@@ -1,24 +1,25 @@
 ---
+sidebar_position: 39
 description: How To configure Flask and Apache
 ---
 
 # Flask Deploy on Apache
 
+<SubHeading>How To configure Flask and Apache</SubHeading>
+
 This page explains how to deploy a simple [Flask](https://www.palletsprojects.com/p/flask/) application sandboxed with a `virtualenv` and served by Apache HTTP server using the `mod_wsgi` module.
 
-> Note: this setup was tested on CentOS but can be easily adapted to be executed on other platforms.
-
-
+:::note Note
+this setup was tested on CentOS but can be easily adapted to be executed on other platforms.
+:::
 
 ### Dependencies
 
-* [Apache](https://httpd.apache.org/) / `httpd` (on CentOS) server
-* [mod\_wsgi](https://modwsgi.readthedocs.io/)
-* [Flask](https://www.palletsprojects.com/p/flask/) web framework
-* [Python3](https://www.python.org/)
-* [Virtualenv](https://virtualenv.pypa.io/)
-
-
+- [Apache](https://httpd.apache.org/) / `httpd` (on CentOS) server
+- [mod_wsgi](https://modwsgi.readthedocs.io/)
+- [Flask](https://www.palletsprojects.com/p/flask/) web framework
+- [Python3](https://www.python.org/)
+- [Virtualenv](https://virtualenv.pypa.io/)
 
 ### Prepare the environment
 
@@ -26,12 +27,12 @@ This page explains how to deploy a simple [Flask](https://www.palletsprojects.co
 
 ```bash
 $ sudo yum install httpd
-$ 
+$
 $ # by default the server is down.
 $ sudo systemctl start httpd
 ```
 
-> Install [mod\_wsgi](https://modwsgi.readthedocs.io/)
+> Install [mod_wsgi](https://modwsgi.readthedocs.io/)
 
 ```bash
 $ sudo yum install mod_wsgi
@@ -61,7 +62,7 @@ $ sudo pip install virtualenv
 
 We will use a simple [Flask](https://www.palletsprojects.com/p/flask/) application that serves a simple `Hello World` message for all routes. As mentioned before, this setup is executed on CentOs. The steps are:
 
-**Go to `/var/www`** - the www\_root of Apache server, and create the project directory.
+**Go to `/var/www`** - the www_root of Apache server, and create the project directory.
 
 ```bash
 $ cd /var/www
@@ -135,7 +136,7 @@ $ # our app is running on port 5000
 
 ### Apache Configuration
 
-To execute a Flask application under the Apache HTTP server we need to bridge our application to the Apache engine using the mod\_wsgi module. For this we need to create a new file `wsgi.py` inside our project folder:
+To execute a Flask application under the Apache HTTP server we need to bridge our application to the Apache engine using the mod_wsgi module. For this we need to create a new file `wsgi.py` inside our project folder:
 
 ```bash
 /var/www/hitme
@@ -194,6 +195,6 @@ $ lynx localhost # lynx
 
 ### Links
 
-* [How To Serve Flask Applications](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-centos-7)
-* [Minimal Apache configuration for Flask](https://www.codementor.io/abhishake/minimal-apache-configuration-for-deploying-a-flask-app-ubuntu-18-04-phu50a7ft)
-* [Run Python as a Web Application on CentOS](https://www.ionos.com/community/hosting/python/use-mod-wsgi-to-run-python-as-a-web-application-on-centos-7/)
+- [How To Serve Flask Applications](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-centos-7)
+- [Minimal Apache configuration for Flask](https://www.codementor.io/abhishake/minimal-apache-configuration-for-deploying-a-flask-app-ubuntu-18-04-phu50a7ft)
+- [Run Python as a Web Application on CentOS](https://www.ionos.com/community/hosting/python/use-mod-wsgi-to-run-python-as-a-web-application-on-centos-7/)

@@ -1,14 +1,17 @@
 ---
+sidebar_position: 5
+sidebar_label: Django API Server
 description: Open-source Django API server that explains how to extend an existing codebase
 ---
 
 # Django API Server
 
+<SubHeading>Open-source Django API server that explains how to extend an existing codebase</SubHeading>
+
 This sample explains how to extend an existing Django API Starter and add another model managed via a new API node.
 
-* [Django API Server](../../boilerplate-code/api-server/django.md) - original project
-* [Django API Server Sample](https://github.com/app-generator/api-server-django-sample) - the source code with new enhancements
-
+- [Django API Server](../../boilerplate-code/api-server/django.md) - original project
+- [Django API Server Sample](https://github.com/app-generator/api-server-django-sample) - the source code with new enhancements
 
 ## Codebase structure
 
@@ -24,7 +27,7 @@ PROJECT ROOT
 │   │   │   ├── login.py          # Handles the proccess of login for an user
 │   │   │   └── register.py       # Handle the creation of a new user
 │   │   ├── tests.py              # Test for login, registration and session
-│   │   └── viewsets       
+│   │   └── viewsets
 │   │       ├── active_session.py # Handles session check
 │   │       ├── login.py          # Handles login
 │   │       ├── logout.py         # Handles logout
@@ -40,12 +43,12 @@ PROJECT ROOT
 │       ├── serializers.py       # Handle the serialization of user object
 │       └── viewsets.py          # Handles  the modification of an user
 |
-├── core                         # Implements app logic      
+├── core                         # Implements app logic
 │   ├── asgi.py
 │   ├── __init__.py
 │   ├── settings.py              # Django app bootstrapper
 │   ├── test_runner.py           # Custom  test runner
-│   ├── urls.py    
+│   ├── urls.py
 │   └── wsgi.py
 |
 ├── docker-compose.yml
@@ -54,7 +57,6 @@ PROJECT ROOT
 ├── manage.py                    # Starts the app
 └── requirements.txt             # Contains development packages
 ```
-
 
 ## Used Patterns
 
@@ -68,18 +70,17 @@ The `UpdateModelMixin` provides the logic to update an object using `PUT`.
 
 We only need to rewrite the method which handles the `updating` and provides the `serializer_class` and the `permission_classes`.
 
-
 ## How to use the API
 
 > POSTMAN usage
 
 The API is actually built around these endpoints :
 
-* `api/users/signup`
-* `api/users/login`
-* `api/users/edit`
-* `api/users/checkSession`
-* `api/users/logout`
+- `api/users/signup`
+- `api/users/login`
+- `api/users/edit`
+- `api/users/checkSession`
+- `api/users/logout`
 
 > **Register** - `api/users/register`
 
@@ -89,7 +90,7 @@ Content-Type: application/json
 
 {
     "username":"test",
-    "password":"pass", 
+    "password":"pass",
     "email":"test@appseed.us"
 }
 ```
@@ -113,6 +114,7 @@ cd api && django-admin startapp transactions
 Once it's done, rewrite the `apps.py` file with the following content.
 
 ```
+
 ```
 
 ```javascript
@@ -120,7 +122,7 @@ POST /api/users/login
 Content-Type: application/json
 
 {
-    "password":"pass", 
+    "password":"pass",
     "email":"test@appseed.us"
 }
 ```
@@ -203,16 +205,15 @@ curl --request POST \
 }
 ```
 
-
 ## How to extend API
 
 > Add a new model - transactions
 
 To add a model for `transaction` in the project, let's create a new application in the `api` directory.
 
-* Creating the app using `django-admin` command in the `api` directory.
-* Then modify the name and the label of the app in `apps.py`
-* And add the `app` in the `INSTALLED_APPS` in the `settings.py` of the project.
+- Creating the app using `django-admin` command in the `api` directory.
+- Then modify the name and the label of the app in `apps.py`
+- And add the `app` in the `INSTALLED_APPS` in the `settings.py` of the project.
 
 ```
 cd api && django-admin startapp transaction
@@ -256,14 +257,14 @@ INSTALLED_APPS = [
 
 Creating an API interface to manage transactions usually go this way :
 
-* Creating the model
-* Creating the serializer
-* Write the views or the viewsets
-* Register the viewsets by creating routes
+- Creating the model
+- Creating the serializer
+- Write the views or the viewsets
+- Register the viewsets by creating routes
 
 We've already created the model for `transaction`.
 
-Let's create the [serializer](https://www.django-rest-framework.org/api-guide/serializers/). 
+Let's create the [serializer](https://www.django-rest-framework.org/api-guide/serializers/).
 
 A [serializer](https://www.django-rest-framework.org/api-guide/serializers/) allows us to convert complex Django complex data structures such as `querysets` or model instances in Python native objects that can be easily converted JSON/XML format, but a serializer also serializes JSON/XML to naive Python.
 
@@ -288,20 +289,20 @@ And now the [viewsets](https://www.django-rest-framework.org/api-guide/viewsets/
 
 The routes for the transaction interface API should look like this :
 
-* `api/transactions/create` -> create transaction
-* `api/transactions/edit/id`-> edit transaction
-* `api/transactions/delete/id` -> delete transaction
-* `api/transactions/get/id` -> get specific transaction
-* `api/transactions/get` -> get all transactions
+- `api/transactions/create` -> create transaction
+- `api/transactions/edit/id`-> edit transaction
+- `api/transactions/delete/id` -> delete transaction
+- `api/transactions/get/id` -> get specific transaction
+- `api/transactions/get` -> get all transactions
 
 The [ViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#viewset) class comes with built-in [actions](https://www.django-rest-framework.org/api-guide/viewsets/#viewset-actions) :
 
-* list
-* retrieve
-* create
-* update
-* partial\_update
-* destroy
+- list
+- retrieve
+- create
+- update
+- partial_update
+- destroy
 
 And to make sure the names of the URLs match what we need, we'll be using [actions](https://www.django-rest-framework.org/api-guide/viewsets/#marking-extra-actions-for-routing).
 
@@ -328,7 +329,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
     serializer_class = TransactionSerializer
     permission_classes = (IsAuthenticated,)
     http_method_names = ['get', 'post']
-    
+
     not_found_message = {"success": False, "msg": "This object doesn't exist."}
     missing_id_message = {"success": False, "msg": "Provide a transaction id."}
 ```
@@ -393,7 +394,7 @@ Let's write the actions for `api/transactions/get` and `api/transactions/get/id`
 ```python
 class TransactionViewSet(viewsets.ModelViewSet):
     ...
-    
+
     @action(methods=['get'], detail=False, url_path='get')
     def get_transactions(self, request, *args, **kwargs):
 
@@ -412,7 +413,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
         }, status=status.HTTP_200_OK)
 
     @action(methods=['get'], detail=False, url_path=r'get/(?P<transaction_id>\w+)')
-    
+
     def get_transaction(self, request, transaction_id=None, *args, **kwargs):
 
         if transaction_id is None:
@@ -431,7 +432,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
         }, status=status.HTTP_200_OK)
 ```
 
-Notice that for the  `get/id` (`get_transaction`), we are writing the `url_path` using **regex expression**.
+Notice that for the `get/id` (`get_transaction`), we are writing the `url_path` using **regex expression**.
 
 And finally, the actions for `api/transactions/delete/id` and `api/transactions/edit`.
 
@@ -521,6 +522,6 @@ And that's it. You can start testing the API with Postman.
 
 Congratulations. You just learned :
 
-* How to add a new model;
-* How to add a serializer for this model;
-* How to rewrite `viewset` behavior and `actions` to match your needs.
+- How to add a new model;
+- How to add a serializer for this model;
+- How to rewrite `viewset` behavior and `actions` to match your needs.

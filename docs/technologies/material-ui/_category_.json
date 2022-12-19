@@ -6,7 +6,7 @@
 	"className": "section-sub-title",
 	"link": {
 		"type": "generated-index",
-		"description": "technologies",
+		"description": "Material-UI related topics ",
 		"slug": "technologies/material-ui",
 		"keywords": ["api-server", "boilerplate-code"]
 	}

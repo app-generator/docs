@@ -1,0 +1,12 @@
+{
+	"label": "Eleventy 11ty",
+	"position": 7,
+	"collapsed": true,
+	"collapsible": true,
+	"className": "section-sub-title",
+	"link": {
+		"type": "generated-index",
+		"slug": "products/eleventy-11ty",
+		"description": "Here are the articles in this section:"
+	}
+}

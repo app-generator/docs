@@ -1,10 +1,13 @@
 ---
+sidebar_position: 4
 description: >-
   This page documents simple practices you can use to ease development flow with
   Nextjs but to also help increase performances.
 ---
 
 # Best Practices for NextJS projects
+
+<SubHeading>This page documents simple practices you can use to ease development flow with Nextjs but to also help increase performances.</SubHeading>
 
 Next.js has changed the way web applications are built with React and deployed. The developer experience guaranteed by the framework allows to develop with better architecture and allows custom optimization. Let's explore 4 best practices that can be used in a Next.js project from development to deployment.
 
@@ -41,32 +44,24 @@ You can learn more from the dynamic imports on the official [documentation](http
 Image optimization with Next.js improves the user experience but is also essential in **Search Engine Optimization** (SEO) ranking when done right. `Next.js` provides an image component `<Image />` that is very flexible and scalable. We made use of this component in the recent [document](https://docs.appseed.us/technologies/next-js/deploy-a-next.js-application-on-netlify) while deploying the Next.js application. But here is an example using a component using the `<Image />` component.
 
 ```jsx
-import Image from 'next/image'
+import Image from "next/image";
 
 const loader = ({ src, width, quality }) => {
-  return `https://website.com/${src}?w=${width}&q=${quality || 50}`
-}
+	return `https://website.com/${src}?w=${width}&q=${quality || 50}`;
+};
 
 const BannerImage = (props) => {
-  return (
-    <Image
-      loader={loader}
-      src="banner.png"
-      alt="Banner of product"
-      width={1200}
-      height={500}
-    />
-  )
-}
+	return <Image loader={loader} src="banner.png" alt="Banner of product" width={1200} height={500} />;
+};
 ```
 
 ### 3 - Rendering mode
 
 Next.js has three rendering modes:
 
-* **Server Side Rendering** (SSR): In this mode, pages are generated and returned after each page view. It is similar to how pages are returned in WordPress but in a much faster way. SSR is used to fetch data and pre-populate a page with custom content, leveraging the server's reliable internet connection.
-* **Static Site Generation** (SSG): This is the way early websites used to work. HTML files are just stored on disc on a web server and each request on a URL returns a page that loads in the browser. With SSG, your pages are generated during `Next.js` build step. These pages are then served on a server. This is really fast.
-* **Incrementation Site Regeneration** (ISR): ISR will create each page using SSR initially and store the response the same way SSG does. Subsequent requests for the same page will now be read from disc and be, you know, super-fast. ISR enables you to use static generation on a per-page basis, without needing to rebuild the entire site. With ISR, you can retain the benefits of static while scaling to millions of pages.
+- **Server Side Rendering** (SSR): In this mode, pages are generated and returned after each page view. It is similar to how pages are returned in WordPress but in a much faster way. SSR is used to fetch data and pre-populate a page with custom content, leveraging the server's reliable internet connection.
+- **Static Site Generation** (SSG): This is the way early websites used to work. HTML files are just stored on disc on a web server and each request on a URL returns a page that loads in the browser. With SSG, your pages are generated during `Next.js` build step. These pages are then served on a server. This is really fast.
+- **Incrementation Site Regeneration** (ISR): ISR will create each page using SSR initially and store the response the same way SSG does. Subsequent requests for the same page will now be read from disc and be, you know, super-fast. ISR enables you to use static generation on a per-page basis, without needing to rebuild the entire site. With ISR, you can retain the benefits of static while scaling to millions of pages.
 
 ### 4 - Lazy loading
 
@@ -74,30 +69,30 @@ You might want to load data only under certain circumstances. For example, you w
 
 Using Next.js, you have four loading strategies with [`next/script`](https://nextjs.org/docs/api-reference/next/script):
 
-* `afterInteractive` which loads the script immediately after the page is made interactive. This is the default mode.
-* `beforeInteractive` loads the script before the page becomes interactive.
-* `lazyOnload` which loads when the page is idle.
-* `worker` loads the script in a web worker.
+- `afterInteractive` which loads the script immediately after the page is made interactive. This is the default mode.
+- `beforeInteractive` loads the script before the page becomes interactive.
+- `lazyOnload` which loads when the page is idle.
+- `worker` loads the script in a web worker.
 
 ```jsx
-import { useState } from 'react'
-import Script from 'next/script'
+import { useState } from "react";
+import Script from "next/script";
 
 export default function Home() {
-  const [stripe, setStripe] = useState(null)
+	const [stripe, setStripe] = useState(null);
 
-  return (
-    <>
-      <Script
-        id="stripe-js"
-        strategy="beforeInteractive"
-        src="https://js.stripe.com/v3/"
-        onLoad={() => {
-          setStripe({ stripe: window.Stripe('pk_test_12345') })
-        }}
-      />
-    </>
-  )
+	return (
+		<>
+			<Script
+				id="stripe-js"
+				strategy="beforeInteractive"
+				src="https://js.stripe.com/v3/"
+				onLoad={() => {
+					setStripe({ stripe: window.Stripe("pk_test_12345") });
+				}}
+			/>
+		</>
+	);
 }
 ```
 

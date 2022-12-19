@@ -1,8 +1,11 @@
 ---
+sidebar_position: 3
 description: Learn how to prepare and deploy a Next.js application on Netlify.
 ---
 
 # Deploy a Next.js application on Netlify
+
+<SubHeading>Learn how to prepare and deploy a Next.js application on Netlify.</SubHeading>
 
 In the last document, we learned how to create a simple Next.js application. In this document, you will learn how to deploy a Next.js application on Netlify.&#x20;
 
@@ -19,17 +22,16 @@ The `next-compose-plugins` provides a simple API and modules to make Next.js plu
 In the `next.config.js` file, make sure to have the following configurations.
 
 ```js
-const withPlugins = require('next-compose-plugins');
-const optimizedImages = require('next-optimized-images');
+const withPlugins = require("next-compose-plugins");
+const optimizedImages = require("next-optimized-images");
 
 const nextConfiguration = {
-  target: 'serverless',
-  images: {
-    disableStaticImages: true,
-    optimizeImages: true,
-  }
+	target: "serverless",
+	images: {
+		disableStaticImages: true,
+		optimizeImages: true,
+	},
 };
-
 
 module.exports = withPlugins([optimizedImages], nextConfiguration);
 ```

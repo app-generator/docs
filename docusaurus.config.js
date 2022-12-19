@@ -1,7 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
+// const CurrentStyle = require("./src/utils/CurrentStyle");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 // const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+// const Embed = require("./plugins/remark/embed");
 const darkCodeTheme = require("prism-react-renderer/themes/shadesOfPurple");
 const customFields = {
 	meta: {
@@ -29,10 +31,10 @@ const config = {
 	tagline: "Docusaurus version of AppSeed Docs - Migration from GitBook",
 	url: "https://docs.appseed.us/",
 	baseUrl: "/",
-	// onBrokenLinks: "throw",
-	onBrokenLinks: "ignore",
-	// onBrokenMarkdownLinks: "warn",
-	onBrokenMarkdownLinks: "ignore",
+	onBrokenLinks: "throw",
+	// onBrokenLinks: "ignore",
+	onBrokenMarkdownLinks: "warn",
+	// onBrokenMarkdownLinks: "ignore",
 	// favicon: "https://appseed-srv1.com/appseed-v2/media/common/favicon.png",
 	favicon: "/assets/favicon1.png",
 
@@ -71,6 +73,7 @@ const config = {
 			({
 				docs: {
 					// path: 'docs/home',
+					// remarkPlugins: [require("./plugins/remark/embed")],
 					routeBasePath: "/",
 					sidebarPath: require.resolve("./sidebars.js"),
 					// Please change this to your repo.
@@ -85,7 +88,7 @@ const config = {
 				// 	editUrl: "https://github.com/app-generator/docs-v2",
 				// },
 				theme: {
-					customCss: require.resolve("./src/css/custom.css"),
+					customCss: require.resolve("./src/css/custom-1.css"),
 				},
 			}),
 		],
@@ -97,7 +100,8 @@ const config = {
 			colorMode: {
 				defaultMode: "dark",
 				disableSwitch: false,
-				respectPrefersColorScheme: false,
+				// respectPrefersColorScheme: false,
+				respectPrefersColorScheme: true,
 			},
 			announcementBar: {
 				id: "welcome",
@@ -134,7 +138,8 @@ const config = {
 					// srcDark: "/assets/logo2-dark.svg",
 					// srcDark: "/assets/logo3-dark.svg",
 					// srcDark: "/assets/logo4-dark.svg",
-					// srcDark: "/assets/logo5-dark.svg",
+					// srcDark: "/assets/logo2-dark.svg",
+					// target: "/assets/logo5-dark.svg",
 					src: "/assets/logo2-dark.svg",
 					// width: 142,
 					// height: 142,
@@ -225,6 +230,16 @@ const config = {
 						to: "/content/partners",
 						position: "left",
 					},
+					// {
+					// 	label: "themes",
+					// 	position: "left",
+					// 	items: [
+					// 		{
+					// 			type: "custom-Switcher",
+					// 		},
+					// 	],
+					// },
+
 					// {
 					// 	href: "https://appseed.us/",
 					// 	label: "AppSeed ",
