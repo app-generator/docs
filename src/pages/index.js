@@ -47,41 +47,41 @@ function HomeShowcase() {
 	return (
 		<StyleRoot>
 			{/* Showcase */}
-			<div className="py-16 overflow-hidden">
+			<div className="overflow-hidden">
 				<div className="relative max-w-xl mx-auto px-4 md:px-6 lg:px-8 lg:max-w-screen-xl">
-					<div className=" pb-12 md:pb-16">
+					<div className="pb-8 md:pb-16 md:w-4/5 lg:w-full">
 						<div className="relative">
 							<div className="relative max-w-screen-xl mx-auto px-4 lg:px-6">
 								<div className="max-w-4xl mx-auto">
-									<dl className="rounded-lg shadow-xl lg:grid lg:grid-cols-3 showcase">
-										<div className="flex flex-col border-b p-6 text-center lg:border-0 showcase-border">
-											<dt className="order-2 pl-6 mt-2 text-lg leading-6 font-medium text-description" id="item-1">
+									<dl className="md:rounded-lg md:shadow-xl lg:grid lg:grid-cols-3 showcase  md:divide-x">
+										<div className="flex flex-col border-2 border-b-neutral-600 p-6 text-center ">
+											<dt className="order-2 md:pl-6 mt-2 text-lg leading-6 font-medium text-description" id="item-1">
 												DEVELOPERS
 											</dt>
-											<dd className="order-1 text-5xl leading-none font-extrabold text-indigo-600" aria-describedby="item-1">
+											<dd className="order-1 text-4xl mr-6 leading-none pb-2 font-extrabold text-indigo-600" aria-describedby="item-1">
 												5906
 											</dd>
 										</div>
-										<div className="flex flex-col border-t border-b p-6 text-center lg:border-0 lg:border-l showcase-border">
-											<dt className="order-2 mt-2 pl-12 text-lg leading-6 font-medium text-description">GENERATED APPS</dt>
-											<dd className="order-1 text-5xl leading-none font-extrabold text-indigo-600">8833</dd>
+										<div className="flex flex-col border-t border-b-neutral-600 p-6 text-center lg:border-0 lg:border-l showcase-border">
+											<dt className="order-2 mt-2 md:pl-12 text-lg leading-6 font-medium text-description">GENERATED APPS</dt>
+											<dd className="order-1 text-4xl mr-6 leading-none font-extrabold pb-2 text-indigo-600">8833</dd>
 										</div>
-										<div className="flex flex-col border-t p-6 text-center lg:border-0 lg:border-l showcase-border">
-											<dt className="order-2 mt-2 pl-12 text-lg leading-6 font-medium text-description">CODED PRODUCTS</dt>
-											<dd className="order-1 text-5xl leading-none font-extrabold text-indigo-600">100+</dd>
+										<div className="flex flex-col border-b-neutral-600 p-6 text-center lg:border-0 lg:border-l showcase-border">
+											<dt className="order-2 mt-2 md:pl-12 text-lg leading-6 font-medium text-description">CODED PRODUCTS</dt>
+											<dd className="order-1 text-4xl mr-6 leading-none pb-2 font-extrabold text-indigo-600">100+</dd>
 										</div>
 									</dl>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div className="max-w-4xl mx-auto text-center p-12">
-						<h2 className="text-3xl leading-9 font-extrabold md:text-4xl md:leading-10">USEFUL TECHNOLOGIES</h2>
+					<div className="max-w-4xl mx-auto text-center">
+						<h2 className="text-base leading-9 font-extrabold md:text-4xl md:leading-10">USEFUL TECHNOLOGIES</h2>
 					</div>
-					<div className="flex justify-center text-center">
-						{showcaseProjects.map(({ name, href, image }, i) => (
-							<div>
-								<img className="inline-block w-16 h-16 m-2" src={withBaseUrl(image)} alt={`Discover DocSearch on the ${name} documentation`} />
+					<div className="flex justify-center text-center p-2">
+						{showcaseProjects.map(({ name, href, image }, idx) => (
+							<div key={idx} className="p-2">
+								<img className="inline-block w-16 md:h-16 m-2" src={withBaseUrl(image)} alt={`Discover DocSearch on the ${name} documentation`} />
 							</div>
 						))}
 					</div>
@@ -104,22 +104,21 @@ function HomepageHeaderW() {
 	return (
 		<StyleRoot>
 			{/* <header className={clsx("hero", styles.heroBanner)}> */}
-			<header class="mt-32">
-				<div class="flex  flex-row w-4/5 h-4/6 ml-24">
-					<div class=" relative basis-1/2  bg-transparent ">
-						<div class="absolute w-full h-5/6 bg-white backdrop-filter ring-slate-900/5 shadow-2xl m-6 z-10 top-6 ml-24 rounded-xl opacity-90">
-							<div class="ml-24 pt-6 pb-6">
-								<h6 class="text-left text-slate-900">Used by 5904 developers</h6>
-								<h1 class="text-pink-600 mt-6 mb-6 font-bold text-6xl text-left">AppSeed</h1>
-								<p class="text-slate-900 dark:text-slate-400 mt-2  pr-12 text-sm text-left">
-									{" "}
-									Production-ready seed projects crafted on top of modern UI Kits. Free{" "}
-									<a class="no-underline hover:no-underline after:content-['_↗'] " href="https://appseed.us/support" target="_blank">
+			<header className="md:mt-32 h-auto md:h-4/6 md:mb-16 mb:ml-24">
+				<div className="grid md:flex md:w-4/5 md:h-4/6 md:ml-24">
+					<div className="md:relative  md:flex w-full md:w-4/5 md:basis-1/2 order-last md:order-first  bg-transparent ">
+						<div className="md:absolute  md:w-full md:h-5/6 bg-white backdrop-filter ring-slate-900/5 shadow-2xl md:m-6 z-10 md:top-6 md:ml-24  mb-0 md:rounded-xl opacity-90">
+							<div className="md:ml-24 p-6 md:pt-6 md:pb-6">
+								<h6 className="text-left  text-slate-900">Used by 5904 developers</h6>
+								<h1 className="text-pink-600 mt-6 mb-6 font-bold md:text-6xl text-4xl text-left">AppSeed</h1>
+								<p className="text-slate-900 dark:text-slate-400 mt-2  md:pr-12 text-sm md:text-left">
+									Production-ready seed projects crafted on top of modern UI Kits. Free
+									<a className="no-underline hover:no-underline after:content-['_↗'] " href="https://appseed.us/support" target="_blank">
 										Support
 									</a>
-									for registered users.{" "}
+									for registered users.
 								</p>
-								<div className="py-4 mr-20 ">
+								<div className="py-4 md:mr-20 justify-center ">
 									<Link className="bg-slate-900  no-underline hover:no-underline rounded-md text-white px-4 py-2   " to="/introduction">
 										Get Started
 									</Link>
@@ -127,9 +126,9 @@ function HomepageHeaderW() {
 							</div>
 						</div>
 					</div>
-					{/* <div class="basis-1/2 bg-[url('https://appseed-srv1.com/appseed-v2/media/common/bkg-rocket-min.png')] rounded-xl mr-8 justify-center"> */}
-					<div class="basis-1/2 bg-pink-600 rounded-xl mr-4 p-12 justify-center">
-						<img style={animationStyles.bounce} class="w-3/5 opacity-70 justify-center ml-12 p-4" src="https://appseed-srv1.com/appseed-v2/media/common/rocket.png" />
+
+					<div className="md:flex md:basis-1/2 w-full bg-pink-600 md:rounded-xl md:mr-4  mt-0 md:p-12  justify-center">
+						<img style={animationStyles.bounce} className="w-3/5 opacity-70 justify-center ml-12 p-4" src="https://appseed-srv1.com/appseed-v2/media/common/rocket.png" />
 					</div>
 				</div>
 			</header>
@@ -144,7 +143,7 @@ export default function Home() {
 		<StyleRoot>
 			<Layout title={`Hello from ${siteConfig.title}`} description="Description will go into a meta tag in <head />">
 				<HomepageHeaderW />
-				<main>
+				<main className=" bg-white dark:bg-slate-900 shadow-2xl pb-2">
 					<HomeShowcase />
 					<HomepageFeatures />
 					<SupportPricing home="true" />

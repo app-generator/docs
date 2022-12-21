@@ -16,6 +16,7 @@ export default function SwitcherItem({ children, color }) {
 				{buttons.map((props, idx) => (
 					// <Feature key={idx} {...props} />
 					<button
+						key={idx}
 						data-theme="indigo"
 						onClick={
 							{

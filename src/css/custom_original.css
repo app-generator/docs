@@ -3,7 +3,9 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* Fonts */
 
 @font-face {
@@ -71,6 +73,7 @@ code {
 	--ifm-color-primary-lighter: #ad1c4c;
 	--ifm-color-primary-lightest: #ec407a;
 	--ifm-toc-border-color: #2e2e2e;
+
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
