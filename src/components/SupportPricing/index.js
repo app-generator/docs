@@ -8,15 +8,15 @@ export default function SupportPricing({ home }) {
 	return (
 		<StyleRoot>
 			{/* Container for demo purpose */}
-			<div className="container px-6 mx-auto">
+			<div className="container px-6 mb-12 mx-auto">
 				{/* Section: Design Block  */}
 				<section className="text-gray-800 dark:text-white">
 					<h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Support</h2>
 
 					<p className="text-center mb-12 text-gray-500 dark:text-white">⚙️ Two tiers Support.</p>
 
-					<div className={home == "true" ? "grid   md:gap-2 md:grid-cols-2" : "grid   gap-4  md:grid-cols-2"}>
-						<div className={home == "true" ? "mb-6  lg:mb-0 md:w-3/5 md:ml-28" : "mb-6  lg:mb-0 "}>
+					<div className={home == "true" ? "grid   lg:gap-2 lg:grid-cols-2" : "grid   gap-4  lg:grid-cols-2"}>
+						<div className={home == "true" ? "mb-6  lg:mb-0 lg:w-3/5 lg:ml-28" : "mb-6  lg:mb-0 "}>
 							<div className="block rounded-lg shadow-2xl bg-white dark:bg-slate-800 h-full">
 								<div className="p-6 border-b border-gray-300 dark:border-white text-center">
 									<p className="uppercase mb-4 text-sm">
@@ -60,7 +60,7 @@ export default function SupportPricing({ home }) {
 							</div>
 						</div>
 
-						<div className="mb-6 lg:mb-0  md:w-3/5 md:ml-28">
+						<div className={home == "true" ? "mb-6 lg:mb-0  lg:w-3/5 lg:ml-28" : "mb-6 lg:mb-0 "}>
 							<div className="block rounded-lg shadow-2xl bg-white dark:bg-slate-800 h-full">
 								<div className="p-6 border-b border-gray-300 text-center">
 									<p className="uppercase mb-4 text-sm">

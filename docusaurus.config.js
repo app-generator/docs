@@ -31,6 +31,7 @@ const config = {
 	tagline: "Docusaurus version of AppSeed Docs - Migration from GitBook",
 	url: "https://docs.appseed.us/",
 	baseUrl: "/",
+	// baseUrl: "/appSeed2",
 	onBrokenLinks: "throw",
 	// onBrokenLinks: "ignore",
 	onBrokenMarkdownLinks: "warn",
@@ -42,6 +43,7 @@ const config = {
 	// If you aren't using GitHub pages, you don't need these.
 	organizationName: "app-generator", // Usually your GitHub org/user name.
 	projectName: "docs", // Usually your repo name.
+	trailingSlash: false,
 
 	// Even if you don't use internalization, you can use this field to set useful
 	// metadata like html lang. For example, if your site is Chinese, you may want
@@ -89,7 +91,8 @@ const config = {
 				// },
 				theme: {
 					// customCss: require.resolve("./src/css/custom-1.css"),
-					customCss: require.resolve("./src/css/custom_original.css"),
+					// customCss: require.resolve("./src/css/custom_original.css"),
+					customCss: require.resolve("./src/css/custom.css"),
 				},
 			}),
 		],
@@ -142,8 +145,8 @@ const config = {
 					// srcDark: "/assets/logo2-dark.svg",
 					// target: "/assets/logo5-dark.svg",
 					// src: "/assets/logo2-dark.svg",
-					// width: 142,
-					// height: 142,
+					width: 142,
+					height: 142,
 				},
 				hideOnScroll: true,
 				items: [

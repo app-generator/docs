@@ -6,6 +6,7 @@ import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import SupportPricing from "@site/src/components/SupportPricing";
 import Bg from "@site/static/assets/appSeed-home-bg.png"; // with import
+import Rocket from "@site/static/assets/appseed_round_rocket.png"; // with import
 import styles from "./index.module.css";
 import Radium, { StyleRoot } from "radium";
 import animationStyles from "@site/src/utils/animationStyles";
@@ -37,6 +38,12 @@ function HomepageHeader() {
 function HomeShowcase() {
 	const { withBaseUrl } = useBaseUrlUtils();
 	const showcaseProjects = [
+		// { name: "flask", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/flask-icon.svg" },
+		// { name: "django", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/django-icon.svg" },
+		// { name: "laravel", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/laravel-icon.svg" },
+		// { name: "reac", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/reactjs-icon.svg" },
+		// { name: "hml", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/html5-icon.svg" },
+		// { name: "saas", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/sass-icon.svg" },
 		{ name: "flask", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/flask-icon.svg" },
 		{ name: "django", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/django-icon.svg" },
 		{ name: "laravel", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/laravel-icon.svg" },
@@ -53,8 +60,8 @@ function HomeShowcase() {
 						<div className="relative">
 							<div className="relative max-w-screen-xl mx-auto px-4 lg:px-6">
 								<div className="max-w-4xl mx-auto">
-									<dl className="md:rounded-lg md:shadow-xl lg:grid lg:grid-cols-3 showcase  md:divide-x">
-										<div className="flex flex-col border-2 border-b-neutral-600 p-6 text-center ">
+									<dl className="md:rounded-lg md:shadow-xl lg:grid lg:grid-cols-3 showcase  lg:divide-x">
+										<div className="flex flex-col border-2 border-b-neutral-600 p-6 text-center lg:divide-x ">
 											<dt className="order-2 md:pl-6 mt-2 text-lg leading-6 font-medium text-description" id="item-1">
 												DEVELOPERS
 											</dt>
@@ -62,7 +69,7 @@ function HomeShowcase() {
 												5906
 											</dd>
 										</div>
-										<div className="flex flex-col border-t border-b-neutral-600 p-6 text-center lg:border-0 lg:border-l showcase-border">
+										<div className="flex flex-col border-t border-b-neutral-600 lg:divide-x p-6 text-center lg:border-0 lg:border-l showcase-border">
 											<dt className="order-2 mt-2 md:pl-12 text-lg leading-6 font-medium text-description">GENERATED APPS</dt>
 											<dd className="order-1 text-4xl mr-6 leading-none font-extrabold pb-2 text-indigo-600">8833</dd>
 										</div>
@@ -104,21 +111,21 @@ function HomepageHeaderW() {
 	return (
 		<StyleRoot>
 			{/* <header className={clsx("hero", styles.heroBanner)}> */}
-			<header className="md:mt-32 h-auto md:h-4/6 md:mb-16 mb:ml-24">
-				<div className="grid md:flex md:w-4/5 md:h-4/6 md:ml-24">
-					<div className="md:relative  md:flex w-full md:w-4/5 md:basis-1/2 order-last md:order-first  bg-transparent ">
-						<div className="md:absolute  md:w-full md:h-5/6 bg-white backdrop-filter ring-slate-900/5 shadow-2xl md:m-6 z-10 md:top-6 md:ml-24  mb-0 md:rounded-xl opacity-90">
-							<div className="md:ml-24 p-6 md:pt-6 md:pb-6">
+			<header className="lg:mt-32 h-auto lg:h-4/6 lg:mb-16 mb:ml-24 dark:bg-slate-900">
+				<div className="grid lg:flex lg:w-4/5 lg:h-4/6  lg:ml-24">
+					<div className="lg:relative  lg:flex w-full lg:w-4/5 lg:basis-1/2 order-last lg:order-first  bg-transparent ">
+						<div className="lg:absolute  lg:w-full lg:h-full xl:h-5/6 2xl:h-5/6 bg-white backdrop-filter ring-slate-900/5 shadow-2xl lg:m-6 z-10 lg:top-6 lg:ml-24  mb-0 lg:rounded-xl opacity-90">
+							<div className=" lg:ml-2 p-6 lg:pt-6 lg:pb-6">
 								<h6 className="text-left  text-slate-900">Used by 5904 developers</h6>
-								<h1 className="text-pink-600 mt-6 mb-6 font-bold md:text-6xl text-4xl text-left">AppSeed</h1>
-								<p className="text-slate-900 dark:text-slate-400 mt-2  md:pr-12 text-sm md:text-left">
+								<h1 className="text-pink-600 mt-6 mb-6 font-bold  lg:text-2xl text-4xl text-left">AppSeed</h1>
+								<p className="text-slate-900 dark:text-slate-400 mt-2  lg:pr-12 text-sm lg:text-left">
 									Production-ready seed projects crafted on top of modern UI Kits. Free
 									<a className="no-underline hover:no-underline after:content-['_↗'] " href="https://appseed.us/support" target="_blank">
 										Support
 									</a>
 									for registered users.
 								</p>
-								<div className="py-4 md:mr-20 justify-center ">
+								<div className="py-4 lg:mr-20 justify-center ">
 									<Link className="bg-slate-900  no-underline hover:no-underline rounded-md text-white px-4 py-2   " to="/introduction">
 										Get Started
 									</Link>
@@ -127,8 +134,9 @@ function HomepageHeaderW() {
 						</div>
 					</div>
 
-					<div className="md:flex md:basis-1/2 w-full bg-pink-600 md:rounded-xl md:mr-4  mt-0 md:p-12  justify-center">
-						<img style={animationStyles.bounce} className="w-3/5 opacity-70 justify-center ml-12 p-4" src="https://appseed-srv1.com/appseed-v2/media/common/rocket.png" />
+					<div className="lg:flex lg:basis-1/2 w-full bg-pink-600 lg:rounded-xl lg:mr-4  mt-0 lg:p-12  justify-center">
+						{/* <img style={animationStyles.bounce} className="w-3/5 opacity-70 justify-center ml-12 p-4" src="https://appseed-srv1.com/appseed-v2/media/common/rocket.png" /> */}
+						<img style={animationStyles.bounce} className="w-3/5 opacity-70 justify-center ml-12 p-4" src={Rocket} />
 					</div>
 				</div>
 			</header>
@@ -141,7 +149,7 @@ export default function Home() {
 
 	return (
 		<StyleRoot>
-			<Layout title={`Hello from ${siteConfig.title}`} description="Description will go into a meta tag in <head />">
+			<Layout className="dark:bg-slate-900" title={`Hello from ${siteConfig.title}`} description="Description will go into a meta tag in <head />">
 				<HomepageHeaderW />
 				<main className=" bg-white dark:bg-slate-900 shadow-2xl pb-2">
 					<HomeShowcase />
