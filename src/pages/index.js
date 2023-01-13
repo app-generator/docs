@@ -12,6 +12,7 @@ import Radium, { StyleRoot } from "radium";
 import animationStyles from "@site/src/utils/animationStyles";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
+
 function HomepageHeader() {
 	const { siteConfig } = useDocusaurusContext();
 	return (
@@ -38,16 +39,10 @@ function HomepageHeader() {
 function HomeShowcase() {
 	const { withBaseUrl } = useBaseUrlUtils();
 	const showcaseProjects = [
-		// { name: "flask", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/flask-icon.svg" },
-		// { name: "django", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/django-icon.svg" },
-		// { name: "laravel", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/laravel-icon.svg" },
-		// { name: "reac", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/reactjs-icon.svg" },
-		// { name: "hml", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/html5-icon.svg" },
-		// { name: "saas", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/sass-icon.svg" },
 		{ name: "flask", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/flask-icon.svg" },
 		{ name: "django", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/django-icon.svg" },
 		{ name: "laravel", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/laravel-icon.svg" },
-		{ name: "reac", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/reactjs-icon.svg" },
+		{ name: "react", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/reactjs-icon.svg" },
 		{ name: "hml", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/html5-icon.svg" },
 		{ name: "saas", href: "", image: "https://appseed-srv1.com/appseed-v2/custom-v1/img/logo/sass-icon.svg" },
 	];
@@ -56,34 +51,13 @@ function HomeShowcase() {
 			{/* Showcase */}
 			<div className="overflow-hidden">
 				<div className="relative max-w-xl mx-auto px-4 md:px-6 lg:px-8 lg:max-w-screen-xl">
+					
 					<div className="pb-8 md:pb-16 md:w-4/5 lg:w-full">
-						<div className="relative">
-							<div className="relative max-w-screen-xl mx-auto px-4 lg:px-6">
-								<div className="max-w-4xl mx-auto">
-									<dl className="md:rounded-lg md:shadow-xl lg:grid lg:grid-cols-3 showcase  lg:divide-x">
-										<div className="flex flex-col border-2 border-b-neutral-600 p-6 text-center lg:divide-x ">
-											<dt className="order-2 md:pl-6 mt-2 text-lg leading-6 font-medium text-description" id="item-1">
-												DEVELOPERS
-											</dt>
-											<dd className="order-1 text-4xl mr-6 leading-none pb-2 font-extrabold text-indigo-600" aria-describedby="item-1">
-												5906
-											</dd>
-										</div>
-										<div className="flex flex-col border-t border-b-neutral-600 lg:divide-x p-6 text-center lg:border-0 lg:border-l showcase-border">
-											<dt className="order-2 mt-2 md:pl-12 text-lg leading-6 font-medium text-description">GENERATED APPS</dt>
-											<dd className="order-1 text-4xl mr-6 leading-none font-extrabold pb-2 text-indigo-600">8833</dd>
-										</div>
-										<div className="flex flex-col border-b-neutral-600 p-6 text-center lg:border-0 lg:border-l showcase-border">
-											<dt className="order-2 mt-2 md:pl-12 text-lg leading-6 font-medium text-description">CODED PRODUCTS</dt>
-											<dd className="order-1 text-4xl mr-6 leading-none pb-2 font-extrabold text-indigo-600">100+</dd>
-										</div>
-									</dl>
-								</div>
-							</div>
-						</div>
+						<br />
 					</div>
+
 					<div className="max-w-4xl mx-auto text-center">
-						<h2 className="text-base leading-9 font-extrabold md:text-4xl md:leading-10">USEFUL TECHNOLOGIES</h2>
+						<h2 className="text-base leading-9 font-extrabold md:text-4xl md:leading-10">TECHNOLOGIES</h2>
 					</div>
 					<div className="flex justify-center text-center p-2">
 						{showcaseProjects.map(({ name, href, image }, idx) => (
@@ -116,17 +90,15 @@ function HomepageHeaderW() {
 					<div className="lg:relative  lg:flex w-full lg:w-4/5 lg:basis-1/2 order-last lg:order-first  bg-transparent ">
 						<div className="lg:absolute  lg:w-full lg:h-full xl:h-5/6 2xl:h-5/6 bg-white backdrop-filter ring-slate-900/5 shadow-2xl lg:m-6 z-10 lg:top-6 lg:ml-24  mb-0 lg:rounded-xl opacity-90">
 							<div className=" lg:ml-2 p-6 lg:pt-6 lg:pb-6">
-								<h6 className="text-left  text-slate-900">Used by 5904 developers</h6>
-								<h1 className="text-pink-600 mt-6 mb-6 font-bold  lg:text-2xl text-4xl text-left">AppSeed</h1>
-								<p className="text-slate-900 dark:text-slate-400 mt-2  lg:pr-12 text-sm lg:text-left">
-									Production-ready seed projects crafted on top of modern UI Kits. Free
-									<a className="no-underline hover:no-underline after:content-['_↗'] " href="https://appseed.us/support" target="_blank">
-										Support
-									</a>
-									for registered users.
+								<h6 className="text-left  text-slate-900">Used by 6k+ Developers</h6>
+								<h1 className="text-pink-600 mt-6 mb-6 font-bold lg:text-2xl text-8xl text-left">AppSeed</h1>
+								<p className="text-slate-900 dark:text-slate-400 mt-2 lg:pr-12 text-sm lg:text-left">
+									Production-ready seed projects crafted on top of modern UI Kits. 
+									<br />
+									Free Support for registered users (Email and Discord).
 								</p>
 								<div className="py-4 lg:mr-20 justify-center ">
-									<Link className="bg-slate-900  no-underline hover:no-underline rounded-md text-white px-4 py-2   " to="/introduction">
+									<Link className="bg-slate-900 no-underline hover:no-underline rounded-md text-white px-4 py-2" to="/introduction">
 										Get Started
 									</Link>
 								</div>
@@ -154,7 +126,6 @@ export default function Home() {
 				<main className=" bg-white dark:bg-slate-900 shadow-2xl pb-2">
 					<HomeShowcase />
 					<HomepageFeatures />
-					<SupportPricing home="true" />
 				</main>
 			</Layout>
 		</StyleRoot>

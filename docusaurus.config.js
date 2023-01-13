@@ -20,7 +20,7 @@ const customFields = {
 	githubUrl: "https://github.com/app-generator",
 	githubDocsUrl: "https://github.com/app-generator/docs",
 	discordUrl: `https://discord.com/invite/fZC6hup`,
-	supportUrl: "https://appseed.us/support",
+	supportUrl: "https://appseed.us/support/",
 	blogUrl: "https://blog.appseed.us",
 	homeUrl: "https://appseed.us",
 };
@@ -28,22 +28,18 @@ const customFields = {
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: "AppSeed",
-	tagline: "Docusaurus version of AppSeed Docs - Migration from GitBook",
+	tagline: "App Generator - The official Documentation",
 	url: "https://docs.appseed.us/",
 	baseUrl: "/",
-	// baseUrl: "/appSeed2",
 	onBrokenLinks: "throw",
-	// onBrokenLinks: "ignore",
 	onBrokenMarkdownLinks: "warn",
-	// onBrokenMarkdownLinks: "ignore",
-	// favicon: "https://appseed-srv1.com/appseed-v2/media/common/favicon.png",
 	favicon: "/assets/favicon1.png",
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
 	organizationName: "app-generator", // Usually your GitHub org/user name.
 	projectName: "docs", // Usually your repo name.
-	trailingSlash: false,
+	trailingSlash: true,
 
 	// Even if you don't use internalization, you can use this field to set useful
 	// metadata like html lang. For example, if your site is Chinese, you may want
@@ -109,7 +105,7 @@ const config = {
 			},
 			announcementBar: {
 				id: "welcome",
-				content: '🎉 Welcome to our new Documentation with Docusaurus <a target="_blank" rel="noopener noreferrer" href="https://docs.appseed.us/">Back to previous version</a>',
+				content: '🎉 Welcome to the official App Generator documentation',
 				backgroundColor: "#ec407a",
 				// textColor: "#091E42",
 				textColor: "#000000",
@@ -150,118 +146,27 @@ const config = {
 				},
 				hideOnScroll: true,
 				items: [
-					// {
-					// 	type: "doc",
-					// 	docId: "app-seed",
-					// 	position: "left",
-					// 	label: "Tutorial ",
-					// },
 					{
-						label: "Get Started",
+						label: "Links",
 						position: "left",
 						items: [
 							{
-								// type: "doc",
-								// docId: "app-generator",
-								to: "introduction",
+								to: "introduction/",
 								label: "Introduction",
 							},
 							{
-								// type: "doc",
-								// docId: "app-generator",
-								to: "app-generator",
+								to: "app-generator/",
 								label: "App Generator",
 							},
 							{
-								// type: "doc",
-								// docId: "support",
 								to: "support",
 								label: "Support",
 							},
-							// {
-							// 	// type: "doc",
-							// 	docId: "boilerplate-code",
-							// 	to: "boilerplate-code",
-							// 	label: "Boilerplate Code",
-							// },
-							{
-								// type: "doc",
-								// docId: "boilerplate-code/api-server",
-								to: "/boilerplate-code",
-								label: "Boilerplate-Code",
-							},
 						],
 					},
 
-					// {
-					// 	type: "docsVersionDropdown",
-					// 	position: "left",
-					// },
 					{
-						label: "Tutorials",
-						to: "/content/tutorials",
-						position: "left",
-					},
-					{
-						label: "Community",
-						position: "left",
-						items: [
-							{
-								label: "GitHub",
-								href: customFields.githubUrl,
-							},
-							{
-								label: "Discord",
-								href: customFields.discordUrl,
-							},
-							{
-								label: "Support",
-								href: customFields.supportUrl,
-							},
-							{
-								label: "Blog",
-								href: customFields.blogUrl,
-							},
-							{
-								label: "AppSeed",
-								href: customFields.homeUrl,
-							},
-						],
-					},
-					{ to: customFields.blogUrl, label: "Blog ", position: "left" },
-					{
-						label: "Partners",
-						to: "/content/partners",
-						position: "left",
-					},
-					// {
-					// 	label: "themes",
-					// 	position: "left",
-					// 	items: [
-					// 		{
-					// 			type: "custom-Switcher",
-					// 		},
-					// 	],
-					// },
-
-					// {
-					// 	href: "https://appseed.us/",
-					// 	label: "AppSeed ",
-					// 	position: "right",
-					// },
-					// {
-					// 	href: "https://appseed.us/support/",
-					// 	label: "Support ",
-					// 	position: "right",
-					// },
-					// {
-					// 	href: "https://blog.appseed.us/",
-					// 	label: "Blog ",
-					// 	position: "right",
-					// },
-
-					{
-						href: "https://github.com/app-generator",
+						href: "https://github.com/app-generator/app-generator/",
 						// label: "GitHub ",
 						className: "pseudo-icon github-icon",
 						position: "right",
@@ -276,10 +181,6 @@ const config = {
 						type: "search",
 						position: "right",
 					},
-					// {
-					// 	type: "localeDropdown",
-					// 	position: "right",
-					// },
 				],
 			},
 			footer: {
@@ -289,51 +190,56 @@ const config = {
 						title: "Docs",
 						items: [
 							{
-								label: "Tutorial",
-								to: "/",
+								label: "Get Started",
+								to: "introduction",
 							},
+							{
+								label: "Dashboards",
+								to: "products/django-dashboards",
+							},		
+							{
+								label: "API Servers",
+								to: "boilerplate-code/api-server",
+							},												
 						],
 					},
 					{
 						title: "Community",
 						items: [
 							{
-								label: "GitHub",
-								href: customFields.githubUrl,
-							},
+								label: "Support",
+								href: customFields.supportUrl,
+							},							
 							{
 								label: "Discord",
 								href: customFields.discordUrl,
 							},
-							{
-								label: "Support",
-								href: customFields.supportUrl,
-							},
+
 							{
 								label: "Blog",
 								href: customFields.blogUrl,
-							},
-							{
-								label: "AppSeed",
-								href: customFields.homeUrl,
 							},
 						],
 					},
 					{
-						title: "More",
+						title: "Partners",
 						items: [
 							{
-								label: "Blog",
-								href: customFields.blogUrl,
+								label: "Creative-Tim",
+								href: "https://appseed.us/agency/creative-tim/",
 							},
 							{
-								label: "GitHub",
-								href: customFields.githubUrl,
+								label: "CodedThemes",
+								href: "https://appseed.us/agency/codedthemes/",
+							},
+							{
+								label: "UPDIVISION",
+								href: "https://appseed.us/agency/updivision/",
 							},
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} AppSeed, Inc. All rights reserved..`,
+				copyright: `&copy; ${new Date().getFullYear()} <a target="_blank" rel="noopener noreferrer" href="https://appseed.us/">AppSeed</a> - All Rights Reserved.`,
 			},
 			prism: {
 				theme: lightCodeTheme,

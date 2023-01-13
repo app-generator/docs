@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Radium, { StyleRoot } from "radium";
 import styles from "./styles.module.css";
 import animationStyles from "@site/src/utils/animationStyles";
+import Link from "@docusaurus/Link";
 
 const FeatureList = [
 	{
@@ -54,10 +55,10 @@ export default function HomepageFeatures() {
 							<p className="leading-6">We provide tested seed projects coded in different patterns and technologies by our team of experts on top of modern UI Kits.</p>
 						</div>
 					</div>
-					<div className="row">
-						{FeatureList.map((props, idx) => (
-							<Feature key={idx} {...props} />
-						))}
+					<div className="row flex justify-center text-center">
+						<Link className="bg-slate-900 no-underline hover:no-underline rounded-md text-white px-6 py-4" to="/introduction">
+							Get Started
+						</Link>
 					</div>
 				</div>
 			</section>
