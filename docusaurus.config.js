@@ -76,7 +76,7 @@ const config = {
 					sidebarPath: require.resolve("./sidebars.js"),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
-					editUrl: "https://github.com/app-generator/docs-v2/tree/main/",
+					editUrl: "https://github.com/app-generator/docs/tree/main/",
 				},
 				blog: false,
 				// blog: {

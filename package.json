@@ -1,15 +1,17 @@
 {
-	"name": "docusaurusv-2",
-	"version": "0.0.0",
+	"name": "appseed-docs",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"docusaurus": "docusaurus",
 		"start": "docusaurus start",
 		"build": "docusaurus build",
 		"swizzle": "docusaurus swizzle",
-		"deploy": "docusaurus deploy",
 		"clear": "docusaurus clear",
 		"serve": "docusaurus serve",
+		"clean": "rimraf .cache public",
+		"deploy": "yarn clean && yarn build && node deploy",
+		"deploy2": "docusaurus deploy",
 		"write-translations": "docusaurus write-translations",
 		"write-heading-ids": "docusaurus write-heading-ids"
 	},
@@ -41,7 +43,8 @@
 		"url-loader": "^4.1.1"
 	},
 	"devDependencies": {
-		"@docusaurus/module-type-aliases": "2.2.0"
+		"@docusaurus/module-type-aliases": "2.2.0",
+		"ftp-deploy": "^2.3.3"
 	},
 	"browserslist": {
 		"production": [
