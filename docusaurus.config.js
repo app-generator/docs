@@ -105,7 +105,7 @@ const config = {
 			},
 			announcementBar: {
 				id: "welcome",
-				content: '🎁 PROMO <strong><a target="_blank" href="https://appseed.us/discounts/">Boost 2023 Campaign - 75%OFF</a></strong> (all products & licenses).',
+				content: '🎁 PROMO <strong><a target="_blank" href="https://appseed.us/discounts/">Boost 2023 - 75%OFF</a></strong> (all products).',
 				backgroundColor: "#ec407a",
 				// textColor: "#091E42",
 				textColor: "#000000",
