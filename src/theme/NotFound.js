@@ -10,7 +10,7 @@ export default function NotFound() {
 	const location = useLocation();
 
 	useEffect(async () => {
-		emailjs.send("service_sedddrb", "template_2w42djr", { url: "https://docs.appseed.us" + location.pathname }, "6_tNcp-iBTQ09T2Ql").then(
+		emailjs.send("service_3xvalkw", "template_gpdzs7i", { url: "https://docs.appseed.us" + location.pathname }, "mbYWDBjQhv-h3CLXl").then(
 			function (response) {
 				console.log("SUCCESS!", response.status, response.text);
 			},
