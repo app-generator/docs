@@ -1,6 +1,7 @@
-// @ts-check
+// @ts-nocheck
 // Note: type annotations allow type checking and IDEs autocompletion
 // const CurrentStyle = require("./src/utils/CurrentStyle");
+const { webpackPlugin } = require("./plugins/webpack-plugin.cjs");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 // const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 // const Embed = require("./plugins/remark/embed");
@@ -23,6 +24,9 @@ const customFields = {
 	supportUrl: "https://appseed.us/support/",
 	blogUrl: "https://blog.appseed.us",
 	homeUrl: "https://appseed.us",
+	EMAILJS_SERVER_ID: process.env.EMAILJS_SERVER_ID,
+	EMAILJS_TEMPLATE_ID: process.env.EMAILJS_TEMPLATE_ID,
+	EMAILJS_PUBLIC_KEY: process.env.EMAILJS_PUBLIC_KEY,
 };
 
 /** @type {import('@docusaurus/types').Config} */
@@ -63,6 +67,7 @@ const config = {
 				},
 			};
 		},
+		webpackPlugin,
 	],
 	presets: [
 		[
@@ -94,6 +99,7 @@ const config = {
 		],
 	],
 	customFields: { ...customFields },
+
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
@@ -196,11 +202,11 @@ const config = {
 							{
 								label: "Dashboards",
 								to: "products/django-dashboards",
-							},		
+							},
 							{
 								label: "API Servers",
 								to: "boilerplate-code/api-server",
-							},												
+							},
 						],
 					},
 					{
@@ -209,7 +215,7 @@ const config = {
 							{
 								label: "Support",
 								href: customFields.supportUrl,
-							},							
+							},
 							{
 								label: "Discord",
 								href: customFields.discordUrl,

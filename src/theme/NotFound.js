@@ -5,12 +5,18 @@ import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import { useLocation } from "@docusaurus/router";
 import emailjs from "@emailjs/browser";
-
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 export default function NotFound() {
 	const location = useLocation();
-
+	const { siteConfig } = useDocusaurusContext();
+	const serverId = process.env.EMAILJS_SERVER_ID;
+	const templateId = process.env.EMAILJS_TEMPLATE_ID;
+	const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+	console.log("serverId", process.env.EMAILJS_SERVER_ID);
+	console.log("templateId", process.env.EMAILJS_TEMPLATE_ID);
+	console.log("publicKey", process.env.EMAILJS_PUBLIC_KEY);
 	useEffect(async () => {
-		emailjs.send("service_sedddrb", "template_2w42djr", { url: "https://docs.appseed.us" + location.pathname }, "6_tNcp-iBTQ09T2Ql").then(
+		emailjs.send(serverId, templateId, { url: "https://docs.appseed.us" + location.pathname }, publicKey).then(
 			function (response) {
 				console.log("SUCCESS!", response.status, response.text);
 			},

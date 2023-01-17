@@ -51,7 +51,6 @@ function HomeShowcase() {
 			{/* Showcase */}
 			<div className="overflow-hidden">
 				<div className="relative max-w-xl mx-auto px-4 md:px-6 lg:px-8 lg:max-w-screen-xl">
-					
 					<div className="pb-8 md:pb-16 md:w-4/5 lg:w-full">
 						<br />
 					</div>
@@ -85,15 +84,15 @@ function HomepageHeaderW() {
 	return (
 		<StyleRoot>
 			{/* <header className={clsx("hero", styles.heroBanner)}> */}
-			<header className="lg:mt-32 h-auto lg:h-4/6 lg:mb-16 mb:ml-24 dark:bg-slate-900">
+			<header className="lg:mt-32  w-full h-auto lg:h-4/6 lg:mb-16 mb:ml-24 dark:bg-slate-900">
 				<div className="grid lg:flex lg:w-4/5 lg:h-4/6  lg:ml-24">
-					<div className="lg:relative  lg:flex w-full lg:w-4/5 lg:basis-1/2 order-last lg:order-first  bg-transparent ">
+					<div className="lg:relative  lg:flex w-full lg:w-4/5 lg:basis-1/2 order-last lg:order-first bg-transparent ">
 						<div className="lg:absolute  lg:w-full lg:h-full xl:h-5/6 2xl:h-5/6 bg-white backdrop-filter ring-slate-900/5 shadow-2xl lg:m-6 z-10 lg:top-6 lg:ml-24  mb-0 lg:rounded-xl opacity-90">
 							<div className=" lg:ml-2 p-6 lg:pt-6 lg:pb-6">
 								<h6 className="text-left  text-slate-900">Used by 6k+ Developers</h6>
-								<h1 className="text-pink-600 mt-6 mb-6 font-bold lg:text-2xl text-8xl text-left">AppSeed</h1>
+								<h1 className="text-pink-600 mt-6 mb-6 font-bold lg:text-2xl text-2xl text-left">AppSeed</h1>
 								<p className="text-slate-900 dark:text-slate-400 mt-2 lg:pr-12 text-sm lg:text-left">
-									Production-ready seed projects crafted on top of modern UI Kits. 
+									Production-ready seed projects crafted on top of modern UI Kits.
 									<br />
 									Free Support for registered users (Email and Discord).
 								</p>
@@ -106,7 +105,7 @@ function HomepageHeaderW() {
 						</div>
 					</div>
 
-					<div className="lg:flex lg:basis-1/2 w-full bg-pink-600 lg:rounded-xl lg:mr-4  mt-0 lg:p-12  justify-center">
+					<div className="lg:flex lg:basis-1/2 bg-pink-600 lg:rounded-xl lg:mr-4  mt-0 lg:p-12  justify-center">
 						{/* <img style={animationStyles.bounce} className="w-3/5 opacity-70 justify-center ml-12 p-4" src="https://appseed-srv1.com/appseed-v2/media/common/rocket.png" /> */}
 						<img style={animationStyles.bounce} className="w-3/5 opacity-70 justify-center ml-12 p-4" src={Rocket} />
 					</div>
