@@ -12,9 +12,6 @@ export default function NotFound() {
 	const serverId = process.env.EMAILJS_SERVER_ID;
 	const templateId = process.env.EMAILJS_TEMPLATE_ID;
 	const publicKey = process.env.EMAILJS_PUBLIC_KEY;
-	console.log("serverId", process.env.EMAILJS_SERVER_ID);
-	console.log("templateId", process.env.EMAILJS_TEMPLATE_ID);
-	console.log("publicKey", process.env.EMAILJS_PUBLIC_KEY);
 	useEffect(async () => {
 		emailjs.send(serverId, templateId, { url: "https://docs.appseed.us" + location.pathname }, publicKey).then(
 			function (response) {
