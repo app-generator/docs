@@ -111,11 +111,11 @@ const config = {
 			},
 			announcementBar: {
 				id: "welcome",
-				content: '🎁 PROMO <strong><a target="_blank" href="https://appseed.us/discounts/">Boost 2023 - 75%OFF</a></strong> (all products).',
+				content: 'PROMO 🎁 <strong><a target="_blank" href="https://appseed.us/discounts/">Discounts - Up to 30%OFF</a></strong> (React, Django, Flask Starters).',
 				backgroundColor: "#ec407a",
 				// textColor: "#091E42",
 				textColor: "#000000",
-				isCloseable: true,
+				isCloseable: false,
 			},
 			docs: {
 				sidebar: {
