@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.2] 2023-01-19 
+### Changes
+
+- Update EmailJS Credentials
+
 ## [1.0.1] 2023-01-14 
 ### Changes
 
