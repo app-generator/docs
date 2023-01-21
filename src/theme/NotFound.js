@@ -9,9 +9,15 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 export default function NotFound() {
 	const location = useLocation();
 	const { siteConfig } = useDocusaurusContext();
-	const serverId = process.env.EMAILJS_SERVER_ID;
-	const templateId = process.env.EMAILJS_TEMPLATE_ID;
-	const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+	
+	const serverId   = 'service_3xvalkw'  ; // process.env.EMAILJS_SERVER_ID;
+	const templateId = 'template_gpdzs7i' ; // process.env.EMAILJS_TEMPLATE_ID;
+	const publicKey  = 'mbYWDBjQhv-h3CLXl'; // process.env.EMAILJS_PUBLIC_KEY;
+
+	//console.log('serverId   :' + serverId   );
+	//console.log('templateId :' + templateId );
+	//console.log('publicKey  :' + publicKey  );
+	
 	useEffect(async () => {
 		emailjs.send(serverId, templateId, { url: "https://docs.appseed.us" + location.pathname }, publicKey).then(
 			function (response) {
