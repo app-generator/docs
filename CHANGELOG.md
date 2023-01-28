@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.4] 2023-01-28 
+### Changes
+
+- Update [Django Volt](https://appseed.us/product/volt-dashboard/django/) Docs
+  - [theme](https://docs.appseed.us/boilerplate-code/django-templates/volt-dashboard/) and [product](https://docs.appseed.us/products/django-dashboards/volt/)
+
 ## [1.0.3] 2023-01-21 
 ### Changes
 
