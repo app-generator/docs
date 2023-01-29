@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.0.5] 2023-01-29 
+### Changes
+
+- Django Volt (free)
+- Django Volt Admin Library
+- Django Black PRO
+- Django Black PRO Library
+- Django Soft (free)
+- Django Soft Admin Library
+
 ## [1.0.4] 2023-01-28 
 ### Changes
 
