@@ -1,0 +1,146 @@
+---
+title:         Django Admin Berry - Open-Source UI LIbrary
+sidebar_label: Django Template Berry
+---
+
+# [Django Admin Berry](https://appseed.us/product/berry-dashboard/django/)
+
+<SubHeading>Open-source Library for Django admin section styled with Berry Dashboard Design (free version)</SubHeading>
+
+Modern template for **Django** that covers `Admin Section`, all authentication pages (registration included) crafted on top of **[Berry Dashboard](https://appseed.us/product/berry-dashboard/django/)**, 
+an open-source `Bootstrap 5` design from `CodedThemes`.
+
+**Links & Resources**
+
+- [Django Admin Berry](https://github.com/app-generator/django-admin-berry) - Library `Source Code`
+- [Django Berry Dashboard](/products/django-dashboards/berry-dashboard/) - `Product` that uses the library
+  - `Features`: Fully-configured, `CI/CD` via Render
+- UI Kit: [Berry Bootstrap](https://codedthemes.com/item/berry-bootstrap-free-admin-template/?ref=appseed) by `CodedThemes`
+- **Sections Covered**: 
+  - `Admin Section`, reserved for `superusers`
+  - `All pages` managed by `Django.contrib.AUTH`
+  - `Registration` page
+  - `Misc pages`: colors, icons, typography, blank-page 
+  
+
+![Berry Bootstrap 5 - Dark-Mode ready, Open-source Template.](https://user-images.githubusercontent.com/51070104/207091062-e805b36c-663a-4a01-acb8-9c55ab914f4f.jpg)
+
+
+## How to use it
+
+> **Install the package** via `PIP` 
+
+```bash
+$ pip install django-admin-berry
+// OR
+$ pip install git+https://github.com/app-generator/django-admin-berry.git
+```
+
+> Add `admin_berry` application to the `INSTALLED_APPS` setting of your Django project `settings.py` file (note it should be before `django.contrib.admin`):
+
+```python
+    INSTALLED_APPS = (
+        ...
+        'admin_berry.apps.AdminBerryConfig',
+        'django.contrib.admin',
+    )
+```
+
+
+> Add `LOGIN_REDIRECT_URL` and `EMAIL_BACKEND` of your Django project `settings.py` file:
+
+```python
+    LOGIN_REDIRECT_URL = '/'
+    # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+```
+
+
+> Add `admin_berry` urls in your Django Project `urls.py` file
+
+```python
+    from django.urls import path, include
+
+    urlpatterns = [
+        ...
+        path('', include('admin_berry.urls')),
+    ]
+```
+
+
+> **Collect static** if you are in `production environment`:
+
+```bash
+$ python manage.py collectstatic
+```
+
+> **Start the app**
+
+```bash
+$ # Set up the database
+$ python manage.py makemigrations
+$ python manage.py migrate
+$
+$ # Create the superuser
+$ python manage.py createsuperuser
+$
+$ # Start the application (development mode)
+$ python manage.py runserver # default port 8000
+```
+
+Access the `admin` section in the browser: `http://127.0.0.1:8000/`
+
+
+## How to Customize 
+
+When a template file is loaded in the controller, `Django` scans all template directories starting from the ones defined by the user, and returns the first match or an error in case the template is not found. 
+The  theme used to style this starter provides the following files: 
+
+```bash
+< LIBRARY_ROOT >                      # This exists in ENV: LIB/admin_berry
+   |
+   |-- templates/                     # Root Templates Folder 
+   |    |          
+   |    |-- accounts/       
+   |    |    |-- login.html           # Sign IN Page
+   |    |    |-- register.html        # Sign UP Page
+   |    |
+   |    |-- includes/       
+   |    |    |-- footer.html          # Footer component
+   |    |    |-- sidebar.html         # Sidebar component
+   |    |    |-- navigation.html      # Navigation Bar
+   |    |    |-- scripts.html         # Scripts Component
+   |    |
+   |    |-- layouts/       
+   |    |    |-- base.html            # Masterpage
+   |    |    |-- auth_base.html       # Masterpage for Auth Pages
+   |    |
+   |    |-- pages/       
+   |         |-- index.html           # Dashboard page
+   |         |-- color.html           # Colors Page
+   |         |-- *.html               # All other pages
+   |    
+   |-- ************************************************************************
+```
+
+When the project requires customization, we need to copy the original file that needs an update (from the virtual environment) and place it in the template folder using the same path. 
+
+For instance, if we want to customize the `footer.html` these are the steps:
+
+- `Step 1`: create the `templates` DIRECTORY inside your app 
+- `Step 2`: configure the project to use this new template directory
+  - Edit `settings.py` TEMPLATES section 
+- `Step 3`: copy the `footer.html` from the original location (inside your ENV) and save it to the `YOUR_APP/templates` DIR
+  - Source PATH: `<YOUR_ENV>/LIB/admin_berry/includes/footer.html`
+  - Destination PATH: `YOUR_APP/templates/includes/footer.html`
+- Edit the footer (Destination PATH)    
+
+At this point, the default version of the `footer.html` shipped in the library is ignored by Django.
+
+In a similar way, all other files and components can be customized easily.
+
+
+## Resources
+
+- 👉 [Django Berry Dashboard](https://appseed.us/product/berry-dashboard/django/)- `Product` that uses the library (fully configured)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
