@@ -1,5 +1,24 @@
 # Change Log
 
+## [1.0.6] 2023-02-01 
+### Changes
+
+- [Django Admin Themes](https://docs.appseed.us/boilerplate-code/django-templates/) 
+  - [Django Admin Template Argon](https://docs.appseed.us/boilerplate-code/django-templates/argon-dashboard/)
+  - [Django Admin Berry](https://docs.appseed.us/boilerplate-code/django-templates/berry-dashboard/)
+  - [Django Admin Berry PRO](https://docs.appseed.us/boilerplate-code/django-templates/berry-dashboard-pro/)
+  - [Django Admin Black PRO](https://docs.appseed.us/boilerplate-code/django-templates/black-dashboard-pro/)
+  - [Django Admin Soft](https://docs.appseed.us/boilerplate-code/django-templates/soft-dashboard/)
+  - [Django Admin Soft PRO](https://docs.appseed.us/boilerplate-code/django-templates/soft-dashboard-pro/)
+  - [Django Admin Volt](https://docs.appseed.us/boilerplate-code/django-templates/volt-dashboard/)
+- [Django Dashboards](https://docs.appseed.us/products/django-dashboards/)
+  - [Django Datta Able PRO](https://docs.appseed.us/products/django-dashboards/datta-able-pro/)
+  - [Django Berry](https://docs.appseed.us/products/django-dashboards/berry-dashboard/)
+  - [Django Berry PRO](https://docs.appseed.us/products/django-dashboards/berry-dashboard-pro/)
+  - [Django Volt](https://docs.appseed.us/products/django-dashboards/volt/)
+  - [Django Volt PRO](https://docs.appseed.us/products/django-dashboards/volt-pro/)
+  - [Django Black PRO](https://docs.appseed.us/products/django-dashboards/black-dashboard-pro/)
+
 ## [1.0.5] 2023-01-29 
 ### Changes
 
