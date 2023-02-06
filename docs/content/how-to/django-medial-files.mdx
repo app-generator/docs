@@ -1,0 +1,81 @@
+---
+title        : Django Media Files
+sidebar_label: Django Media Files
+---
+
+# Django Media Files
+
+<SubHeading>Learn how to manage MEDIA files in Django</SubHeading>
+
+This page explains how to manage MEDIA files in Django by coding all the steps. 
+
+
+> ✅ **Step #1** - Create the MEDIA folder in the root of the project 
+
+```bash
+$ mkdir media
+```
+
+
+> ✅ **Step #2** - Update Project Settngs - Just add the below code at the end 
+
+```python
+# MEDIA Files
+MEDIA_URL = '/media/'
+
+# Path where media is stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+```
+
+
+> ✅ **Step #3** - Update Routing (`urls.py`)
+
+```python
+# New imports 
+from django.conf import settings
+from django.conf.urls.static import static
+
+# The current rules 
+urlpatterns = [                      # no changes here
+    ...                              # no changes here
+    path("admin/", admin.site.urls), # no changes here
+    ...                              # no changes here 
+]                                    # no changes here
+
+# new rules 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+```
+
+This update is necessary because Django is not managing the `MEDIA` folder in development. 
+
+
+> ✅ **Step #4** - Save a file in the media folder 
+
+```bash
+$ cp <SOURCE>/1.jpg media/1.jpg
+```
+
+
+> **Step #5** - Use the media file in `view` - Simply use the media `PATH`
+
+```html
+<section class="min-vh-100 d-flex align-items-center section-image overlay-soft-dark"
+         data-background="/media/1.jpg"> <!-- MEDIA file isused here -->
+  <div class="container">
+    <!-- -->
+  </div>
+</section>    
+```
+
+At this point, the media file should be visible in the UI. 
+
+
+## Resources
+
+- 👉 [Working with Static and Media Files in Django](https://testdriven.io/blog/django-static-files/) by `TestDriven`
+- 👉 [Managing Media Files in Django](https://djangocentral.com/managing-media-files-in-django/)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+
+
