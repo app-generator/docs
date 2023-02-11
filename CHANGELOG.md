@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.7] 2023-02-11 
+### Changes
+
+- [React](https://docs.appseed.us/products/react/) Section `Update` (all items)
+  - [React Django Berry](https://docs.appseed.us/products/react/django-berry-dashboard/) - `new item`
+  - [React Flask Berry](https://docs.appseed.us/products/react/flask-berry-dashboard/) - `new item`
+
 ## [1.0.6] 2023-02-01 
 ### Changes
 
