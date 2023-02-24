@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.8] 2023-02-24
+### Changes
+
+- ✅ New [PROMO Campaign](https://appseed.us/discounts/): `Spring Boost`
+  - **50%OFF**, all products & `licenses`
+
 ## [1.0.7] 2023-02-11 
 ### Changes
 

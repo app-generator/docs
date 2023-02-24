@@ -111,7 +111,7 @@ const config = {
 			},
 			announcementBar: {
 				id: "welcome",
-				content: 'PROMO 🎁 <strong><a target="_blank" href="https://appseed.us/discounts/">Discounts - Up to 30%OFF</a></strong> (React, Django, Flask Starters).',
+				content: 'PROMO 🎁 <strong><a target="_blank" href="https://appseed.us/discounts/">Discounts - Up to 50%OFF</a></strong> (ALL Products).',
 				backgroundColor: "#ec407a",
 				// textColor: "#091E42",
 				textColor: "#000000",
