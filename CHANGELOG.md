@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.0.9] 2023-02-25
+### Changes
+
+- Added [GitBook to Docusaurus Migration Guide](https://docs.appseed.us/gitbook-to-docusaurus-migration/)
+  - Why `Docusaurus` and not (anymore) GitBook? 
+    - free vs subscription
+    - fully-featured, powered by React
+    - blazing fast
+    - ... plus other things
+
 ## [1.0.8] 2023-02-24
 ### Changes
 
