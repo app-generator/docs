@@ -5,10 +5,12 @@
 
 - Added [GitBook to Docusaurus Migration Guide](https://docs.appseed.us/gitbook-to-docusaurus-migration/)
   - Why `Docusaurus` and not (anymore) GitBook? 
-    - free vs subscription
-    - fully-featured, powered by React
-    - blazing fast
+    - `free` vs subscription
+    - `fully-featured`, powered by **React**
+    - `blazing fast`
     - ... plus other things
+  - `Free Sample`: **[Docusaurus Soft Design](https://github.com/app-generator/docusaurus-soft-design)**
+    - MIT License, actively supported
 
 ## [1.0.8] 2023-02-24
 ### Changes
