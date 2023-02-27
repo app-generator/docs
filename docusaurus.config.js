@@ -254,7 +254,7 @@ const config = {
 			},
 			algolia: {
 				appId: "QREGAGU3YC",
-				apiKey: "07d6aaf7665339d5fdd21ff018f300a8",
+				apiKey: "95b0c6179810e72eefdf5f0e8915ac85",
 				indexName: "docsearch",
 				contextualSearch: true,
 				searchParameters: {},
