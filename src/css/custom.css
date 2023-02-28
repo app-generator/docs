@@ -265,3 +265,11 @@ ul.menu__list > li > a.menu__link--active {
 }
 
 /* Home Page Header */
+
+/* Sticky media */
+.sticky-video-modal {
+    width: 100%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+}
