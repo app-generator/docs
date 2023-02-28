@@ -253,8 +253,8 @@ const config = {
 				darkTheme: darkCodeTheme,
 			},
 			algolia: {
-				appId: "QREGAGU3YC",
-				apiKey: "95b0c6179810e72eefdf5f0e8915ac85",
+                appId: process.env.APPLICATION_ID,
+                apiKey: process.env.API_KEY,
 				indexName: "docsearch",
 				contextualSearch: true,
 				searchParameters: {},
