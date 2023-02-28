@@ -6,6 +6,7 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 // const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 // const Embed = require("./plugins/remark/embed");
 const darkCodeTheme = require("prism-react-renderer/themes/shadesOfPurple");
+require('dotenv').config()
 const customFields = {
 	meta: {
 		title: "An atom based state manager for JavaScript apps.",
@@ -52,6 +53,16 @@ const config = {
 		defaultLocale: "en",
 		locales: ["en"],
 	},
+
+	scripts: [
+        {
+            src: '//cdn.jsdelivr.net/gh/app-generator/sticky-media@0.0.17/dist/index.min.js',
+            id: 'stickyVideoScript',
+            defer: true,
+            class: 'sticky-popup',
+        },
+    ],
+
 	// themes: ["@docusaurus/theme-live-codeblock"],
 	plugins: [
 		// "docusaurus-plugin-sass",
@@ -253,8 +264,8 @@ const config = {
 				darkTheme: darkCodeTheme,
 			},
 			algolia: {
-				appId: "QREGAGU3YC",
-				apiKey: "95b0c6179810e72eefdf5f0e8915ac85",
+                appId: process.env.APPLICATION_ID,
+                apiKey: process.env.API_KEY,
 				indexName: "docsearch",
 				contextualSearch: true,
 				searchParameters: {},
