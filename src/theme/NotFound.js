@@ -10,24 +10,37 @@ export default function NotFound() {
 	const location = useLocation();
 	const { siteConfig } = useDocusaurusContext();
 	
-	const serverId   = 'service_3xvalkw'  ; // process.env.EMAILJS_SERVER_ID;
-	const templateId = 'template_gpdzs7i' ; // process.env.EMAILJS_TEMPLATE_ID;
-	const publicKey  = 'mbYWDBjQhv-h3CLXl'; // process.env.EMAILJS_PUBLIC_KEY;
+	const serverId = siteConfig.customFields.EMAILJS_SERVER_ID 
+    const templateId = siteConfig.customFields.EMAILJS_TEMPLATE_ID 
+    const publicKey = siteConfig.customFields.EMAILJS_PUBLIC_KEY 
 
-	//console.log('serverId   :' + serverId   );
-	//console.log('templateId :' + templateId );
-	//console.log('publicKey  :' + publicKey  );
-	
-	useEffect(async () => {
-		emailjs.send(serverId, templateId, { url: "https://docs.appseed.us" + location.pathname }, publicKey).then(
-			function (response) {
-				console.log("SUCCESS!", response.status, response.text);
-			},
-			function (error) {
-				console.log("FAILED...", error);
-			}
-		);
-	}, []);
+	useEffect(() => {
+        if (!serverId || !templateId || !publicKey) return
+
+        async function emailJS() {
+            emailjs
+                .send(
+                    serverId,
+                    templateId,
+                    {
+                        url:
+                            'https://docusaurus-soft-design.onrender.com' +
+                            location.pathname,
+                    },
+                    publicKey
+                )
+                .then(
+                    function (response) {
+                        console.log('SUCCESS!', response.status, response.text)
+                    },
+                    function (error) {
+                        console.log('FAILED...', error)
+                    }
+                )
+        }
+
+        emailJS()
+    }, [])
 	return (
 		<>
 			<PageMetadata
@@ -45,18 +58,18 @@ export default function NotFound() {
 									Page Not Found
 								</Translate>
 							</h1>
-							<p>
+							<div>
 								<Translate id="theme.NotFound.p1" description="The first paragraph of the 404 page">
 									Sorry but the page you were looking for could not be found.
 								</Translate>
-							</p>
-							<p>
+							</div>
+							<div>
 								<div className="py-4 md:mr-20 justify-center ">
 									<Link className="bg-white  no-underline hover:no-underline rounded-md text-black px-4 py-2   " to="/">
 										Back to Home Page
 									</Link>
 								</div>
-							</p>
+							</div>
 						</div>
 					</div>
 				</main>
