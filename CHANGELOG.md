@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.11] 2023-02-28
+### Changes
+
+- Bump [StickyMedia](https://github.com/app-generator/sticky-media) to `v0.0.19`
+
 ## [1.0.10] 2023-02-28
 ### Changes
 
