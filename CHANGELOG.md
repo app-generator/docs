@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.10] 2023-02-28
+### Changes
+
+- Fix Algolia Search
+- Bump [StickyMedia](https://github.com/app-generator/sticky-media) to `v0.0.18`
+- Fix `404` handler
+  - React code, Remove EmailJS Credentials hardcoding  
+
 ## [1.0.9] 2023-02-25
 ### Changes
 
