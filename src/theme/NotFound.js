@@ -24,7 +24,7 @@ export default function NotFound() {
                     templateId,
                     {
                         url:
-                            'https://docusaurus-soft-design.onrender.com' +
+                            'https://docs.appseed.us' +
                             location.pathname,
                     },
                     publicKey
