@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.12] 2023-02-28
+### Changes
+
+- Update [Bootstrap Templates](https://docs.appseed.us/content/bootstrap-template/) Section
+- StickyMedia Updates
+
 ## [1.0.11] 2023-02-28
 ### Changes
 
