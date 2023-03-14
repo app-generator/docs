@@ -1,8 +1,8 @@
 {
 	"label": "PRODUCTS",
-	"position": 5,
-	"collapsed": false,
-	"collapsible": false,
+	"position": 4,
+	"collapsed": true,
+	"collapsible": true,	
 	"className": "section-title",
 	"link": {
 		"type": "generated-index",

@@ -1,8 +1,8 @@
 {
 	"label": "TECHNOLOGIES",
 	"position": 8,
-	"collapsed": false,
-	"collapsible": false,
+	"collapsed": true,
+	"collapsible": true,	
 	"className": "section-title",
 	"link": {
 		"type": "generated-index",

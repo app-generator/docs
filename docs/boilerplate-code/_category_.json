@@ -1,9 +1,9 @@
 {
 	"label": "BOILERPLATE CODE",
-	"position": 3,
-	"collapsed": false,
-	"collapsible": false,
+	"position": 6,
 	"className": "section-title",
+	"collapsed": true,
+	"collapsible": true,	
 	"link": {
 		"type": "generated-index",
 		"slug": "/boilerplate-code",

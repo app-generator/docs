@@ -1,12 +1,12 @@
 {
-	"label": "DEVELOPER TOOLS",
-	"position": 5,
+	"label": "Code Snippets",
+	"position": 9,
 	"collapsed": true,
 	"collapsible": true,	
 	"className": "section-title",
 	"link": {
 		"type": "generated-index",
-		"slug": "developer-tools",
-		"description": "developer Tools"
+		"slug": "code-snippets",
+		"description": "Code Snippets"
 	}
 }

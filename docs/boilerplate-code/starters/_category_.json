@@ -1,11 +1,11 @@
 {
-	"label": "Django Templates",
+	"label": "Starters",
 	"collapsed": true,
 	"collapsible": true,
 	"className": "section-sub-title",
 	"link": {
 		"type": "generated-index",
-		"slug": "/boilerplate-code/django-templates",
+		"slug": "/boilerplate-code/starters",
 		"description": "This page presents all Django Templates crafted to customize the Admin section in Django:"
 	}
 }
