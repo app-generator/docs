@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.13] 2023-03-14
+### Changes
+
+- Refactoring (some sections)
+- Added Code Snippets Section
+
 ## [1.0.12] 2023-02-28
 ### Changes
 
