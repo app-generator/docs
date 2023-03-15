@@ -82,16 +82,13 @@ const config = {
 	],
 	presets: [
 		[
-			'@docusaurus/preset-classic',
-			{
-			  gtag: {
-				trackingID: 'G-J244KWNYCR',
-				anonymizeIP: true,
-			  },
-			},			
 			"classic",
 			/** @type {import('@docusaurus/preset-classic').Options} */
 			({
+				gtag: {
+					trackingID: 'G-J244KWNYCR',
+					anonymizeIP: true,
+				},				
 				docs: {
 					// path: 'docs/home',
 					// remarkPlugins: [require("./plugins/remark/embed")],
