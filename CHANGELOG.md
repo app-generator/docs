@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.15] 2023-03-19
+### Changes
+
+- API Servers, section update
+  - [API Server Django](https://docs.appseed.us/boilerplate-code/api-server/django/) - `free product`
+  - [API Server Flask](https://docs.appseed.us/boilerplate-code/api-server/flask/) - `free product`
+  - [API Server NodeJS](https://docs.appseed.us/boilerplate-code/api-server/node-js/) - `free product`
+
 ## [1.0.13] 2023-03-14
 ### Changes
 
