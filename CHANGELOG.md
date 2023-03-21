@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.0.16] 2023-03-21
+### Changes
+
+- [Full-Stack](https://docs.appseed.us/products/full-stack/) Section Update
+  - [Full-Stack React Purity](https://docs.appseed.us/products/full-stack/react-purity-dashboard/)
+  - [Full-Stack React Material](https://docs.appseed.us/products/full-stack/react-material-dashboard/)
+  - [Full-Stack React Datta Able](https://docs.appseed.us/products/full-stack/react-datta-able/)
+  - [Full-Stack React Berry](https://docs.appseed.us/products/full-stack/react-berry-dashboard/)
+
 ## [1.0.15] 2023-03-19
 ### Changes
 

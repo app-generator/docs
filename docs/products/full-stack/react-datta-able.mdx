@@ -1,20 +1,21 @@
 ---
-sidebar_position: 3
-description: >-
-  Premium React Dashboard designed by CodedThemes, coded as a full-stack product
-  by AppSeed
+title:         Full-Stack React Datta Able - Premium Starter 
+sidebar_label: Full-Stack React Datta Able
 ---
 
-# Full-Stack React Datta Able
+# [Full-Stack React Datta Able](https://appseed.us/product/datta-able-pro/full-stack/react/)
 
 <SubHeading> Premium React Dashboard designed by CodedThemes, coded as a full-stack product by AppSeed</SubHeading>
 
-Full-stack version of **Datta Able PRO**, a premium design crafted by **CodedThemes** now usable with multiple API Backend Servers: **Node JS**, Flask, Django. The UI comes with pre-configured **JWT authentication** powered by a [Unified API Interface](../../boilerplate-code/api-server/api-unified-definition.mdx) that makes this product compatible with more than one backend: Node JS, Flask, Django (FASTapi coming soon).
+Full-stack version of **Datta Able PRO**, a premium design crafted by **CodedThemes** now usable with multiple API Backend Servers: **Node JS**, Flask, Django.
+ The UI comes with pre-configured **JWT authentication** powered by a [Unified API Interface](../../boilerplate-code/api-server/api-unified-definition.mdx) 
+ that makes this product compatible with more than one backend: Node JS, Flask, Django.
 
-- [Full-stack React Datta Able](https://appseed.us/full-stack/react-datta-able) - product page
-- [Full-stack React Datta Able](https://fullstack-react-datta-able.appseed-srv1.com/) - LIVE Demo
+- 👉 [Full-stack React Datta Able](https://appseed.us/product/datta-able-pro/full-stack/react/) - `Product page`
+- 👉 [Full-stack React Datta Able](https://fullstack-react-datta-able.appseed-srv1.com/) - `LIVE Demo`
 
-![React Datta Able - Full-stack Version](<../../../static/assets/react-firebase-datta-able-pro-screen-xs (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (2).jpg>)
+![Full-Stack React Datta Able - Dark Mode, crafted by AppSeed and CodedThemes.](https://user-images.githubusercontent.com/51070104/226537524-6cc2764b-c5c9-4f65-a896-3fda9696578b.png)
+
 
 ## Product Dependencies
 
@@ -25,45 +26,48 @@ To successfully compile and use the product, please make sure your workstation h
 - A code editor: [VsCode](https://code.visualstudio.com/) or [Atom](https://atom.io/)
 - Ability to work in the terminal window
 
+
 ## Product Features
 
-The product aims to help developers skip over the basics and start faster a new full-stack product already enhanced with authentication, a pixel-perfect UI powered by production-ready backends. The fact that makes this full-stack product unique is the **JSON-API** compliance over multiple servers:
+The product aims to help developers skip over the basics and start faster a new full-stack product already enhanced with authentication, a pixel-perfect UI powered by production-ready backends. 
+The fact that makes this full-stack product unique is the **JSON-API** compliance over multiple servers:
 
-- \*\*\*\*[Node JS API](../../boilerplate-code/api-server/node-js.mdx): Typescript, Flexible persistence (SQLite, Mongo), TypeORM, Validation
+- [Node JS API](../../boilerplate-code/api-server/node-js.mdx): Typescript, Flexible persistence (SQLite, Mongo), TypeORM, Validation
 - [Django API](../../boilerplate-code/api-server/django.mdx): JWT Authentication over DRF, SQLite, Docker
 - [Flask API](../../boilerplate-code/api-server/flask.mdx): powered by Flask-JWT-extended, SQL-Alchemy, Docker
-- Coming soon APIs: **FASTapi**, **Laravel API**
 
 By default, the UI redirects the guest users to the login page. Once the user is authenticated, all private pages are unlocked.
 
 > Implemented JWT Authentication Flow: Login, Logout, Register.
 
-![Full-Stack React Datta Able - Login.](<../../../static/assets/django-react-datta-able-login-xs (1).jpg>)
+![Full-Stack React Datta Able - SinIN Page, crafted by AppSeed and CodedThemes](https://user-images.githubusercontent.com/51070104/226536784-83dbc3ff-5493-4e3b-a8b1-1cff93d17a54.png)
+
 
 ## **How to use the product**
 
 Full-stack React Material Dashboard is built using a two-tier architecture where the UI is decoupled from the backend API server and communicates using requests secured by **JWT tokens**. The recommended way to start using this full-stack product is to follow a simple setup:
 
 - Step #1 - Build and start the backend server
-- Step #2 - Build and start the UI
+- Step #2 - Build and start the React UI 
 - Create a new user via the registration page
 - Authenticate and access the private pages
 - Add your magic on top of the existing codebase.
 
-## Start the backend server
 
-As mentioned before, the UI is configured to work with many backend servers that share a common API interface: [Django](../../boilerplate-code/api-server/django.mdx), [Node JS](../../boilerplate-code/api-server/node-js.mdx), [Flask](../../boilerplate-code/api-server/flask.mdx). Based on your license (free or commercial) the access is granted to the request API Server. On this page, we will compile and start the free version of Node JS API (open-source product).
+## Start the Backend API
 
-> Start [Node JS API Server](../../boilerplate-code/api-server/node-js.mdx) - open-source version
+As mentioned before, the UI is configured to work with many backend servers that share a common API interface: [Django](../../boilerplate-code/api-server/django.mdx), 
+[Node JS](../../boilerplate-code/api-server/node-js.mdx), [Flask](../../boilerplate-code/api-server/flask.mdx). 
+Based on your license (free or commercial) the access is granted to the request API Server. On this page, we will compile and start the free version of Node JS API (open-source product).
 
-**Step #1 -** Clone the sources
+> 👉 **Step #1**  Clone the sources
 
 ```
 $ git clone https://github.com/app-generator/api-server-nodejs.git
 $ cd api-server-nodejs
 ```
 
-**Step #2 - Install dependencies** via NPM or Yarn
+> 👉 **Step #2** - Install dependencies via NPM or Yarn
 
 ```
 $ npm i
@@ -71,13 +75,13 @@ $ npm i
 $ yarn
 ```
 
-**Step #3 - Run the SQLite migration** and create the required tables
+> 👉 **Step #3** - Run the SQLite migration
 
 ```
 $ yarn typeorm migration:run
 ```
 
-**Step #4 - Start the API server** - development mode
+> 👉 **Step #4** - Start the API server
 
 ```
 $ npm dev
@@ -96,18 +100,20 @@ The API interface used by the API is a simple JWT authentication layer that expo
 
 At this point, the backend API should be & and running on address: `http://localhost:5000` and we can move on with the setup and build the React UI.
 
+
 ## Start the React UI
 
-The **React Material Dashboard** being a commercial product, a license is required before getting access to the source code. In case you don't have a license, please access the product page and purchase one.
+The **React Datta Able** being a commercial product, a license is required before getting access to the source code. 
+In case you don't have a license, please access the product page and purchase one.
 
-**Step #1** - Clone the project
+> 👉 **Step #1** - Unzip Sources 
 
 ```
-$ git clone https://github.com/app-generator/priv-react-datta-able-dashboard-pro.git
-$ cd priv-react-datta-able-dashboard-pro
+$ unzip react-datta-able-pro.zip
+$ cd react-datta-able-pro
 ```
 
-**Step #2** - Install dependencies via NPM or yarn
+> 👉 **Step #2** - Install dependencies via NPM or yarn
 
 ```
 $ npm i
@@ -115,7 +121,7 @@ $ npm i
 $ yarn
 ```
 
-**Step #3** - Start in development mode
+> 👉 **Step #3** - Start in development mode
 
 ```
 $ npm run start
@@ -136,6 +142,14 @@ const config = {
 
 ## **React Datta Able** - UI
 
-_Official Product Information_ **-** Datta Able React is the **most stylized** React **Admin Template**, around all other admin templates **in the market**. It comes with high feature-rich pages and components with \*\*fully developer-\*\*centric code.
+Datta Able React is the **most stylized** React **Admin Template**, around all other admin templates **in the market**. 
+It comes with high feature-rich pages and components with fully developer-centric code.
 
-![Full-Stack React Datta Able - Charts Page.](../../../static/assets/django-react-datta-able-widgets-xs.jpg)
+![Full-Stack React Datta Able - Charts Page, crafted by AppSeed and CodedThemes.](https://user-images.githubusercontent.com/51070104/226536468-53aae1ae-da31-4ad6-bab7-8b7894a324b5.png)
+
+<br />
+
+## Resources
+
+- 👉 More [React Starters](https://appseed.us/admin-dashboards/react/) - crafted by AppSeed
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
