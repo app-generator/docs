@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.0.18] 2023-03-21
+### Changes
+
+- Update [Partners](https://docs.appseed.us/content/partners/) Section
+  - [Creative-Tim](https://docs.appseed.us/content/partners/creative-tim/)
+  - [WrapPixel](https://docs.appseed.us/content/partners/wrappixel/) 
+  - [Themesberg](https://docs.appseed.us/content/partners/themesberg/)
+  - [BootstrapDash](https://docs.appseed.us/content/partners/bootstrapdash/)
+  - [CodedThemes](https://docs.appseed.us/content/partners/codedthemes/)
+
 ## [1.0.17] 2023-03-21
 ### Changes
 
