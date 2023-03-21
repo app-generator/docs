@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.17] 2023-03-21
+### Changes
+
+- Added [Tailwind CSS](https://docs.appseed.us/content/tailwind-css/) Section
+  - [Argon Dashboard Tailwind](https://docs.appseed.us/content/tailwind-css/argon-dashboard/) - `free product`
+  - [Soft Dashboard Tailwind](https://docs.appseed.us/content/tailwind-css/soft-ui-dashboard/) - `free product`
+  - [Material React Tailwind](https://docs.appseed.us/content/tailwind-css/material-dashboard-react/) - `free product`
+
 ## [1.0.16] 2023-03-21
 ### Changes
 
