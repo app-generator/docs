@@ -1,5 +1,16 @@
 # Change Log
 
+## [1.0.19] 2023-03-22
+### Changes
+
+- Update [Boilerplate Code](https://docs.appseed.us/boilerplate-code/) Section
+  - [Boilerplate Django Apps](https://docs.appseed.us/boilerplate-code/starters/django/)
+  - [Boilerplate Django Dashboard](https://docs.appseed.us/boilerplate-code/starters/django-dashboard/)
+  - [Boilerplate Flask Apps](https://docs.appseed.us/boilerplate-code/starters/flask/)
+  - [Boilerplate Django Dashboard](https://docs.appseed.us/boilerplate-code/starters/flask-dashboard/)
+  - [Boilerplate Jinja Templates](https://docs.appseed.us/boilerplate-code/starters/jinja/)
+
+
 ## [1.0.18] 2023-03-21
 ### Changes
 
