@@ -7,7 +7,7 @@
   - [Boilerplate Django Apps](https://docs.appseed.us/boilerplate-code/starters/django/)
   - [Boilerplate Django Dashboard](https://docs.appseed.us/boilerplate-code/starters/django-dashboard/)
   - [Boilerplate Flask Apps](https://docs.appseed.us/boilerplate-code/starters/flask/)
-  - [Boilerplate Django Dashboard](https://docs.appseed.us/boilerplate-code/starters/flask-dashboard/)
+  - [Boilerplate Flask Dashboard](https://docs.appseed.us/boilerplate-code/starters/flask-dashboard/)
   - [Boilerplate Jinja Templates](https://docs.appseed.us/boilerplate-code/starters/jinja/)
 
 
