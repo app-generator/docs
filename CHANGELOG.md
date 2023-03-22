@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.0.20] 2023-03-22
+### Changes
+
+- Update [Django Atlantis Dark PRO](https://docs.appseed.us/products/django-dashboards/atlantis-dark-pro/)
+  - DOCS Update (readme). New sections:
+    - `How to customize the theme`
+    - Render deployment
+  - Configure the project to use `home/templates`
+  - Added `custom_footer` sample
+
 ## [1.0.19] 2023-03-22
 ### Changes
 
