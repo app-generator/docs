@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.21] 2023-03-24
+### Changes
+
+- [Render Deployment](https://docs.appseed.us/deployment/render/) Update
+  - [Deploy Django to Render](https://docs.appseed.us/deployment/render/django/) 
+
 ## [1.0.20] 2023-03-22
 ### Changes
 
