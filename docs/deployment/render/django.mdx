@@ -1,96 +1,108 @@
 ---
-sidebar_position: 2
-description: How to deploy Django to Render Deployment Platform
+title        : Django - Deploy on render
+sidebar_label: Deploy Django on Render
 ---
 
 # Deploy Django to Render
 
-<SubHeading color="#25c2a0">How to deploy Django to Render Deployment Platform</SubHeading>
+<SubHeading color="#25c2a0">This page explains how to deploy Django on Render</SubHeading>
 
-@Todo - General information Render Platform
+[Render](https://render.com/) fully supports **Python-based** applications and this page explains the steps that any developer can follow and deploy their apps using a minimal configuration. 
+Any **Django** project can be deployed in two ways:
 
-> Topics covered
+- As a Service: the deployed app runs standalone (not connected with other services)
+- As a Blueprint, where the Django App can be connected with other local services like cron, background tasks, or a React UI. 
 
-- `Render` Account Creation
-- `Render` Account Settings
-- The project to be deployed
-- `Render` Environment set up
-- `Render` Domain settings
-- `Render` SSL certificates
-- `Render` LIVE Service monitoring
+This page covers the case when Django is deployed as a service. 
 
-## `Render` Account Creation
+## Deploy as a Service 
 
-Render provide Social auth and email auth, based on your preference you can sign up with Render
+To deploy **Django** as a service, the steps are: 
 
-**IMG_render_signup**
+- Create a new Render account using GitHub
+  - Using GitHub for authentication facilitates the deployment of the project from the sources directly
+- Navigate to the main Dashboard 
+- Create a `New Service`
+- Connect a GitHub Repository. For DEMO we will use: 
+  - https://github.com/app-generator/django-admin-datta
+- Configure the project 
+  - Name 
+  - Runtime: Needs to be Python 
+  - Build Command
+    - this is responsible to install modules, collect statics, and build DB 
+  - Start Command
+    - here we need to call `Gunicorn` using the `app entry point` as input  
+  - Select the Instance Type 
+    - For this DEMO we will use a free one 
+  - Optionally, we can specify `ENV Variables`, and disable the `auto-deploy`
+  - Confirm the action 
+    - click on `Create Service`
 
-Once successfully signed up, the user is redirected Render dashboard and sees the screen like below:
+The steps with the related screens, are listed below: 
 
-**IMG_render_dashboard**
+### `Create new Service`
 
-## `Render` Account Settings
+![Render - Create Service](https://user-images.githubusercontent.com/51070104/227564422-e97977c4-d92f-4a25-9852-66ff25de793f.png)
 
-The Next step is to connect the Render account with the GitHub account, If you sign up with GitHub then this step is automatically done.
+<br />
 
-**IMG_render_account_settings**
+### `Connect` a GitHub `Repository`
 
-## The project to be deployed
+> This demonstration uses [Datta Able Django](https://github.com/app-generator/django-admin-datta)
 
-Source project: https://github.com/app-generator/django-react-soft-dashboard
+![Render - Connect Repo](https://user-images.githubusercontent.com/51070104/227562328-8cb53fab-f5c2-4764-a693-3fd5743ac85e.png)
 
-To deploy the Django app on Render we need to choose the **Web Service** option from the Dashboard as shown below:
+<br />
 
-**IMG_render_dashboard_web_service**
+### `Naming the Service` 
 
----
+![Render - Configure Name](https://user-images.githubusercontent.com/51070104/227562561-a794f42c-9d86-4192-9e94-4091ddf97e59.png)
 
-After selecting the web service option, the next step is to connect the GitHub project repository. On the next page, we can select the project from the linked account, with private or public visibility.
+<br />
 
-**IMG_render_web_service**
+### `Configure` the Service 
 
----
+This step is quite important because we need to inform Render that our project needs Python to run, and also what should be executed before going live. 
+This open-source starter combines the build set up in single file named [build.sh](https://github.com/app-generator/django-datta-able/blob/master/build.sh) responsible with the following tasks:
 
-The next step is to edit deployment details. Here are the sections that need editing:
+- Upgrade PIP (recommended to use a newer version)
+- Install modules via PIP
+- Collect Static 
+- Migrate DB  
 
-- **Name**: In this section, we should use a unique name for the web service.
-- **Root Directory**: By default, the root directory is set to the top-level directory in your repository. We have also the possibility to select subfolders in case the project structure is modular and for instance, the backend and the frontend use different directories
-- **Environment**: In this section, we should select the language used to code the product, Python in our case.
-- **Region**:- The region where your web service runs, not required to update by default is `Oregon (US West)`
-- **Branch**:- The repository branch used for your web service.
-- **Build Command**: The shell script that executes all the steps to build the project
-- **Start Command**: This section informs Gunicorn where to locate the entry point in our Django starter: `gunicorn core.wsgi:application`
-- **Add Environment Variables** required by the starter in `Advanced` section.
-  - Python Version: `PYTHON_VERSION` = `3.10.4`
-  - `GUNICORN_CMD_ARGS` = `--preload --bind=0.0.0.0:2000`
-  - `PORT` = `2000`
-  - `DJANGO_ALLOWED_HOSTS` = `.onrender.com`
-- **Auto-Deploy**: Render provide this option to trigger a new deployment on every push to the repository. In case this feature is not useful, set this option to "NO" for manually managed deployments
+Another important setting is the `Start Command` that specify the entry point to be used by `Gunicorn`. For this starter, this is the value. 
 
-With all the above settings specified as per project requirements, we can confirm the action and actually Create the new Service.
+`$ gunicorn core.wsgi:application`
 
-**IMG_render_django_deployment_settings**
+![Render - Configure Runtime Environment, Build Command](https://user-images.githubusercontent.com/51070104/227562806-2149a7a7-e2e0-4e9e-bb95-1e28b3400b84.png)
 
-## `Render` Domain settings
+<br />
 
-Render by default provides the domain itself, but the user can set up a custom domain based as well. For more information feel free to access the official documentation regarding [custom domains](https://render.com/docs/custom-domains).
+### `Configure` the Instance
 
-## `Render` SSL certificates
+Here we have two options: Free & Paid. For this deployment, a free instance was selected. 
 
-Render Platform provides valid SSL certificates for all managed services, and also offers the possibility to customize the certificates.
+![Render - Configure Instance Type (free or PAID)](https://user-images.githubusercontent.com/51070104/227563102-250d7fab-ce8b-4bd2-8917-5bdd610bf4c5.png)
 
-## `Render` LIVE Service monitoring
+<br />
 
-Once the project is deployed, the users have the possibility to set up alerts in Health & Alerts section (Project Settings).
+### `Confirm` & View Deployment Logs 
 
-The `Health Check Path` is the public URL of the project that should return a 200 status code on access.
+Once the above set up is confirmed, Render will create a new page for the sevice where we can visualize the deployment logs and later, update the service settings. 
 
-Another option is to get notified via Email in case of Service failure.
+![Render - Visualize Deployment Logs](https://user-images.githubusercontent.com/51070104/227563520-5cf26600-c0d4-417e-921e-ab0d1f3f80af.png)
 
-## Links & Resources
+<br />
 
-- [Render Django deployment](https://render.com/docs/deploy-django) - Official Guide to deploy Django app on Render
-- [Custom domains on render](https://render.com/docs/custom-domains) - Official Guide to setup custom domain
-- [Shell Script](https://www.shellscript.sh/) - Official Guide to shell script
-- [Django](https://www.djangoproject.com/) - Official Guide to Django Framework
-- [Gunicorn](https://gunicorn.org/) - Official Guide to Gunicorn
+### Access the `LIVE Deployment` 
+
+At this point, the app should be up & running in the same way as [Datta Able](https://django-datta-able.appseed-srv1.com/) Deployment
+
+![Render - Datta Able is LIVE](https://user-images.githubusercontent.com/51070104/227563947-1373ad49-87b5-4b7a-bcdb-1c9e5597731f.png)
+
+<br />
+
+## Resources
+
+- 👉 More [Django Starters](https://appseed.us/apps/django/) - provided by `AppSeed` (free & paid)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
