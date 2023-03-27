@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.22] 2023-03-27
+### Changes
+
+- [Flask Pixel Lite](https://docs.appseed.us/products/flask-apps/pixel-lite/)
+- [Flask Pixel PRO]https://docs.appseed.us/products/flask-apps/pixel-pro/)
+  - Codebase Update, `CI/CD` Flow
+
 ## [1.0.21] 2023-03-24
 ### Changes
 
