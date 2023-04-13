@@ -41,7 +41,7 @@ Once our account on HEROKU is created and we are authenticated, we can start a n
 
 For this demonstration, the open-source sample will be used, and of course, the first step is to clone the source code: 
 
-> **Step #1** - Clone/download the sources: 
+> 👉 **Step #1** - Clone/download the sources: 
 
 ```bash
 $ git clone https://github.com/app-generator/deploy-heroku-django.git
@@ -50,7 +50,7 @@ $ cd deploy-heroku-django
 
 <br />
 
-> **Step #2** - Link the terminal with HEROKU account 
+> 👉 **Step #2** - Link the terminal with HEROKU account 
 
 ```bash
 $ heroku login
@@ -60,7 +60,7 @@ This will open a new browser window where we need to confirm the deployment.
 
 <br />
 
-> **Step #3** - Push the sources into HEROKU cloud 
+> 👉 **Step #3** - Push the sources into HEROKU cloud 
 
 ```bash
 $ git push heroku master
@@ -68,7 +68,7 @@ $ git push heroku master
 
 <br />
 
-> **Step #4** - Migrate the database on the remote deployment 
+> 👉 **Step #4** - Migrate the database on the remote deployment 
 
 ```bash
 $ heroku run python manage.py migrate 
@@ -76,7 +76,7 @@ $ heroku run python manage.py migrate
 
 <br />
 
-> **Step #6** - Access the deployed app  
+> 👉 **Step #6** - Access the deployed app  
 
 ```bash 
 $ heroku open
@@ -84,7 +84,7 @@ $ heroku open
 
 The product should be similar to the this one [Django Material Kit](https://django-material-kit.appseed-srv1.com/login/): 
 
-![django-heroku-sample-app](https://user-images.githubusercontent.com/51070104/231852780-61da3ad5-b17d-4c42-9fc9-5f559fa3f1a8.jpg)
+[![django-heroku-sample-app](https://user-images.githubusercontent.com/51070104/231852780-61da3ad5-b17d-4c42-9fc9-5f559fa3f1a8.jpg)](https://docs.appseed.us/deployment/heroku/django/)
 
 <br />
 
