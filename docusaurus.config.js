@@ -206,10 +206,6 @@ const config = {
 								label: "Dashboards",
 								to: "products/django-dashboards",
 							},
-							{
-								label: "API Servers",
-								to: "boilerplate-code/api-server",
-							},
 						],
 					},
 					{
@@ -223,11 +219,6 @@ const config = {
 								label: "Discord",
 								href: customFields.discordUrl,
 							},
-
-							{
-								label: "Blog",
-								href: customFields.blogUrl,
-							},
 						],
 					},
 					{
@@ -240,10 +231,6 @@ const config = {
 							{
 								label: "CodedThemes",
 								href: "https://appseed.us/agency/codedthemes/",
-							},
-							{
-								label: "UPDIVISION",
-								href: "https://appseed.us/agency/updivision/",
 							},
 						],
 					},
