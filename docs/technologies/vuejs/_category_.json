@@ -1,0 +1,12 @@
+{
+	"label": "Vue.js",
+	"collapsed": true,
+	"collapsible": true,
+	"className": "section-sub-title",
+	"link": {
+		"type": "generated-index",
+		"description": "Vue.js related topics ",
+		"slug": "technologies/vuejs/",
+		"keywords": ["technologies", "vue.js"]
+	}
+}
