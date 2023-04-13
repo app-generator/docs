@@ -1,0 +1,12 @@
+{
+	"label": "React",
+	"collapsed": true,
+	"collapsible": true,
+	"className": "section-sub-title",
+	"link": {
+		"type": "generated-index",
+		"description": "React related topics ",
+		"slug": "technologies/react/",
+		"keywords": ["technologies", "React"]
+	}
+}

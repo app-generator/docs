@@ -1,13 +1,12 @@
 {
 	"label": "Material UI",
-	"position": 5,
 	"collapsed": true,
 	"collapsible": true,
 	"className": "section-sub-title",
 	"link": {
 		"type": "generated-index",
 		"description": "Material-UI related topics ",
-		"slug": "technologies/material-ui",
+		"slug": "technologies/material-ui/",
 		"keywords": ["api-server", "boilerplate-code"]
 	}
 }

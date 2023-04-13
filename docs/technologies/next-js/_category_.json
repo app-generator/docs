@@ -1,12 +1,11 @@
 {
 	"label": "Next JS",
-	"position": 6,
 	"collapsed": true,
 	"collapsible": true,
 	"className": "section-sub-title",
 	"link": {
 		"type": "generated-index",
-		"slug": "technologies/next-js",
+		"slug": "technologies/next-js/",
 		"keywords": ["technologies", "Next JS", "Nextjs", "Next", "js", "JS"],
 		"description": "Next JS related topics"
 	}

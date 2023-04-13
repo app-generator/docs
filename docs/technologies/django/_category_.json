@@ -1,13 +1,12 @@
 {
 	"label": "Django",
-	"position": 1,
 	"collapsed": true,
 	"collapsible": true,
 	"className": "section-sub-title",
 	"link": {
 		"type": "generated-index",
 		"description": "Django related topics",
-		"slug": "technologies/django",
+		"slug": "technologies/django/",
 		"keywords": ["technologies", "django"]
 	}
 }

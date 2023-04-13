@@ -1,13 +1,12 @@
 {
 	"label": "Python",
-	"position": 7,
 	"collapsed": true,
 	"collapsible": true,
 	"className": "section-sub-title",
 	"link": {
 		"type": "generated-index",
 		"description": "Python related topics ",
-		"slug": "technologies/python",
+		"slug": "technologies/python/",
 		"keywords": ["technologies", "Python"]
 	}
 }

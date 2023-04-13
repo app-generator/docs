@@ -1,13 +1,12 @@
 {
 	"label": "MySql",
-	"position": 4,
 	"collapsed": true,
 	"collapsible": true,
 	"className": "section-sub-title",
 	"link": {
 		"type": "generated-index",
 		"description": "MySql related topics",
-		"slug": "technologies/mysql",
+		"slug": "technologies/mysql/",
 		"keywords": ["technologies", "mysql"]
 	}
 }
