@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.23] 2023-04-15
+### Changes
+
+- NEW: [Deploy Django to HEROKU](https://docs.appseed.us/deployment/heroku/django/)
+
 ## [1.0.22] 2023-03-27
 ### Changes
 
