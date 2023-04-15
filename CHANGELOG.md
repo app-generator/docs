@@ -3,7 +3,9 @@
 ## [1.0.23] 2023-04-15
 ### Changes
 
-- NEW: [Deploy Django to HEROKU](https://docs.appseed.us/deployment/heroku/django/)
+- [Deploy Django to HEROKU](https://docs.appseed.us/deployment/heroku/django/)
+  - via [Heroku CLI](https://docs.appseed.us/deployment/heroku/django/#deploy-on-heroku-via-cli)
+  - via [Heroku UI](https://docs.appseed.us/deployment/heroku/django/#deploy-using-heroku-ui)
 
 ## [1.0.22] 2023-03-27
 ### Changes
