@@ -7,12 +7,15 @@ description: How to deploy Django to Google Cloud Platform in VM instance
 
 <SubHeading color="#25c2a0">How to deploy Django to Google Cloud Platform in VM instance</SubHeading>
 
-@Todo - General information Google Cloud Platform
+Google Cloud Platform (GCP) is Google's cloud computing solution that offers a variety of services to meet different purposes. Its primary features include global data centers, high security, and easy integration with other Google services.
+
+GCP offers a wide range of services. For this tutorial, we will focus on Computer Engine that enables you to create and run virtual machines on Google Cloud Platform.
 
 > Topics covered
 
 - `GCP` Account Creation
 - `GCP` Account Settings
+- `GCP` Creating a VM
 - The project to be deployed
 - `GCP` Database set up
 - `GCP` Environment set up
@@ -21,58 +24,497 @@ description: How to deploy Django to Google Cloud Platform in VM instance
 - `GCP` CI/CD from Github
 - `GCP` LIVE Service monitoring
 
-
 ## `GCP` Account Creation
 
-@Todo: Step by step presentation
+Google Cloud Platform (GCP) account is integrated with your Google account. If you have had a Google account, you don't need to create another account for GCP. Navigate to https://console.cloud.google.com/ to open Google Console. Create a project to start using GCP, you can also use existing project if you have one.
 
 
 ## `GCP` Account Settings
 
-@Todo: The most important things to know by a beginner
+Compute Engine is a service that allows you to create and run virtual machines (VMs) in the cloud. To enable this service, you need to set up billing account. If you are new to GCP, you can get some free credits using Free Trial.
+
+Follow these steps to set up your trial account:
+
+1. Navigate to GCP homepage at https://cloud.google.com/.
+2. Click on the "Start a free trial" or "Start free" button.
+3. GCP will offer $300 credit for free for the next 90 days.
+4. Fill in the form then click "Continue".
+5. Set up your payment method, You won't be charged after free trial ends unless you manually upgrade to paid account or exceed the free credit.
+6. Click "Start my free trial" to complete the process.
+
+## `GCP` Creating a VM
+
+A virtual machine (VM) is like a pretend computer that runs inside your real computer. It allows you use different operating systems and programs without changing your main computer configuration.
+
+To create a virtual machine in GCP, follow these steps:
+
+1. Sign in to your GCP console and click on the "Compute Engine" tab from the sidebar menu. If it isn't shown in the sidebar, you can search for it using the search bar at the top.
+2. Click on "Create Instance" button.
+3. Set the name of your VM, choose the region and zone that are near your location. It's important to select a region and zone that is closer to your location to ensure faster performance.
+4. Choose "Machine type" that suits your budget.
+5. Select the operating system you want to use in the "Boot disk" section. For this tutorial, we will use Ubuntu 22.04 LTS.
+6. Allow the HTTP and HTTPS traffic in the "Firewall" section.
+7. Leave the rest of the options as they are and click the "Create" button to start creating your virtual machine.
+8. You will be redirected to Instances page. Wait until the instance is running.
+
+Once your virtual machine is running, you can access it by clicking the "SSH" button in "Connect" column. The Ubuntu command will be used in the next steps since this instance is running on Ubuntu. If you are using a different operating system, adjust the command according to your OS.
 
 
 ## The project to be deployed
 
 Source project: https://github.com/app-generator/deploy-gcp-django
 
+If `git` isn't installed, run following command to install it.
+
+```bash
+sudo apt-get install git
+```
+
+Then clone the project by running this command.
+
+```bash
+git clone https://github.com/app-generator/deploy-gcp-django
+```
 
 ## `GCP` Database set up
 
-@Todo:
+You only need to choose one of these databases, either PostgreSQL or MySQL.
 
-- How to set up a PostgreSQL database + user credentials
-- How to set up a MySQL database + user credentials
+### PostgreSQL
+
+1. Install PostgreSQL in your instance
+
+   ```bash
+   sudo apt-get install postgresql
+   ```
+
+2. Start the service
+
+   Once the installation is complete, PostgreSQL will be automatically running. Otherwise, use the following command to start the service.
+
+   ```bash
+   sudo systemctl start postgresql
+   ```
+
+3. Login to PostgreSQL
+
+   ```bash
+   sudo -u postgres psql
+   ```
+
+4. Create database
+
+   ```postgresql
+   CREATE DATABASE appseed_db;
+   ```
+
+   Replace `appseed_db` with the name that you want.
+
+5. Create a user and grant permission to the user.
+
+   For this demo, we'll grant all permissions to all tables for the created user.
+
+   ```postgresql
+   CREATE USER appseed_db_usr WITH PASSWORD 'pass';
+   GRANT ALL PRIVILEGES ON DATABASE appseed_db TO appseed_db_usr;
+   ```
+
+   Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+6. Exit PostgreSQL
+
+   ```postgresql
+   \q
+   ```
+
+### MySQL
+
+1. Install MySQL in your instance
+
+   ```bash
+   sudo apt-get install mysql-server libmysqlclient-dev
+   ```
+
+2. Start the service
+
+   Once the installation is complete, MySQL will be automatically running. Otherwise, use the following command to start the service.
+
+   ```bash
+   sudo systemctl start mysql
+   ```
+
+3. Login to MySQL
+
+   ```bash
+   sudo mysql
+   ```
+
+4. Create database
+
+   ```mysql
+   CREATE DATABASE appseed_db;
+   ```
+
+   Replace `appseed_db` with the name that you want.
+
+5. Create user and grant permission to the user.
+
+   For this demo, we'll grant all permissions to all tables for the created user.
+
+   ```mysql
+   CREATE USER 'appseed_db_usr'@'localhost' IDENTIFIED BY 'pass';
+   GRANT ALL PRIVILEGES ON appseed_db.* TO 'appseed_db_usr'@'localhost';
+   FLUSH PRIVILEGES;
+   ```
+
+   Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+6. Exit MySQL
+
+   ```mysql
+   exit
+   ```
 
 
 ## `GCP` Environment set up
 
-@Todo:
+We need to set up the instance for Python environment. To find the right version to use, you need to check the Django version. If the version is not set in `requirements.txt`, it means the latest version. In Django documentation, we can found the compatible Python version.
 
-- How to specify the Python version to be used
-- How to set the environment variables used by the app
+> Django 4.2 supports Python 3.8, 3.9, 3.10, and 3.11.
 
+### Setting up Python
+
+First, we need to install Python, pip, and virtualenv if they aren't already installed. Use the following commands to install them.
+
+```bash
+sudo apt-get update
+sudo apt-get install python3 python3-pip python3-virtualenv
+```
+
+Verify the installation with the following command.
+
+```bash
+python3 --version
+pip --version
+```
+
+### Setting up virtual environment and dependencies
+
+Enter the project directory, create a virtual environment to isolate the project dependencies, and activate it using the following commands.
+
+```bash
+cd deploy-gcp-django
+virtualenv env
+source env/bin/activate
+```
+
+Now you can install packages or dependencies without affecting other projects.
+
+For installing the dependencies, you need to follow these steps:
+
+1. Open `requirements.txt` file using a text editor, such as nano or vim.
+
+2. Uncomment the package following the database you used by deleting the `#` in front of it.
+
+   - `psycopg2-binary`: for PostgreSQL
+   - `mysqlclient`: for MySQL
+
+3. Save and exit, then install the packages.
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Setting up environment variables
+
+Before moving on to the next steps, we need to set up environment variables so that the app can connect to the database and complete the setup.
+
+1. Copy the `env.sample` file to `.env`.
+
+   ```bash
+   cp env.sample .env
+   ```
+
+2. Open `.env` file using a text editor, such as nano or vim.
+
+3. Remove comment from database variables and fill it by following your database configuration.
+
+   - For PostgreSQL:
+
+     ```
+     DB_ENGINE=postgresql
+     DB_PORT=5432
+     ```
+
+   - For MySQL:
+
+     ```
+     DB_ENGINE=mysql
+     DB_PORT=3306
+     ```
+
+4. Fill out the other variables as needed, then save the file.
+
+### Setting up database
+
+Run the following commands to set up your database.
+
+```bash
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py createsuperuser
+```
+
+### Running the app
+
+You're all set up! You can now run the app using the following command.
+
+```bash
+python3 manage.py runserver
+```
+
+Note that your project is currently only accessible locally.
 
 ## `GCP` Domain settings
 
-@Todo: How to park a domain or a subdomain to the service
+This demo use a domain that already been connected to Cloudflare.
+
+### Adding DNS record in Cloudflare
+
+First, we need to add a DNS record in Cloudflare to connect the domain to our GCP instance. Follow these steps:
+
+1. Add an `A` record.
+2. In the `Name` field, enter `@` for the domain or anything else if you want to use a subdomain.
+3. In the `IPv4 address` field, enter the external IP of the instance. You can find this in GCP > VM Instances.
+4. Turn the `Proxy status` on.
+5. Click 'Save'.
+
+### Setting up reverse proxy using NGINX
+
+Next, we need to set up a reverse proxy to point the domain to our app.
+
+1. Install NGINX in your instance.
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install nginx
+   ```
+
+2. Start the NGINX service using the following command.
+
+   ```bash
+   sudo systemctl start nginx
+   ```
+
+3. Set up a server block by creating a new configuration file
+
+   ```bash
+   sudo nano /etc/nginx/sites-available/your_domain
+   ```
+
+   Replace `your_domain` with your domain name.
+
+   Paste this following config into the file. Don't forget to replace `your_domain` with your domain name.
+
+   ```
+   server {
+   	listen 80;
+   	listen [::]:80;
+   	
+   	server_name your_domain;
+   	
+   	location / {
+   		proxy_pass http://localhost:8000;
+   		proxy_set_header Host $host;
+   		proxy_set_header X-Real-IP $remote_addr;
+   		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   	}
+   }
+   ```
+
+4. Enable the new config by creating a symbolic link to the `site-enabled` directory.
+
+   ```bash
+   sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled
+   ```
+
+5. Remove the default config by unlinking it.
+
+   ```bash
+   sudo unlink /etc/nginx/sites-enabled/default
+   ```
+
+6. Check your configuration by running this command.
+
+   ```bash
+   sudo nginx -t
+   ```
+
+7. If there are no problems or errors, restart NGINX to apply the new config.
+
+   ```bash
+   sudo systemctl restart nginx
+   ```
+
+### Allowing access to your domain
+
+Finally, we need to allow access to our domain in our Django settings. Follow these steps:
+
+1. Open the `core/settings.py` file in your project. 
+
+2. Search `ALLOWED_HOSTS` and add your domain and external IP into it. For example:
+
+   ```py
+   ALLOWED_HOSTS = ['your_domain', 'external_IP']
+   ```
+
+3. Save the file.
 
 
 ## `GCP` SSL certificates
 
-@Todo: How to enhance the service with valid certificates (not self signed)
+This demo will use SSL certificate from Cloudflare. You can also use [certbot](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal&tab=standard) as an alternative.
 
+### Creating an SSL certificate in Cloudflare
+
+1. Navigate to SSL/TLS > Origin Server in Cloudflare. 
+2. Click on "Create Certificate".
+3. Keep the default config then click on "Create".
+4. You will have the Origin Certificate and Private Key. We will use this in the server.
+
+### Editing the NGINX config
+
+1. Create a new file in `/etc/ssl/certs`, paste the **Origin Certificate** into it, and save.
+
+   ```bash
+   sudo nano /etc/ssl/certs/cloudflare.pem
+   ```
+
+2. Create a new file in `/etc/ssl/private`, paste the **Private Key** into it, and save.
+
+   ```bash
+   sudo nano /etc/ssl/private/cloudflare.key
+   ```
+
+3. Edit the NGINX config.
+
+   ```bash
+   sudo nano /etc/nginx/sites-available/your_domain
+   ```
+
+   Add this config below the existing config. Replace `your_domain` with your domain name.
+
+   ```
+   server {
+       listen 443 ssl http2;
+       listen [::]:443 ssl http2;
+       ssl_certificate         /etc/ssl/certs/cloudflare.pem;
+       ssl_certificate_key     /etc/ssl/private/cloudflare.pem;
+   
+       server_name your_domain;
+   
+       location / {
+   		proxy_pass http://localhost:8000;
+   		proxy_set_header Host $host;
+   		proxy_set_header X-Real-IP $remote_addr;
+   		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   	}
+   }
+   ```
+
+4. Check your configuration by running this command.
+
+   ```bash
+   sudo nginx -t
+   ```
+
+5. If there are no problems, restart NGINX to apply this config.
+
+   ```bash
+   sudo systemctl restart nginx
+   ```
+
+### Changing the SSL/TLS encryption mode in Cloudflare
+
+Finally, change the SSL/TLS encryption mode to **Full (strict)** in the Overview tab of the SSL/TLS section in the Cloudflare dashboard. This tells Cloudflare to always encrypt the communication between Cloudflare and the NGINX server at your source. 
 
 ## `GCP` CI/CD from Github
 
-@Todo: This section explains how to link an automatic deploy from Github on new commits
+Continuous Integration and Continuous Deployment (CI/CD) is a process that automates the building, testing, and deployment of software. In this tutorial, we will set up CI/CD from Github to our GCP instance.
 
+### Setting up SSH Keys and Secrets
+
+Before creating Github Action, we need to set up the keys and secrets.
+
+1. Generate a new SSH key on your local computer.
+
+   ```bash
+   ssh-keygen -t ed25519 -a 200 -C "your_email@example.com"
+   ```
+
+2. Copy the public key, the default is located in `~/.ssh/id_ed25519.pub`.
+3. Add it to the authorized keys in the server. Open `~/.ssh/authorized_keys` and paste the public key below the existing keys.
+4. Open your repository on Github. Go to Settings > Secrets and variables > Actions.
+5. Click on "New repository secret" to add a secret. You need to add these following secrets:
+   - HOST: external IP of instance
+   - USERNAME: instance username
+   - KEY: private key, from `-----BEGIN` until end of the key.
+   - PORT: 22
+
+### Setting up CI/CD with Github Action
+
+After setting up the SSH keys and secrets, we can move the next steps:
+
+1. Create a new folder `.github/workflows` in the project.
+2. Create a new file `cd.yml` in the `.github/workflows`, paste this following code.
+
+```yaml
+name: Django CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest # according to your os
+    steps:
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/deploy-gcp-django
+            git pull origin main
+            env/bin/pip install -r requirements.txt
+            env/bin/python manage.py migrate
+```
+
+3. Save the file then commit and push it to the repository.
+
+Now, every time you push code to the `main` branch on Github, it will automatically deploy to your GCP instance.
 
 ## `GCP` LIVE Service monitoring
 
-@Todo: How to check out the service health and uptime
+We'll use UptimeRobot to monitor the app. UptimeRobot is a popular online service that monitors the uptime and performance of websites, servers, and other online services.
 
+Go to [UptimeRobot](https://uptimerobot.com/) create an account or sign in if you already have account. Create monitor by clicking "Add New Monitor" button then follow this config:
+
+- Monitor Type: HTTP(s)
+- Friendly Name: django-gcp (or anything else you want)
+- URL (or IP): your_domain
+
+Keep the rest of the config as default and click "Create Monitor"
+
+UptimeRobot will now start monitoring your app. You can view the monitor status and performance data on the UptimeRobot dashboard
 
 ## Links & Resources
 
-@Todo: mention at least two valuable resources (articles or docs)
+- 👉 More [Django Starters](https://appseed.us/apps/django/) - provided by `AppSeed` (free & paid)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- [Google Cloud](https://cloud.google.com/python/docs/setup) official documentation for Python
+- [Django](https://docs.djangoproject.com/en/4.2/releases/4.2) official documentation
