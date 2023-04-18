@@ -7,4 +7,178 @@ import SubHeading from "@site/src/components/SubHeading";
 
 <SubHeading color="#25c2a0">A curated list with popular modules for Django</SubHeading>
 
-@Todo
+## Introduction
+Django is a powerful web framework for building complex web applications with ease. One of the benefits of using Django is its vast ecosystem of libraries and packages that can be used to extend its functionalities and streamline the development process. In this article, we will explore some of the popular Django libraries that every developer should consider when working with Django. These libraries cover a range of areas, including API development, authentication, debugging, search functionality, and much more. By leveraging these libraries, developers can save time and focus on building the core features of their applications. So, whether you are new to Django or a seasoned developer, read on to learn about the popular Django libraries that can help you build better and faster applications.
+
+## 1. [Django REST framework](https://www.django-rest-framework.org)
+Django REST framework (DRF) is a powerful toolkit for building Web APIs. It is built on top of Django, leveraging its features and providing a flexible, easy-to-use framework for creating RESTful APIs.
+
+DRF offers a range of features for building APIs, including:
+
+* Serialization: DRF provides a powerful serializer for converting complex data types, such as Django models, into JSON, XML, or other formats.
+
+* Authentication and permissions: DRF offers a range of authentication and permission classes, including token-based authentication, session authentication, and OAuth2 authentication.
+
+* Viewsets and routers: DRF offers a powerful way to organize views through view sets and routers, which allows developers to easily create CRUD APIs for their models.
+
+* Pagination: DRF provides pagination classes for handling large datasets, making it easy to return a subset of data at a time.
+
+* Throttling: DRF offers throttling classes to limit the rate of API requests per user.
+
+* Filtering and searching: DRF provides a range of filters and search classes for handling complex query parameters.
+
+Overall, DRF makes it easy to build scalable, well-structured APIs using Django. It is a popular choice for building APIs in the Django community, and its documentation is comprehensive and easy to follow. If you're building an API with Django, it's worth checking out.
+
+## 2. [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
+Django Debug Toolbar is a third-party package that provides developers with a set of tools to debug and optimize their Django applications. The toolbar is a configurable panel that displays various debug information about the current request/response, including SQL queries, cache hits/misses, templates, and more.
+
+The toolbar is highly configurable and can be customized to display only the information that is relevant to the developer's needs. It also provides a range of panels that can be added or removed depending on the specific requirements of the application.
+
+Some of the features of the Django Debug Toolbar include:
+
+* SQL queries: The toolbar displays all SQL queries executed during the current request/response, including the time it took to execute each query.
+
+* Templates: The toolbar displays all templates that were rendered during the current request/response, including the time it took to render each template.
+
+* Cache: The toolbar displays all cache hits/misses during the current request/response, including the time it took to retrieve data from the cache.
+
+* Signals: The toolbar displays all signals that were sent during the current request/response.
+
+* Profiling: The toolbar provides a profiling panel that can be used to measure the performance of specific functions or blocks of code.
+
+Django Debug Toolbar is a powerful tool for debugging and optimizing Django applications. It can help developers identify and fix performance issues quickly, making it an essential tool for any Django developer.
+
+## 3. [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest)
+Django Crispy Forms is a third-party package that makes it easy to create DRY (Don't Repeat Yourself) forms in Django. It provides a set of template tags and filters that allow developers to render forms in a consistent and customizable way.
+
+One of the key features of Django Crispy Forms is its ability to handle complex form layouts with ease. It provides a range of layout objects that can be used to create complex form layouts using simple Python code. These layout objects include rows, columns, tabs, and more, and they can be easily customized to fit the specific requirements of the application.
+
+Django Crispy Forms also provides a range of CSS frameworks, including Bootstrap, Foundation, and Uni-form, making it easy to create forms that are consistent with the overall look and feel of the application.
+
+Django Crispy Forms is a powerful tool for creating DRY and customizable forms in Django. If you're working with forms in Django, it's worth checking out.
+
+## 4. [Django Celery](https://docs.celeryq.dev/en/latest/django/first-steps-with-django.html)
+Django Celery is a popular third-party package for creating and managing asynchronous tasks in Django. It allows developers to offload time-consuming tasks, such as sending emails, processing data, or generating reports, to a separate process or worker pool.
+
+Django Celery works by using a message queue, such as RabbitMQ or Redis, to distribute tasks across a pool of worker processes. When a task is submitted, it is added to the queue, and a worker process picks it up and executes it. This allows tasks to be executed asynchronously, without blocking the main Django process or affecting the responsiveness of the application.
+
+Django Celery provides a range of features, including:
+
+* Task scheduling: Celery allows developers to schedule tasks to run at a specific time or interval.
+
+* Task result storage: Celery can store the results of tasks in a backend such as Redis, so they can be retrieved later.
+
+* Retry and error handling: Celery provides mechanisms for retrying failed tasks and handling errors.
+
+* Monitoring and management: Celery provides a range of tools for monitoring and managing worker processes, including a web-based dashboard.
+
+Django Celery is a powerful tool for managing asynchronous tasks in Django. It can help developers to build more scalable and efficient applications by offloading time-consuming tasks to separate processes.
+
+## 5. [Django Allauth](https://django-allauth.readthedocs.io/en/latest/overview.html)
+Django Allauth is a third-party package that provides a set of authentication and registration views, templates, and workflows for Django. It allows developers to easily integrate popular authentication providers, such as Facebook, Google, Twitter, and GitHub, into their Django application.
+
+Django Allauth is highly customizable and provides a range of features, including:
+
+* Social authentication: Allauth allows users to sign in with their social media accounts, making it easy for users to register and login to your application without having to create a new account.
+
+* Email verification: Allauth provides an email verification workflow to ensure that new users have a valid email address.
+
+* Multi-factor authentication: Allauth supports multi-factor authentication using TOTP (Time-based One-Time Password) or U2F (Universal 2nd Factor) devices.
+
+* Account management: Allauth provides views and templates for users to manage their account settings, including changing their email addresses and password.
+
+* Third-party provider support: Allauth supports a range of third-party authentication providers, including OAuth2, OpenID Connect, and SAML.
+
+Django Allauth is a powerful tool for managing user authentication and registration in Django, for applications that require user authentication, Allauth is worth checking out.
+
+## 6. [Django Haystack](https://django-haystack.readthedocs.io/en/master/#getting-started)
+Django Haystack is a third-party package that provides a simple and powerful interface for integrating search functionality into Django applications. It allows developers to create search indexes, search queries, and results that are easily integrated with Django models and templates.
+
+Django Haystack supports a range of search backends, including Elasticsearch, Solr, Whoosh, and Xapian, which makes it a flexible and scalable solution for search functionality in Django applications.
+
+Some of the key features of Django Haystack include:
+
+* Indexing: Haystack provides a simple interface for defining search indexes for Django models, which allows developers to specify which fields should be searchable and how they should be weighted.
+
+* Search querying: Haystack provides a range of search query objects that can be used to create complex search queries using simple Python code.
+
+* Results: Haystack provides a range of result objects that can be used to display search results in a customizable and user-friendly way.
+
+* Faceting: Haystack provides support for faceted search, which allows users to filter search results based on specific criteria, such as category or price range.
+
+* Autocomplete: Haystack provides support for autocomplete functionality, which suggests search queries to users as they type.
+
+Django Haystack is a powerful tool for integrating search functionality into Django applications. If you're building a Django application that requires search functionality, Haystack is worth checking out.
+
+## 7. [Django CMS](https://docs.django-cms.org/en/latest/how_to/index.html)
+Django CMS is a popular content management system built on top of the Django web framework. It provides a user-friendly interface for creating and managing content, making it easy for non-technical users to maintain a website.
+
+Django CMS offers a range of features, including:
+
+* Drag-and-drop interface: Django CMS provides a user-friendly interface for creating and arranging content using a drag-and-drop interface.
+
+* Customizable templates: Django CMS provides a range of customizable templates and themes, making it easy to create a professional-looking website without having to write any code.
+
+* Multilingual support: Django CMS provides built-in support for creating multilingual websites, making it easy to create content in multiple languages.
+
+* Versioning: Django CMS provides versioning support, allowing users to revert to previous versions of content if necessary.
+
+* Plugin architecture: Django CMS provides a plugin architecture that allows developers to create custom functionality for their websites, such as image galleries, contact forms, and e-commerce functionality.
+
+Django CMS is a powerful tool for building websites that require a content management system. It offers a range of features that make it easy for both technical and non-technical users to create and manage content. If you're building a website using Django and require a content management system, Django CMS is worth checking out.
+
+## 8. [Django Storages](https://django-storages.readthedocs.io/en/latest/)
+Django Storages is a third-party package that provides a simple and consistent interface for using cloud storage services, such as Amazon S3, Google Cloud Storage, and Microsoft Azure, in Django applications.
+
+Django Storages allows developers to easily switch between different cloud storage providers without having to change their application code. This can be useful if you need to move your application to a different cloud provider or if you want to use different providers for different environments, such as development, staging, and production.
+
+Some of the key features of Django Storages include:
+
+* Consistent interface: Django Storages provides a consistent interface for using different cloud storage providers, which makes it easy to switch between providers without having to change your application code.
+
+* Static and media file storage: Django Storages provides support for storing both static and media files in cloud storage, making it easy to serve large files and handle high-traffic loads.
+
+* Custom storage backends: Django Storages provides a range of custom storage backends, which allows developers to create their custom storage solutions, such as FTP or local file storage.
+
+* Compression and encryption: Django Storages provides support for the compression and encryption of files before they are uploaded to cloud storage, which can improve performance and security.
+
+* Caching: Django Storages provides support for caching files in memory, which can improve performance and reduce the number of requests to cloud storage.
+
+Django Storages is a powerful tool for managing cloud storage in Django applications. If you're building a Django application that requires cloud storage, Django Storages is worth checking out.
+
+## 9. [Django Compressor](https://django-compressor.readthedocs.io/en/stable/quickstart.html)
+Django Compressor is a third-party package that provides a simple and efficient way to compress and compile static files in Django applications. It helps optimize website performance by reducing the size and number of requests for static files, such as CSS, JavaScript, and HTML templates.
+
+Django Compressor offers several features, including:
+
+* Automatic compression and compilation: Django Compressor automatically compresses and compiles static files, minimizing file size and improving website performance.
+
+* Multiple compression algorithms: Django Compressor supports multiple compression algorithms, including YUI, Closure, and UglifyJS, allowing developers to choose the algorithm that works best for their needs.
+
+* Caching: Django Compressor provides built-in caching support, which reduces the number of requests needed to compile static files and improves website performance.
+
+* Template tag library: Django Compressor provides a template tag library that allows developers to easily include compressed and compiled static files in their templates.
+
+* Integration with CDN services: Django Compressor integrates seamlessly with Content Delivery Network (CDN) services, allowing developers to serve compressed and compiled static files from a CDN.
+
+Django Compressor is a powerful tool for optimizing website performance by compressing and compiling static files in Django applications. It helps reduce the size and number of requests for static files, which can significantly improve website performance. If you're building a Django application that requires static file optimization, Django Compressor is worth checking out.
+
+## 10. [Django-Bootstrap4](https://django-bootstrap4.readthedocs.io/en/latest/quickstart.html)
+Django-Bootstrap4 is a third-party package that provides integration between Django and the Bootstrap 4 framework. It allows developers to easily create responsive and mobile-friendly web applications with a consistent and modern user interface.
+
+Django-Bootstrap4 provides several features, including:
+
+* Bootstrap 4 templates: Django-Bootstrap4 includes a range of pre-built templates that are based on the Bootstrap 4 framework, making it easy to create a modern and responsive user interface.
+
+* Form rendering: Django-Bootstrap4 provides built-in support for rendering Django forms using Bootstrap 4 styles, making it easy to create stylish and consistent forms in your application.
+
+* Template tags: Django-Bootstrap4 provides a range of template tags that allow developers to easily add Bootstrap 4 components, such as alerts, badges, and progress bars, to their templates.
+
+* Integration with Django's authentication system: Django-Bootstrap4 integrates seamlessly with Django's built-in authentication system, providing a range of pre-built templates and views for handling user authentication and registration.
+
+* Customization: Django-Bootstrap4 is highly customizable, allowing developers to easily modify the look and feel of their application using Bootstrap 4 variables and mixins.
+
+Django-Bootstrap4 is a powerful tool for creating responsive and modern web applications with a consistent and stylish user interface. It helps developers by providing pre-built templates, form rendering, and integration with Django's authentication system. If you're building a Django application and want to use the Bootstrap 4 framework, Django-Bootstrap4 is worth checking out.
+
+## Conclusion
+In conclusion, Django is a powerful web framework for building complex and scalable web applications. However, developers often need to use additional packages and libraries to add functionality and improve performance. In this article, we have discussed some popular Django libraries that every Django developer should know. These libraries include Django REST Framework, Django Debug Toolbar, Django Crispy Forms, Django Celery, Django Allauth, Django Haystack, Django CMS, Django Storages, Django Compressor, and Django-Bootstrap4. Each library provides unique features and benefits, such as API development, debugging, form rendering, background task processing, user authentication, search functionality, content management, cloud storage management, static file optimization, and integration with the Bootstrap 4 framework. By using these libraries, developers can save time and effort while building powerful and scalable web applications with Django. [Django Packages](https://djangopackages.org/) offers a comprehensive directory of reusable packages and applications for the Django web framework.
