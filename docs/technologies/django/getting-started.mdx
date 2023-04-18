@@ -10,9 +10,15 @@ import SubHeading from "@site/src/components/SubHeading";
 
 ## Introduction to Django
 
-**Django** is a leading web framework actively supported and versioned by programming experts using a `batteries-included` concept. Django can help us to code from simple, one-page websites, APIs, micro-services, or complex eCommerce platforms. It enables developers to build robust applications rapidly while helping developers to avoid security mistakes since Django takes security seriously. Django is flexible and scalable and comes with a lot of tools prebuilt into it for example, its Object relation mapper (ORM), admin dashboard, user authentication and lots more.
+**Django** is a leading web framework actively supported and versioned by programming experts using a `batteries-included` concept. 
+Django can help us to code from simple, one-page websites, APIs, micro-services, or complex eCommerce platforms. 
+It enables developers to build robust applications rapidly while helping developers to avoid security mistakes since Django takes security seriously. 
+Django is flexible and scalable and comes with a lot of tools prebuilt into it for example, its Object relation mapper (ORM), admin dashboard, user authentication and lots more.
 
-Django adopts the MTV (Model Template View) architectural pattern. **Model** determines the data structure and is a handler between the database and the view. **Template** keeps everything the browser renders, django uses a plain text template system. **View** communicates with the database using the model and sends the data to the template to be displayed. The framework acts as a controller sending requests to the right view based on the URL configuration. Django's MVT pattern emphasizes the separation of concerns and modularity, making it easier to develop and maintain web applications with a clear separation between business logic, data access, and presentation.
+Django adopts the MTV (Model Template View) architectural pattern. **Model** determines the data structure and is a handler between the database and the view. 
+**Template** keeps everything the browser renders, django uses a plain text template system. **View** communicates with the database using the model and sends the data to the template to be displayed. The framework acts as a controller sending requests to the right view based on the URL configuration. Django's MVT pattern emphasizes the separation of concerns and modularity, making it easier to develop and maintain web applications with a clear separation between business logic, data access, and presentation.
+
+<br />
 
 ### Advantages of Using Django for web development
 * Django enables rapid development by eliminating a lot of the hassle of web development
@@ -21,10 +27,16 @@ Django adopts the MTV (Model Template View) architectural pattern. **Model** det
 * Since Django is built using Python, this gives the developer a wide range of third-party modules to select from to solve various challenges that may arise during development
 * Django has a very vibrant community and it is regularly updated
 
+<br />
+
 ## Installing Django: A Step-by-Step Guide
+
 Before development can start with Django, it has to be installed using Python package manager (`pip`). Before Django is installed and development begins, there is a need to create a virtual environment, this way the development environment is isolated from the rest of our machine. This can help prevent dependency issues and also help in reproducibility.
 
+<br />
+
 ### Creating a Virtual environment
+
 * From the terminal, type the following commands
 ```bash
 $ mkdir django-tutorial
@@ -47,16 +59,25 @@ django-tutorial$ ./venv/Scripts/activate.bat
 ```
 `virtualenv` creates a virtual environment called venv, and the next line activates the virtual environment. `(venv)` indicates that the virtual environment is active. Now we can install Django without concerns of conflicts and dependency issues.
 
+<br />
+
 ### Installing Django
+
 Since our virtual environment is active we can install Django and start development. In your terminal run the following commands
 ```bash
 (venv) django-tutorial$ pip install django==3.2.18
 ```
 
+<br />
+
 ## Django project
+
 A Django project is a collection of settings and configurations that define the structure and behavior of a web application. It is a high-level representation of a web application that includes multiple components such as models, views, templates, forms, and static files.
 
-### Creating a Django project
+<br />
+
+### Creating the Project
+
 A Django project is created using the `django-admin` command-line tool. `django-admin startproject <project-name>` is the command used to create a new Django project.
 
 * Run the command below to create a Django project called core
@@ -76,7 +97,10 @@ After running the command above, your directory structure will look like this. T
 └── manage.py
 ```
 
+<br />
+
 ### Applying initial Database configuration
+
 Django comes with some database configurations which can be found in `core/settings.py`, the default database configuration for Django is SQLite3. Django is built to integrate with a lot of popular databases like MySQL, Postgresql, Oracle and so on. Check Django documentation [here](https://docs.djangoproject.com/en/4.2/ref/databases/) for more information on how to get started using other database engines. The command below applies the initial migration for all the installed applications for the Django project.
 ```bash
 (venv) django-tutorial$ python manage.py migrate
@@ -89,7 +113,10 @@ Django comes with some database configurations which can be found in `core/setti
 This starts up a Django server, open `http://127.0.0.1:8000/` in your browser, you should see the page below. You can stop the server from the terminal by using `Ctrl + c`.
 ![Django successful installation page](https://user-images.githubusercontent.com/57325382/231792222-6231b82b-8ea1-4dec-b434-aa14c0107651.png)
 
+<br />
+
 ## Django applications
+
 In Django, an application is a self-contained module of code that provides specific functionality to a project. It is a collection of models, views, templates, and other related files that work together to implement a particular feature or set of features. An application is typically stored in its directory within the project's directory structure. Each application contains a set of files that define its functionality, including:
 
 * Models: A model is a Python class that defines the structure of a database table and the relationships between tables. Models are used to define the data structure of the application.
@@ -102,7 +129,10 @@ In Django, an application is a self-contained module of code that provides speci
 
 * Static files: Static files are files such as CSS, JavaScript, and images that are used to define the presentation layer of the application.
 
+<br />
+
 ### Creating a Django application
+
 Using the `django-admin` command from the terminal, we will be creating a Django application inside the project directory. `django-admin startapp <app-name>` is the command used for creating new applications.
 
 * Run the command below on your terminal to create a Django application name example
@@ -131,7 +161,10 @@ With this, a new application called `example` has been created. The new folder s
 ```
 Although we have created an application, the Django project does not recognize our application, we will need to register the application with the project to allow the project to recognize the application.
 
+<br />
+
 ### Connecting Django application to project
+
 To connect `example` to the Django project `core`, open the file `core/settings.py` and add `example` to the `INSTALLED_APPS` list.
 ```py
 # core/settings.py
@@ -149,7 +182,10 @@ INSTALLED_APPS = [
 ```
 Now our Django project recognizes the `example` application.
 
+<br />
+
 ### Adding `example` to project routes
+
 Now that the Django project can recognize the `example` application, the next step is to give the application a route. By doing this we create a generic route that when visited, Django checks this application for resources to send back to the client.
 
 * Inside `core/urls.py` add the following code snippet to register the root route to the `example` application.
@@ -165,7 +201,10 @@ urlpatterns = [
 ```
 If your Django server was running when this change was made, you would be having an error. not to worry, it will be fixed in a few steps.
 
+<br />
+
 ### Serving an HTML page from the example route
+
 * Edit the `core/settings file by adding a route to template files for Django to use in identifying resources to be sent as the response
 ```py
 # core/settings.py
@@ -251,7 +290,10 @@ The new folder structure will look like this
 │   └── index.html
 ```
 
+<br />
+
 ## How to install a design
+
 Because Django applications are reusable, it is possible to get a predesigned application that fits into what you are developing and integrate it into your project. The Django repository is home to a lot of predesigned applications. Those applications can be installed using the Python package manager `pip`.
 For this tutorial, we will be using the [`django-theme-material-kit`](https://github.com/app-generator/django-theme-material-kit).
 
@@ -311,10 +353,16 @@ Opening the URL `http://127.0.0.1:8000` from your browser you will see a new app
 
 With predesigned themes, development can be made faster and you can focus on business-specific logic.
 
+<br />
+
 ## Deploying a Django project
+
 The application just built will be deployed on [Render](https://render.com) and also deployed using Docker.
 
+<br />
+
 ### Initial setup
+
 Before we can start deploying our project, we need to make some changes to our codebase.
 
 * Installing `whitenoise` a package used for handling the hosting of static files. From your terminal run the command below
@@ -393,7 +441,10 @@ The changes made above combine the configuration for Docker and deploying on ren
 (venv) django-tutorial$ pip freeze > requirements.txt
 ```
 
-### Deploying Django project on Render
+<br />
+
+### Deploying Django on Render
+
 * In the root directory of your application, create a file name `build.sh` and add the following line
 ```bash
 #!/usr/bin/env bash
@@ -443,7 +494,10 @@ fi
 
 * Save the web service and deploy the application on `Render`
 
+<br />
+
 ### Running Django project on Docker
+
 The following steps will help you create a docker image and start up a docker container for your Django project
 * Create a file `.dockerignore` in the root directory with the following content
 ```
@@ -491,8 +545,12 @@ This creates the docker image for our application. Using the command `docker ima
 ```
 With your web browser, open `127.0.0.1:8000` or `localhost:8000` to see your web application.
 
+<br />
+
 ## Conclusion
-In this Django tutorial, we have covered several concepts related to building web applications with Django, including using pre-designed templates, deploying projects to production, and containerizing applications with Docker.
+
+In this Django tutorial, we have covered several concepts related to building web applications with Django, including using pre-designed templates, deploying projects to production, 
+and containerizing applications with Docker.
 
 We began by discussing pre-designed templates, which can help you quickly set up and style your website without the need for a graphic designer.
 
@@ -502,9 +560,9 @@ Finally, we explored how to containerize a Django application using Docker, a po
 
 By the end of this tutorial, you should have a good understanding of several important concepts related to building and deploying Django applications. Whether you are building a small web app or a large-scale enterprise application, the tools and techniques we've covered should help you build better and more maintainable software.
 
-### Further reading
-- [Django](https://www.djangoproject.com/) - official website
-- [Django](https://docs.djangoproject.com/en/4.0/) - official documentation
-- [Django Models](https://docs.djangoproject.com/en/4.0/topics/db/models/)
-- [Jinja](https://jinja.palletsprojects.com/en/3.1.x/templates/)
+<br />
 
+## Resources
+
+- 👉 [Django](https://docs.djangoproject.com/en/4.0/) - official documentation
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
