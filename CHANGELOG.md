@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.24] 2023-04-18
+### Changes
+
+- [Getting Started With Django](https://docs.appseed.us/technologies/django/getting-started/)
+- [Django, Popular Modules](https://docs.appseed.us/technologies/django/popular-modules/)
+
 ## [1.0.23] 2023-04-15
 ### Changes
 
