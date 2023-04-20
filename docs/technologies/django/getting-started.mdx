@@ -20,7 +20,8 @@ Django adopts the MTV (Model Template View) architectural pattern. **Model** det
 
 <br />
 
-### Advantages of Using Django for web development
+## Why Using Django
+
 * Django enables rapid development by eliminating a lot of the hassle of web development
 * Django helps developers avoid many common security mistakes
 * Django is very flexible and scalable
@@ -35,37 +36,40 @@ Before development can start with Django, it has to be installed using Python pa
 
 <br />
 
-### Creating a Virtual environment
+### ✅ Creating a Virtual environment
 
 * From the terminal, type the following commands
+
 ```bash
 $ mkdir django-tutorial
 $ cd django-tutorial
 ```
+
 `mkdir` creates a folder named `django-tutorial` that will serve as the root of the project. `cd` changes the directory to the folder just created.
+
 * Now we are prepared to create our virtual environment. Run the following code on your terminal
 
 On Mac/Linux:
 ```bash
-django-tutorial$ virtualenv venv
-django-tutorial$ source ./venv/bin/activate
-(venv)$
+$ virtualenv venv
+$ source ./venv/bin/activate
+(venv)$ # ready for commands
 ```
 On Windows:
 ```bash
-django-tutorial$ virtualenv venv
-django-tutorial$ ./venv/Scripts/activate.bat
-(venv) django-tutorial$
+$ virtualenv venv
+$ venv\Scripts\activate
+(venv) $ # ready for commands
 ```
 `virtualenv` creates a virtual environment called venv, and the next line activates the virtual environment. `(venv)` indicates that the virtual environment is active. Now we can install Django without concerns of conflicts and dependency issues.
 
 <br />
 
-### Installing Django
+### ✅ Installing Django
 
 Since our virtual environment is active we can install Django and start development. In your terminal run the following commands
 ```bash
-(venv) django-tutorial$ pip install django==3.2.18
+(venv) $ pip install django
 ```
 
 <br />
@@ -76,13 +80,13 @@ A Django project is a collection of settings and configurations that define the 
 
 <br />
 
-### Creating the Project
+### ✅ Creating the Project
 
 A Django project is created using the `django-admin` command-line tool. `django-admin startproject <project-name>` is the command used to create a new Django project.
 
 * Run the command below to create a Django project called core
 ```bash
-(venv) django-tutorial$ django-admin startproject core .
+(venv) $ django-admin startproject core .
 ```
 `.` is used to create the project in the current directory, without this Django will create a new project in a directory with the project name specified.
 
@@ -99,16 +103,21 @@ After running the command above, your directory structure will look like this. T
 
 <br />
 
-### Applying initial Database configuration
+### ✅ Applying initial Database configuration
 
-Django comes with some database configurations which can be found in `core/settings.py`, the default database configuration for Django is SQLite3. Django is built to integrate with a lot of popular databases like MySQL, Postgresql, Oracle and so on. Check Django documentation [here](https://docs.djangoproject.com/en/4.2/ref/databases/) for more information on how to get started using other database engines. The command below applies the initial migration for all the installed applications for the Django project.
+Django comes with some database configurations which can be found in `core/settings.py`, the default database configuration for Django is SQLite3. 
+Django is built to integrate with a lot of popular databases like MySQL, Postgresql, Oracle and so on. 
+Check Django documentation [here](https://docs.djangoproject.com/en/4.2/ref/databases/) for more information on how to get started using other database engines. 
+The command below applies the initial migration for all the installed applications for the Django project.
+
 ```bash
-(venv) django-tutorial$ python manage.py migrate
+(venv) $ python manage.py migrate
 ```
 
 * Run the command below to confirm your Django project has been correctly installed
+
 ```bash
-(venv) django-tutorial$ python manage.py runserver
+(venv) $ python manage.py runserver
 ```
 This starts up a Django server, open `http://127.0.0.1:8000/` in your browser, you should see the page below. You can stop the server from the terminal by using `Ctrl + c`.
 ![Django successful installation page](https://user-images.githubusercontent.com/57325382/231792222-6231b82b-8ea1-4dec-b434-aa14c0107651.png)
@@ -131,15 +140,18 @@ In Django, an application is a self-contained module of code that provides speci
 
 <br />
 
-### Creating a Django application
+### ✅ Creating a Django application
 
 Using the `django-admin` command from the terminal, we will be creating a Django application inside the project directory. `django-admin startapp <app-name>` is the command used for creating new applications.
 
 * Run the command below on your terminal to create a Django application name example
+
 ```bash
-(venv) django-tutorial$ django-admin  startapp example
+(venv) $ django-admin  startapp example
 ```
+
 With this, a new application called `example` has been created. The new folder structure for the project will become
+
 ```bash
 ├── core
 │   ├── asgi.py
@@ -159,13 +171,15 @@ With this, a new application called `example` has been created. The new folder s
 │   └── views.py
 └── manage.py
 ```
+
 Although we have created an application, the Django project does not recognize our application, we will need to register the application with the project to allow the project to recognize the application.
 
 <br />
 
-### Connecting Django application to project
+### ✅ Update Settings 
 
 To connect `example` to the Django project `core`, open the file `core/settings.py` and add `example` to the `INSTALLED_APPS` list.
+
 ```py
 # core/settings.py
 ...
@@ -176,7 +190,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'example',
+    'example',                    # <-- NEW
 ]
 ...
 ```
@@ -184,11 +198,12 @@ Now our Django project recognizes the `example` application.
 
 <br />
 
-### Adding `example` to project routes
+### ✅ Updating Project Routes
 
 Now that the Django project can recognize the `example` application, the next step is to give the application a route. By doing this we create a generic route that when visited, Django checks this application for resources to send back to the client.
 
-* Inside `core/urls.py` add the following code snippet to register the root route to the `example` application.
+Inside `core/urls.py` add the following code snippet to register the root route to the `example` application.
+
 ```py
 # core/urls.py
 from django.contrib import admin
@@ -199,13 +214,15 @@ urlpatterns = [
     path('', include('example.urls')),
 ]
 ```
+
 If your Django server was running when this change was made, you would be having an error. not to worry, it will be fixed in a few steps.
 
 <br />
 
-### Serving an HTML page from the example route
+### ✅ Serving an HTML Page
 
 * Edit the `core/settings file by adding a route to template files for Django to use in identifying resources to be sent as the response
+
 ```py
 # core/settings.py
 ...
@@ -226,7 +243,9 @@ TEMPLATES = [
 ]
 ...
 ```
+
 * Create a folder in the root of the application `templates`, and create a file inside the folder name `index.html`. Add the code snippet below to the file.
+
 ```html
 <!-- templates/index.html -->
 <!DOCTYPE html>
@@ -245,15 +264,18 @@ TEMPLATES = [
 ```
 
 * Create the function below inside `example/views.py`, its response to a request is the template just created.
+
 ```py
 # example/views.py
 ...
 def index(request):
     return render(request, 'index.html')
 ```
+
 `render` checks the `templates` folder for the files to be sent back to the client as a response to a request.
 
 * Create a file inside the `example` folder named `urls.py` and add the following code snippets.
+
 ```py
 # example/urls.py
 from django.urls import path
@@ -292,18 +314,19 @@ The new folder structure will look like this
 
 <br />
 
-## How to install a design
+## Update the UI 
 
-Because Django applications are reusable, it is possible to get a predesigned application that fits into what you are developing and integrate it into your project. The Django repository is home to a lot of predesigned applications. Those applications can be installed using the Python package manager `pip`.
+Because Django applications are reusable, it is possible to get a predesigned application that fits into what you are developing and integrate it into your project. 
+The Django repository is home to a lot of predesigned applications. Those applications can be installed using the Python package manager `pip`.
 For this tutorial, we will be using the [`django-theme-material-kit`](https://github.com/app-generator/django-theme-material-kit).
 
-* From the terminal run the command
+> ✅ Install Material UI
 
 ```bash
-(venv) django-tutorial$ pip install django-theme-material-kit
+(venv) $ pip install django-theme-material-kit
 ```
 
-* Once the theme has been installed, we need to let our Django project recognizes it as one of our applications. To do that, we will be editing `INSTALLED_APPS` in `core/settings.py`
+Once the theme has been installed, we need to let our Django project recognizes it as one of our applications. To do that, we will be editing `INSTALLED_APPS` in `core/settings.py`
 
 ```py
 # core/settings.py
@@ -323,7 +346,9 @@ INSTALLED_APPS = [
 LOGIN_REDIRECT_URL = '/'
 ```
 
-* Now the project recognizes the application, the next step is to add the application to the urls of our project. Inside the `core/urls.py` file make the following changes
+> ✅ Update Routing
+
+Now the project recognizes the application, the next step is to add the application to the urls of our project. Inside the `core/urls.py` file make the following changes
 
 ```py
 # core/urls.py
@@ -338,16 +363,21 @@ urlpatterns = [
 Now the new application will be seen when we visit the root route `/` and the application created earlier will be seen when the `example` route is visited.
 
 ```bash
-(venv) django-tutorial$ # Set up the database
-(venv) django-tutorial$ python manage.py makemigrations
-(venv) django-tutorial$ python manage.py migrate
-(venv) django-tutorial$ python manage.py createsuperuser # Create the superuser
-(venv) django-tutorial$ python manage.py runserver # Start the application (development mode)
+(venv) $ # Set up the database
+(venv) $ python manage.py makemigrations
+(venv) $ python manage.py migrate
+(venv) $ python manage.py createsuperuser # Create the superuser
+(venv) $ python manage.py runserver # Start the application (development mode)
 ```
 
-Opening the URL `http://127.0.0.1:8000` from your browser you will see a new application that has been installed. and opening the route `http://127.0.0.1:8000/example` opens the previous application that was created.
+Opening the URL `http://127.0.0.1:8000` from your browser you will see a new application that has been installed. 
+and opening the route `http://127.0.0.1:8000/example` opens the previous application that was created.
+
+
 
 ![The new theme installed as application](https://user-images.githubusercontent.com/57325382/231792256-532fe6b4-516d-4f0c-ad29-1fd1a4335f1c.png)
+
+<br />
 
 ![Previous application on a new route](https://user-images.githubusercontent.com/57325382/231792238-bd8c88fa-fc07-41f5-b560-cd611bc5fc95.png)
 
@@ -361,16 +391,18 @@ The application just built will be deployed on [Render](https://render.com) and 
 
 <br />
 
-### Initial setup
+### ✅ Initial setup
 
 Before we can start deploying our project, we need to make some changes to our codebase.
 
-* Installing `whitenoise` a package used for handling the hosting of static files. From your terminal run the command below
+> Installing `whitenoise` a package used for handling the hosting of static files. From your terminal run the command below
+
 ```bash
-(venv) django-tutorial$ pip install whitenoise[brotli]
+(venv) $ pip install whitenoise[brotli]
 ```
 
-* Open `core/settings.py` and make the following changes
+> Open `core/settings.py` and make the following changes
+
 ```py
 # core/settings.py
 import os, random, string
@@ -432,18 +464,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 The changes made above combine the configuration for Docker and deploying on render. The `SECRET_KEY` is either gotten as an environmental variable or it is generated using the random module. `DEBUG` is set to `False` when the project is executed on the render environment. `ALLOWED_HOSTS` is not applied while debug mode is on or when the tests are run. Once `DEBUG` is set to `False`, you will have to add your domain/host to this setting to allow it to serve your Django site. `whitenoise` was added as middleware to allow Django to recognize and utilize it. The database is decided based on environmental variables. If they are absent, it uses `SQLite3`. `STATIC_ROOT` is the directory that Django copies static files into.
 **Note** Different databases require a connector to be installed via `pip` to allow Python to interact with them.
 
-* Run the command below to install `gunicorn` which is the server the application will run on
+> Run the command below to install `gunicorn` which is the server the application will run on
+
 ```bash
-(venv) django-tutorial$ pip install gunicorn
+(venv) $ pip install gunicorn
 ```
 * The command below creates a file that contains your project dependencies
 ```bash
-(venv) django-tutorial$ pip freeze > requirements.txt
+(venv) $ pip freeze > requirements.txt
 ```
 
 <br />
 
-### Deploying Django on Render
+### ✅ Deploying Django on Render
 
 * In the root directory of your application, create a file name `build.sh` and add the following line
 ```bash
@@ -462,17 +495,17 @@ fi
 ```
 * Run the command below on your terminal to ensure the script is executable
 ```bash
-(venv) django-tutorial$ chmod a+x build.sh
+(venv) $ chmod a+x build.sh
 ```
 
 * Create a new repository on GitHub, initialize the project directory and add the GitHub repository as the remote URL
 
 ```bash
-(venv) django-tutorial$ git init -b main
-(venv) django-tutorial$ git remote add origin <link-to-github-repo>
-(venv) django-tutorial$ git add .
-(venv) django-tutorial$ git commit -m "<COMMIT-MESSAGE>"
-(venv) django-tutorial$ git push origin main
+(venv) $ git init -b main
+(venv) $ git remote add origin <link-to-github-repo>
+(venv) $ git add .
+(venv) $ git commit -m "<COMMIT-MESSAGE>"
+(venv) $ git push origin main
 ```
 
 * Create an account with [Render](https://render.com/) and create a new **Web Service**
@@ -496,26 +529,28 @@ fi
 
 <br />
 
-### Running Django project on Docker
+### ✅ Running Django project on Docker
 
 The following steps will help you create a docker image and start up a docker container for your Django project
-* Create a file `.dockerignore` in the root directory with the following content
+
+> Create a file `.dockerignore` in the root directory with the following content
+
 ```
 venv/
 .gitignore
-__pycache__/
 db.sqlite3
 ```
+
 This ensures that docker does not include these files and folders when copying our application code.
 
-* Create a file named `Dockerfile` in the root folder of your project and add the following commands inside
+> Create a file named `Dockerfile` in the root folder of your project and add the following commands inside
+
 ```bash
 FROM python:3.10-alpine
 
 COPY . /app/
 
-WORKDIR /app
-
+WORKDIR /app 
 
 ENV DJANGO_SUPERUSER_USERNAME=<superuser-username>
 ENV DJANGO_SUPERUSER_PASSWORD=<superuser-password>
@@ -531,18 +566,23 @@ EXPOSE 8000
 
 CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000"]
 ```
-This uses a python base image and copies the application code into the `app` folder in our docker container. The `ENV` command creates environmental variables, these variables can be overwritten when building the docker container.
 
-* Run the command below on your terminal
+This uses a python base image and copies the application code into the `app` folder in our docker container.
+ The `ENV` command creates environmental variables, these variables can be overwritten when building the docker container.
+
+> Run the command below on your terminal
+
 ```bash
-(venv) django-tutorial$ docker build -t django-app:1.0
+(venv) $ docker build -t django-app:1.0
 ```
 This creates the docker image for our application. Using the command `docker images` will show all images that are present in the device.
 
-* The command below will start up the application inside docker and allow us to access the application from port 8000 by binding port 8000 of the local machine.
+> The command below will start up the application inside docker and allow us to access the application from port 8000 by binding port 8000 of the local machine.
+
 ```bash
-(venv) django-tutorial$ docker run -d -p 8000:8000 django-app:1.0
+(venv) $ docker run -d -p 8000:8000 django-app:1.0
 ```
+
 With your web browser, open `127.0.0.1:8000` or `localhost:8000` to see your web application.
 
 <br />
