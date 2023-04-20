@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.25] 2023-04-20
+### Changes
+
+- [Integrate Django with MongoDB](https://docs.appseed.us/technologies/django/integrate-mongodb/)
+  - Free Sample Included
+
 ## [1.0.24] 2023-04-18
 ### Changes
 
