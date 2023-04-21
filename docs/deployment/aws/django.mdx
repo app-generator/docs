@@ -6,12 +6,13 @@ description: How to deploy Django to AWS
 
 <SubHeading color="#25c2a0">How to deploy Django to AWS</SubHeading>
 
-@Todo - General information AWS Platform
+Amazon Web Services (AWS) is a cloud computing platform that offers a wide range of services such as compute, storage, database, analytics, machine learning, and more, all delivered on a highly scalable and reliable infrastructure. In this tutorial, we will focus on EC2. Amazon Elastic Compute Cloud (EC2) is a web service that provides scalable compute capacity in the cloud, allowing users to quickly deploy virtual machines and run applications on a pay-as-you-go basis.
 
 > Topics covered
 
 - `AWS` Account Creation
 - `AWS` Account Settings
+- `AWS` Creating a VM
 - The project to be deployed
 - `AWS` Database set up
 - `AWS` Environment set up
@@ -20,68 +21,497 @@ description: How to deploy Django to AWS
 - `AWS` CI/CD from Github
 - `AWS` LIVE Service monitoring
 
-\
-
 ## `AWS` Account Creation
 
-@Todo: Step by step presentation
+1. Open the Amazon Web Services home page at https://aws.amazon.com/.
+2. Click on the "Create an AWS Account" button on the top right corner of the AWS website.
+3. Fill in the sign up form, you will need an email address and a name for your account.
+4. Choose "Verify email address" then an email with verification on will be sent to the specified email address.
+5. Enter the verification code then click "Verify".
+6. Once the email has been verified, you will be asked to create a password that meet the following conditions:
+   - It must have a minimum of 8 characters and a maximum of 128 characters.
+   - It must include a minimum of three of the following mix of character types: uppercase, lowercase, numbers, and ! @ # $ % ^ & * () <> [] {} | _+-= symbols.
+   - It must not be identical to your AWS account name or email address.
 
-\
+7. Choose your plan either Business or Personal, they have the same features and functions then click "Continue".
+8. Fill in the contact information, accept the AWS Customer Agreement then click "Continue".
+9. At this point, your account has been created and you will receive an email confirming your registration.
+10. You will be asked to provide billing information, such as a credit card number, AWS will not charge you for usage below AWS Free Tier limits. Make sure your payment method has at least $1 for the verification. It will be refunded within a few days. Click "Verify and Continue" after you have finished providing your billing information.
+11. Choose your preferred method to received the verification code, enter your phone number and the captcha then submit.
+12. You will receive an automated call or text message from AWS, enter the code then click "Verify Code".
+13. Select a support plan that meet your needs then click on the "Complete sing up" button.
+14. AWS will now activate your account, which may take a few minutes. You will receive an email once it has completed.
+
+Once your account has been activated, you can log in to the AWS Management Console and start using AWS services. You'll have free access to all AWS services within the limits of the Free Tier for the next 12 months.
 
 ## `AWS` Account Settings
 
-@Todo: The most important things to know by a beginner
+AWS provides multiple regions and availability zones to ensure high availability and redundancy for your resources. Select the region nearest from you location for the best performance. You can choose it on the top right of the AWS Management Console.
 
-\
+## `AWS` Creating a VM
+
+Virtual machines are like having multiple computers in one physical machine, which can be useful for experimenting with different software and operating systems without risking damage to the primary machine. With virtual machines, we can run different operating systems, install and test software, host web applications, and create isolated environments for development, testing, and production purposes.
+
+To create a virtual machine in AWS, follow these steps:
+
+1. Sign in to your AWS Management Console.
+2. Click "Services" on the top left, chose "Compute" then click "EC2".
+3. Click on "Launch instance" button then choose "Launch instance".
+4. Set the name of your VM, choose the AMI or operating system for your machine, and instance type that suit your needs. For this tutorial, we will use Ubuntu 22.04 LTS on `t2.micro` instance.
+5. Select the operating system you want to use in the "Boot disk" section. For this tutorial, we will use Ubuntu 22.04 LTS.
+6. Create new key pair, we will use this key to connect to our instance. Fill in the key pair name and click "Create key pair".
+7. Allow the HTTP and HTTPS traffic in the Network settings.
+8. Leave the rest of the options as they are and click the "Launch instance" button to start creating your virtual machine.
+9. Wait for initialization to complete, then click "Connect to instance".
+10. Below the "EC2 Instance Connect" section, click on "Connect" button. You also can use other options.
+
+The Ubuntu command will be used in the next steps since this instance is running on Ubuntu. If you are using a different operating system, adjust the command according to your OS.
 
 ## The project to be deployed
 
 Source project: https://github.com/app-generator/django-soft-ui-dashboard
 
-\
+If `git` isn't installed, run following command to install it.
+
+```bash
+sudo apt-get install git
+```
+
+Then clone the project by running this command.
+
+```bash
+git clone https://github.com/app-generator/django-soft-ui-dashboard
+```
 
 ## `AWS` Database set up
 
-@Todo:
+You only need to choose one of these databases, either PostgreSQL or MySQL.
 
-- How to set up a PostgreSQL database + user credentials
-- How to set up a MySql database + user credentials
+### PostgreSQL
 
-\
+1. Install PostgreSQL in your instance
+
+   ```bash
+   sudo apt-get install postgresql
+   ```
+
+2. Start the service
+
+   Once the installation is complete, PostgreSQL will be automatically running. Otherwise, use the following command to start the service.
+
+   ```bash
+   sudo systemctl start postgresql
+   ```
+
+3. Login to PostgreSQL
+
+   ```bash
+   sudo -u postgres psql
+   ```
+
+4. Create database
+
+   ```postgresql
+   CREATE DATABASE appseed_db;
+   ```
+
+   Replace `appseed_db` with the name that you want.
+
+5. Create a user and grant permission to the user.
+
+   For this demo, we'll grant all permissions to all tables for the created user.
+
+   ```postgresql
+   CREATE USER appseed_db_usr WITH PASSWORD 'pass';
+   GRANT ALL PRIVILEGES ON DATABASE appseed_db TO appseed_db_usr;
+   ```
+
+   Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+6. Exit PostgreSQL
+
+   ```postgresql
+   \q
+   ```
+
+### MySQL
+
+1. Install MySQL in your instance
+
+   ```bash
+   sudo apt-get install mysql-server libmysqlclient-dev
+   ```
+
+2. Start the service
+
+   Once the installation is complete, MySQL will be automatically running. Otherwise, use the following command to start the service.
+
+   ```bash
+   sudo systemctl start mysql
+   ```
+
+3. Login to MySQL
+
+   ```bash
+   sudo mysql
+   ```
+
+4. Create database
+
+   ```mysql
+   CREATE DATABASE appseed_db;
+   ```
+
+   Replace `appseed_db` with the name that you want.
+
+5. Create user and grant permission to the user.
+
+   For this demo, we'll grant all permissions to all tables for the created user.
+
+   ```mysql
+   CREATE USER 'appseed_db_usr'@'localhost' IDENTIFIED BY 'pass';
+   GRANT ALL PRIVILEGES ON appseed_db.* TO 'appseed_db_usr'@'localhost';
+   FLUSH PRIVILEGES;
+   ```
+
+   Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+6. Exit MySQL
+
+   ```mysql
+   exit
+   ```
 
 ## `AWS` Environment set up
 
-@Todo:
+We need to set up the instance for Python environment. To find the right version to use, you need to check the Django version. If the version is not set in `requirements.txt`, it means the latest version. In Django documentation, we can found the compatible Python version.
 
-- How to specify the Python version to be used
-- How to set the environment variables used by the app
+> Django 4.2 supports Python 3.8, 3.9, 3.10, and 3.11.
 
-\
+### Setting up Python
+
+First, we need to install Python, pip, and virtualenv if they aren't already installed. Use the following commands to install them.
+
+```bash
+sudo apt-get update
+sudo apt-get install python3 python3-pip python3-virtualenv
+```
+
+Verify the installation with the following command.
+
+```bash
+python3 --version
+pip --version
+```
+
+### Setting up virtual environment and dependencies
+
+Enter the project directory, create a virtual environment to isolate the project dependencies, and activate it using the following commands.
+
+```bash
+cd django-soft-ui-dashboard
+virtualenv env
+source env/bin/activate
+```
+
+Now you can install packages or dependencies without affecting other projects.
+
+For installing the dependencies, you need to follow these steps:
+
+1. Open `requirements.txt` file using a text editor, such as nano or vim.
+
+2. Uncomment the package following the database you used by deleting the `#` in front of it.
+
+   - `psycopg2-binary`: for PostgreSQL
+   - `mysqlclient`: for MySQL
+
+3. Save and exit, then install the packages.
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Setting up environment variables
+
+Before moving on to the next steps, we need to set up environment variables so that the app can connect to the database and complete the setup.
+
+1. Copy the `env.sample` file to `.env`.
+
+   ```bash
+   cp env.sample .env
+   ```
+
+2. Open `.env` file using a text editor, such as nano or vim.
+
+3. Remove comment from database variables and fill it by following your database configuration.
+
+   - For PostgreSQL:
+
+     ```
+     DB_ENGINE=postgresql
+     DB_PORT=5432
+     ```
+
+   - For MySQL:
+
+     ```
+     DB_ENGINE=mysql
+     DB_PORT=3306
+     ```
+
+4. Fill out the other variables as needed, then save the file.
+
+### Setting up database
+
+Run the following commands to set up your database.
+
+```bash
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py createsuperuser
+```
+
+### Running the app
+
+You're all set up! You can now run the app using the following command.
+
+```bash
+python3 manage.py runserver
+```
+
+Note that your project is currently only accessible locally.
 
 ## `AWS` Domain settings
 
-@Todo: How to park a domain or a subdomain to the service
+This demo use a domain that already been connected to Cloudflare. If you don't have a domain, you can also use Public IPv4 DNS of your instance as domain for the next steps.
 
-\
+### Adding DNS record in Cloudflare
+
+First, we need to add a DNS record in Cloudflare to connect the domain to our AWS instance. Follow these steps:
+
+1. Add an `A` record.
+2. In the `Name` field, enter `@` for the domain or anything else if you want to use a subdomain.
+3. In the `IPv4 address` field, enter the Public IPv4 address of the instance. You can find this in AWS > Services > Compute > EC2 > Instances (running).
+4. Turn the `Proxy status` on.
+5. Click 'Save'.
+
+### Setting up reverse proxy using NGINX
+
+Next, we need to set up a reverse proxy to point the domain to our app.
+
+1. Install NGINX in your instance.
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install nginx
+   ```
+
+2. Start the NGINX service using the following command.
+
+   ```bash
+   sudo systemctl start nginx
+   ```
+
+3. Set up a server block by creating a new configuration file
+
+   ```bash
+   sudo nano /etc/nginx/sites-available/your_domain
+   ```
+
+   Replace `your_domain` with your domain name.
+
+   Paste this following config into the file. Don't forget to replace `your_domain` with your domain name.
+
+   ```
+   server {
+   	listen 80;
+   	listen [::]:80;
+   	
+   	server_name your_domain;
+   	
+   	location / {
+   		proxy_pass http://localhost:8000;
+   		proxy_set_header Host $host;
+   		proxy_set_header X-Real-IP $remote_addr;
+   		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   	}
+   }
+   ```
+
+4. Enable the new config by creating a symbolic link to the `site-enabled` directory.
+
+   ```bash
+   sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled
+   ```
+
+5. Remove the default config by unlinking it.
+
+   ```bash
+   sudo unlink /etc/nginx/sites-enabled/default
+   ```
+
+6. Check your configuration by running this command.
+
+   ```bash
+   sudo nginx -t
+   ```
+
+7. If there are no problems or errors, restart NGINX to apply the new config.
+
+   ```bash
+   sudo systemctl restart nginx
+   ```
+
+### Allowing access to your domain
+
+Finally, we need to allow access to our domain in our Django settings. Follow these steps:
+
+1. Open the `core/settings.py` file in your project. 
+
+2. Search `ALLOWED_HOSTS` and add your domain and Public IPv4 address into it. For example:
+
+   ```py
+   ALLOWED_HOSTS = ['your_domain', 'Public IPv4 address']
+   ```
+
+3. Save the file.
+
 
 ## `AWS` SSL certificates
 
-@Todo: How to enhance the service with valid certificates (not self signed)
+This demo will use SSL certificate from Cloudflare. You can also use [certbot](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal&tab=standard) as an alternative.
 
-\
+### Creating an SSL certificate in Cloudflare
+
+1. Navigate to SSL/TLS > Origin Server in Cloudflare. 
+2. Click on "Create Certificate".
+3. Keep the default config then click on "Create".
+4. You will have the Origin Certificate and Private Key. We will use this in the server.
+
+### Editing the NGINX config
+
+1. Create a new file in `/etc/ssl/certs`, paste the **Origin Certificate** into it, and save.
+
+   ```bash
+   sudo nano /etc/ssl/certs/cloudflare.pem
+   ```
+
+2. Create a new file in `/etc/ssl/private`, paste the **Private Key** into it, and save.
+
+   ```bash
+   sudo nano /etc/ssl/private/cloudflare.key
+   ```
+
+3. Edit the NGINX config.
+
+   ```bash
+   sudo nano /etc/nginx/sites-available/your_domain
+   ```
+
+   Add this config below the existing config. Replace `your_domain` with your domain name.
+
+   ```
+   server {
+       listen 443 ssl http2;
+       listen [::]:443 ssl http2;
+       ssl_certificate         /etc/ssl/certs/cloudflare.pem;
+       ssl_certificate_key     /etc/ssl/private/cloudflare.pem;
+   
+       server_name your_domain;
+   
+       location / {
+   		proxy_pass http://localhost:8000;
+   		proxy_set_header Host $host;
+   		proxy_set_header X-Real-IP $remote_addr;
+   		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   	}
+   }
+   ```
+
+4. Check your configuration by running this command.
+
+   ```bash
+   sudo nginx -t
+   ```
+
+5. If there are no problems, restart NGINX to apply this config.
+
+   ```bash
+   sudo systemctl restart nginx
+   ```
+
+### Changing the SSL/TLS encryption mode in Cloudflare
+
+Finally, change the SSL/TLS encryption mode to **Full (strict)** in the Overview tab of the SSL/TLS section in the Cloudflare dashboard. This tells Cloudflare to always encrypt the communication between Cloudflare and the NGINX server at your source. 
 
 ## `AWS` CI/CD from Github
 
-@Todo: This section explains how to link an automatic deploy from Github on new commits
+Continuous Integration and Continuous Deployment (CI/CD) is a process that automates the building, testing, and deployment of software. In this tutorial, we will set up CI/CD from Github to our AWS instance.
 
-\
+### Setting up SSH Keys and Secrets
+
+Before creating Github Action, we need to set up the Github secrets. The key pair generated in the instance creation process will be used.
+
+1. Open your repository on Github. Go to Settings > Secrets and variables > Actions.
+2. Click on "New repository secret" to add a secret. You need to add these following secrets:
+   - HOST: Public IPv4 address of instance
+   - USERNAME: instance username
+   - KEY: private key, from `-----BEGIN` until end of the key. Find your key pair with the `.pem` extension.
+   - PORT: 22
+
+### Setting up CI/CD with Github Action
+
+After setting up the SSH keys and secrets, we can move the next steps:
+
+1. Create a new folder `.github/workflows` in the project.
+2. Create a new file `cd.yml` in the `.github/workflows`, paste this following code.
+
+```yaml
+name: Django CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest # according to your os
+    steps:
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/django-soft-ui-dashboard
+            git pull origin main
+            env/bin/pip install -r requirements.txt
+            env/bin/python manage.py migrate
+```
+
+3. Save the file then commit and push it to the repository.
+
+Now, every time you push code to the `main` branch on Github, it will automatically deploy to your AWS instance.
 
 ## `AWS` LIVE Service monitoring
 
-@Todo: How to check out the service health and uptime
+We'll use UptimeRobot to monitor the app. UptimeRobot is a popular online service that monitors the uptime and performance of websites, servers, and other online services.
 
-\
+Go to [UptimeRobot](https://uptimerobot.com/) create an account or sign in if you already have account. Create monitor by clicking "Add New Monitor" button then follow this config:
+
+- Monitor Type: HTTP(s)
+- Friendly Name: django-AWS (or anything else you want)
+- URL (or IP): your_domain
+
+Keep the rest of the config as default and click "Create Monitor"
+
+UptimeRobot will now start monitoring your app. You can view the monitor status and performance data on the UptimeRobot dashboard
 
 ## Links & Resources
 
-@Todo: mention at least two valuable resources (articles or docs)
+- 👉 More [Django Starters](https://appseed.us/apps/django/) - provided by `AppSeed` (free & paid)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- [Django](https://docs.djangoproject.com/en/4.2/releases/4.2) official documentation
