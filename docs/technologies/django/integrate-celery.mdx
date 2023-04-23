@@ -7,10 +7,290 @@ import SubHeading from "@site/src/components/SubHeading";
 
 <SubHeading color="#25c2a0">Learn how to integrate Django with Celery</SubHeading>
 
-This page explains `how to integrate` **Django with Celery**, two powerful and technologies used in many applications and production-ready projects. 
+This page explains `how to integrate` **Django with Celery**, two powerful technologies used in many applications and production-ready projects. 
 The `source code` is saved on GitHub for later reference and support. 
 
 - 👉https://github.com/app-generator/sample-django-tasks-manager - `sample project` 
 - 👉 Free [Support](https://appseed.us/support/) via Email & Discord
 
 <br />
+
+## Introduction
+Django is a leading web framework and it has alot of features built into it. Although Django is a fast and scalable web framework, cetain tasks can increase the strain on the web servers and also reduce the responce time of our Django application. Celery is a package that aims to solve this problem.
+
+### What is Celery?
+Celery is a task queue, it is a powerful tool for managing asynchronous tasks in Django. It can help developers to build more scalable and efficient applications by running time-consuming tasks on separate processes.
+
+Celery works by using a message queue, such as RabbitMQ or Redis(also known as brokers), to distribute tasks across worker processes. When a task is submitted, it is added to the queue, and a worker process executes it. This allows tasks to be executed asynchronously, without blocking the main Django process or affecting the responsiveness of the application.
+
+Tasks such as sending emails, processing data, or generating reports, can be time consuming and thus reduce the response time of the Django application. These tasks can be sent to worker processes to be done asynchronously and also speed up our Django application.
+
+### Why use Celery?
+- Celery increases the responsiveness of application by handling processes that will normally block the Django process.
+- It allows developers to schedule tasks to run at a specific time or interval.
+- It provides mechanisms for retrying failed tasks and handling errors.
+- It can also store the results of tasks in a backend such as Redis, so they can be retrieved later.
+
+Using Django and Celery will improve the user experience of your application and also reduce the on the Django servers. Django and Celery can integrate seamlessly because Django is supported out of the box.
+
+## Setting up Development Environment
+To use Celery, you need a broker such as RabbitMQ or Redis. There are several other brokers, See [Celery Broker Overview](https://docs.celeryq.dev/en/stable/getting-started/backends-and-brokers/index.html#broker-overview) for a full list. For this tutorial, we will be using Redis.
+
+### Redis Installation
+Redis is an in-memory data structure store, used as a distributed, in-memory key–value database, cache and message broker, with optional durability. Redis supports different kinds of abstract data structures, such as strings, lists, maps, sets, sorted sets, HyperLogLogs, bitmaps, streams, and spatial indices. It can be used as a database, cache, streaming engine, and **message broker**.
+
+Redis and Celery are not supported on Windows, Although you can use Windows Subsytem for Linux (WSL) and follow the steps for linux. Follow this [link](https://learn.microsoft.com/en-us/windows/wsl/install) to setup WSL for your machine and follow the steps for Linux to install Redis on your machine.
+
+For `Linux`:
+
+From your terminal execute the following commands
+```bash
+$ sudo apt update
+$ sudo apt install redis
+```
+Once redis is installed, you can check if it is running using the command below:
+```bash
+$ sudo service redis status
+```
+If redis is not running, run the command below
+```bash
+$ sudo service redis start
+```
+
+Redis by default runs on port `6379`, so this is the port we will use to access the Redis service.
+
+Using `Docker`:
+The command below will start a new Docker container with Redis installed, and link port `6379` to port Redis uses in the Docker container.
+```bash
+$ docker run -d -p 6379:6379 redis
+```
+
+### Creating a Django project
+- First we will be creating the project directory using the command below
+```bash
+$ mkdir sample_django_task_manager
+$ cd sample_django_task_manager
+sample_django_task_manager$
+```
+- Next, we will be creating a Virtual environment to isolate our development packages from other packages.
+
+```bash
+sample_django_task_manager$ virtualenv venv
+sample_django_task_manager$ source venv/bin/activate
+(venv)sample_django_task_manager$
+```
+
+- Run the command below to install the packeges that will be needed for the project
+```bash
+(venv)sample_django_task_manager$ pip install django celery redis django-celery-results
+```
+`celery` will be used to start worker processes, `redis` will be serving as the connector to our Redis service that is running, `django-celery-results` will be used to view the results of tasks carried out by celery workers.
+
+- Next, we will create our Django project
+```bash
+(venv) sample_django_task_manager$ django-admin start project core .
+```
+
+### Django - Celery Integration
+We will now be making changes to our project to allow it work with celery.
+
+- Create a file inside the `core` directory called `celery.py` and add the following code
+```py
+# core/celery.py
+import os
+
+from celery import Celery
+
+# Set the default Django settings module for the 'celery' program.
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+
+app = Celery('core')
+
+# Using a string here means the worker doesn't have to serialize
+# the configuration object to child processes.
+# - namespace='CELERY' means all celery-related configuration keys
+#   should have a `CELERY_` prefix.
+app.config_from_object('django.conf:settings', namespace='CELERY')
+
+# Load task modules from all registered Django apps.
+app.autodiscover_tasks()
+
+
+@app.task(bind=True)
+def debug_task(self):
+    print(f'Request: {self.request!r}')
+```
+`@app.task(bind=True)` Attaches the `debug_task` function to the celery app object created earlier. We will be looking at a different way to create tasks without binding them to a particular app as we proceed in this tutorial.
+
+- Then you need to import this app in your `/core/__init__.py` module. This ensures that the app is loaded when Django starts so that the `@shared_task` decorator (mentioned later) will use it:
+```py
+# core/__init__.py
+from .celery import app as celery_app
+
+__all__ = ('celery_app',)
+```
+
+- Next step is add the installed packages to the list of installed applications for our Django project. Make the following changes to `core/settings.py`.
+```py
+# core/settings.py
+...
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django_celery_results',         # Django Celery Results  # <-- NEW    
+]
+...
+
+CELERY_BROKER_URL         = os.environ.get("CELERY_BROKER", "redis://localhost:6379")
+# CELERY_RESULT_BACKEND     = os.environ.get("CELERY_BROKER", "redis://localhost:6379")
+
+CELERY_TASK_TRACK_STARTED = True
+CELERY_CACHE_BACKEND      = "django-cache"
+CELERY_RESULT_BACKEND     = "django-db"
+CELERY_ACCEPT_CONTENT     = ["json"]
+CELERY_SERIALIZER         = "json"
+```
+
+`CELERY_BROKER_URL` refers to the address of the message broker, `redis` prefixing the address lets the connector installed earlier to connect and make use of the `Redis` instance running on that address.
+
+`CELERY_RESULT_BACKEND ` refers to storage location of the result of tasks executed by celery. `django-db` is database used by our Django project, this value can be changed as seen above by the line commented out.
+
+`CELERY_ACCEPT_CONTENT` is a  white-list of content-types/serializers to allow. By default only json is enabled but any content type can be added.
+
+`CELERY_SERIALIZER` is a string identifying the default serialization method to use, this can be changed. Checkout the full list of [Serializers](https://docs.celeryq.dev/en/stable/userguide/calling.html#calling-serializers).
+
+Celery can be further customized using a wide range of options, [Celery Configuration](https://docs.celeryq.dev/en/stable/userguide/configuration.html) contains a list of the configuration options.
+
+- Now, we will be creating a Django application that will be used to create tasks and see how Celery can help us process tasks and allow Django run without having to deal will blocking operations.
+
+```
+(venv) sample_django_task_manager$ python manage.py startapp django_celery
+(venv) sample_django_task_manager$ python manage.py migrate
+(venv) sample_django_task_manager$ python manage.py createsuperuser
+```
+
+- After creating the application and creating superuser, now we hahve access to the admin panel. Execute the command below and open `http://127.0.0.1:8000` on your browser.
+```
+(venv) sample_django_task_manager$ python manage.py runserver
+```
+- We will be adding `django_celery` to the list of installed applications for our Django project. Make the following changes to `core/settings.py`
+```py
+# core/settings.py
+...
+
+INSTALLED_APPS = [
+    ...
+    'django_celery',  # <-- NEW
+]
+...
+```
+
+- Create a file `tasks.py` inside the `django_celery` folder. This folder will contain the tasks we want to be handled by the celery workers. Add the function below into the `django_celery/tasks.py`
+```py
+# django_celery/tasks.py
+from time import sleep
+
+def slowdown_django_process():
+    sleep(10) # simulates blocking processes
+
+    return {'Status': 'Process slowdown complete'}
+```
+
+- Now, we will be creating a view that makes use of the function just created. Add the following content to `django_celery/views.py`
+```py
+# django_celery/views.py
+from django.shortcuts import HttpResponse
+
+from .tasks import slowdown_django_process
+
+def homepage(request):
+    slowdown_django_process() # the blocking process
+    return HttpResponse('Hello user!')
+```
+
+- Create a file named urls.py and add the following, to create a route for the `homepage` function
+```py
+# django_celery/urls.py
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path("", views.homepage),
+]
+```
+
+- Changes will be made to `core/urls.py` to create a route for `django_celery`
+```py
+# core/urls.py
+...
+from django.urls import path, include     # <-- UPDATED: Added 'include' HELPER
+
+urlpatterns = [
+    ...
+    path("", include("django_celery.urls")),
+]
+```
+- If your django server has been stopped, restart it and visit `http://127.0.0.1:8000` with your browser. Notice the response time of the webpage to render the words `Hello User!`
+
+Now we will be making changes to our Django application, to use celery to handle blocking tasks and free up the Django process.
+
+- Inside the `django_celery/tasks.py` file, add the following changes
+```py
+# django_celery/tasks.py
+...
+from celery import shared_task
+
+@shared_task
+def slowdown_django_process():
+    time.sleep(10)
+
+    return {'status': 'Process slowdown complete'}
+```
+`@shared_task` decorator lets you create tasks without having any concrete app instance, this helps when creating reusable apps, because the tasks does not depend on the project itself. Celery automatically detects tasks with the `shared_task` decorator.
+
+- Update `django_celery/views.py` with the following code
+```py
+# django_celery/views.py
+...
+def homepage(request):
+    slowdown_django_process.delay()   # <-- UPDATED
+    return HttpResponse('Hello User!')
+```
+The `delay` method makes the `slowdown_django_process` function to be executed asynchronously using a worker process created by celery.
+Now we have our application setup to use celery workers.
+
+- Open a new terminal in the project directory and execute the command below
+```bash
+(venv) sample_django_task_manager$ celery -A core.celery.app worker --loglevel=info
+...
+[tasks]
+  . core.celery.debug_task
+  . django_celery.tasks.slowdown_django_process
+...
+```
+The `-A` option for the `celery` command is the application instance to be used when creating the workers, `core.celery.app` is the app `Celery` instance that was created in `core/celery.py`. `--loglevel=info` helps us get verbose logs on the terminal.
+
+Under `[tasks]` we see all the tasks that have been created being recognized by celery and registered.
+
+- From your browser open `http://127.0.0.1:8000` and see how fast you get the response to your request. If you check the terminal running celery, you will see something like
+```bash
+...
+[2023-04-23 18:45:42,120: INFO/MainProcess] Task django_celery.tasks.slowdown_django_process[952c4afe-c7c0-46a7-9373-b0002f8aefa1] received
+[2023-04-23 18:45:52,407: INFO/ForkPoolWorker-4] Task django_celery.tasks.slowdown_django_process[952c4afe-c7c0-46a7-9373-b0002f8aefa1] succeeded in 10.285309484999743s: {'status': 'Process slowdown complete'}
+```
+This shows the task being executed by celery, the time taken to complete the task and the result of the task, which is the return value of the function `slowdown_django_process`.
+
+- Open `http://127.0.0.1:8000/admin` from your browser and click on `Task Results` to see all the tasks executed by celery and other information surrounding the task. Clicking on the `id` of any task will open a new page showing more information concerning that task. 
+
+![Site administration | Django site admin - Google Chrome_001 resized](https://user-images.githubusercontent.com/57325382/233859467-8df8ed49-7878-4b39-8cff-b73ba50e7144.png)
+
+![Workspace 1_015 resized](https://user-images.githubusercontent.com/57325382/233859469-b293e4eb-66a1-4d4a-b5f2-cb61129b8f8c.png)
+
+![Workspace 1_016 resized](https://user-images.githubusercontent.com/57325382/233859472-07d63c9a-0bd2-4e33-9b84-711623930be8.png)
+
+
