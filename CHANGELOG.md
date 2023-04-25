@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.26] 2023-04-25
+### Changes
+
+- [Integrate Django with Celery](https://docs.appseed.us/technologies/django/integrate-celery/)
+  - Free Sample Included
+
 ## [1.0.25] 2023-04-20
 ### Changes
 
