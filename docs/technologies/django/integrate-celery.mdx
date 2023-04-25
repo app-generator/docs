@@ -10,22 +10,33 @@ import SubHeading from "@site/src/components/SubHeading";
 This page explains `how to integrate` **Django with Celery**, two powerful technologies used in many applications and production-ready projects. 
 The `source code` is saved on GitHub for later reference and support. 
 
-- 👉https://github.com/app-generator/sample-django-tasks-manager - `sample project` 
-- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- 👉 [Integrate Django & Celery](https://github.com/app-generator/django-tasks-manager) - `sample project` 
+- 🚀 Free [Support](https://appseed.us/support/) via Email & Discord
+
+In the end, the integration will be similar to this UI: 
+
+![Django & Celery Integration](https://user-images.githubusercontent.com/51070104/234322406-e737605c-51b7-4e9c-b0c6-e7b37515f54d.png)
 
 <br />
 
 ## Introduction
-Django is a leading web framework and it has a lot of features built into it. Although Django is a fast and scalable web framework, certain tasks can increase the strain on the web servers and also reduce the response time of our Django application. Celery is a package that aims to solve this problem.
 
-### What is Celery?
-Celery is a task queue, it is a powerful tool for managing asynchronous tasks in Django. It can help developers to build more scalable and efficient applications by running time-consuming tasks on separate processes.
+Django is a leading web framework and it has a lot of features built into it. 
+Although Django is a fast and scalable web framework, certain tasks can increase the strain on the web servers and also reduce the response time of our Django application. Celery is a package that aims to solve this problem.
 
-Celery works by using a message queue, such as RabbitMQ or Redis(also known as brokers), to distribute tasks across worker processes. When a task is submitted, it is added to the queue, and a worker process executes it. This allows tasks to be executed asynchronously, without blocking the main Django process or affecting the responsiveness of the application.
+### ✅ What is Celery?
 
-Tasks such as sending emails, processing data, or generating reports, can be time-consuming and thus reduce the response time of the Django application. These tasks can be sent to worker processes to be done asynchronously and also speed up our Django application.
+Celery is a task queue, it is a powerful tool for managing asynchronous tasks in Django. 
+It can help developers to build more scalable and efficient applications by running time-consuming tasks on separate processes.
 
-### Why use Celery?
+Celery works by using a message queue, such as RabbitMQ or Redis(also known as brokers), to distribute tasks across worker processes. 
+When a task is submitted, it is added to the queue, and a worker process executes it. This allows tasks to be executed asynchronously, without blocking the main Django process or affecting the responsiveness of the application.
+
+Tasks such as sending emails, processing data, or generating reports, can be time-consuming and thus reduce the response time of the Django application. 
+These tasks can be sent to worker processes to be done asynchronously and also speed up our Django application.
+
+### ✅ Why using Celery?
+
 - Celery increases the responsiveness of the application by handling processes that will normally block the Django process.
 - It allows developers to schedule tasks to run at a specific time or interval.
 - It provides mechanisms for retrying failed tasks and handling errors.
@@ -33,10 +44,15 @@ Tasks such as sending emails, processing data, or generating reports, can be tim
 
 Using Django and Celery will improve the user experience of your application and also reduce the on Django servers. Django and Celery can integrate seamlessly because Django is supported out of the box.
 
-### Django Async Vs. Celery
-Django Async, provides a built-in way to handle asynchronous tasks, without relying on third-party libraries like Celery. It uses async/await syntax and the asyncio library to run tasks in the background, inside the same Django process as the web server. This means that there is no need to set up a separate task queue, broker, or worker process, as is the case with Celery.
+### ✅ Django Async Vs. Celery
 
-Celery, on the other hand, is a mature, battle-tested, and widely-used distributed task queue platform that provides a feature-rich and robust solution for running asynchronous tasks in Django and other Python applications. It requires a separate server and worker processes to execute tasks, usually on a different machine or cluster of machines, which increases its scalability and performance.
+Django Async, provides a built-in way to handle asynchronous tasks, without relying on third-party libraries like Celery. 
+It uses async/await syntax and the asyncio library to run tasks in the background, inside the same Django process as the web server. 
+This means that there is no need to set up a separate task queue, broker, or worker process, as is the case with Celery.
+
+Celery, on the other hand, is a mature, battle-tested, and widely-used distributed task queue platform that provides a feature-rich and robust solution for 
+running asynchronous tasks in Django and other Python applications. It requires a separate server and worker processes to execute tasks, usually on a different machine or cluster of machines, 
+which increases its scalability and performance.
 
 Some other key differences between Django Async and Celery are:
 
@@ -46,13 +62,19 @@ Some other key differences between Django Async and Celery are:
 
 In summary, Django Async provides a simple, built-in solution for handling asynchronous tasks, while Celery provides a more robust and scalable solution for large, complex web applications.
 
-## Setting up Development Environment
-To use Celery, you need a broker such as RabbitMQ or Redis. There are several other brokers, See [Celery Broker Overview](https://docs.celeryq.dev/en/stable/getting-started/backends-and-brokers/index.html#broker-overview) for a full list. For this tutorial, we will be using Redis.
+## Setting up the Environment
 
-### Redis Installation
-Redis is an in-memory data structure store, used as a distributed, in-memory key-value database, cache and message broker, with optional durability. Redis supports different kinds of abstract data structures, such as strings, lists, maps, sets, sorted sets, HyperLogLogs, bitmaps, streams, and spatial indices. It can be used as a database, cache, streaming engine, and **message broker**.
+To use Celery, you need a broker such as RabbitMQ or Redis. There are several other brokers, s
+see [Celery Broker Overview](https://docs.celeryq.dev/en/stable/getting-started/backends-and-brokers/index.html#broker-overview) for a full list. For this tutorial, we will be using Redis.
 
-Redis and Celery are not supported on Windows, Although you can use Windows Subsystem for Linux (WSL) and follow the steps for Linux. Follow this [link](https://learn.microsoft.com/en-us/windows/wsl/install) to set up WSL for your machine and follow the steps for Linux to install Redis on your machine.
+### ✅ Redis Installation
+
+Redis is an in-memory data structure store, used as a distributed, in-memory key-value database, cache and message broker, with optional durability. 
+Redis supports different kinds of abstract data structures, such as strings, lists, maps, sets, sorted sets, HyperLogLogs, bitmaps, streams, and spatial indices.
+It can be used as a database, cache, streaming engine, and **message broker**.
+
+Redis and Celery are not supported on Windows, Although you can use Windows Subsystem for Linux (WSL) and follow the steps for Linux. 
+Follow this [link](https://learn.microsoft.com/en-us/windows/wsl/install) to set up WSL for your machine and follow the steps for Linux to install Redis on your machine.
 
 For `Linux`:
 
@@ -78,7 +100,8 @@ The command below will start a new Docker container with Redis installed, and li
 $ docker run -d -p 6379:6379 redis
 ```
 
-### Creating a Django project
+### ✅ Create a Django project
+
 - First, we will be creating the project directory using the command below
 ```bash
 $ mkdir sample_django_task_manager
@@ -104,7 +127,8 @@ sample_django_task_manager$ source venv/bin/activate
 (venv) sample_django_task_manager$ django-admin start project core .
 ```
 
-### Django - Celery Integration
+### ✅ Django & Celery Integration
+
 We will now be making changes to our project to allow it to work with celery.
 
 - Create a file inside the `core` directory called `celery.py` and add the following code
@@ -278,6 +302,7 @@ The `delay` method makes the `slowdown_django_process` function to be executed a
 Now we have our application set up to use celery workers.
 
 - Open a new terminal in the project directory and execute the command below
+
 ```bash
 (venv) sample_django_task_manager$ celery -A core.celery.app worker --loglevel=info
 ...
@@ -286,16 +311,19 @@ Now we have our application set up to use celery workers.
   . django_celery.tasks.slowdown_django_process
 ...
 ```
+
 The `-A` option for the `celery` command is the application instance to be used when creating the workers, `core.celery.app` is the app `Celery` instance that was created in `core/celery.py`. `--loglevel=info` helps us get verbose logs on the terminal.
 
 Under `[tasks]` we see all the tasks that have been created being recognized by celery and registered.
 
 - From your browser open `http://127.0.0.1:8000` and see how fast you get the response to your request. If you check the terminal running celery, you will see something like
+
 ```bash
 ...
 [2023-04-23 18:45:42,120: INFO/MainProcess] Task django_celery.tasks.slowdown_django_process[952c4afe-c7c0-46a7-9373-b0002f8aefa1] received
-[2023-04-23 18:45:52,407: INFO/ForkPoolWorker-4] Task django_celery.tasks.slowdown_django_process[952c4afe-c7c0-46a7-9373-b0002f8aefa1] succeeded in 10.285309484999743s: {'status': 'Process slowdown complete'}
+[2023-04-23 18:45:52,407: INFO/ForkPoolWorker-4] Task django_celery.tasks.slowdown_django_process[952c4afe-c7c0-46a7-9373-b0002f8aefa1] succeeded in 10.285309484999743s
 ```
+
 This shows the task being executed by celery, the time taken to complete the task and the result of the task, which is the return value of the function `slowdown_django_process`.
 
 - Open `http://127.0.0.1:8000/admin` from your browser and click on `Task Results` to see all the tasks executed by celery and other information surrounding the task. Clicking on the `id` of any task will open a new page showing more information concerning that task. 
@@ -306,8 +334,12 @@ This shows the task being executed by celery, the time taken to complete the tas
 
 ![Workspace 1_016 resized](https://user-images.githubusercontent.com/57325382/233859472-07d63c9a-0bd2-4e33-9b84-711623930be8.png)
 
-## Django Tasks Manager
-Django Tasks Manager is a **Django & Celery** integration - This library is actively supported by [AppSeed](https://appseed.us/). It can be used to manage tasks, check tasks' status and also the log and result of tasks performed by celery.
+<br />
+
+## [Django Tasks Manager](https://github.com/app-generator/django-tasks-manager)
+
+Django Tasks Manager is a **Django & Celery** integration - This library is actively supported by [AppSeed](https://appseed.us/). 
+It can be used to manage tasks, check tasks' status and also the log and result of tasks performed by celery.
 
 > Features: 
 
@@ -323,7 +355,8 @@ Django Tasks Manager is a **Django & Celery** integration - This library is acti
 
 The samples are there to provide a usage guide, and you can write your tasks and execute them using `Django Tasks Manager`.
 
-### Setting up Django Tasks Manager
+### ✅ Setting up Django Tasks Manager
+
 - `Django Tasks Manager` can be installed using `pip`, install the package using the command below
 ```bash
 (venv) sample_django_task_manager$ pip install django-tasks-manager
@@ -378,9 +411,20 @@ By adding Python files into the `celery_scripts` folder, we can execute several 
 
 After adding those Python scripts, we can now start executing Python scripts using `django-tasks-manager`.
 
+<br />
+
 ## Conclusion
-In conclusion, integrating Django and Celery can enhance the functionality and efficiency of your application by allowing you to offload time-consuming or resource-intensive tasks to background workers. With Celery handling your asynchronous task queue, Django can focus on serving user requests and generating responses.
 
-To successfully integrate Django and Celery, you need to install and configure Celery to work with your Django project. This includes setting up a Celery worker, task queue, broker, and task scheduler. Once the setup is complete, you can create and register tasks in Celery's task queue, and use annotations to define and pass arguments to your tasks.
+In conclusion, integrating Django and Celery can enhance the functionality and efficiency of your application by allowing you to offload time-consuming or resource-intensive tasks to background workers. 
+With Celery handling your asynchronous task queue, Django can focus on serving user requests and generating responses.
 
-While the integration process can seem complex, it is worth the effort, especially considering the numerous benefits it offers. With Django and Celery combined, you can build faster, more responsive, and more scalable web applications to meet the needs of your users.
+To successfully integrate Django and Celery, you need to install and configure Celery to work with your Django project. 
+This includes setting up a Celery worker, task queue, broker, and task scheduler. Once the setup is complete, you can create and register tasks in Celery's task queue, and use annotations to define and pass arguments to your tasks.
+
+While the integration process can seem complex, it is worth the effort, especially considering the numerous benefits it offers. 
+With Django and Celery combined, you can build faster, more responsive, and more scalable web applications to meet the needs of your users.
+
+## Resources
+
+- 👉 More [Django Starters](https://appseed.us/admin-dashboards/django/) crafted by `AppSeed`
+- 🚀 Free [Support](https://appseed.us/support/) via Email & Discord
