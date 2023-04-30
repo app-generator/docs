@@ -2,18 +2,18 @@
 description: How to deploy Django to Azure Platform
 ---
 
-# Deploy Django on GCP
+# Deploy Django on Azure
 
 <SubHeading color="#25c2a0">How to deploy Django to Azure</SubHeading>
 
-@todo Azure Platform intro 
+Microsoft Azure is a cloud computing platform that allows you to run your applications and store your data in the cloud instead of on your local computer. It provides a range of services such as virtual machines, databases, and storage that can be easily accessed and managed through a web-based portal. With Azure, you can quickly scale up or down depending on your needs and only pay for what you use, making it a cost-effective solution for businesses of all sizes.
 
 > Topics covered
 
 - `Azure` Account Creation
-- `Azure` Account Settings
+- `Azure` Creating a VM
+- `Azure` Connect to VM
 - The project to be deployed
-  - https://github.com/app-generator/deploy-azure-django
 - `Azure` Database set up
 - `Azure` Environment set up
 - `Azure` Domain settings
@@ -21,4 +21,502 @@ description: How to deploy Django to Azure Platform
 - `Azure` CI/CD from Github
 - `Azure` LIVE Service monitoring
 
-@ToDo 
+## `Azure` Account Creation
+
+Microsoft Azure offers a 30-day free trial for new users, with $200 of free credit to use on any Azure service. You will have access to all Azure services during the trial, and can upgrade to a paid plan afterwards
+
+1. Go to the Azure website ([https://azure.microsoft.com](https://azure.microsoft.com/)).
+2. Click on the "Free account" button on the top right corner of the page then click "Start free".
+3. Sign in to your Microsoft account or create one if you don't have account.
+4. You'll be prompted to set up your free account. Fill in the required information, such as your name, email, address, country/region, and phone number
+5. Choose either "Text me" or "Call me" to receive your verification code. Enter the code and click "Verify code".
+6. Check the "I agree to the customer agreement" then click "Next".
+7. After verifying your identity, you'll be asked to provide your credit card information. Don't worry, this is just to verify your identity and you won't be charged anything unless you upgrade to a paid account.
+8. Once you've entered your credit card information, you'll be taken to the Azure dashboard. Congratulations, you've created an Azure account!
+
+## `Azure` Creating a VM
+
+1. Sign in to your Azure portal.
+2. Select "Virtual machines" under "Azure services" or search it using the search bar.
+3. In the "Instance details" section, you'll need to provide some information about your virtual machine, such as the name, region, operating system, and size. For this tutorial, we will use Ubuntu 22.04 LTS instance
+4. Under "Administrator account", select SSH public key, enter the username and the key pair name.
+5. Allow the HTTP and HTTPS traffic, under the "Inbound port rules", select "Allow selected ports" then select "HTTP (80)", "HTTPS (443)", and "SSH (22)" from the drop-down.
+6. Leave the remaining defaults then go to "Review + create" tab.
+7. If everything looks good, click on the "Create" button to create your virtual machine.
+8. Azure will start provisioning your virtual machine, which may take a few minutes.
+9. Don't forget to download the private key when the Generate new key pair window opens
+
+The Ubuntu command will be used in the next steps since this instance is running on Ubuntu. If you are using a different operating system, adjust the command according to your OS.  Once your virtual machine is ready, you can connect to it using remote desktop or SSH.
+
+## `Azure` Connect to VM
+
+In this tutorial, we will connect to our instance using SSH and generated private key.
+
+1. Open terminal on your local computer, this tutorial will use Ubuntu as operating system.
+
+2. Change permission of your private key with this following command.
+
+   ```bash
+   chmod 400 /path/to/yourkey/myKey.pem
+   ```
+
+3. If you don't have SSH client on your computer, install it by running this command.
+
+   ```bash
+   sudo apt-get install openssh-client
+   ```
+
+4. Connect to your instance through SSH.
+
+   ```bash
+   ssh -i /path/to/youkey/myKey.pem <username>@<publicIP>
+   ```
+
+## The project to be deployed
+
+Source project: https://github.com/app-generator/deploy-azure-django
+
+If `git` isn't installed, run following command to install it.
+
+```bash
+sudo apt-get install git
+```
+
+Then clone the project by running this command.
+
+```bash
+git clone https://github.com/app-generator/deploy-azure-django
+```
+
+## `Azure` Database set up
+
+You only need to choose one of these databases, either PostgreSQL or MySQL.
+
+### PostgreSQL
+
+1. Install PostgreSQL in your instance
+
+   ```bash
+   sudo apt-get install postgresql
+   ```
+
+2. Start the service
+
+   Once the installation is complete, PostgreSQL will be automatically running. Otherwise, use the following command to start the service.
+
+   ```bash
+   sudo systemctl start postgresql
+   ```
+
+3. Login to PostgreSQL
+
+   ```bash
+   sudo -u postgres psql
+   ```
+
+4. Create database
+
+   ```postgresql
+   CREATE DATABASE appseed_db;
+   ```
+
+   Replace `appseed_db` with the name that you want.
+
+5. Create a user and grant permission to the user.
+
+   For this demo, we'll grant all permissions to all tables for the created user.
+
+   ```postgresql
+   CREATE USER appseed_db_usr WITH PASSWORD 'pass';
+   GRANT ALL PRIVILEGES ON DATABASE appseed_db TO appseed_db_usr;
+   ```
+
+   Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+6. Exit PostgreSQL
+
+   ```postgresql
+   \q
+   ```
+
+### MySQL
+
+1. Install MySQL in your instance
+
+   ```bash
+   sudo apt-get install mysql-server libmysqlclient-dev
+   ```
+
+2. Start the service
+
+   Once the installation is complete, MySQL will be automatically running. Otherwise, use the following command to start the service.
+
+   ```bash
+   sudo systemctl start mysql
+   ```
+
+3. Login to MySQL
+
+   ```bash
+   sudo mysql
+   ```
+
+4. Create database
+
+   ```mysql
+   CREATE DATABASE appseed_db;
+   ```
+
+   Replace `appseed_db` with the name that you want.
+
+5. Create user and grant permission to the user.
+
+   For this demo, we'll grant all permissions to all tables for the created user.
+
+   ```mysql
+   CREATE USER 'appseed_db_usr'@'localhost' IDENTIFIED BY 'pass';
+   GRANT ALL PRIVILEGES ON appseed_db.* TO 'appseed_db_usr'@'localhost';
+   FLUSH PRIVILEGES;
+   ```
+
+   Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+6. Exit MySQL
+
+   ```mysql
+   exit
+   ```
+
+## `Azure` Environment set up
+
+We need to set up the instance for Python environment. To find the right version to use, you need to check the Django version. If the version is not set in `requirements.txt`, it means the latest version. In Django documentation, we can found the compatible Python version.
+
+> Django 4.2 supports Python 3.8, 3.9, 3.10, and 3.11.
+
+### Setting up Python
+
+First, we need to install Python, pip, and virtualenv if they aren't already installed. Use the following commands to install them.
+
+```bash
+sudo apt-get update
+sudo apt-get install python3 python3-pip python3-virtualenv
+```
+
+Verify the installation with the following command.
+
+```bash
+python3 --version
+pip --version
+```
+
+### Setting up virtual environment and dependencies
+
+Enter the project directory, create a virtual environment to isolate the project dependencies, and activate it using the following commands.
+
+```bash
+cd deploy-azure-django
+virtualenv env
+source env/bin/activate
+```
+
+Now you can install packages or dependencies without affecting other projects.
+
+For installing the dependencies, you need to follow these steps:
+
+1. Open `requirements.txt` file using a text editor, such as nano or vim.
+
+2. Uncomment the package following the database you used by deleting the `#` in front of it.
+
+   - `psycopg2-binary`: for PostgreSQL
+   - `mysqlclient`: for MySQL
+
+3. Save and exit, then install the packages.
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Setting up environment variables
+
+Before moving on to the next steps, we need to set up environment variables so that the app can connect to the database and complete the setup.
+
+1. Copy the `env.sample` file to `.env`.
+
+   ```bash
+   cp env.sample .env
+   ```
+
+2. Open `.env` file using a text editor, such as nano or vim.
+
+3. Remove comment from database variables and fill it by following your database configuration.
+
+   - For PostgreSQL:
+
+     ```
+     DB_ENGINE=postgresql
+     DB_PORT=5432
+     ```
+
+   - For MySQL:
+
+     ```
+     DB_ENGINE=mysql
+     DB_PORT=3306
+     ```
+
+4. Fill out the other variables as needed, then save the file.
+
+### Setting up database
+
+Run the following commands to set up your database.
+
+```bash
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py createsuperuser
+```
+
+### Running the app
+
+You're all set up! You can now run the app using the following command.
+
+```bash
+python3 manage.py runserver
+```
+
+Note that your project is currently only accessible locally.
+
+## `Azure` Domain settings
+
+This demo use a domain that already been connected to Cloudflare. 
+
+### Adding DNS record in Cloudflare
+
+First, we need to add a DNS record in Cloudflare to connect the domain to our Azure instance. Follow these steps:
+
+1. Add an `A` record.
+2. In the `Name` field, enter `@` for the domain or anything else if you want to use a subdomain.
+3. In the `IPv4 address` field, enter the Public IP address of the instance. You can find this in Azure > Services > Compute > EC2 > Instances (running).
+4. Turn the `Proxy status` on.
+5. Click 'Save'.
+
+### Setting up reverse proxy using NGINX
+
+Next, we need to set up a reverse proxy to point the domain to our app.
+
+1. Install NGINX in your instance.
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install nginx
+   ```
+
+2. Start the NGINX service using the following command.
+
+   ```bash
+   sudo systemctl start nginx
+   ```
+
+3. Set up a server block by creating a new configuration file
+
+   ```bash
+   sudo nano /etc/nginx/sites-available/your_domain
+   ```
+
+   Replace `your_domain` with your domain name.
+
+   Paste this following config into the file. Don't forget to replace `your_domain` with your domain name.
+
+   ```
+   server {
+   	listen 80;
+   	listen [::]:80;
+   	
+   	server_name your_domain;
+   	
+   	location / {
+   		proxy_pass http://localhost:8000;
+   		proxy_set_header Host $host;
+   		proxy_set_header X-Real-IP $remote_addr;
+   		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   	}
+   }
+   ```
+
+4. Enable the new config by creating a symbolic link to the `site-enabled` directory.
+
+   ```bash
+   sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled
+   ```
+
+5. Remove the default config by unlinking it.
+
+   ```bash
+   sudo unlink /etc/nginx/sites-enabled/default
+   ```
+
+6. Check your configuration by running this command.
+
+   ```bash
+   sudo nginx -t
+   ```
+
+7. If there are no problems or errors, restart NGINX to apply the new config.
+
+   ```bash
+   sudo systemctl restart nginx
+   ```
+
+### Allowing access to your domain
+
+Finally, we need to allow access to our domain in our Django settings. Follow these steps:
+
+1. Open the `core/settings.py` file in your project. 
+
+2. Search `ALLOWED_HOSTS` and add your domain and Public IP address into it. For example:
+
+   ```py
+   ALLOWED_HOSTS = ['your_domain', 'Public IP address']
+   ```
+
+3. Save the file.
+
+
+## `Azure` SSL certificates
+
+This demo will use SSL certificate from Cloudflare. You can also use [certbot](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal&tab=standard) as an alternative.
+
+### Creating an SSL certificate in Cloudflare
+
+1. Navigate to SSL/TLS > Origin Server in Cloudflare. 
+2. Click on "Create Certificate".
+3. Keep the default config then click on "Create".
+4. You will have the Origin Certificate and Private Key. We will use this in the server.
+
+### Editing the NGINX config
+
+1. Create a new file in `/etc/ssl/certs`, paste the **Origin Certificate** into it, and save.
+
+   ```bash
+   sudo nano /etc/ssl/certs/cloudflare.pem
+   ```
+
+2. Create a new file in `/etc/ssl/private`, paste the **Private Key** into it, and save.
+
+   ```bash
+   sudo nano /etc/ssl/private/cloudflare.key
+   ```
+
+3. Edit the NGINX config.
+
+   ```bash
+   sudo nano /etc/nginx/sites-available/your_domain
+   ```
+
+   Add this config below the existing config. Replace `your_domain` with your domain name.
+
+   ```
+   server {
+       listen 443 ssl http2;
+       listen [::]:443 ssl http2;
+       ssl_certificate         /etc/ssl/certs/cloudflare.pem;
+       ssl_certificate_key     /etc/ssl/private/cloudflare.pem;
+   
+       server_name your_domain;
+   
+       location / {
+   		proxy_pass http://localhost:8000;
+   		proxy_set_header Host $host;
+   		proxy_set_header X-Real-IP $remote_addr;
+   		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   	}
+   }
+   ```
+
+4. Check your configuration by running this command.
+
+   ```bash
+   sudo nginx -t
+   ```
+
+5. If there are no problems, restart NGINX to apply this config.
+
+   ```bash
+   sudo systemctl restart nginx
+   ```
+
+### Changing the SSL/TLS encryption mode in Cloudflare
+
+Finally, change the SSL/TLS encryption mode to **Full (strict)** in the Overview tab of the SSL/TLS section in the Cloudflare dashboard. This tells Cloudflare to always encrypt the communication between Cloudflare and the NGINX server at your source. 
+
+## `Azure` CI/CD from Github
+
+Continuous Integration and Continuous Deployment (CI/CD) is a process that automates the building, testing, and deployment of software. In this tutorial, we will set up CI/CD from Github to our Azure instance.
+
+### Setting up SSH Keys and Secrets
+
+Before creating Github Action, we need to set up the Github secrets. The key pair generated in the instance creation process will be used.
+
+1. Open your repository on Github. Go to Settings > Secrets and variables > Actions.
+2. Click on "New repository secret" to add a secret. You need to add these following secrets:
+   - HOST: Public IP address of instance
+   - USERNAME: instance username
+   - KEY: private key, from `-----BEGIN` until end of the key. Find your key pair with the `.pem` extension.
+   - PORT: 22
+
+### Setting up CI/CD with Github Action
+
+After setting up the SSH keys and secrets, we can move the next steps:
+
+1. Create a new folder `.github/workflows` in the project.
+2. Create a new file `cd.yml` in the `.github/workflows`, paste this following code.
+
+```yaml
+name: Django CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest # according to your os
+    steps:
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/deploy-azure-django
+            git pull origin main
+            env/bin/pip install -r requirements.txt
+            env/bin/python manage.py migrate
+```
+
+3. Save the file then commit and push it to the repository.
+
+Now, every time you push code to the `main` branch on Github, it will automatically deploy to your Azure instance.
+
+## `Azure` LIVE Service monitoring
+
+We'll use UptimeRobot to monitor the app. UptimeRobot is a popular online service that monitors the uptime and performance of websites, servers, and other online services.
+
+Go to [UptimeRobot](https://uptimerobot.com/) create an account or sign in if you already have account. Create monitor by clicking "Add New Monitor" button then follow this config:
+
+- Monitor Type: HTTP(s)
+- Friendly Name: django-Azure (or anything else you want)
+- URL (or IP): your_domain
+
+Keep the rest of the config as default and click "Create Monitor"
+
+UptimeRobot will now start monitoring your app. You can view the monitor status and performance data on the UptimeRobot dashboard
+
+## Links & Resources
+
+- 👉 More [Django Starters](https://appseed.us/apps/django/) - provided by `AppSeed` (free & paid)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- [Django](https://docs.djangoproject.com/en/4.2/releases/4.2) official documentation
