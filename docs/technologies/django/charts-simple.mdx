@@ -155,7 +155,10 @@ class Sales(models.Model):
         max_length=3
     )
     country = models.CharField(max_length=50)
-    purchase_date = models.DateTimeField(auto_now=True)
+    purchase_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.product
 
     class Meta:
         verbose_name = 'Sale'
@@ -192,7 +195,7 @@ With your browser visit `http://127.0.0.1:8000/admin`, You will see the sales ta
 
 ![Admin dashboard with populated data](https://user-images.githubusercontent.com/57325382/234968317-be8dfc18-da96-4570-9db1-10354888c0d4.png)
 
-## Using Chart.Js win a Django application
+## Using Chart.Js with a Django application
 
 ### Installing Chart.js
 There are several ways Chart.js can be used in a web development project. It can be done using CDN and using npm to install the chart.js package. Check chart.js [installation guide](https://www.chartjs.org/docs/latest/getting-started/installation.html) for directions to install chart.js
@@ -243,7 +246,7 @@ from .models import Sales
 def index(request):
     sales_query = Sales.objects.values('product', 'price', 'purchase_date')
 
-    total_sales_per_day = {}
+    total_sales_per_product = {}
     for result in sales_query:
         product_name = result['product']
 

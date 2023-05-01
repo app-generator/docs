@@ -12,13 +12,19 @@ import SubHeading from "@site/src/components/SubHeading";
 - Sample REPO: https://github.com/app-generator/django-plotly-charts
 
 ## Introduction
-Django is a powerful web framework that allows developers to build complex web applications quickly and easily. One popular use case for Django is building data-driven web applications that display information in charts and graphs. In this tutorial, we will explore how to use Django and Chart.js together to build a web application that displays data in an interactive chart.
+Django is a robust web framework that facilitates the rapid and easy development of intricate web applications. One common application of Django is in developing data-centric web applications that exhibit information using charts and graphs. In this guide, we will delve into the integration of Django with Plotly to create an interactive chart that represents data in a web application.
 
-Before we get started, let's briefly introduce Chart.js. Chart.js is a JavaScript library that allows developers to create beautiful and responsive charts and graphs using HTML5 canvas. It provides a wide range of chart types, including line, bar, pie, radar, and more. Chart.js is easy to use and highly customizable, making it a popular choice for data visualization on the web.
+Plotly is a data visualization library that allows you to create interactive, publication-quality graphs and charts in Python, R, and other programming languages. With Plotly, you can create a wide variety of visualizations including line charts, scatter plots, bar charts, box plots, and more.
+
+One of the key features of Plotly is its ability to create interactive visualizations. This means that you can add hover-over tooltips, zoom in and out, pan across the graph, and even click on data points to display more detailed information. These interactive features make it easier to explore and understand your data.
+
+Plotly also offers a wide range of customization options, allowing you to change colors, fonts, and layouts to create graphs that match your specific needs. Additionally, you can easily embed Plotly graphs in web applications or share them with others by exporting them to various file formats such as PNG, SVG, or PDF.
+
+Overall, Plotly is a powerful data visualization library that offers many features and customization options to help you create beautiful, interactive visualizations that effectively communicate insights from your data.
 
 In this tutorial, we will be making use of [Django material dashboard](https://github.com/app-generator/django-material-dashboard), and we will be modifying its homepage to create sales charts using data from Django models.
 
-To get started, we will first set up a new Django project and create a new app that will serve as the homepage of our application. We will then create a model to store our sales data and create a view to serve the data to our front-end. Finally, we will use Chart.js to create an interactive bar chart, line chart and pie chart that displays data from the sales model.
+To begin, we will initiate a new Django project and establish a fresh application to act as the homepage for our program. Subsequently, we will devise a model to preserve our sales data and a view to serve this data to the front-end. Lastly, utilizing Plotly, we will produce an interactive line chart, bar chart, and pie chart that will showcase data sourced from the sales model.
 
 ## Setting up a Django project
 You can create a new folder, change the directory into the new folder, and create a new virtual environment by running the following commands in the terminal:
@@ -155,7 +161,10 @@ class Sales(models.Model):
         max_length=3
     )
     country = models.CharField(max_length=50)
-    purchase_date = models.DateTimeField(auto_now=True)
+    purchase_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.product
 
     class Meta:
         verbose_name = 'Sale'
@@ -192,4 +201,348 @@ With your browser visit `http://127.0.0.1:8000/admin`, You will see the sales ta
 
 ![Admin dashboard with populated data](https://user-images.githubusercontent.com/57325382/234968317-be8dfc18-da96-4570-9db1-10354888c0d4.png)
 
-## Using Plotly win a Django application
+## Using Plotly with a Django application
+To use Plotly in a Django application, we need to install a package called `djang_plotly_dash` using `pip`. The purpose of this package is to enable Plotly dash applications to be served as part of a Django application.
+
+### Installation and setup of `django_plotly_dash`
+- From the terminal execute the command
+```bash
+(venv) django-charts$ pip install django_plotly_dash
+```
+
+- We will be adding `djang_plotly_dash` to the list of installed applications, and also be making changes in `core/settings.py` to allow the use of frames within HTML documents
+```py
+# core/settings.py
+...
+INSTALLED_APPS = [
+...
+'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+]
+...
+#Add PLOTLY_COMPONENTS
+PLOTLY_COMPONENTS = [
+    'dash_core_components',
+    'dash_html_components',
+    'dash_renderer',
+    'dpd_components'
+]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+...
+```
+- Next step is adding a route to dash apps created by `django_plotly_dash`. The following changes will be made in `core/urls.py`
+```py
+# core/urls.py
+...
+urlpatterns = [
+    ...
+    path("django_plotly_dash/", include("django_plotly_dash.urls")),
+]
+```
+- Now that the applications have been created, we need to apply migration, to create the database tables for `django_plotly_dash`. From the terminal execute the command
+```bash
+(venv) django-charts$ python manage.py makemigrations
+(venv) django-charts$ python manage.py migrate
+```
+
+## Creating dynamic charts with Plotly
+- Copy `index.html` file from `venv/lib/python3.10/site-packages/admin_material/templates` and paste it into `templates/pages`. Now our `index.html` page for the application will be served by the file in `templates` folder.
+
+### Creating a Bar Chart with Plotly
+- Create a file `plotly_plot.py` inside the `home` folder, this is where the functions for generating charts will be written. Add the code
+```py
+# home/plotly_plot.py
+import plotly.graph_objs as go
+from plotly.offline import plot
+
+
+def plot_barchart(x, y, title, x_label, y_label):
+    fig = go.Figure(data=go.Bar(name='BarChart', x=x, y=y))
+
+    fig.update_layout(
+        title_text = title,
+        xaxis_title = x_label,
+        yaxis_title = y_label,
+        template=None,
+        margin=dict(l=40, r=20, t=30, b=40),
+    )
+
+    barchart = plot({'data': fig}, output_type='div')
+    return barchart
+```
+`plot_barchart` function takes five arguments, `x` and `y` are lists, they represent the values on the x-axis and y-axis respectively. `title` is the title of the chart, which should be a string. `x_label` and `y_label` are strings and they represent the labels of the values on the x-axis and y-axis respectively
+
+- Inside `home/views.py`  we will be making changes to the `index` function to add the bar chart created with the `plot_barchart` function.
+```py
+# home/views.py
+...
+from .models import Sales
+
+from .plotly_plot import plot_barchart
+
+
+def index(request):
+    sales_query = Sales.objects.values('product', 'price', 'purchase_date')
+
+    total_sales_per_product = {}
+    for result in sales_query:
+        product_name = result['product']
+
+        # total sales by product
+        if total_sales_per_product.get(product_name):
+            total_sales_per_product[product_name] += result['price']
+        else:
+            total_sales_per_product[product_name] = result['price']
+
+
+    products = list(total_sales_per_product.keys())
+    product_sales = list(total_sales_per_product.values())
+    bar_chart = plot_barchart(
+        products,
+        product_sales,
+        'Sales per product',
+        'Product',
+        'Sales'
+        )
+
+    # Page from the theme 
+    return render(request, 'index.html', {
+        'barchart': bar_chart
+        })
+```
+
+- Now we will be making changes to `templates/index.html`. Using the `barchart` context to display the chart on our webpage. We will be replacing the charts already present on the home page by making changes to specific lines in `Index.html`. On line 84, make the following changes
+```html
+<!--templates/index.html-->
+            ...
+                <div class="chart">
+                  {{ barchart|safe }}
+                </div>
+            ...
+```
+`{{ barchart|safe }}` is put inside the div where the previous chart canvas was present.
+
+### Creating a Line chart with Plotly
+- For line chart, we will be creating another function inside the `home/plotly_plot.py` file.
+```py
+# home/plotly_plot.py
+...
+def plot_linechart(x, y, title, x_label, y_label):
+    fig = go.Figure(data=go.Line(name='LineChart', x=x, y=y))
+    fig.update_layout(
+        title_text = title,
+        xaxis_title = x_label,
+        yaxis_title = y_label,
+        template=None,
+        margin=dict(l=40, r=20, t=30, b=40),
+    )
+
+    linechart = plot({'data': fig}, output_type='div')
+    return linechart
+```
+`x`, `y`, `title`, `x_label`, and `y_label` have the same meaning as they did for the `plot_barchart` function.
+
+- Changes will be made to the `index` function in `home/views.py` to send a line chart as part of the context to the template.
+```py
+# home/views.py
+...
+from .plotly_plot import plot_barchart, plot_linechart # <-- UPDATED
+...
+def index(request):
+    sales_query = Sales.objects.values('product', 'price', 'purchase_date')
+
+    total_sales_per_product = {}
+    total_sales_per_day = {}
+    for result in sales_query:
+        product_name = result['product']
+        day = result['purchase_date'].strftime('%a')
+        ...
+        if day in total_sales_per_day:
+            total_sales_per_day[day] += result['price']
+        else:
+            total_sales_per_day[day] = result['price']
+
+
+    # sales per day
+    key = {
+        'Mon': 1,
+        'Tue': 2,
+        'Wed': 3,
+        'Thu': 4,
+        'Fri': 5,
+        'Sat': 6,
+        'Sun': 7
+    }
+    days = sorted(total_sales_per_day, key=key.get) # sorting by days, so the result shows in order of days of the week
+    sales_day, labels_day = [], []
+    for k in days:
+        sales_day.append(total_sales_per_day[k])
+        labels_day.append(k)
+    ...
+
+    line_chart = plot_linechart(
+        labels_day,
+        sales_day,
+        "Total sales per days",
+        "Days",
+        "Sales"
+        )
+
+    # Page from the theme 
+    return render(request, 'index.html', {
+        'barchart': bar_chart,
+        'linechart': line_chart,    # <-- NEW Added
+        })
+```
+
+- Line 105 in `templates/index.html` add the following code
+```html
+<!--templates/index.html-->
+                <div class="chart">
+                  {{ linechart|safe }}
+                </div>
+```
+
+### Creating a Pie chart with Plotly
+Creating a pie chart with Plotly will follow the same pattern as `bar chart` and `line chart` with a little difference in the function that generates the chart.
+
+- Create the `plot_piechart` function in `home/plotly_plot.py`
+```py
+# home/plotly_plot.py
+def plot_piechart(names, values, title, legend):
+    fig = go.Figure(data=go.Pie(name='PieChart', values=values, labels=names))
+
+    fig.update_layout(
+        title_text = title,
+        template=None,
+        margin=dict(l=40, r=20, t=30, b=40),
+    )
+
+    piechart = plot({'data': fig}, output_type='div')
+    return piechart
+```
+`names` is a list and it contains the label for the data to be represented by the sectors of the pie chart. `values` is the data values for each label in `names`. `legend` shows a color-encoded description of what each sector of the pie chart represents.
+
+- For a pie chart, we will be using the same data that was used to create the bar chart. Make the following changes to the `index` function in `home/views.py`
+```py
+# home/views.py
+...
+from .plotly_plot import plot_barchart, plot_linechart, plot_piechart # <-- UPDATED
+...
+def index(request):
+    ...
+    pie_chart = plot_piechart(
+        products,
+        product_sales,
+        "Product sales distribution",
+        total_sales_per_product
+        )
+
+    # Page from the theme 
+    return render(request, 'index.html', {
+        'barchart': bar_chart,
+        'linechart': line_chart,
+        'piechart': pie_chart       # <-- NEW added
+        })
+```
+Now we have access to the piechart from `templates/index.html` using the `piechart` context
+
+- On line 127 in `templates/index.html` make the following changes
+```html
+<!--templates/index.html-->
+                <div class="chart">
+                  {{ piechart|safe }}
+                </div>
+```
+
+Below is the full code for `home/views.py`
+```py
+from django.shortcuts import render
+from django.http import HttpResponse
+
+from .models import Sales
+
+from .plotly_plot import plot_barchart, plot_linechart, plot_piechart
+
+# Create your views here.
+
+def index(request):
+    sales_query = Sales.objects.values('product', 'price', 'purchase_date')
+
+    total_sales_per_product = {}
+    total_sales_per_day = {}
+    for result in sales_query:
+        product_name = result['product']
+        day = result['purchase_date'].strftime('%a')
+
+        # total sales by product
+        if total_sales_per_product.get(product_name):
+            total_sales_per_product[product_name] += result['price']
+        else:
+            total_sales_per_product[product_name] = result['price']
+
+        if day in total_sales_per_day:
+            total_sales_per_day[day] += result['price']
+        else:
+            total_sales_per_day[day] = result['price']
+
+
+    # sales per day
+    key = {
+        'Mon': 1,
+        'Tue': 2,
+        'Wed': 3,
+        'Thu': 4,
+        'Fri': 5,
+        'Sat': 6,
+        'Sun': 7
+    }
+    days = sorted(total_sales_per_day, key=key.get) # sorting by days, so the result shows in order of days of the week
+    sales_day, labels_day = [], []
+    for k in days:
+        sales_day.append(total_sales_per_day[k])
+        labels_day.append(k)
+
+    products = list(total_sales_per_product.keys())
+    product_sales = list(total_sales_per_product.values())
+    bar_chart = plot_barchart(
+        products,
+        product_sales,
+        'Sales per product',
+        'Product',
+        'Sales'
+        )
+
+    line_chart = plot_linechart(
+        labels_day,
+        sales_day,
+        "Total sales per day",
+        "Days",
+        "Sales"
+        )
+
+    pie_chart = plot_piechart(
+        products,
+        product_sales,
+        "Product sales distribution",
+        total_sales_per_product
+        )
+
+    # Page from the theme 
+    return render(request, 'index.html', {
+        'barchart': bar_chart,
+        'linechart': line_chart,
+        'piechart': pie_chart
+        })
+
+```
+- From your browser, visit `http://127.0.0.1:8000/` to see the charts created using Plotly. To further style them, check out [ploty official documentation](https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html)
+
+## Conclusion
+So far we have learned how to create a Django project, integrate an existing Django theme with our project, and create a bar chart, line chart and pie chart using Plotly in Django. Plotly is a powerful visualization tool and can be used with Django to create a wide range of charts.
+
+By following this tutorial, you should now have a good understanding of how to use Django and Plotly to build a data-driven web application that displays information in an interactive chart. You can use this knowledge to build your web applications and customize the chart to fit your specific use case.
+
+## Resources
+- 👉 More [Django Starters](https://appseed.us/admin-dashboards/django/) crafted by `AppSeed`
+- 🚀 Free [Support](https://appseed.us/support/) via Email & Discord
