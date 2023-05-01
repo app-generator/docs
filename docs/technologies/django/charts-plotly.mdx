@@ -11,21 +11,185 @@ import SubHeading from "@site/src/components/SubHeading";
 
 - Sample REPO: https://github.com/app-generator/django-plotly-charts
 
-> Topics
+## Introduction
+Django is a powerful web framework that allows developers to build complex web applications quickly and easily. One popular use case for Django is building data-driven web applications that display information in charts and graphs. In this tutorial, we will explore how to use Django and Chart.js together to build a web application that displays data in an interactive chart.
 
-- Set UP a basic Django project
-- Install [Material Design](https://github.com/app-generator/django-admin-material-dashboard)
-- Create a `Sales` Model with fields: 
-  - product, string 
-  - price, int 
-  - currency, string (usd, eur) 
-  - country, string 
-  - purchase_date, Unix timestamp 
-- The main page will showcase three charts:
-  - Bar Chart
-  - Line Chart
-  - PIE Chart 
-- Full implementation for beginners 
-  - The information is computed on the server side using `Plotly`
+Before we get started, let's briefly introduce Chart.js. Chart.js is a JavaScript library that allows developers to create beautiful and responsive charts and graphs using HTML5 canvas. It provides a wide range of chart types, including line, bar, pie, radar, and more. Chart.js is easy to use and highly customizable, making it a popular choice for data visualization on the web.
 
-![Django - Simple Charts](https://user-images.githubusercontent.com/51070104/234304017-97178893-880c-495b-af73-e1c789a9b6b2.png)
+In this tutorial, we will be making use of [Django material dashboard](https://github.com/app-generator/django-material-dashboard), and we will be modifying its homepage to create sales charts using data from Django models.
+
+To get started, we will first set up a new Django project and create a new app that will serve as the homepage of our application. We will then create a model to store our sales data and create a view to serve the data to our front-end. Finally, we will use Chart.js to create an interactive bar chart, line chart and pie chart that displays data from the sales model.
+
+## Setting up a Django project
+You can create a new folder, change the directory into the new folder, and create a new virtual environment by running the following commands in the terminal:
+
+1. To create a new folder, use the "mkdir" command followed by the name you want to give to the folder.
+```bash
+$ mkdir django-charts
+```
+
+2. To change the directory into the new folder, use the "cd" command followed by the name of the folder you just created.
+```bash
+$ cd django-charts
+```
+
+3. To create a new virtual environment, you can use the `virtualenv` module bundled with Python.
+```bash
+django-charts$ virtualenv venv
+```
+
+This will create a new virtual environment in a folder called "venv" inside your "django-charts" folder.
+
+This command is used to activate the virtual environment
+
+On `MacOS`/`Linux`
+```bash
+django-charts$ source venv/bin/activate
+(venv) django-charts$
+```
+On `Windows`
+```bash
+(venv) django-charts$ ./venv/Scripts/activate
+(venv) django-charts$
+```
+
+After activating the virtual environment, you can proceed to install the required packages. To install Django and `material-design` and also create a new Django project, run the following commands on your terminal.
+
+```bash
+(venv) django-charts$ pip install django django-admin-material-dashboard
+(venv) django-charts$ django-admin startproject core .
+```
+
+Once the Django project has been created, the next step is to create a new Django application and modify the project to recognize the application and the `material dashboard` that was installed earlier.
+
+1. Create a new Django application by executing the command
+```bash
+(venv) django-charts$ python manage.py startapp home
+```
+
+2. Open `core/settings.py` and make the following changes
+```py
+# core/settings.py
+import os             # <-- NEW import
+...
+INSTALLED_APPS = [
+    "home",
+    "admin_material.apps.AdminMaterialDashboardConfig",
+    ...
+]
+...
+UI_TEMPLATES = os.path.join(BASE_DIR, "templates")  # <-- NEW
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [UI_TEMPLATES],     # <-- UPDATED
+        ...
+    }
+]
+...
+STATIC_URL = "/static/"
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+LOGIN_REDIRECT_URL = '/'
+...
+```
+
+3. Make the following changes to `core/urls.py` to add routes to the application created and `material dashboard`
+```py
+# core/urls.py
+from django.urls import include, path   <-- UPDATED add path
+
+urlpatterns = [
+    path('', include('home.urls')),
+    path("admin/", admin.site.urls),
+    path("", include('admin_material.urls'))
+]
+```
+
+4. We will be creating a view to the homepage of the web application inside `home/views.py`.
+```py
+# home/views.py
+...
+def index(request):
+
+    # Page from the theme 
+    return render(request, 'pages/index.html')
+
+```
+
+5. Create the file `urls.py` inside `home` folder and create a route to the index view created.
+```py
+# home/urls.py
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+]
+```
+
+Run the Django server from your terminal by executing the command
+```bash
+(venv) django-charts$ python manage.py runserver
+```
+From your browser, head to `http://127.0.0.1:8000`, this shows the theme installed. You will see the `material dashboard` theme. As we progress through this tutorial, we will learn how to utilize data from our Django models to make the charts dynamic.
+
+## Creating a model to store sales data
+The application already has static charts, to display dynamic sales data in our Django and Chart.js web application, we need to first create a model to store the data in our database.
+
+### Defining Model Schema
+- We will be using Django Object Relational Mapper to define the structure of the database. Open `home/models.py` and make the changes
+```py
+# home/models.py
+from django.db import models
+
+class Sales(models.Model):
+    product = models.CharField(max_length=255)
+    price = models.IntegerField()
+    currency = models.CharField(
+        choices=(('USD', 'USD'), ('EUR', 'EUR')),
+        default='USD',
+        max_length=3
+    )
+    country = models.CharField(max_length=50)
+    purchase_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Sale'
+        verbose_name_plural = 'Sales'
+```
+
+### Population the database with sales data
+- Now we need to register the database so we can access it from the admin panel. Make the following changes to `home/admin.py`
+```py
+# home/admin.py
+...
+from .models import Sales # <-- NEW import
+
+admin.site.register(Sales)
+```
+
+- Stop your Django server using `Ctrl + c` and run the command to create Django default tables and the `Sales` table just created.
+```bash
+(venv) django-charts$ python manage.py makemigrations
+(venv) django-charts$ python manage.py migrate
+```
+
+- Next step we will be creating a superuser, this will enable us to have access to the admin panel
+```bash
+(venv) django-charts$ python manage.py createsuperuser
+(venv) django-charts$ python manage.py runserver
+```
+
+With your browser visit `http://127.0.0.1:8000/admin`, You will see the sales table just created.
+
+![Admin dashboard showing sales model](https://user-images.githubusercontent.com/57325382/234968310-2806aec3-2165-4dfd-bde6-294a61f4deb0.png)
+
+- Now you can use the `add sale` button from the admin panel to populate the database with data
+
+![Admin dashboard with populated data](https://user-images.githubusercontent.com/57325382/234968317-be8dfc18-da96-4570-9db1-10354888c0d4.png)
+
+## Using Plotly win a Django application
