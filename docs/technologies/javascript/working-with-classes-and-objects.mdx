@@ -7,4 +7,68 @@ import SubHeading from "@site/src/components/SubHeading";
 
 <SubHeading color="#25c2a0">Working with JavaScript variables, Classes, and Objects</SubHeading>
 
-@Todo
+As you begin your journey into the world of JavaScript and programming, you'll realize that variables, objects, and classes are at the heart of the language. They are the building blocks of any good JavaScript program, and mastering them will set you on the path to becoming a true JavaScript ninja!
+
+![JavaScript Ninja](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGUxN2MwYmYzYTRmNWY0YmNhNzFkOWIzYTY5YWM1ZDg4ZDY0ZDY2NyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/jzHFPlw89eTqU/giphy.gif)
+
+## What is a variable?  
+A variable is simply an identifier or container that holds a value. It can contain data of different types, such as boolean, string, number, object, and array.
+> 💡 A boolean variable holds either True or False, a string variable contains a sequence of characters enclosed in quotation marks, and an array is a collection of values of any data type.
+
+![how variable works](https://user-images.githubusercontent.com/67129211/235643175-92e8441b-1360-4f55-9264-a225ab1165b9.png)
+
+From the image above, the cup represents an empty variable; the milk and coffee are data of different data types. When you put the data into the cup, the cup becomes a variable of data type, coffee or milk. 
+
+## How to create variables in JavaScript
+To declare (create) variables in JavaScript, you need to use some built-in keywords such as var, let, and const. Let's talk briefly about them.
+### The var keyword
+The var keyword is the oldest way of declaring variables in JavaScript, and it's not advisable to use it in your JavaScript programs because it is not block scope. 
+> A variable is block-scoped when it only exists within the curly braces where it was declared and cannot be accessed outside the curly braces. 
+Let’s take a look at some examples.
+```js
+var ageInWords = "Eighteen"; //ageInWords holds the string value 
+var male = true; //male holds a boolean value
+
+/*-- Block scope Example--*/
+if(true) {
+    var myAge = 20;
+    const yourAge= 18
+}
+console.log(myAge) //prints 20
+console.log(yourAge) //ReferenceError: yourAge is not defined (Block-scoped)
+```
+### The let keyword
+The let keyword is a suitable alternative to var. It is block-scoped and used for declaring variables whose values may change at some point during execution.
+```js
+let age = 20; //sets a variable to 20
+age = 5; // re-assign age to 5
+console.log(age); // prints 5 to the console
+```
+The code snippet above shows a variable created using the `let` keyword with an initial value of 20, then changed to 5.
+### The const keyword
+The const keyword is used to declare variables that cannot be re-assigned to another value. It holds constant values.
+```js
+const age = 20;
+age = 10;
+console.log(age)  //returns a TypeError: Assignment to constant variable. (Invalid)
+```
+> 💡 Don’t use the `var` keyword. Use `const` when you need to declare a constant and `let` when the variable can be re-assigned to another value.
+### Naming variables in JavaScript
+When naming variables in JavaScript, there are a few things you need to consider.
+- Variables can only start with a letter, underscore, or dollar sign. Numbers and other symbols can come after the first position.
+```js
+const firstName = 18;
+let _2much = "Dave";
+const $age = 24
+const 2people = true //invalid naming convention
+```
+- Do not use JavaScript keywords as variable names. JavaScript keywords are reserved words used for a specific purpose.
+```js
+const switch = 18; 
+let for = "Dave"; 
+const const = 24;
+/*-- They are all invalid naming conventions --*/
+```
+- Use variable names that describe the value they hold or contain.
+
+
