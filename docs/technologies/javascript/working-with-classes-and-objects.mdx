@@ -70,5 +70,103 @@ const const = 24;
 /*-- They are all invalid naming conventions --*/
 ```
 - Use variable names that describe the value they hold or contain.
+## What are objects in JavaScript?
+An object is an entity that has a collection of properties arranged in key-value pairs. The key is a property name, and every property has a value assigned to it within the object.
+
+![object description](https://user-images.githubusercontent.com/67129211/235659909-9744605b-5620-468e-b0c6-2cd40cf504ea.png)
+
+The image above shows an illustration of how an object works. Assuming the cup is a JavaScript object with the following properties colour, material, and size. How do we represent it in JavaScript?
+```js
+const cup = {
+	colour: "white",
+	material: "porcelain",
+	size: "medium"
+}
+```
+The code snippet above creates a JavaScript object for the cup. The name of the JavaScript object is `cup`, and its properties are the key-value pairs.
+> 💡 An object can have properties of different data types. The cup object can also have a property of `isBlack: false`.
+
+### Accessing the object properties in JavaScript
+You can access the property of an object using the dot notation or bracket notation. 
+```js
+//👇🏻 Dot notation
+console.log(cup.colour) //Output: white
+console.log(cup.material) //Output: porcelain
+console.log(cup.size) ////Output: medium
+
+//👇🏻 Bracket notation
+console.log(cup["colour"]) //Output: white
+console.log(cup["material"]) //Output: porcelain
+console.log(cup["size"]) ////Output: medium
+```
+> 💡 In dot notation, you can access each property by using the syntax `object.propertyname`, and in bracket notation, use `object["propertyname"]`.
+
+Use camel case to join property names that are more than one word.
+```js
+const cup = {
+	colour: "white",
+	material: "porcelain",
+	size: "medium",
+	dateCreated: "02-05-2023"
+}
+
+console.log(cup.dateCreated) //Output is 02-05-2023
+console.log(cup["dateCreated"]) //Output is 02-05-2023
+```
+In JavaScript objects, if a property name is spaced, you need to put it in quotes, and you can only access its value using the bracket notation.
+```js
+const cup = {
+	colour: "white",
+	material: "porcelain",
+	size: "medium",
+	"date created": "02-05-2023"
+}
+
+console.log(cup["date created"]) //Output is 02-05-2023
+```
+### Modifying JavaScript objects
+A JavaScript object property can be modified by referencing and updating its value. For example, let’s change the material and colour of the cup.
+```js
+const cup = {
+	colour: "white",
+	material: "porcelain",
+	size: "medium",
+	"date created": "02-05-2023"
+}
+cup.colour = "black"
+cup["material"] = "glass"
+
+console.log(cup)
+// The object becomes 👇🏻
+{
+  colour: 'black',
+  material: 'glass',
+  size: 'medium',
+  'date created': '02-05-2023'
+}
+```
+The code snippet above changes the values of the object properties - colour and material.
+
+Recall that the `const` keyword creates constant variables. Therefore, you can not re-assign an object created with the `const` keyword to another value, but you can change its properties.
+```js
+const cup = {
+	colour: "white",
+	material: "porcelain",
+	size: "medium",
+	"date created": "02-05-2023"
+}
+//👇🏻 Invalid modification
+cup = {
+	colour: "black",
+	material: "glass",
+	size: "medium",
+	"date created": "02-05-2023"
+}
+
+console.log(cup) //returns a TypeError: Assignment to constant variable
+```
+> 💡 You can only re-assign an object to another value when it is declared using the `let` keyword.
+
+## What are classes in JavaScript?
 
 
