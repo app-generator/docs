@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.27] 2023-05-02
+### Changes
+
+- Update [JavaScript](https://docs.appseed.us/technologies/javascript/) Section
+  - [Classes and Objects in JavaScript](https://docs.appseed.us/technologies/javascript/working-with-classes-and-objects/)
+
 ## [1.0.26] 2023-04-25
 ### Changes
 
