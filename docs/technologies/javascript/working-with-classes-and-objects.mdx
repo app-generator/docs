@@ -168,5 +168,74 @@ console.log(cup) //returns a TypeError: Assignment to constant variable
 > 💡 You can only re-assign an object to another value when it is declared using the `let` keyword.
 
 ## What are classes in JavaScript?
+A class is a blueprint for creating objects that have the same properties and functions. It provides a template for creating multiple objects with similar features but different values.
 
+![how classes work in JavaScript](https://user-images.githubusercontent.com/67129211/235667320-d586395f-1e12-4939-9961-4af448438234.png)
 
+The image above shows a class of domestic animals containing a dog and a cat. The class provides the blueprint that determines the kind of animals present.
+Here is an example of a JavaScript class describing the image above.
+```js
+class Domestic {
+    constructor(name, colour, owner) {
+        this.name = name;
+        this.colour = colour;
+        this.owner = owner;
+    }
+}
+//👇🏻 instances of the class
+const dog = new Domestic("Swift", "White", "Mr. Adrian")
+const cat = new Domestic("Pretty", "Brown", "Mrs. Banks")
+
+console.log(dog)
+//Output: Domestic { name: 'Swift', colour: 'White', owner: 'Mr. Adrian' }
+
+console.log(cat)
+//Output: Domestic { name: 'Pretty', colour: 'Brown', owner: 'Mrs. Banks' }
+```
+To create a class in JavaScript, you need to add the `class` keyword followed by the name of the class name in sentence case.
+```js
+class ClassName {}
+```
+Next, add a `constructor` method containing the class attributes.
+```js
+class Domestic {
+    constructor(name, colour, owner) {
+        this.name = name;
+        this.colour = colour;
+        this.owner = owner;
+    }
+}
+```
+From the code snippet above, the class - `Domestic` has name, colour, and owner attributes. The `this` keyword reference any current object initiated from the class and sets its value to the object's parameter.
+
+Finally, you can create new object instances of the class by using the `new` keyword and passing the constructor parameters into the class.
+```js
+//👇🏻 instances of the class
+const dog = new Domestic("Swift", "White", "Mr. Adrian")
+const cat = new Domestic("Pretty", "Brown", "Mrs. Banks")
+```
+### Accessing and modifying instances of a class
+You can access and modify instances of a class the same way it's done in objects. Moreover, instances of a class are objects of that class. 
+```js
+const dog = new Domestic("Swift", "White", "Mr. Adrian")
+const cat = new Domestic("Pretty", "Brown", "Mrs. Banks")
+
+//👇🏻 change the name of the cat and dog object
+dog.name = "King"
+cat["name"] = "Queen"
+
+console.log(dog)
+//👉🏻 Output: Domestic { name: 'King', colour: 'White', owner: 'Mr. Adrian' }
+
+console.log(cat)
+//👉🏻 Domestic { name: 'Queen', colour: 'Brown', owner: 'Mrs. Banks' }
+```
+The code snippet above changes the name of the cat and dog object after initiation.
+
+## Key Takeaways
+- Variables are like containers that hold data. They allow you to store and manipulate data of different types, such as numbers, strings, or boolean values.
+- Objects, on the other hand, are like containers that hold multiple pieces of information - properties. These properties can be anything from strings and numbers to other objects and arrays.
+- Classes are templates for objects. They provide a blueprint that you can use to create multiple objects with the same properties and behaviours.
+
+Understanding what variables, objects, and classes are, is essential for a beginner in JavaScript. By mastering these basic concepts, you're well on your way to building more complex programs in JavaScript.    
+Thank you for reading! 🎉
