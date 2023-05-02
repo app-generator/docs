@@ -9,9 +9,10 @@ import SubHeading from "@site/src/components/SubHeading";
 
 As you begin your journey into the world of JavaScript and programming, you'll realize that variables, objects, and classes are at the heart of the language. They are the building blocks of any good JavaScript program, and mastering them will set you on the path to becoming a true JavaScript ninja!
 
-![JavaScript Ninja](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGUxN2MwYmYzYTRmNWY0YmNhNzFkOWIzYTY5YWM1ZDg4ZDY0ZDY2NyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/jzHFPlw89eTqU/giphy.gif)
+<br />
 
-## What is a variable?  
+## What is a `variable`?  
+
 A variable is simply an identifier or container that holds a value. It can contain data of different types, such as boolean, string, number, object, and array.  
 
 > 💡 A boolean variable holds either True or False, a string variable contains a sequence of characters enclosed in quotation marks, and an array is a collection of values of any data type.
@@ -20,10 +21,16 @@ A variable is simply an identifier or container that holds a value. It can conta
 
 From the image above, the cup represents an empty variable; the milk and coffee are data of different data types. When you put the data into the cup, the cup becomes a variable of data type, coffee or milk. 
 
-## How to create variables in JavaScript
+<br />
+
+## `Create variables` in JavaScript
+
 To declare (create) variables in JavaScript, you need to use some built-in keywords such as var, let, and const. Let's talk briefly about them. 
 
-### The var keyword
+<br />
+
+### 👉 The `var` keyword
+
 The var keyword is the oldest way of declaring variables in JavaScript, and it's not advisable to use it in your JavaScript programs because it is not block scope.  
 
 > A variable is block-scoped when it only exists within the curly braces where it was declared and cannot be accessed outside the curly braces. 
@@ -41,7 +48,11 @@ if(true) {
 console.log(myAge) //prints 20
 console.log(yourAge) //ReferenceError: yourAge is not defined (Block-scoped)
 ```
-### The let keyword
+
+<br />
+
+### 👉 The `let` keyword
+
 The let keyword is a suitable alternative to var. It is block-scoped and used for declaring variables whose values may change at some point during execution.
 ```js
 let age = 20; //sets a variable to 20
@@ -50,7 +61,10 @@ console.log(age); // prints 5 to the console
 ```
 The code snippet above shows a variable created using the `let` keyword with an initial value of 20, then changed to 5. 
 
-### The const keyword
+<br />
+
+### 👉 The `const` keyword
+
 The const keyword is used to declare variables that cannot be re-assigned to another value. It holds constant values.
 ```js
 const age = 20;
@@ -59,7 +73,10 @@ console.log(age)  //returns a TypeError: Assignment to constant variable. (Inval
 ```
 > 💡 Don’t use the `var` keyword. Use `const` when you need to declare a constant and `let` when the variable can be re-assigned to another value.  
 
-### Naming variables in JavaScript
+<br />
+
+### 👉 `Naming variables` in JavaScript
+
 When naming variables in JavaScript, there are a few things you need to consider.
 - Variables can only start with a letter, underscore, or dollar sign. Numbers and other symbols can come after the first position.
 ```js
@@ -76,7 +93,11 @@ const const = 24;
 /*-- They are all invalid naming conventions --*/
 ```
 - Use variable names that describe the value they hold or contain.
-## What are objects in JavaScript?
+
+<br />
+
+## `What are objects` in JavaScript?
+
 An object is an entity that has a collection of properties arranged in key-value pairs. The key is a property name, and every property has a value assigned to it within the object.
 
 ![object description](https://user-images.githubusercontent.com/67129211/235659909-9744605b-5620-468e-b0c6-2cd40cf504ea.png)
@@ -92,8 +113,12 @@ const cup = {
 The code snippet above creates a JavaScript object for the cup. The name of the JavaScript object is `cup`, and its properties are the key-value pairs.
 > 💡 An object can have properties of different data types. The cup object can also have a property of `isBlack: false`.
 
-### Accessing the object properties in JavaScript
+<br />
+
+### 👉 `Accessing object properties` in JavaScript
+
 You can access the property of an object using the dot notation or bracket notation. 
+
 ```js
 //👇🏻 Dot notation
 console.log(cup.colour) //Output: white
@@ -105,9 +130,11 @@ console.log(cup["colour"]) //Output: white
 console.log(cup["material"]) //Output: porcelain
 console.log(cup["size"]) ////Output: medium
 ```
+
 > 💡 In dot notation, you can access each property by using the syntax `object.propertyname`, and in bracket notation, use `object["propertyname"]`.
 
 Use camel case to join property names that are more than one word.
+
 ```js
 const cup = {
 	colour: "white",
@@ -119,7 +146,9 @@ const cup = {
 console.log(cup.dateCreated) //Output is 02-05-2023
 console.log(cup["dateCreated"]) //Output is 02-05-2023
 ```
+
 In JavaScript objects, if a property name is spaced, you need to put it in quotes, and you can only access its value using the bracket notation.
+
 ```js
 const cup = {
 	colour: "white",
@@ -130,8 +159,13 @@ const cup = {
 
 console.log(cup["date created"]) //Output is 02-05-2023
 ```
-### Modifying JavaScript objects
+
+<br />
+
+### 👉 `Modifying` JavaScript objects
+
 A JavaScript object property can be modified by referencing and updating its value. For example, let’s change the material and colour of the cup.
+
 ```js
 const cup = {
 	colour: "white",
@@ -154,6 +188,7 @@ console.log(cup)
 The code snippet above changes the values of the object properties - colour and material.
 
 Recall that the `const` keyword creates constant variables. Therefore, you can not re-assign an object created with the `const` keyword to another value, but you can change its properties.
+
 ```js
 const cup = {
 	colour: "white",
@@ -171,15 +206,20 @@ cup = {
 
 console.log(cup) //returns a TypeError: Assignment to constant variable
 ```
+
 > 💡 You can only re-assign an object to another value when it is declared using the `let` keyword.
 
-## What are classes in JavaScript?
+<br />
+
+## `What are classes` in JavaScript?
+
 A class is a blueprint for creating objects that have the same properties and functions. It provides a template for creating multiple objects with similar features but different values.
 
 ![how classes work in JavaScript](https://user-images.githubusercontent.com/67129211/235667320-d586395f-1e12-4939-9961-4af448438234.png)
 
 The image above shows a class of domestic animals containing a dog and a cat. The class provides the blueprint that determines the kind of animals present.
 Here is an example of a JavaScript class describing the image above.
+
 ```js
 class Domestic {
     constructor(name, colour, owner) {
@@ -198,11 +238,15 @@ console.log(dog)
 console.log(cat)
 //Output: Domestic { name: 'Pretty', colour: 'Brown', owner: 'Mrs. Banks' }
 ```
+
 To create a class in JavaScript, you need to add the `class` keyword followed by the name of the class name in sentence case.
+
 ```js
 class ClassName {}
 ```
+
 Next, add a `constructor` method containing the class attributes.
+
 ```js
 class Domestic {
     constructor(name, colour, owner) {
@@ -212,16 +256,23 @@ class Domestic {
     }
 }
 ```
+
 From the code snippet above, the class - `Domestic` has name, colour, and owner attributes. The `this` keyword reference any current object initiated from the class and sets its value to the object's parameter.
 
 Finally, you can create new object instances of the class by using the `new` keyword and passing the constructor parameters into the class.
+
 ```js
 //👇🏻 instances of the class
 const dog = new Domestic("Swift", "White", "Mr. Adrian")
 const cat = new Domestic("Pretty", "Brown", "Mrs. Banks")
 ```
-### Accessing and modifying instances of a class
+
+<br />
+
+### 👉 Accessing and modifying instances of a class
+
 You can access and modify instances of a class the same way it's done in objects. Moreover, instances of a class are objects of that class. 
+
 ```js
 const dog = new Domestic("Swift", "White", "Mr. Adrian")
 const cat = new Domestic("Pretty", "Brown", "Mrs. Banks")
@@ -238,11 +289,20 @@ console.log(cat)
 ```
 The code snippet above changes the name of the cat and dog object after initiation.
 
+<br />
+
 ## Key Takeaways
-- Variables are like containers that hold data. They allow you to store and manipulate data of different types, such as numbers, strings, or boolean values.
-- Objects, on the other hand, are like containers that hold multiple pieces of information - properties. These properties can be anything from strings and numbers to other objects and arrays.
-- Classes are templates for objects. They provide a blueprint that you can use to create multiple objects with the same properties and behaviours.
+
+- `Variables` are like containers that hold data. They allow you to store and manipulate data of different types, such as numbers, strings, or boolean values.
+- `Objects`, on the other hand, are like containers that hold multiple pieces of information - properties. These properties can be anything from strings and numbers to other objects and arrays.
+- `Classes` are templates for objects. They provide a blueprint that you can use to create multiple objects with the same properties and behaviours.
 
 Understanding what variables, objects, and classes are, is essential for a beginner in JavaScript. By mastering these basic concepts, you're well on your way to building more complex programs in JavaScript.
 
-Thank you for reading! 🎉
+<br />
+
+## Resources
+
+- 👉 [JavaScript Tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript) by Mozilla Foundation
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
