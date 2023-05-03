@@ -15,14 +15,352 @@ description: Getting Started with Ubuntu
   - In a virtual machine via `VirtualBox` 
 - How to manage the system using the CLI 
   - `sudo`
-- Install the recommended packages for programming  
-- How to add/remove users via CLI 
-- How to install packages
-- How to install MySql 
-- How to install Python3  
-- How to install Mysql 
-- How to install PostgreSQL 
-- How to install Redis 
-- How to install Mongo 
-- Services: how to create/suspend a service 
-- CRON: create, list, and remove jobs
+  - `apt`
+  - `apt-get`
+- Managing the users via CLI 
+- Installing the recommended packages for programming  
+  - How to install Python3  
+  - How to install MySQL
+  - How to install PostgreSQL 
+  - How to install MongoDB 
+  - How to install Redis 
+
+- Managing the services 
+- CRON
+
+## `Ubuntu` a short story
+
+Ubuntu is a popular Linux-based operating system that was first released in 2004. It was developed by Canonical Ltd. and is based on the Debian Linux distribution, with the aim of providing an easy-to-use and user-friendly alternative to proprietary operating systems such as Microsoft Windows
+
+Ubuntu uses a package management system called `apt` (Advanced Package Tool) that allows users to easily install, remove, and update software packages on their system.. Today, Ubuntu is one of the most popular Linux distributions in the world, used by millions of people across a wide range of devices, from desktop computers to servers and even smartphones.
+
+## Managing the system using the CLI
+
+The command-line interface (CLI) is a powerful tool for managing Ubuntu. It allows you to perform various tasks quickly and efficiently Here are some basic commands you need to know:
+
+### `sudo`
+
+The `sudo` command allows you to execute a command with administrative privileges. `sudo` stands for "superuser do".  To use `sudo`, simply type `sudo` followed by the command you want to execute. For example, let's say you want to edit a file system, you need to use `sudo` to run it.
+
+```bash
+sudo nano /etc/config
+```
+
+When you run this command, Ubuntu will prompt you to enter your password. This is a security measure to prevent unauthorized access to administrative functions.
+
+### `apt`
+
+`apt` is the package manager for Ubuntu. It allows you to install, update, and remove packages from your system. Here are some basic `apt` commands:
+
+- `update`: updates the package list on your system.
+- `upgrade`: upgrades all the installed packages on your system.
+- `install <packages>`: installs a package.
+- `remove <package>`: removes a package.
+- `purge <package>`: removes a package and its configuration files.
+- `autoremove`: removes any unused packages from your system
+- `autoclean`: removes any downloaded package files that are no longer needed.
+
+### `apt-get`
+
+You might notice some people use `apt-get` instead of `apt`. Both command are used for managing software packages on Ubuntu systems. `apt` is actually a newer and more user-friendly version of `apt-get`. However, both commands are still available and you can use whichever one you prefer.
+
+## Managing the users via CLI
+
+With the command-line tools available in Ubuntu, you can easily add and remove users, modify user settings, and perform other tasks related to user management.
+
+Here are some basic commands for managing users via the CLI in Ubuntu:
+
+### Adding a new user
+
+To add a new user to your Ubuntu system, use the following command:
+
+```bash
+sudo adduser <username>
+```
+
+Replace `<username>` with the desired username. You will then be prompted to set a password and enter some basic information about the user.
+
+### Removing a user
+
+To remove a user from your Ubuntu system, use the following command:
+
+```bash
+sudo deluser <username>
+```
+
+Replace `<username>` with the username of the user you want to remove. After running this command, the user's home directory and any files or directories associated with their account will be removed from your system.
+
+### Changing user passwords
+
+To change the password for an existing user account, use the following command:
+
+```bash
+sudo passwd <username>
+```
+
+Replace `<username>` with the username of the user. After running this command, you will be prompted to enter a new password for the user.
+
+## Installing the recommended packages for programming
+
+In Ubuntu, you can install packages easily using the package manager through CLI. To install a package on your Ubuntu system, use the following command:
+
+```bash
+sudo apt install <package-name>
+```
+
+Replace `<package-name>` with the name of the package you want to install.
+
+Here are some recommended package to be installed:
+
+### How to Install Python3
+
+Python is a simple and versatile open-source programming language used for web development, data analysis, artificial intelligence, and more. It has an easy-to-learn syntax and a large library of pre-built modules, making it an excellent choice for beginners and professionals. You can install Python by running this command. 
+
+```bash
+sudo apt update
+sudo apt install python3 python3-pip
+```
+
+Then, verify the installation with the following command.
+
+```bash
+python3 --version
+pip --version
+```
+
+### How to install MySQL
+
+MySQL is a popular relational database management system (RDBMS) used to store, manage and retrieve data. It is an open-source software that is widely used in web applications, and can be accessed through a variety of programming languages. To install and configure MySQL, follow these steps:
+
+1. Install the MySQL server package.
+
+   ```bash
+   sudo apt install mysql-server
+   ```
+
+2. Start the service
+
+   Once the installation is complete, MySQL will be automatically running. Otherwise, use the following command to start the service.
+
+   ```basH
+   sudo systemctl start mysql
+   ```
+
+   MySQL will be running on port 3306. This is MySQL's default port number.
+
+3. Configure the database and user
+
+   - Login to MySQL
+
+     ```bash
+     sudo mysql
+     ```
+
+   - Create database
+
+     ```mysql
+     CREATE DATABASE appseed_db;
+     ```
+
+     Replace `appseed_db` with the name that you want.
+
+   - Create user and grant permission to the user.
+
+     MySQL creates `root` user by default, but it's better to use another user for non-administrative functions. For this demo, we'll grant all permissions to all tables for the created user.
+
+     ```mysql
+     CREATE USER 'appseed_db_usr'@'localhost' IDENTIFIED BY 'pass';
+     GRANT ALL PRIVILEGES ON appseed_db.* TO 'appseed_db_usr'@'localhost';
+     FLUSH PRIVILEGES;
+     ```
+
+     Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+   - Exit MySQL
+
+     ```mysql
+     exit
+     ```
+
+### How to install PostgreSQL
+
+PostgreSQL is a powerful open-source object-relational database management system (ORDBMS) that offers robustness, scalability, and a wide range of advanced features. Its reliability and ability to handle large amounts of data make it a popular choice for enterprise-level applications. To install and configure PostgreSQL, follow these steps:
+
+1. Install the PostgreSQL server package.
+
+   ```bash
+   sudo apt install postgresql
+   ```
+
+2. Start the service
+
+   Once the installation is complete, PostgreSQL will be automatically running. Otherwise, use the following command to start the service.
+
+   ```basH
+   sudo systemctl start postgresql
+   ```
+
+   PortgreSQL will be running on port 5432. This is PortgreSQL's default port number.
+
+3. Configure the database and user
+
+   - Login to PostgreSQL
+
+     ```bash
+     sudo -u postgres psql
+     ```
+
+   - Create database
+
+     ```postgresql
+     CREATE DATABASE appseed_db;
+     ```
+
+     Replace `appseed_db` with the name that you want.
+
+   - Create a user and grant permission to the user.
+
+     For this demo, we'll grant all permissions to all tables for the created user.
+
+     ```postgresql
+     CREATE USER appseed_db_usr WITH PASSWORD 'pass';
+     GRANT ALL PRIVILEGES ON DATABASE appseed_db TO appseed_db_usr;
+     ```
+
+     Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+   - Exit PostgreSQL
+
+     ```postgresql
+     \q
+     ```
+
+### How to Install MongoDB
+
+MongoDB is a popular open-source NoSQL document-oriented database that stores data in flexible, JSON-like documents. It is designed for scalability and performance, making it ideal for handling big data and high-traffic applications. To install Mongo, follow these steps:
+
+1. Install mongo
+
+   ```bash
+   sudo apt install mongodb
+   ```
+
+2. Start the service
+
+   ```bash
+   sudo systemctl start mongod
+   ```
+
+   MongoDB will be running on port 27017. This is MongoDB's default port number.
+
+3. Connect to MongoDB
+
+   ```bas
+   mongo
+   ```
+
+   This command will start the `mongo` client and connect to the local MongoDB instance.
+
+### How to Install Redis
+
+Redis is an open-source in-memory data structure store that can be used as a database, cache, and message broker. It offers fast read and write speeds, high availability, and support for multiple data structures. Redis is ideal for real-time data processing and caching, with a reliable and active developer community. To install Redis, follow these steps:
+
+1. Install Redis server
+
+   ```bash
+   sudo apt install redis-server
+   ```
+
+2. Start the service
+
+   After installing Redis, you need to start the Redis service to begin using it. To start the Redis service, run the following command:
+
+   ```bash
+   sudo systemctl start redis
+   ```
+
+3. Connect to Redis
+
+   ```bash
+   redis-cli
+   ```
+
+   This will connect to the local Redis instance.
+
+## Managing the services
+
+Services are background processes that perform various tasks, They are used to manage various system functions and can be controlled using the `systemctl` command.
+
+- `start <service-name>`: to start a service
+- `stop <service-name>`: to stop a service
+- `restart <service-name>`: to restart a service
+- `enable <service-name>`: to enable a service to start automatically at boot
+- `disable <service-name>`: to disable a service from start automatically at boot
+- `status <service-name>`: to check status of a service
+
+For example, if you want to stop MySQL, you can run this command:
+
+```bash
+sudo systemctl stop mysql
+```
+
+## CRON
+
+CRON is a time-based job scheduling system used in Unix-like operating systems. It allows users to schedule repetitive tasks, such as running scripts or performing backups, at specific times or intervals. 
+
+### Creating CRON job
+
+To create a new CRON job, follow these steps:
+
+1. Open your terminal and type the following command.
+
+   ```bash
+   crontab -e
+   ```
+
+   This command will open the CRON configuration file. If this is your first time using CRON, you'll be prompted to choose your default text editor. Choose your preferred editor and press Enter.
+
+2. Once the editor opens, add a new line at the bottom of the file with the following syntax:
+
+   ```
+   * * * * * command-to-be-executed
+   ```
+
+   This line represents your CRON job. The first five asterisks is a crontab that represents the time and date parameters for the job.
+
+   - Minute (0-59)
+   - Hour (0-23)
+   - Day of the month (1-31)
+   - Month (1-12)
+   - Day of the week (0-6, where Sunday is 0)
+
+   You can use tools like [crontab.guru](https://crontab.guru/) to help you creating a crontab. For example, to schedule a job to run at 0:00 AM every day, use the following crontab.
+
+   ```bash
+   0 0 * * * command-to-be-executed
+   ```
+
+3. Once you've added your CRON job, save and exit the editor.
+
+### Viewing CRON jobs
+
+To view your current CRON jobs, Open your terminal and type the following command:
+
+```bash
+crontab -l
+```
+
+This will display a list of all your current CRON jobs in the terminal window.
+
+### Removing CRON jobs
+
+To remove a CRON job, follow these steps:
+
+1. Open your terminal and type the following command to open the CRON configuration file:
+
+   ```bash
+   crontab -e
+   ```
+
+2. Once the editor opens, locate the line that corresponds to the job you want to remove and delete it.
+3. Save and exit the editor.
