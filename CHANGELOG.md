@@ -1,8 +1,10 @@
 # Change Log
 
-## [1.0.27] 2023-05-02
+## [1.0.27] 2023-05-03
 ### Changes
 
+- Update [Ubuntu](https://docs.appseed.us/technologies/ubuntu/) Section
+  - [Getting Started with Ubuntu](https://docs.appseed.us/technologies/ubuntu/getting-started/)
 - Update [JavaScript](https://docs.appseed.us/technologies/javascript/) Section
   - [Classes and Objects in JavaScript](https://docs.appseed.us/technologies/javascript/working-with-classes-and-objects/)
 
