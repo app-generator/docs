@@ -71,7 +71,24 @@ console.log(items); //👉🏻 Output: NodeList(3)
 ```
 The code snippet above returns all the HTML elements with a class attribute of `item`.  
 
-## 
+## Modifying HTML DOM elements  
+One of the most powerful features of JavaScript is its ability to alter HTML elements on a web page in real-time without reloading the entire page. Here, you'll learn how to modify HTML elements with JavaScript.
+
+### Using the `textContent` property
+The `textContent` property allows you to change only the content of an HTML element.    
+
+```js
+const header = document.querySelector("#heading");
+header.textContent = "HTML DOM Manipulation"
+```
+The code snippet above changes the content of the `h1` tag to `HTML DOM Manipulation`.  
+
+### Using the `innerHTML` property 
+It allows you to modify the content, tags, and attributes of an HTML element. You change the `p` tag to a `h3` tag, as shown below.    
+```js. 
+const paragraph = document.getElementById("paragraph");
+paragraph.innerHTML = "<h3>DOM Manipulation made easy</h3>"
+```
 <br />
 
 ## Resources
