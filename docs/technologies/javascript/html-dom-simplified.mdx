@@ -16,7 +16,11 @@ In this article, you’ll learn how to create event listeners and select, create
 The HTML DOM enables you to access every element on a web page with JavaScript, and there are five ways by which you can access these elements. 
 Before going over them, create a simple web page as shown below.
 
-<img width="588" alt="Screenshot 2023-05-05 at 12 54 51" src="https://user-images.githubusercontent.com/67129211/236451707-5b3279a1-1da8-486e-a805-651f796a020e.png">
+<img
+	width='588'
+	alt='HTML DOM elements in JavaScript'
+	src='https://user-images.githubusercontent.com/67129211/236451707-5b3279a1-1da8-486e-a805-651f796a020e.png'
+/>
 
 ```html
 <h1 id="heading">HTML DOM Basics</h1>
@@ -29,7 +33,7 @@ Before going over them, create a simple web page as shown below.
 ```
 
 ### Using `document.getElementById()`
-It allows you to access an HTML element via its id attribute. `document.getElementById` returns an entire element or null; if the element does not exist.    
+This method allows you to access an HTML element via its id attribute. It returns an entire element or null; if the element does not exist.    
 The code snippet below selects the HTML element with an id of heading from the web page.
 ```js
 const heading = document.getElementById("heading");
