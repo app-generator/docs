@@ -103,7 +103,7 @@ const header = document.querySelector("#heading");
 header.textContent = "HTML DOM Manipulation";
 ```
 
-The code snippet above changes the content of the `h1` tag to `HTML DOM Manipulation`.
+The code snippet above changes the content of the `h1` tag to "HTML DOM Manipulation".
 
 ### Using the `innerHTML` property
 
@@ -116,7 +116,9 @@ paragraph.innerHTML = "<h3>DOM Manipulation made easy</h3>";
 
 ## Adding elements to the HTML DOM in JavaScript
 
-To add new elements to the HTML DOM via JavaScript, you can use the `createElement()` method and the `appendChild()` method. The `createElement()` method creates a new element with JavaScript, and the `appendChild()` adds the newly created element to a parent element on the HTML DOM.
+To add new elements to the HTML DOM via JavaScript, you can use the `createElement()` method and the `appendChild()` method.
+
+The `createElement()` method creates a new element with JavaScript, and the `appendChild()` adds the newly created element to a parent element on the HTML DOM.
 
 You can add a new list item to the `ul` tag on the web page as done below.
 
@@ -136,7 +138,107 @@ The code snippet above,
 - gets the `ul` element from the web page,
 - creates a new `li` element, sets its content, and adds a class attribute to the `li` element, then,
 - appends the `li` element to the `ul` tag on the web page.
-  <br />
+
+## Removing elements from the HTML DOM in JavaScript
+
+To remove elements from the HTML DOM in JavaScript, you can use the `removeChild()` method. This method allows you to remove a child element from its parent element.
+
+```js
+const list = document.querySelector(".list");
+const firstItem = document.querySelector(".item");
+
+console.log(firstItem); //Output: 👉🏻 <li class="item">JavaScript Beginners</li>
+list.removeChild(firstItem);
+```
+
+The code snippet above gets the entire unordered list and its first child from the web page and removes the first child from the list using the `removeChild()` method.
+
+## Listening to HTML DOM events with JavaScript
+
+The HTML DOM also allows you to create event listeners that listen to actions performed on a particular element on the web page. You can listen to various events carried out by users on a webpage.
+
+Add a button element to the web page. We'll add event listeners to the button.
+
+```html
+<h1 id="heading">HTML DOM Basics</h1>
+<p id="paragraph">Learn how to manipulate the DOM with JavaScript</p>
+<ul class="list">
+	<li class="item">JavaScript Beginners</li>
+	<li class="item">JavaScript Intermediates</li>
+	<li class="item">JavaScript Experts</li>
+</ul>
+<button id="button">Hello Reader</button>
+```
+
+> 💡 PS: Every element has its set of events. You can add event listeners to several HTML elements, including buttons, links, input fields, and more.
+
+### Using the `addEventListener()` method
+
+The `addEventListener()` method is a built-in method in JavaScript that allows you to add event listeners to HTML elements. It takes two arguments: the type of event to listen for (such as click, mouseover, keydown, etc.) and the function to execute when the event occurs.
+
+```js
+const button = document.getElementById("button");
+
+button.addEventListener("click", function () {
+	alert("Button Clicked!");
+});
+```
+
+The code snippet above references the button element and listens for a click event on the button. Once a user clicks the button, it triggers the `alert` method.
+
+### Using the `element.event` method
+
+It is an older way of adding event listeners to HTML elements in JavaScript. It assigns a function to an HTML element.
+
+```js
+const button = document.getElementById("button");
+
+button.onclick = function () {
+	alert("Button Clicked!");
+};
+```
+
+The `button.onclick` method may look straightforward compared to the `addEventListener` method, but it has some limitations.
+
+### `addEventListener()` vs `element.event`
+
+- The `addEventListener` method can execute multiple functions when a particular event occurs; this is beneficial when building complex or interactive web applications. In `element.event`, only a single function can be attached to an event.
+
+```js
+const button = document.getElementById("button");
+
+button.addEventListener("click", function () {
+	console.log("Button Clicked!");
+});
+
+button.addEventListener("click", function () {
+	console.log("JavaScript is easy!");
+});
+//👉🏻 Both functions are executed
+```
+
+From the code snippet above, both functions are executed when a user clicks the button. Below is an example using the `element.event` method; the last event overrides the previous one.
+
+```js
+const button = document.getElementById("button");
+
+button.onclick = function () {
+	console.log("First click!");
+};
+
+button.onclick = function () {
+	console.log("JavaScript is easy");
+};
+//👉🏻 only the last event is executed
+```
+
+- The `addEventListener()` method provides more control over the execution of the event handlers. You can remove an event using the [`removeEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener) method.
+
+## Conclusion
+
+So far, you’ve learnt the basics of what the DOM is and how it works, how to modify elements, add new ones, and listen to events on your web page.
+
+A solid understanding of the HTML DOM is essential when building interactive web pages and creating dynamic user interfaces with HTML and JavaScript.
 
 ## Resources
 
