@@ -11,11 +11,473 @@ This page aims to help beginners get familiar with **CentOS**, a popular Linux d
 
 ![CentOS - Cover Image](https://user-images.githubusercontent.com/51070104/235929403-b0825364-9172-492b-9d41-87640adfc9e9.png)
 
-<br />
+CentOS, short for Community Enterprise Operating System, was a free and open-source distribution of the Linux operating system. It was first released in 2004, based on the source code of Red Hat Enterprise Linux (RHEL). The project aimed to provide a stable and reliable platform for users who did not require the commercial support and services offered by Red Hat. Over the years, CentOS became a popular choice for servers and enterprise applications, as it offered long-term support and security updates.
 
-@ToDo 
+> Topics covered
 
-<br />
+- How to install
+  - Installing CentOS on a Laptop/Desktop
+  - Installing CentOS in a Virtual Machine via `VirtualBox`
+- Managing the system using the CLI
+  - `sudo`
+  - `yum`
+- Managing the users via CLI 
+- Installing packages
+- Recommended packages for programming
+  - Python
+  - MySQL
+  - PostgreSQL 
+  - MongoDB 
+  - Redis 
+
+- Managing the services 
+- CRON
+- Resources
+
+## How to Install CentOS
+
+There are two main ways to install CentOS: on a laptop/desktop and in a virtual machine.
+
+### Installing CentOS on a Laptop/Desktop
+
+Before we begin, here's what you'll need:
+
+- A laptop or PC with at least 20GB of storage space and 2GB RAM.
+- A 4GB or larger USB stick/flash drive.
+- A CentOS ISO file. You can download it from the [official CentOS website](https://www.centos.org/download/).
+
+#### Create a bootable USB stick
+
+To install CentOS on your computer, you need to create a bootable USB drive with the CentOS ISO file. Here's how you can do it on Windows:
+
+1. Download and install [Rufus](https://rufus.ie/). It's a free and open source USB stick writing tool that you can use to create a bootable USB drive.
+2. Insert a USB drive with at least 4GB of space into your computer.
+3. Open Rufus and select the USB drive you inserted.
+4. Select the CentOS ISO file you downloaded.
+5. Keep the rest as default and click "START".
+6. Rufus may ask for additional files to complete writing the ISO. If this happens, select **Yes** to continue.
+7. You'll be alerted that Rufus has detected that the CentOS ISO is an *ISOHybrid image*. Keep *Write in ISO Image mode* selected and click **OK** to continue.
+8. Rufus will warn you that all data on your selected USB device will be destroyed. Double check that you've selected the correct device and click **OK** when you're sure.
+9. Wait a few minutes for Rufus to write the ISO to your USB stick.
+
+If you are using a different operating system, you can use an alternative tool like [Etcher](https://www.balena.io/etcher) to create the bootable USB drive.
+
+#### Install CentOS
+
+1. Restart your computer and enter the BIOS by pressing F2 or F10 or F12 (depending on your computer) when the logo appears.
+2. Go to the "Boot" tab and select the bootable USB drive as the primary boot option. Save and exit the BIOS. Your computer will restart and boot into the CentOS installation process.
+3. Follow the on-screen instructions and set the localization.
+4. Click on "Installation Destination", select the desired disk and "Automatic" in the Storage Configuration.
+5. Click on "Network & Host Name", enable the internet access and fill in the host name.
+6. Click on "User Creation" and enter the details such as name, username, and password.
+7. Click on "Root Password" and enter password for your root user.
+8. After everything is set up, click on "Begin Installation" to start the installation process.
+9. Once the installation is complete, click on Reboot System.
+10. Remove the USB drive and let the system boot from the installed CentOS operating system.
+
+You have successfully installed CentOS on your computer! You can now explore the features and functionalities of CentOS, including its package manager, system tools, and more.
+
+### Installing CentOS in a Virtual Machine via VirtualBox
+
+If you don't want to install CentOS directly on your computer, you can also install it in a virtual machine using VirtualBox. Here's how to do it:
+
+1. Download and install VirtualBox from the [official website](https://www.virtualbox.org/).
+2. Download the CentOS ISO file from the [official CentOS website](https://www.centos.org/download).
+3. Open VirtualBox and click "New" to create a new virtual machine.
+4. Follow the on-screen instructions to create a new virtual machine. Fill in the appropriate details.
+5. Fill the basic details of your virtual machine.
+   - Name: CentOS 7 (depending on your version)
+   - Folder: Select folder where your virtual machines will be stored
+   - ISO Image: CentOS ISO file you downloaded
+   - Type: Linux
+   - Version: Red Hat (64-bit)
+6. Create a user profile with a username and password for the automatic installation.
+7. Specify the resources for your virtual machine, such as RAM and CPU usage, and the size of the hard disk.
+   - Base memory: At least 4GB
+   - Processors: 4 CPUs
+   - Hard disk: Create a new virtual hard disk
+   - Disk size: At least 20 GB
+8. Review the summary of your machine settings and click "Finish" to create the virtual machine.
+9. Start the virtual machine and follow the on-screen instructions to complete the CentOS installation.
+
+## Managing the system using the CLI
+
+The command-line interface (CLI) is a powerful tool for managing CentOS. It allows you to perform various tasks quickly and efficiently using text commands. Here are some basic commands you need to know:
+
+### `sudo`
+
+The `sudo` command allows you to execute a command with administrative privileges. `sudo` stands for "superuser do".  To use `sudo`, simply type `sudo` followed by the command you want to execute. For example, let's say you want to edit a system file, you need to use `sudo` to run it.
+
+```bash
+sudo nano /etc/config
+```
+
+When you run this command, CentOS will prompt you to enter your password. This is a security measure to prevent unauthorized access to administrative functions.
+
+### `yum`
+
+`yum` is the package manager for CentOS. It allows you to install, update, and remove packages from your system. Here are some basic `yum` commands:
+
+- `update`: updates the package list on your system.
+- `upgrade`: upgrades all the installed packages on your system.
+- `install <packages>`: installs a package.
+- `remove <package>`: removes a package.
+- `clean`: removes cached package files from the system.
+- `list <package>`: lists the installed packages on the system.
+- `info <package>`: displays detailed information about a package.
+- `search <package>`: searches for a package by name or description.
+
+## Managing the users via CLI
+
+With the command-line tools available in CentOS, you can easily add and remove users, modify user settings, and perform other tasks related to user management.
+
+Here are some basic commands for managing users via the CLI in CentOS:
+
+### Adding a new user
+
+To add a new user to your CentOS system, use the following command:
+
+```bash
+sudo adduser <username>
+```
+
+Replace `<username>` with the desired username. You will then be prompted to set a password and enter some basic information about the user.
+
+### Removing a user
+
+To remove a user from your CentOS system, use the following command:
+
+```bash
+sudo deluser <username>
+```
+
+Replace `<username>` with the username of the user you want to remove. After running this command, the user's home directory and any files or directories associated with their account will be removed from your system.
+
+### Changing user passwords
+
+To change the password for an existing user account, use the following command:
+
+```bash
+sudo passwd <username>
+```
+
+Replace `<username>` with the username of the user. After running this command, you will be prompted to enter a new password for the user.
+
+## Installing packages
+
+In CentOS, you can install packages easily using the package manager through CLI.  Before you can install new packages, you need to make sure your package list is up-to-date. To update the package list, use the following command:
+
+```bash
+sudo yum update
+```
+
+To install a package on your CentOS system, use the following command:
+
+```bash
+sudo yum install <package-name>
+```
+
+Replace `<package-name>` with the name of the package you want to install.
+
+## Recommended packages for programming
+
+Here are some recommended packages to be installed and steps to install it:
+
+### Python
+
+Python is a simple and versatile open-source programming language used for web development, data analysis, artificial intelligence, and more. It has an easy-to-learn syntax and a large library of pre-built modules, making it an excellent choice for beginners and professionals. You can install Python by running this command. 
+
+```bash
+sudo yum update
+sudo yum install python3 python3-pip
+```
+
+Then, verify the installation with the following command.
+
+```bash
+python3 --version
+pip --version
+```
+
+### MySQL
+
+MySQL is a popular relational database management system (RDBMS) used to store, manage and retrieve data. It is an open-source software that is widely used in web applications, and can be accessed through a variety of programming languages. To install and configure MySQL, follow these steps:
+
+1. Install the MySQL server package.
+
+   ```bash
+   sudo yum install mysql-server
+   ```
+
+2. Start the service
+
+   Use the following command to start the service.
+
+   ```basH
+   sudo systemctl start mysqld
+   ```
+
+   MySQL will be running on port 3306. This is MySQL's default port number.
+
+3. Configure the database and user
+
+   - Login to MySQL
+
+     ```bash
+     sudo mysql
+     ```
+
+   - Create database
+
+     ```mysql
+     CREATE DATABASE appseed_db;
+     ```
+
+     Replace `appseed_db` with the name that you want.
+
+   - Create user and grant permission to the user.
+
+     MySQL creates `root` user by default, but it's better to use another user for non-administrative functions. For this demo, we'll grant all permissions to all tables for the created user.
+
+     ```mysql
+     CREATE USER 'appseed_db_usr'@'localhost' IDENTIFIED BY 'pass';
+     GRANT ALL PRIVILEGES ON appseed_db.* TO 'appseed_db_usr'@'localhost';
+     FLUSH PRIVILEGES;
+     ```
+
+     Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+   - Exit MySQL
+
+     ```mysql
+     exit
+     ```
+
+### PostgreSQL
+
+PostgreSQL is a powerful open-source object-relational database management system (ORDBMS) that offers robustness, scalability, and a wide range of advanced features. Its reliability and ability to handle large amounts of data make it a popular choice for enterprise-level applications. To install and configure PostgreSQL, follow these steps:
+
+1. Install the PostgreSQL repository on your CentOS system.
+
+   ```bash
+   sudo yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+   ```
+
+2. Install the PostgreSQL server package.
+
+   ```bash
+   sudo yum install postgresql15-server
+   ```
+
+3. Initialize the database
+
+   ```bash
+   sudo /usr/pgsql-15/bin/postgresql-15-setup initdb
+   ```
+
+4. Start the service
+
+   Once the installation is complete, PostgreSQL will be automatically running. Otherwise, use the following command to start the service.
+
+   ```basH
+   sudo systemctl start postgresql-15
+   ```
+
+   PortgreSQL will be running on port 5432. This is PortgreSQL's default port number.
+
+5. Configure the database and user
+
+   - Login to PostgreSQL
+
+     ```bash
+     sudo -u postgres psql
+     ```
+
+   - Create database
+
+     ```postgresql
+     CREATE DATABASE appseed_db;
+     ```
+
+     Replace `appseed_db` with the name that you want.
+
+   - Create a user and grant permission to the user.
+
+     For this demo, we'll grant all permissions to all tables for the created user.
+
+     ```postgresql
+     CREATE USER appseed_db_usr WITH PASSWORD 'pass';
+     GRANT ALL PRIVILEGES ON DATABASE appseed_db TO appseed_db_usr;
+     ```
+
+     Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+
+   - Exit PostgreSQL
+
+     ```postgresql
+     \q
+     ```
+
+### MongoDB
+
+MongoDB is a popular open-source NoSQL document-oriented database that stores data in flexible, JSON-like documents. It is designed for scalability and performance, making it ideal for handling big data and high-traffic applications. To install Mongo, follow these steps:
+
+1. Add MongoDB repository to your computer.
+
+   ```bash
+   sudo vi /etc/yum.repos.d/mongodb-org-6.0.repo
+   ```
+
+   Then paste the following lines.
+
+   ```
+   [mongodb-org-6.0]
+   name=MongoDB Repository
+   baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/6.0/x86_64/
+   gpgcheck=1
+   enabled=1
+   gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
+   ```
+
+2. Install MongoDB package
+
+   ```bash
+   sudo yum install mongodb-org
+   ```
+
+3. Start the service
+
+   ```bash
+   sudo systemctl start mongod
+   ```
+
+   MongoDB will be running on port 27017. This is MongoDB's default port number.
+
+4. Connect to MongoDB
+
+   ```bas
+   mongosh
+   ```
+
+   This command will start the `mongo` client and connect to the local MongoDB instance.
+
+### Redis
+
+Redis is an open-source in-memory data structure store that can be used as a database, cache, and message broker. It offers fast read and write speeds, high availability, and support for multiple data structures. Redis is ideal for real-time data processing and caching, with a reliable and active developer community. To install Redis, follow these steps:
+
+1. Install Redis
+
+   ```bash
+   sudo yum install redis
+   ```
+
+2. Start the service
+
+   After installing Redis, you need to start the Redis service to begin using it. To start the Redis service, run the following command:
+
+   ```bash
+   sudo systemctl start redis
+   ```
+
+3. Connect to Redis
+
+   ```bash
+   redis-cli
+   ```
+
+   This will connect to the local Redis instance. You can now start using Redis.
+
+## Managing the services
+
+Services are background processes that perform various tasks, They are used to manage various system functions and can be controlled using the `systemctl` command.
+
+- `start <service-name>`: to start a service
+- `stop <service-name>`: to stop a service
+- `restart <service-name>`: to restart a service
+- `enable <service-name>`: to enable a service to start automatically at boot
+- `disable <service-name>`: to disable a service from start automatically at boot
+- `status <service-name>`: to check status of a service
+
+For example, if you want to stop MySQL, you can run this command:
+
+```bash
+sudo systemctl stop mysql
+```
+
+## CRON
+
+CRON is a time-based job scheduling system used in Unix-like operating systems. It allows users to schedule repetitive tasks, such as running scripts or performing backups, at specific times or intervals. 
+
+### Creating CRON job
+
+To create a new CRON job, follow these steps:
+
+1. Open your terminal and type the following command.
+
+   ```bash
+   crontab -e
+   ```
+
+   This command will open the CRON configuration file. If this is your first time using CRON, you'll be prompted to choose your default text editor. Choose your preferred editor and press Enter.
+
+2. Once the editor opens, add a new line at the bottom of the file with the following syntax:
+
+   ```
+   * * * * * command-to-be-executed
+   ```
+
+   This line is a crontab that represents your CRON job. The first five asterisks represent the time and date parameters for the job. The five time and date parameters are:
+
+   - Minute (0-59)
+   - Hour (0-23)
+   - Day of the month (1-31)
+   - Month (1-12)
+   - Day of the week (0-6, where Sunday is 0)
+
+   ```
+   * * * * * command-to-be-executed
+   – – – – –
+   | | | | |
+   | | | | +—– day of week (0–7) (0=Sunday)
+   | | | +——- month (1–12)
+   | | +——— day of month (1–31)
+   | +———– hour (0–23)
+   +————- min (0–59)
+   ```
+
+   For example, to schedule a job to run at 0:00 AM every day, use the following crontab.
+
+   ```bash
+   0 0 * * * command-to-be-executed
+   ```
+
+   Note that you can use tools like [crontab.guru](https://crontab.guru/) to help you create a crontab.
+
+3. Once you've added your CRON job, save and exit the editor.
+
+### Viewing CRON jobs
+
+To view your current CRON jobs, Open your terminal and type the following command:
+
+```bash
+crontab -l
+```
+
+This will display a list of all your current CRON jobs in the terminal window.
+
+### Removing CRON jobs
+
+To remove a CRON job, follow these steps:
+
+1. Open your terminal and type the following command to open the CRON configuration file:
+
+   ```bash
+   crontab -e
+   ```
+
+2. Once the editor opens, locate the line that corresponds to the job you want to remove and delete it.
+
+3. Save and exit the editor.
 
 ## Resources
 
