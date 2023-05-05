@@ -5,15 +5,18 @@ description: JavaScript HTML DOM Simplified, for Beginners
 
 import SubHeading from "@site/src/components/SubHeading";
 
-<SubHeading color="#25c2a0">JavaScript HTML DOM Simplified, Beginner’s Guide</SubHeading>
+<SubHeading color='#25c2a0'>
+	JavaScript HTML DOM Simplified, Beginner’s Guide
+</SubHeading>
 
-The Document Object Model (DOM) is a tree-like structure containing all the elements and content of a web page. It enables you to manipulate the content of a webpage in real-time using JavaScript. 
+The Document Object Model (DOM) is a tree-like structure containing all the elements and content of a web page. It enables you to manipulate the content of a webpage in real-time using JavaScript.
 With DOM, you can create interactive and dynamic user interfaces.
 
-In this article, you’ll learn how to create event listeners and select, create, modify, and delete elements and attributes on a web page. 
+In this article, you’ll learn how to create event listeners and select, create, modify, and delete elements and attributes on a web page.
 
 ## Accessing HTML DOM elements in JavaScript
-The HTML DOM enables you to access every element on a web page with JavaScript, and there are five ways by which you can access these elements. 
+
+The HTML DOM enables you to access every element on a web page with JavaScript, and there are five ways by which you can access these elements.
 Before going over them, create a simple web page as shown below.
 
 <img
@@ -26,22 +29,25 @@ Before going over them, create a simple web page as shown below.
 <h1 id="heading">HTML DOM Basics</h1>
 <p id="paragraph">Learn how to manipulate the DOM with JavaScript</p>
 <ul class="list">
-  <li class="item">JavaScript Beginners</li>
-  <li class="item">JavaScript Intermediates</li>
-  <li class="item">JavaScript Experts</li>
+	<li class="item">JavaScript Beginners</li>
+	<li class="item">JavaScript Intermediates</li>
+	<li class="item">JavaScript Experts</li>
 </ul>
 ```
 
 ### Using `document.getElementById()`
-This method allows you to access an HTML element via its id attribute. It returns an entire element or null; if the element does not exist.    
+
+This method allows you to access an HTML element via its id attribute. It returns an entire element or null; if the element does not exist.  
 The code snippet below selects the HTML element with an id of heading from the web page.
+
 ```js
 const heading = document.getElementById("heading");
 console.log(heading); //👉🏻 Output: <h1 id="heading">HTML DOM Basics</h1>
 ```
 
 ### Using `document.getElementsByClassName()`
-With `document.getElementsByClassName()`, you can access elements using their class attribute. It returns an array-like object called an `HTMLCollection` that contains all the elements with the specified class name.   
+
+With `document.getElementsByClassName()`, you can access elements using their class attribute. It returns an array-like object called an `HTMLCollection` that contains all the elements with the specified class name.
 
 ```js
 const item = document.getElementsByClassName("item");
@@ -49,51 +55,88 @@ console.log(item); //👉🏻 Output: HTMLCollection(3)
 ```
 
 ### Using `document.getElementsByTagName()`
-This method allows you to access HTML elements via their tag name. It returns an `HTMLCollection` containing all the elements with the same tag name.  
-```js 
+
+This method allows you to access HTML elements via their tag name. It returns an `HTMLCollection` containing all the elements with the same tag name.
+
+```js
 const paragraph = document.getElementsByTagName("p");
 console.log(paragraph); //👉🏻 Output: HTMLCollection(1)
-``` 
+```
+
 The `paragraph` variable contains an array of all the paragraph tags on the web page.
 
 ### Using `document.querySelector()`
-With this method, you can access an element via its CSS selector. It returns the first element that matches the selector.  
+
+With this method, you can access an element via its CSS selector. It returns the first element that matches the selector.
+
 ```js
 const paragraph = document.querySelector("#paragraph");
 console.log(subHeading); //👉🏻 Output: <p id="paragraph">Learn how to manipulate the DOM with JavaScript</p>
 
 const list = document.querySelector(".list");
 console.log(list); //👉🏻 Output: <ul class="list">...</ul>
-``` 
-The code snippet above shows you can reference an element via its ID or class attributes.  
+```
+
+The code snippet above shows you can reference an element via its ID or class attributes.
 
 ### Using `document.querySelectorAll()`
-It is similar to the `document.querySelector` method but allows you to access multiple elements using a CSS selector. It returns a `NodeList` of all the HTML elements that match the selector.  
+
+It is similar to the `document.querySelector` method but allows you to access multiple elements using a CSS selector. It returns a `NodeList` of all the HTML elements that match the selector.
+
 ```js
 const items = document.querySelectorAll(".item");
 console.log(items); //👉🏻 Output: NodeList(3)
 ```
-The code snippet above returns all the HTML elements with a class attribute of `item`.  
 
-## Modifying HTML DOM elements  
+The code snippet above returns all the HTML elements with a class attribute of `item`.
+
+## Modifying HTML DOM elements
+
 One of the most powerful features of JavaScript is its ability to alter HTML elements on a web page in real-time without reloading the entire page. Here, you'll learn how to modify HTML elements with JavaScript.
 
 ### Using the `textContent` property
-The `textContent` property allows you to change only the content of an HTML element.    
+
+The `textContent` property allows you to change only the content of an HTML element.
 
 ```js
 const header = document.querySelector("#heading");
-header.textContent = "HTML DOM Manipulation"
+header.textContent = "HTML DOM Manipulation";
 ```
-The code snippet above changes the content of the `h1` tag to `HTML DOM Manipulation`.  
 
-### Using the `innerHTML` property 
-It allows you to modify the content, tags, and attributes of an HTML element. You change the `p` tag to a `h3` tag, as shown below.    
-```js. 
+The code snippet above changes the content of the `h1` tag to `HTML DOM Manipulation`.
+
+### Using the `innerHTML` property
+
+It allows you to modify the content, tags, and attributes of an HTML element. You change the `p` tag to a `h3` tag, as shown below.
+
+```js
 const paragraph = document.getElementById("paragraph");
-paragraph.innerHTML = "<h3>DOM Manipulation made easy</h3>"
+paragraph.innerHTML = "<h3>DOM Manipulation made easy</h3>";
 ```
-<br />
+
+## Adding elements to the HTML DOM in JavaScript
+
+To add new elements to the HTML DOM via JavaScript, you can use the `createElement()` method and the `appendChild()` method. The `createElement()` method creates a new element with JavaScript, and the `appendChild()` adds the newly created element to a parent element on the HTML DOM.
+
+You can add a new list item to the `ul` tag on the web page as done below.
+
+```js
+const list = document.querySelector(".list");
+const item = document.createElement("li");
+
+item.textContent = "Newly added";
+item.className = "item";
+
+list.appendChild(item);
+console.log(item); //👉🏻 Output: <li class="item">Newly added</li>
+```
+
+The code snippet above,
+
+- gets the `ul` element from the web page,
+- creates a new `li` element, sets its content, and adds a class attribute to the `li` element, then,
+- appends the `li` element to the `ul` tag on the web page.
+  <br />
 
 ## Resources
 
