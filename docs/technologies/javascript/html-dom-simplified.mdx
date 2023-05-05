@@ -12,8 +12,66 @@ With DOM, you can create interactive and dynamic user interfaces.
 
 In this article, you’ll learn how to create event listeners and select, create, modify, and delete elements and attributes on a web page. 
 
+## Accessing HTML DOM elements in JavaScript
+The HTML DOM enables you to access every element on a web page with JavaScript, and there are five ways by which you can access these elements. 
+Before going over them, create a simple web page as shown below.
 
+<img width="588" alt="Screenshot 2023-05-05 at 12 54 51" src="https://user-images.githubusercontent.com/67129211/236451707-5b3279a1-1da8-486e-a805-651f796a020e.png">
 
+```html
+<h1 id="heading">HTML DOM Basics</h1>
+<p id="paragraph">Learn how to manipulate the DOM with JavaScript</p>
+<ul class="list">
+  <li class="item">JavaScript Beginners</li>
+  <li class="item">JavaScript Intermediates</li>
+  <li class="item">JavaScript Experts</li>
+</ul>
+```
+
+### Using `document.getElementById()`
+It allows you to access an HTML element via its id attribute. `document.getElementById` returns an entire element or null; if the element does not exist.    
+The code snippet below selects the HTML element with an id of heading from the web page.
+```js
+const heading = document.getElementById("heading");
+console.log(heading); //👉🏻 Output: <h1 id="heading">HTML DOM Basics</h1>
+```
+
+### Using `document.getElementsByClassName()`
+With `document.getElementsByClassName()`, you can access elements using their class attribute. It returns an array-like object called an `HTMLCollection` that contains all the elements with the specified class name.   
+
+```js
+const item = document.getElementsByClassName("item");
+console.log(item); //👉🏻 Output: HTMLCollection(3)
+```
+
+### Using `document.getElementsByTagName()`
+This method allows you to access HTML elements via their tag name. It returns an `HTMLCollection` containing all the elements with the same tag name.  
+```js 
+const paragraph = document.getElementsByTagName("p");
+console.log(paragraph); //👉🏻 Output: HTMLCollection(1)
+``` 
+The `paragraph` variable contains an array of all the paragraph tags on the web page.
+
+### Using `document.querySelector()`
+With this method, you can access an element via its CSS selector. It returns the first element that matches the selector.  
+```js
+const paragraph = document.querySelector("#paragraph");
+console.log(subHeading); //👉🏻 Output: <p id="paragraph">Learn how to manipulate the DOM with JavaScript</p>
+
+const list = document.querySelector(".list");
+console.log(list); //👉🏻 Output: <ul class="list">...</ul>
+``` 
+The code snippet above shows you can reference an element via its ID or class attributes.  
+
+### Using `document.querySelectorAll()`
+It is similar to the `document.querySelector` method but allows you to access multiple elements using a CSS selector. It returns a `NodeList` of all the HTML elements that match the selector.  
+```js
+const items = document.querySelectorAll(".item");
+console.log(items); //👉🏻 Output: NodeList(3)
+```
+The code snippet above returns all the HTML elements with a class attribute of `item`.  
+
+## 
 <br />
 
 ## Resources
