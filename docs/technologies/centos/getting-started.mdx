@@ -11,34 +11,21 @@ This page aims to help beginners get familiar with **CentOS**, a popular Linux d
 
 ![CentOS - Cover Image](https://user-images.githubusercontent.com/51070104/235929403-b0825364-9172-492b-9d41-87640adfc9e9.png)
 
-CentOS, short for Community Enterprise Operating System, was a free and open-source distribution of the Linux operating system. It was first released in 2004, based on the source code of Red Hat Enterprise Linux (RHEL). The project aimed to provide a stable and reliable platform for users who did not require the commercial support and services offered by Red Hat. Over the years, CentOS became a popular choice for servers and enterprise applications, as it offered long-term support and security updates.
+CentOS, short for Community Enterprise Operating System, was a free and open-source distribution of the Linux operating system. 
+It was first released in 2004, based on the source code of Red Hat Enterprise Linux (RHEL). 
 
-> Topics covered
+The project aimed to provide a stable and reliable platform for users who did not require the commercial support and services offered by Red Hat. 
+Over the years, CentOS became a popular choice for servers and enterprise applications, as it offered long-term support and security updates.
 
-- How to install
-  - Installing CentOS on a Laptop/Desktop
-  - Installing CentOS in a Virtual Machine via `VirtualBox`
-- Managing the system using the CLI
-  - `sudo`
-  - `yum`
-- Managing the users via CLI 
-- Installing packages
-- Recommended packages for programming
-  - Python
-  - MySQL
-  - PostgreSQL 
-  - MongoDB 
-  - Redis 
-
-- Managing the services 
-- CRON
-- Resources
+<br />
 
 ## How to Install CentOS
 
 There are two main ways to install CentOS: on a laptop/desktop and in a virtual machine.
 
-### Installing CentOS on a Laptop/Desktop
+<br />
+
+### 👉 `Installing` CentOS on a `Laptop/Desktop`
 
 Before we begin, here's what you'll need:
 
@@ -77,7 +64,9 @@ If you are using a different operating system, you can use an alternative tool l
 
 You have successfully installed CentOS on your computer! You can now explore the features and functionalities of CentOS, including its package manager, system tools, and more.
 
-### Installing CentOS in a Virtual Machine via VirtualBox
+<br />
+
+### 👉 Installing CentOS in VirtualBox
 
 If you don't want to install CentOS directly on your computer, you can also install it in a virtual machine using VirtualBox. Here's how to do it:
 
@@ -100,13 +89,19 @@ If you don't want to install CentOS directly on your computer, you can also inst
 8. Review the summary of your machine settings and click "Finish" to create the virtual machine.
 9. Start the virtual machine and follow the on-screen instructions to complete the CentOS installation.
 
+<br />
+
 ## Managing the system using the CLI
 
-The command-line interface (CLI) is a powerful tool for managing CentOS. It allows you to perform various tasks quickly and efficiently using text commands. Here are some basic commands you need to know:
+The command-line interface (CLI) is a powerful tool for managing CentOS. 
+It allows you to perform various tasks quickly and efficiently using text commands. Here are some basic commands you need to know:
 
-### `sudo`
+<br />
 
-The `sudo` command allows you to execute a command with administrative privileges. `sudo` stands for "superuser do".  To use `sudo`, simply type `sudo` followed by the command you want to execute. For example, let's say you want to edit a system file, you need to use `sudo` to run it.
+### 👉 `sudo`
+
+The `sudo` command allows you to execute a command with administrative privileges. `sudo` stands for "superuser do". 
+To use `sudo`, simply type `sudo` followed by the command you want to execute. For example, let's say you want to edit a system file, you need to use `sudo` to run it.
 
 ```bash
 sudo nano /etc/config
@@ -114,7 +109,9 @@ sudo nano /etc/config
 
 When you run this command, CentOS will prompt you to enter your password. This is a security measure to prevent unauthorized access to administrative functions.
 
-### `yum`
+<br />
+
+### 👉 `yum`
 
 `yum` is the package manager for CentOS. It allows you to install, update, and remove packages from your system. Here are some basic `yum` commands:
 
@@ -127,13 +124,17 @@ When you run this command, CentOS will prompt you to enter your password. This i
 - `info <package>`: displays detailed information about a package.
 - `search <package>`: searches for a package by name or description.
 
+<br />
+
 ## Managing the users via CLI
 
 With the command-line tools available in CentOS, you can easily add and remove users, modify user settings, and perform other tasks related to user management.
 
 Here are some basic commands for managing users via the CLI in CentOS:
 
-### Adding a new user
+<br />
+
+### 👉 Adding a new user
 
 To add a new user to your CentOS system, use the following command:
 
@@ -143,7 +144,9 @@ sudo adduser <username>
 
 Replace `<username>` with the desired username. You will then be prompted to set a password and enter some basic information about the user.
 
-### Removing a user
+<br />
+
+### 👉 Removing a user
 
 To remove a user from your CentOS system, use the following command:
 
@@ -151,9 +154,12 @@ To remove a user from your CentOS system, use the following command:
 sudo deluser <username>
 ```
 
-Replace `<username>` with the username of the user you want to remove. After running this command, the user's home directory and any files or directories associated with their account will be removed from your system.
+Replace `<username>` with the username of the user you want to remove. 
+After running this command, the user's home directory and any files or directories associated with their account will be removed from your system.
 
-### Changing user passwords
+<br />
+
+### 👉 Changing user passwords
 
 To change the password for an existing user account, use the following command:
 
@@ -163,9 +169,12 @@ sudo passwd <username>
 
 Replace `<username>` with the username of the user. After running this command, you will be prompted to enter a new password for the user.
 
+<br />
+
 ## Installing packages
 
-In CentOS, you can install packages easily using the package manager through CLI.  Before you can install new packages, you need to make sure your package list is up-to-date. To update the package list, use the following command:
+In CentOS, you can install packages easily using the package manager through CLI. 
+Before you can install new packages, you need to make sure your package list is up-to-date. To update the package list, use the following command:
 
 ```bash
 sudo yum update
@@ -179,11 +188,15 @@ sudo yum install <package-name>
 
 Replace `<package-name>` with the name of the package you want to install.
 
+<br />
+
 ## Recommended packages for programming
 
 Here are some recommended packages to be installed and steps to install it:
 
-### Python
+<br />
+
+### 👉 Python
 
 Python is a simple and versatile open-source programming language used for web development, data analysis, artificial intelligence, and more. It has an easy-to-learn syntax and a large library of pre-built modules, making it an excellent choice for beginners and professionals. You can install Python by running this command. 
 
@@ -199,193 +212,207 @@ python3 --version
 pip --version
 ```
 
-### MySQL
+<br />
+
+### 👉 MySQL
 
 MySQL is a popular relational database management system (RDBMS) used to store, manage and retrieve data. It is an open-source software that is widely used in web applications, and can be accessed through a variety of programming languages. To install and configure MySQL, follow these steps:
 
-1. Install the MySQL server package.
+> Install the MySQL server package.
 
-   ```bash
-   sudo yum install mysql-server
-   ```
+```bash
+sudo yum install mysql-server
+```
 
-2. Start the service
+> Start the service
 
-   Use the following command to start the service.
+Use the following command to start the service.
 
-   ```basH
-   sudo systemctl start mysqld
-   ```
+```basH
+sudo systemctl start mysqld
+```
 
-   MySQL will be running on port 3306. This is MySQL's default port number.
+MySQL will be running on port 3306. This is MySQL's default port number.
 
-3. Configure the database and user
+> Configure the database and user
 
-   - Login to MySQL
+- Login to MySQL
 
-     ```bash
-     sudo mysql
-     ```
+```bash
+sudo mysql
+```
 
-   - Create database
+- Create database
 
-     ```mysql
-     CREATE DATABASE appseed_db;
-     ```
+```mysql
+CREATE DATABASE appseed_db;
+```
 
-     Replace `appseed_db` with the name that you want.
+Replace `appseed_db` with the name that you want.
 
-   - Create user and grant permission to the user.
+- Create user and grant permission to the user.
 
-     MySQL creates `root` user by default, but it's better to use another user for non-administrative functions. For this demo, we'll grant all permissions to all tables for the created user.
+MySQL creates `root` user by default, but it's better to use another user for non-administrative functions. For this demo, we'll grant all permissions to all tables for the created user.
 
-     ```mysql
-     CREATE USER 'appseed_db_usr'@'localhost' IDENTIFIED BY 'pass';
-     GRANT ALL PRIVILEGES ON appseed_db.* TO 'appseed_db_usr'@'localhost';
-     FLUSH PRIVILEGES;
-     ```
+```mysql
+CREATE USER 'appseed_db_usr'@'localhost' IDENTIFIED BY 'pass';
+GRANT ALL PRIVILEGES ON appseed_db.* TO 'appseed_db_usr'@'localhost';
+FLUSH PRIVILEGES;
+```
 
-     Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
 
-   - Exit MySQL
+- Exit MySQL
 
-     ```mysql
-     exit
-     ```
+```mysql
+exit
+```
 
-### PostgreSQL
+<br />
+
+### 👉 PostgreSQL
 
 PostgreSQL is a powerful open-source object-relational database management system (ORDBMS) that offers robustness, scalability, and a wide range of advanced features. Its reliability and ability to handle large amounts of data make it a popular choice for enterprise-level applications. To install and configure PostgreSQL, follow these steps:
 
-1. Install the PostgreSQL repository on your CentOS system.
+> Install the PostgreSQL repository on your CentOS system.
 
-   ```bash
-   sudo yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-   ```
+```bash
+sudo yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+```
 
-2. Install the PostgreSQL server package.
+> Install the PostgreSQL server package.
 
-   ```bash
-   sudo yum install postgresql15-server
-   ```
+```bash
+sudo yum install postgresql15-server
+```
 
-3. Initialize the database
+> Initialize the database
 
-   ```bash
-   sudo /usr/pgsql-15/bin/postgresql-15-setup initdb
-   ```
+```bash
+sudo /usr/pgsql-15/bin/postgresql-15-setup initdb
+```
 
-4. Start the service
+> Start the service
 
-   Once the installation is complete, PostgreSQL will be automatically running. Otherwise, use the following command to start the service.
+Once the installation is complete, PostgreSQL will be automatically running. Otherwise, use the following command to start the service.
 
-   ```basH
-   sudo systemctl start postgresql-15
-   ```
+```basH
+sudo systemctl start postgresql-15
+```
 
-   PortgreSQL will be running on port 5432. This is PortgreSQL's default port number.
+PortgreSQL will be running on port 5432. This is PortgreSQL's default port number.
 
-5. Configure the database and user
+> Configure the database and user
 
-   - Login to PostgreSQL
+- Login to PostgreSQL
 
-     ```bash
-     sudo -u postgres psql
-     ```
+```bash
+sudo -u postgres psql
+```
 
-   - Create database
+- Create database
 
-     ```postgresql
-     CREATE DATABASE appseed_db;
-     ```
+```postgresql
+CREATE DATABASE appseed_db;
+```
 
-     Replace `appseed_db` with the name that you want.
+Replace `appseed_db` with the name that you want.
 
-   - Create a user and grant permission to the user.
+- Create a user and grant permission to the user.
 
-     For this demo, we'll grant all permissions to all tables for the created user.
+For this demo, we'll grant all permissions to all tables for the created user.
 
-     ```postgresql
-     CREATE USER appseed_db_usr WITH PASSWORD 'pass';
-     GRANT ALL PRIVILEGES ON DATABASE appseed_db TO appseed_db_usr;
-     ```
+```postgresql
+CREATE USER appseed_db_usr WITH PASSWORD 'pass';
+GRANT ALL PRIVILEGES ON DATABASE appseed_db TO appseed_db_usr;
+```
 
-     Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
 
-   - Exit PostgreSQL
+- Exit PostgreSQL
 
-     ```postgresql
-     \q
-     ```
+```postgresql
+\q
+```
 
-### MongoDB
+<br />
 
-MongoDB is a popular open-source NoSQL document-oriented database that stores data in flexible, JSON-like documents. It is designed for scalability and performance, making it ideal for handling big data and high-traffic applications. To install Mongo, follow these steps:
+### 👉 MongoDB
 
-1. Add MongoDB repository to your computer.
+MongoDB is a popular open-source NoSQL document-oriented database that stores data in flexible, JSON-like documents. 
+It is designed for scalability and performance, making it ideal for handling big data and high-traffic applications. To install Mongo, follow these steps:
 
-   ```bash
-   sudo vi /etc/yum.repos.d/mongodb-org-6.0.repo
-   ```
+> Add MongoDB repository to your computer.
 
-   Then paste the following lines.
+```bash
+sudo vi /etc/yum.repos.d/mongodb-org-6.0.repo
+```
 
-   ```
-   [mongodb-org-6.0]
-   name=MongoDB Repository
-   baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/6.0/x86_64/
-   gpgcheck=1
-   enabled=1
-   gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
-   ```
+Then paste the following lines.
 
-2. Install MongoDB package
+```
+[mongodb-org-6.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/6.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
+```
 
-   ```bash
-   sudo yum install mongodb-org
-   ```
+> Install MongoDB package
 
-3. Start the service
+```bash
+sudo yum install mongodb-org
+```
 
-   ```bash
-   sudo systemctl start mongod
-   ```
+> Start the service
 
-   MongoDB will be running on port 27017. This is MongoDB's default port number.
+```bash
+sudo systemctl start mongod
+```
 
-4. Connect to MongoDB
+MongoDB will be running on port 27017. This is MongoDB's default port number.
 
-   ```bas
-   mongosh
-   ```
+> Connect to MongoDB
 
-   This command will start the `mongo` client and connect to the local MongoDB instance.
+```bash
+mongosh
+```
+
+This command will start the `mongo` client and connect to the local MongoDB instance.
+
+<br />
 
 ### Redis
 
-Redis is an open-source in-memory data structure store that can be used as a database, cache, and message broker. It offers fast read and write speeds, high availability, and support for multiple data structures. Redis is ideal for real-time data processing and caching, with a reliable and active developer community. To install Redis, follow these steps:
+Redis is an open-source in-memory data structure store that can be used as a database, cache, and message broker. 
+It offers fast read and write speeds, high availability, and support for multiple data structures. 
 
-1. Install Redis
+Redis is ideal for real-time data processing and caching, with a reliable and active developer community. To install Redis, follow these steps:
 
-   ```bash
-   sudo yum install redis
-   ```
+> Install Redis
 
-2. Start the service
+```bash
+sudo yum install redis
+```
 
-   After installing Redis, you need to start the Redis service to begin using it. To start the Redis service, run the following command:
+> Start the service
 
-   ```bash
-   sudo systemctl start redis
-   ```
+After installing Redis, you need to start the Redis service to begin using it. To start the Redis service, run the following command:
 
-3. Connect to Redis
+```bash
+sudo systemctl start redis
+```
 
-   ```bash
-   redis-cli
-   ```
+> Connect to Redis
 
-   This will connect to the local Redis instance. You can now start using Redis.
+```bash
+redis-cli
+```
+
+This will connect to the local Redis instance. You can now start using Redis.
+
+<br />
 
 ## Managing the services
 
@@ -404,58 +431,65 @@ For example, if you want to stop MySQL, you can run this command:
 sudo systemctl stop mysql
 ```
 
+<br />
+
 ## CRON
 
-CRON is a time-based job scheduling system used in Unix-like operating systems. It allows users to schedule repetitive tasks, such as running scripts or performing backups, at specific times or intervals. 
+CRON is a time-based job scheduling system used in Unix-like operating systems. 
+It allows users to schedule repetitive tasks, such as running scripts or performing backups, at specific times or intervals. 
 
-### Creating CRON job
+<br />
+
+### 👉 `Creating` CRON `Jobs`
 
 To create a new CRON job, follow these steps:
 
-1. Open your terminal and type the following command.
+> Open your terminal and type the following command.
 
-   ```bash
-   crontab -e
-   ```
+```bash
+crontab -e
+```
 
-   This command will open the CRON configuration file. If this is your first time using CRON, you'll be prompted to choose your default text editor. Choose your preferred editor and press Enter.
+This command will open the CRON configuration file. If this is your first time using CRON, you'll be prompted to choose your default text editor. Choose your preferred editor and press Enter.
 
-2. Once the editor opens, add a new line at the bottom of the file with the following syntax:
+> Once the editor opens, add a new line at the bottom of the file with the following syntax:
 
-   ```
-   * * * * * command-to-be-executed
-   ```
+```
+* * * * * command-to-be-executed
+```
 
-   This line is a crontab that represents your CRON job. The first five asterisks represent the time and date parameters for the job. The five time and date parameters are:
+This line is a crontab that represents your CRON job. The first five asterisks represent the time and date parameters for the job. The five time and date parameters are:
 
-   - Minute (0-59)
-   - Hour (0-23)
-   - Day of the month (1-31)
-   - Month (1-12)
-   - Day of the week (0-6, where Sunday is 0)
+- Minute (0-59)
+- Hour (0-23)
+- Day of the month (1-31)
+- Month (1-12)
+- Day of the week (0-6, where Sunday is 0)
 
-   ```
-   * * * * * command-to-be-executed
-   – – – – –
-   | | | | |
-   | | | | +—– day of week (0–7) (0=Sunday)
-   | | | +——- month (1–12)
-   | | +——— day of month (1–31)
-   | +———– hour (0–23)
-   +————- min (0–59)
-   ```
+```
+* * * * * command-to-be-executed
+– – – – –
+| | | | |
+| | | | +—– day of week (0–7) (0=Sunday)
+| | | +——- month (1–12)
+| | +——— day of month (1–31)
+| +———– hour (0–23)
++————- min (0–59)
+```
 
-   For example, to schedule a job to run at 0:00 AM every day, use the following crontab.
+For example, to schedule a job to run at 0:00 AM every day, use the following crontab.
 
-   ```bash
-   0 0 * * * command-to-be-executed
-   ```
+```bash
+0 0 * * * command-to-be-executed
+```
 
-   Note that you can use tools like [crontab.guru](https://crontab.guru/) to help you create a crontab.
+Note that you can use tools like [crontab.guru](https://crontab.guru/) to help you create a crontab.
 
-3. Once you've added your CRON job, save and exit the editor.
+> Once you've added your CRON job, save and exit the editor.
 
-### Viewing CRON jobs
+<br />
+
+### 👉 `Viewing` CRON `Jobs`
 
 To view your current CRON jobs, Open your terminal and type the following command:
 
@@ -465,19 +499,23 @@ crontab -l
 
 This will display a list of all your current CRON jobs in the terminal window.
 
-### Removing CRON jobs
+<br />
+
+### `Removing` CRON `Jobs`
 
 To remove a CRON job, follow these steps:
 
-1. Open your terminal and type the following command to open the CRON configuration file:
+- ✅ Open your terminal and type the following command to open the CRON configuration file:
 
-   ```bash
-   crontab -e
-   ```
+```bash
+crontab -e
+```
 
-2. Once the editor opens, locate the line that corresponds to the job you want to remove and delete it.
+- ✅ Once the editor opens, locate the line that corresponds to the job you want to remove and delete it.
 
-3. Save and exit the editor.
+- ✅ Save and exit the editor.
+
+<br />
 
 ## Resources
 
