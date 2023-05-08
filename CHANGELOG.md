@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.29] 2023-05-08
+### Changes
+
+- Update [JavaScript](https://docs.appseed.us/technologies/javascript/) Section
+  - [HTML DOM Simplified](https://docs.appseed.us/technologies/javascript/html-dom-simplified/)
+
 ## [1.0.28] 2023-05-03
 ### Changes
 
