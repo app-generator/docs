@@ -6,40 +6,36 @@ description: How to deploy Django to Google Cloud Platform in VM instance
 
 <SubHeading color="#25c2a0">How to deploy Django to Google Cloud Platform in VM instance</SubHeading>
 
-Google Cloud Platform (GCP) is Google's cloud computing solution that offers a variety of services to meet different purposes. Its primary features include global data centers, high security, and easy integration with other Google services.
+**Google Cloud Platform** (GCP) is Google's cloud computing solution that offers a variety of services to meet different purposes. 
+Its primary features include global data centers, high security, and easy integration with other Google services.
 
 GCP offers a wide range of services. For this tutorial, we will focus on Computer Engine that enables you to create and run virtual machines on Google Cloud Platform.
 
-> Topics covered
-
-- `GCP` Account Creation
-- `GCP` Account Settings
-- `GCP` Creating a VM
-- The project to be deployed
-- `GCP` Database set up
-- `GCP` Environment set up
-- `GCP` Domain settings
-- `GCP` SSL certificates
-- `GCP` CI/CD from Github
-- `GCP` LIVE Service monitoring
+<br />
 
 ## `GCP` Account Creation
 
-Google Cloud Platform (GCP) account is integrated with your Google account. If you have had a Google account, you don't need to create another account for GCP. Navigate to https://console.cloud.google.com/ to open Google Console. Create a project to start using GCP, you can also use existing project if you have one.
+Google Cloud Platform (GCP) account is integrated with your Google account. If you have had a Google account, you don't need to create another account for GCP. 
 
+Navigate to https://console.cloud.google.com/ to open Google Console. Create a project to start using GCP, you can also use existing project if you have one.
+
+<br />
 
 ## `GCP` Account Settings
 
-Compute Engine is a service that allows you to create and run virtual machines (VMs) in the cloud. To enable this service, you need to set up billing account. If you are new to GCP, you can get some free credits using Free Trial.
+Compute Engine is a service that allows you to create and run virtual machines (VMs) in the cloud. 
+To enable this service, you need to set up billing account. If you are new to GCP, you can get some free credits using Free Trial.
 
 Follow these steps to set up your trial account:
 
-1. Navigate to GCP homepage at https://cloud.google.com/.
-2. Click on the "Start a free trial" or "Start free" button.
-3. GCP will offer $300 credit for free for the next 90 days.
-4. Fill in the form then click "Continue".
-5. Set up your payment method, You won't be charged after free trial ends unless you manually upgrade to paid account or exceed the free credit.
-6. Click "Start my free trial" to complete the process.
+- Navigate to GCP homepage at https://cloud.google.com/.
+- Click on the "Start a free trial" or "Start free" button.
+- GCP will offer $300 credit for free for the next 90 days.
+- Fill in the form then click "Continue".
+- Set up your payment method, You won't be charged after free trial ends unless you manually upgrade to paid account or exceed the free credit.
+- Click "Start my free trial" to complete the process.
+
+<br />
 
 ## `GCP` Creating a VM
 
@@ -47,17 +43,18 @@ A virtual machine (VM) is like a pretend computer that runs inside your real com
 
 To create a virtual machine in GCP, follow these steps:
 
-1. Sign in to your GCP console and click on the "Compute Engine" tab from the sidebar menu. If it isn't shown in the sidebar, you can search for it using the search bar at the top.
-2. Click on "Create Instance" button.
-3. Set the name of your VM, choose the region and zone that are near your location. It's important to select a region and zone that is closer to your location to ensure faster performance.
-4. Choose "Machine type" that suits your budget.
-5. Select the operating system you want to use in the "Boot disk" section. For this tutorial, we will use Ubuntu 22.04 LTS.
-6. Allow the HTTP and HTTPS traffic in the "Firewall" section.
-7. Leave the rest of the options as they are and click the "Create" button to start creating your virtual machine.
-8. You will be redirected to Instances page. Wait until the instance is running.
+- Sign in to your GCP console and click on the "Compute Engine" tab from the sidebar menu. If it isn't shown in the sidebar, you can search for it using the search bar at the top.
+- Click on "Create Instance" button.
+- Set the name of your VM, choose the region and zone that are near your location. It's important to select a region and zone that is closer to your location to ensure faster performance.
+- Choose "Machine type" that suits your budget.
+- Select the operating system you want to use in the "Boot disk" section. For this tutorial, we will use Ubuntu 22.04 LTS.
+- Allow the HTTP and HTTPS traffic in the "Firewall" section.
+- Leave the rest of the options as they are and click the "Create" button to start creating your virtual machine.
+- You will be redirected to Instances page. Wait until the instance is running.
 
 Once your virtual machine is running, you can access it by clicking the "SSH" button in "Connect" column. The Ubuntu command will be used in the next steps since this instance is running on Ubuntu. If you are using a different operating system, adjust the command according to your OS.
 
+<br />
 
 ## The project to be deployed
 
@@ -75,113 +72,123 @@ Then clone the project by running this command.
 git clone https://github.com/app-generator/deploy-gcp-django
 ```
 
+<br />
+
 ## `GCP` Database set up
 
-You only need to choose one of these databases, either PostgreSQL or MySQL.
+You only need to choose one of these databases, either `PostgreSQL` or `MySQL`.
 
-### PostgreSQL
+<br />
 
-1. Install PostgreSQL in your instance
+### 👉 PostgreSQL
 
-   ```bash
-   sudo apt-get install postgresql
-   ```
+> Install PostgreSQL in your instance
 
-2. Start the service
+```bash
+sudo apt-get install postgresql
+```
 
-   Once the installation is complete, PostgreSQL will be automatically running. Otherwise, use the following command to start the service.
+> Start the service
 
-   ```bash
-   sudo systemctl start postgresql
-   ```
+Once the installation is complete, PostgreSQL will be automatically running. Otherwise, use the following command to start the service.
 
-3. Login to PostgreSQL
+```bash
+sudo systemctl start postgresql
+```
 
-   ```bash
-   sudo -u postgres psql
-   ```
+> Login to PostgreSQL
 
-4. Create database
+```bash
+sudo -u postgres psql
+```
 
-   ```postgresql
-   CREATE DATABASE appseed_db;
-   ```
+> Create a Database
 
-   Replace `appseed_db` with the name that you want.
+```postgresql
+CREATE DATABASE appseed_db;
+```
 
-5. Create a user and grant permission to the user.
+Replace `appseed_db` with the name that you want.
 
-   For this demo, we'll grant all permissions to all tables for the created user.
+> Create a user and grant permission to the user.
 
-   ```postgresql
-   CREATE USER appseed_db_usr WITH PASSWORD 'pass';
-   GRANT ALL PRIVILEGES ON DATABASE appseed_db TO appseed_db_usr;
-   ```
+For this demo, we'll grant all permissions to all tables for the created user.
 
-   Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+```postgresql
+CREATE USER appseed_db_usr WITH PASSWORD 'pass';
+GRANT ALL PRIVILEGES ON DATABASE appseed_db TO appseed_db_usr;
+```
 
-6. Exit PostgreSQL
+Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
 
-   ```postgresql
-   \q
-   ```
+> Exit PostgreSQL
 
-### MySQL
+```postgresql
+\q
+```
 
-1. Install MySQL in your instance
+<br />
 
-   ```bash
-   sudo apt-get install mysql-server libmysqlclient-dev
-   ```
+### 👉 MySQL
 
-2. Start the service
+- Install MySQL in your instance
 
-   Once the installation is complete, MySQL will be automatically running. Otherwise, use the following command to start the service.
+```bash
+sudo apt-get install mysql-server libmysqlclient-dev
+```
 
-   ```bash
-   sudo systemctl start mysql
-   ```
+- Start the service
 
-3. Login to MySQL
+Once the installation is complete, MySQL will be automatically running. Otherwise, use the following command to start the service.
 
-   ```bash
-   sudo mysql
-   ```
+```bash
+sudo systemctl start mysql
+```
 
-4. Create database
+- Login to MySQL
 
-   ```mysql
-   CREATE DATABASE appseed_db;
-   ```
+```bash
+sudo mysql
+```
 
-   Replace `appseed_db` with the name that you want.
+- Create database
 
-5. Create user and grant permission to the user.
+```mysql
+CREATE DATABASE appseed_db;
+```
 
-   For this demo, we'll grant all permissions to all tables for the created user.
+Replace `appseed_db` with the name that you want.
 
-   ```mysql
-   CREATE USER 'appseed_db_usr'@'localhost' IDENTIFIED BY 'pass';
-   GRANT ALL PRIVILEGES ON appseed_db.* TO 'appseed_db_usr'@'localhost';
-   FLUSH PRIVILEGES;
-   ```
+- Create user and grant permission to the user.
 
-   Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
+For this demo, we'll grant all permissions to all tables for the created user.
 
-6. Exit MySQL
+```mysql
+CREATE USER 'appseed_db_usr'@'localhost' IDENTIFIED BY 'pass';
+GRANT ALL PRIVILEGES ON appseed_db.* TO 'appseed_db_usr'@'localhost';
+FLUSH PRIVILEGES;
+```
 
-   ```mysql
-   exit
-   ```
+Replace `appseed_db` with your database name, `appseed_db_usr` and `pass` with your desired username and password.
 
+- Exit MySQL
+
+```mysql
+exit
+```
+
+<br />
 
 ## `GCP` Environment set up
 
-We need to set up the instance for Python environment. To find the right version to use, you need to check the Django version. If the version is not set in `requirements.txt`, it means the latest version. In Django documentation, we can found the compatible Python version.
+We need to set up the instance for Python environment. To find the right version to use, you need to check the Django version. 
+If the version is not set in `requirements.txt`, it means the latest version. In Django documentation, we can found the compatible Python version.
 
 > Django 4.2 supports Python 3.8, 3.9, 3.10, and 3.11.
 
-### Setting up Python
+<br />
+
+### 👉 Setting up Python
 
 First, we need to install Python, pip, and virtualenv if they aren't already installed. Use the following commands to install them.
 
@@ -197,7 +204,9 @@ python3 --version
 pip --version
 ```
 
-### Setting up virtual environment and dependencies
+<br />
+
+### 👉 Setting up VENV and Dependencies
 
 Enter the project directory, create a virtual environment to isolate the project dependencies, and activate it using the following commands.
 
@@ -211,50 +220,52 @@ Now you can install packages or dependencies without affecting other projects.
 
 For installing the dependencies, you need to follow these steps:
 
-1. Open `requirements.txt` file using a text editor, such as nano or vim.
+- Open `requirements.txt` file using a text editor, such as nano or vim.
 
-2. Uncomment the package following the database you used by deleting the `#` in front of it.
+- Uncomment the package following the database you used by deleting the `#` in front of it.
+  - `psycopg2-binary`: for PostgreSQL
+  - `mysqlclient`: for MySQL
+- Save and exit, then install the packages.
 
-   - `psycopg2-binary`: for PostgreSQL
-   - `mysqlclient`: for MySQL
+```bash
+pip install -r requirements.txt
+```
 
-3. Save and exit, then install the packages.
+<br />
 
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### Setting up environment variables
+### 👉 Setting up ENV Variables
 
 Before moving on to the next steps, we need to set up environment variables so that the app can connect to the database and complete the setup.
 
-1. Copy the `env.sample` file to `.env`.
+- Copy the `env.sample` file to `.env`.
 
-   ```bash
-   cp env.sample .env
-   ```
+```bash
+cp env.sample .env
+```
 
-2. Open `.env` file using a text editor, such as nano or vim.
+- Open `.env` file using a text editor, such as nano or vim.
 
-3. Remove comment from database variables and fill it by following your database configuration.
+- Remove comment from database variables and fill it by following your database configuration.
 
-   - For PostgreSQL:
+> For PostgreSQL:
 
-     ```
-     DB_ENGINE=postgresql
-     DB_PORT=5432
-     ```
+```
+DB_ENGINE=postgresql
+DB_PORT=5432
+```
 
-   - For MySQL:
+> For MySQL:
 
-     ```
-     DB_ENGINE=mysql
-     DB_PORT=3306
-     ```
+```
+DB_ENGINE=mysql
+DB_PORT=3306
+```
 
-4. Fill out the other variables as needed, then save the file.
+- Fill out the other variables as needed, then save the file.
 
-### Setting up database
+<br />
+
+### 👉 Setting up  the Database
 
 Run the following commands to set up your database.
 
@@ -264,7 +275,9 @@ python3 manage.py migrate
 python3 manage.py createsuperuser
 ```
 
-### Running the app
+<br />
+
+### 👉 Running the app
 
 You're all set up! You can now run the app using the following command.
 
@@ -274,11 +287,15 @@ python3 manage.py runserver
 
 Note that your project is currently only accessible locally.
 
+<br />
+
 ## `GCP` Domain settings
 
 This demo use a domain that already been connected to Cloudflare.
 
-### Adding DNS record in Cloudflare
+<br />
+
+### 👉 Adding DNS record in Cloudflare
 
 First, we need to add a DNS record in Cloudflare to connect the domain to our GCP instance. Follow these steps:
 
@@ -288,72 +305,76 @@ First, we need to add a DNS record in Cloudflare to connect the domain to our GC
 4. Turn the `Proxy status` on.
 5. Click 'Save'.
 
-### Setting up reverse proxy using NGINX
+<br />
+
+### 👉 Setting up reverse proxy using NGINX
 
 Next, we need to set up a reverse proxy to point the domain to our app.
 
-1. Install NGINX in your instance.
+> Install NGINX in your instance.
 
-   ```bash
-   sudo apt-get update
-   sudo apt-get install nginx
-   ```
+```bash
+sudo apt-get update
+sudo apt-get install nginx
+```
 
-2. Start the NGINX service using the following command.
+> Start the NGINX service using the following command.
 
-   ```bash
-   sudo systemctl start nginx
-   ```
+```bash
+sudo systemctl start nginx
+```
 
-3. Set up a server block by creating a new configuration file
+> Set up a server block by creating a new configuration file
 
-   ```bash
-   sudo nano /etc/nginx/sites-available/your_domain
-   ```
+```bash
+sudo nano /etc/nginx/sites-available/your_domain
+```
 
-   Replace `your_domain` with your domain name.
+Replace `your_domain` with your domain name.
 
-   Paste this following config into the file. Don't forget to replace `your_domain` with your domain name.
+Paste this following config into the file. Don't forget to replace `your_domain` with your domain name.
 
-   ```
-   server {
-   	listen 80;
-   	listen [::]:80;
-   	
-   	server_name your_domain;
-   	
-   	location / {
-   		proxy_pass http://localhost:8000;
-   		proxy_set_header Host $host;
-   		proxy_set_header X-Real-IP $remote_addr;
-   		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-   	}
+```
+server {
+   listen 80;
+   listen [::]:80;
+   
+   server_name your_domain;
+   
+   location / {
+      proxy_pass http://localhost:8000;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
    }
-   ```
+}
+```
 
-4. Enable the new config by creating a symbolic link to the `site-enabled` directory.
+> Enable the new config by creating a symbolic link to the `site-enabled` directory.
 
-   ```bash
-   sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled
-   ```
+```bash
+sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled
+```
 
-5. Remove the default config by unlinking it.
+> Remove the default config by unlinking it.
 
-   ```bash
-   sudo unlink /etc/nginx/sites-enabled/default
-   ```
+```bash
+sudo unlink /etc/nginx/sites-enabled/default
+```
 
-6. Check your configuration by running this command.
+> Check your configuration by running this command.
 
-   ```bash
-   sudo nginx -t
-   ```
+```bash
+sudo nginx -t
+```
 
-7. If there are no problems or errors, restart NGINX to apply the new config.
+> If there are no problems or errors, restart NGINX to apply the new config.
 
-   ```bash
-   sudo systemctl restart nginx
-   ```
+```bash
+sudo systemctl restart nginx
+```
+
+<br />
 
 ### Allowing access to your domain
 
@@ -363,63 +384,68 @@ Finally, we need to allow access to our domain in our Django settings. Follow th
 
 2. Search `ALLOWED_HOSTS` and add your domain and external IP into it. For example:
 
-   ```py
-   ALLOWED_HOSTS = ['your_domain', 'external_IP']
-   ```
+```py
+ALLOWED_HOSTS = ['your_domain', 'external_IP']
+```
 
 3. Save the file.
 
+<br />
 
 ## `GCP` SSL certificates
 
 This demo will use SSL certificate from Cloudflare. You can also use [certbot](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal&tab=standard) as an alternative.
 
-### Creating an SSL certificate in Cloudflare
+<br />
+
+### 👉 Creating an SSL certificate in Cloudflare
 
 1. Navigate to SSL/TLS > Origin Server in Cloudflare. 
 2. Click on "Create Certificate".
 3. Keep the default config then click on "Create".
 4. You will have the Origin Certificate and Private Key. We will use this in the server.
 
-### Editing the NGINX config
+<br />
+
+### 👉 Editing the NGINX config
 
 1. Create a new file in `/etc/ssl/certs`, paste the **Origin Certificate** into it, and save.
 
-   ```bash
-   sudo nano /etc/ssl/certs/cloudflare.pem
-   ```
+```bash
+sudo nano /etc/ssl/certs/cloudflare.pem
+```
 
 2. Create a new file in `/etc/ssl/private`, paste the **Private Key** into it, and save.
 
-   ```bash
-   sudo nano /etc/ssl/private/cloudflare.key
-   ```
+```bash
+sudo nano /etc/ssl/private/cloudflare.key
+```
 
 3. Edit the NGINX config.
 
-   ```bash
-   sudo nano /etc/nginx/sites-available/your_domain
-   ```
+```bash
+sudo nano /etc/nginx/sites-available/your_domain
+```
 
-   Add this config below the existing config. Replace `your_domain` with your domain name.
+Add this config below the existing config. Replace `your_domain` with your domain name.
 
-   ```
-   server {
-       listen 443 ssl http2;
-       listen [::]:443 ssl http2;
-       ssl_certificate         /etc/ssl/certs/cloudflare.pem;
-       ssl_certificate_key     /etc/ssl/private/cloudflare.pem;
-   
-       server_name your_domain;
-   
-       location / {
-   		proxy_pass http://localhost:8000;
-   		proxy_set_header Host $host;
-   		proxy_set_header X-Real-IP $remote_addr;
-   		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-   	}
+```
+server {
+      listen 443 ssl http2;
+      listen [::]:443 ssl http2;
+      ssl_certificate         /etc/ssl/certs/cloudflare.pem;
+      ssl_certificate_key     /etc/ssl/private/cloudflare.pem;
+
+      server_name your_domain;
+
+      location / {
+      proxy_pass http://localhost:8000;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
    }
-   ```
+}
+```
 
 4. Check your configuration by running this command.
 
@@ -433,23 +459,30 @@ This demo will use SSL certificate from Cloudflare. You can also use [certbot](h
    sudo systemctl restart nginx
    ```
 
-### Changing the SSL/TLS encryption mode in Cloudflare
+<br />
+
+### 👉 Changing the SSL/TLS encryption mode in Cloudflare
 
 Finally, change the SSL/TLS encryption mode to **Full (strict)** in the Overview tab of the SSL/TLS section in the Cloudflare dashboard. This tells Cloudflare to always encrypt the communication between Cloudflare and the NGINX server at your source. 
 
+<br />
+
 ## `GCP` CI/CD from Github
 
-Continuous Integration and Continuous Deployment (CI/CD) is a process that automates the building, testing, and deployment of software. In this tutorial, we will set up CI/CD from Github to our GCP instance.
+Continuous Integration and Continuous Deployment (CI/CD) is a process that automates the building, testing, and deployment of software. 
+In this tutorial, we will set up CI/CD from Github to our GCP instance.
 
-### Setting up SSH Keys and Secrets
+<br />
+
+### 👉 Setting up SSH Keys and Secrets
 
 Before creating Github Action, we need to set up the keys and secrets.
 
 1. Generate a new SSH key on your local computer.
 
-   ```bash
-   ssh-keygen -t ed25519 -a 200 -C "your_email@example.com"
-   ```
+```bash
+ssh-keygen -t ed25519 -a 200 -C "your_email@example.com"
+```
 
 2. Copy the public key, the default is located in `~/.ssh/id_ed25519.pub`.
 3. Add it to the authorized keys in the server. Open `~/.ssh/authorized_keys` and paste the public key below the existing keys.
@@ -460,7 +493,9 @@ Before creating Github Action, we need to set up the keys and secrets.
    - KEY: private key, from `-----BEGIN` until end of the key.
    - PORT: 22
 
-### Setting up CI/CD with Github Action
+<br />
+
+### 👉 Setting up CI/CD with Github Action
 
 After setting up the SSH keys and secrets, we can move the next steps:
 
@@ -497,6 +532,8 @@ jobs:
 
 Now, every time you push code to the `main` branch on Github, it will automatically deploy to your GCP instance.
 
+<br />
+
 ## `GCP` LIVE Service monitoring
 
 We'll use UptimeRobot to monitor the app. UptimeRobot is a popular online service that monitors the uptime and performance of websites, servers, and other online services.
@@ -511,9 +548,10 @@ Keep the rest of the config as default and click "Create Monitor"
 
 UptimeRobot will now start monitoring your app. You can view the monitor status and performance data on the UptimeRobot dashboard
 
+<br />
+
 ## Links & Resources
 
-- 👉 More [Django Starters](https://appseed.us/apps/django/) - provided by `AppSeed` (free & paid)
+- 👉 [Google Cloud](https://cloud.google.com/python/docs/setup) official documentation for Python
 - 👉 Free [Support](https://appseed.us/support/) via Email & Discord
-- [Google Cloud](https://cloud.google.com/python/docs/setup) official documentation for Python
-- [Django](https://docs.djangoproject.com/en/4.2/releases/4.2) official documentation
+- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
