@@ -9,12 +9,14 @@ import SubHeading from "@site/src/components/SubHeading";
 	JavaScript HTML DOM Simplified, Beginner’s Guide
 </SubHeading>
 
-The Document Object Model (DOM) is a tree-like structure containing all the elements and content of a web page. It enables you to manipulate the content of a webpage in real-time using JavaScript.
+The **Document Object Model** (DOM) is a tree-like structure containing all the elements and content of a web page. It enables you to manipulate the content of a webpage in real-time using **JavaScript**.
 With DOM, you can create interactive and dynamic user interfaces.
 
 In this article, you’ll learn how to create event listeners and select, create, modify, and delete elements and attributes on a web page.
 
-## Accessing HTML DOM elements in JavaScript
+<br />
+
+## Accessing DOM elements in `JavaScript`
 
 The HTML DOM enables you to access every element on a web page with JavaScript, and there are five ways by which you can access these elements.
 Before going over them, create a simple web page as shown below.
@@ -35,66 +37,83 @@ Before going over them, create a simple web page as shown below.
 </ul>
 ```
 
-### Using `document.getElementById()`
+<br />
 
-This method allows you to access an HTML element via its id attribute. It returns an entire element or null; if the element does not exist.  
+### 👉 Using `getElementById()`
+
+This method allows you to `access` an HTML element via its `ID Attribute`. It returns an entire element or null, if the element does not exist.  
 The code snippet below selects the HTML element with an id of heading from the web page.
 
 ```js
 const heading = document.getElementById("heading");
-console.log(heading); //👉🏻 Output: <h1 id="heading">HTML DOM Basics</h1>
+console.log(heading); // 👉🏻 Output: <h1 id="heading">HTML DOM Basics</h1>
 ```
 
-### Using `document.getElementsByClassName()`
+<br />
 
-With `document.getElementsByClassName()`, you can access elements using their class attribute. It returns an array-like object called an `HTMLCollection` that contains all the elements with the specified class name.
+### 👉 Using `getElementsByClassName()`
+
+With `document.getElementsByClassName()`, you can access elements using their `Class Attribute`. 
+It returns an array-like object called an `HTMLCollection` that contains all the elements with the specified class name.
 
 ```js
 const item = document.getElementsByClassName("item");
-console.log(item); //👉🏻 Output: HTMLCollection(3)
+console.log(item); // 👉🏻 Output: HTMLCollection(3)
 ```
 
-### Using `document.getElementsByTagName()`
+<br />
 
-This method allows you to access HTML elements via their tag name. It returns an `HTMLCollection` containing all the elements with the same tag name.
+### 👉 Using `getElementsByTagName()`
+
+This method allows you to `access` HTML elements via their `Tag Name`. It returns an `HTMLCollection` containing all the elements with the same tag name.
 
 ```js
 const paragraph = document.getElementsByTagName("p");
-console.log(paragraph); //👉🏻 Output: HTMLCollection(1)
+console.log(paragraph); // 👉🏻 Output: HTMLCollection(1)
 ```
 
 The `paragraph` variable contains an array of all the paragraph tags on the web page.
 
-### Using `document.querySelector()`
+<br />
 
-With this method, you can access an element via its CSS selector. It returns the first element that matches the selector.
+### 👉 Using `querySelector()`
+
+With this method, you can access an element via its `CSS Selector`. It returns the first element that matches the selector.
 
 ```js
 const paragraph = document.querySelector("#paragraph");
-console.log(subHeading); //👉🏻 Output: <p id="paragraph">Learn how to manipulate the DOM with JavaScript</p>
+console.log(subHeading); // 👉🏻 Output: <p id="paragraph">Learn how to manipulate the DOM with JavaScript</p>
 
 const list = document.querySelector(".list");
-console.log(list); //👉🏻 Output: <ul class="list">...</ul>
+console.log(list); // 👉🏻 Output: <ul class="list">...</ul>
 ```
 
-The code snippet above shows you can reference an element via its ID or class attributes.
+The above code snippet shows you can reference an element via its `ID` or `class attributes`.
 
-### Using `document.querySelectorAll()`
+<br />
 
-It is similar to the `document.querySelector` method but allows you to access multiple elements using a CSS selector. It returns a `NodeList` of all the HTML elements that match the selector.
+### Using `querySelectorAll()`
+
+It is similar to the `document.querySelector` method but allows you to access multiple elements using a CSS selector. 
+It returns a `NodeList` of all the HTML elements that match the selector.
 
 ```js
 const items = document.querySelectorAll(".item");
-console.log(items); //👉🏻 Output: NodeList(3)
+console.log(items); // 👉🏻 Output: NodeList(3)
 ```
 
 The code snippet above returns all the HTML elements with a class attribute of `item`.
 
-## Modifying HTML DOM elements
+<br />
 
-One of the most powerful features of JavaScript is its ability to alter HTML elements on a web page in real-time without reloading the entire page. Here, you'll learn how to modify HTML elements with JavaScript.
+## `Modifying` DOM Elements
 
-### Using the `textContent` property
+One of the most powerful features of JavaScript is its ability to alter HTML elements on a web page in real-time without reloading the entire page. 
+Here, you'll learn how to modify HTML elements with `JavaScript`.
+
+<br />
+
+### 👉 Using the `textContent` property
 
 The `textContent` property allows you to change only the content of an HTML element.
 
@@ -105,7 +124,9 @@ header.textContent = "HTML DOM Manipulation";
 
 The code snippet above changes the content of the `h1` tag to "HTML DOM Manipulation".
 
-### Using the `innerHTML` property
+<br />
+
+### 👉 Using the `innerHTML` property
 
 It allows you to modify the content, tags, and attributes of an HTML element. You change the `p` tag to a `h3` tag, as shown below.
 
@@ -114,7 +135,9 @@ const paragraph = document.getElementById("paragraph");
 paragraph.innerHTML = "<h3>DOM Manipulation made easy</h3>";
 ```
 
-## Adding elements to the HTML DOM in JavaScript
+<br />
+
+## `Adding Elements` to the HTML DOM
 
 To add new elements to the HTML DOM via JavaScript, you can use the `createElement()` method and the `appendChild()` method.
 
@@ -130,7 +153,7 @@ item.textContent = "Newly added";
 item.className = "item";
 
 list.appendChild(item);
-console.log(item); //👉🏻 Output: <li class="item">Newly added</li>
+console.log(item); // 👉🏻 Output: <li class="item">Newly added</li>
 ```
 
 The code snippet above,
@@ -139,9 +162,12 @@ The code snippet above,
 - creates a new `li` element, sets its content, and adds a class attribute to the `li` element, then,
 - appends the `li` element to the `ul` tag on the web page.
 
-## Removing elements from the HTML DOM in JavaScript
+<br />
 
-To remove elements from the HTML DOM in JavaScript, you can use the `removeChild()` method. This method allows you to remove a child element from its parent element.
+## `Removing Elements` from the HTML DOM
+
+To remove elements from the HTML DOM in JavaScript, you can use the `removeChild()` method. 
+This method allows you to remove a child element from its parent element.
 
 ```js
 const list = document.querySelector(".list");
@@ -153,9 +179,12 @@ list.removeChild(firstItem);
 
 The code snippet above gets the entire unordered list and its first child from the web page and removes the first child from the list using the `removeChild()` method.
 
-## Listening to HTML DOM events with JavaScript
+<br />
 
-The HTML DOM also allows you to create event listeners that listen to actions performed on a particular element on the web page. You can listen to various events carried out by users on a webpage.
+## `Listening` to DOM events with JavaScript
+
+The HTML DOM also allows you to create event listeners that listen to actions performed on a particular element on the web page. 
+You can listen to various events carried out by users on a webpage.
 
 Add a button element to the web page. We'll add event listeners to the button.
 
@@ -170,9 +199,11 @@ Add a button element to the web page. We'll add event listeners to the button.
 <button id="button">Hello Reader</button>
 ```
 
-> 💡 PS: Every element has its set of events. You can add event listeners to several HTML elements, including buttons, links, input fields, and more.
+> 💡 Note: Every element has its set of events. You can add event listeners to several HTML elements, including buttons, links, input fields, and more.
 
-### Using the `addEventListener()` method
+<br />
+
+### 👉 Using the `addEventListener()` method
 
 The `addEventListener()` method is a built-in method in JavaScript that allows you to add event listeners to HTML elements. It takes two arguments: the type of event to listen for (such as click, mouseover, keydown, etc.) and the function to execute when the event occurs.
 
@@ -186,7 +217,9 @@ button.addEventListener("click", function () {
 
 The code snippet above references the button element and listens for a click event on the button. Once a user clicks the button, it triggers the `alert` method.
 
-### Using the `element.event` method
+<br />
+
+### 👉 Using the `element.event` method
 
 It is an older way of adding event listeners to HTML elements in JavaScript. It assigns a function to an HTML element.
 
@@ -200,9 +233,12 @@ button.onclick = function () {
 
 The `button.onclick` method may look straightforward compared to the `addEventListener` method, but it has some limitations.
 
-### `addEventListener()` vs `element.event`
+<br />
 
-- The `addEventListener` method can execute multiple functions when a particular event occurs; this is beneficial when building complex or interactive web applications. In `element.event`, only a single function can be attached to an event.
+### 👉 `addEventListener()` vs `element.event`
+
+- The `addEventListener` method can execute multiple functions when a particular event occurs; this is beneficial when building complex or interactive web applications. 
+In `element.event`, only a single function can be attached to an event.
 
 ```js
 const button = document.getElementById("button");
@@ -232,12 +268,14 @@ button.onclick = function () {
 //👉🏻 only the last event is executed
 ```
 
-- The `addEventListener()` method provides more control over the execution of the event handlers. You can remove an event using the [`removeEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener) method.
+The `addEventListener()` method provides more control over the execution of the event handlers. 
+You can remove an event using the [`removeEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener) method.
+
+<br />
 
 ## Conclusion
 
-So far, you’ve learnt the basics of what the DOM is and how it works, how to modify elements, add new ones, and listen to events on your web page.
-
+So far, you’ve learnt the basics of what the DOM is and how it works, how to modify elements, add new ones, and listen to events on your web page. 
 A solid understanding of the HTML DOM is essential when building interactive web pages and creating dynamic user interfaces with HTML and JavaScript.
 
 ## Resources
