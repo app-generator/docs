@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.30] 2023-05-08
+### Changes
+
+- [Getting Started with CentOS](https://docs.appseed.us/technologies/centos/getting-started/)
+- [Getting Started with Ubuntu](https://docs.appseed.us/technologies/ubuntu/getting-started/)
+
 ## [1.0.29] 2023-05-08
 ### Changes
 
