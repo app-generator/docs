@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.31] 2023-05-08
+### Changes
+
+- Update [Django](https://docs.appseed.us/technologies/django/) Section
+  - [Django & Plotly Integration](https://docs.appseed.us/technologies/django/charts-plotly/)
+
 ## [1.0.30] 2023-05-08
 ### Changes
 
