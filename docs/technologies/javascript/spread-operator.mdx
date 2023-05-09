@@ -58,6 +58,26 @@ console.log(newArray) //👉🏻 [ 'a', 'e', 'i', 'o' ]
 ```
 The `newArray` variable creates a reference to the `vowels` variable instead of copying the entire array value.
 
+## Using the spread operator in JavaScript functions 
+The spread operator can be used to accept an array of parameters in JavaScript functions; in this case, it is called the Rest Operator. It captures any number of arguments passed to the function and groups them into an array.
+
+> 💡 When you place the spread operator before the parameter name of a function declaration, it is called the Rest Operator. 
+
+```js 
+function sumNumbers(...args) {
+  let sum = 0;
+  for (const num of args) {
+    sum += num;
+  }
+  console.log(sum)
+}
+
+sumNumbers(1, 2, 3, 4, 5, 6, 7, 8, 9); //👉🏻 Output: 45
+``` 
+In the example above, the function `sumNumbers` accepts an array of numbers with an undefined length using the rest operator, then loops through the arguments to add each number together and log the result to the console. 
+
+## Using the spread operator in JavaScript objects
+
 <br />
 
 ## Resources
