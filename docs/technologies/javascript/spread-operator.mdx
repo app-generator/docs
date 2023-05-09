@@ -97,7 +97,9 @@ The spread operator isn't just limited to arrays in JavaScript; it can be used w
 
 ### Copying object properties
 
-Take a look at the example below:
+With the spread operator, you can copy the properties of an object into a new object. This is useful when creating a copy of an object without modifying the original object.
+
+To copy an object using the spread operator, spread the original object inside a new object. Take a look at this example:
 
 ```js
 const book = {
@@ -119,11 +121,12 @@ console.log(bookInfo);
 } */
 ```
 
-In the example above, the `bookInfo` object copies the properties of the `book` object.
+In the example above, the `bookInfo` object copies the properties of the `book` object by using the spread operator to copy the properties of the original `book` object into the `bookInfo` object. 
 
 ### Merging objects properties
+You can merge two or more objects into a single object using the spread operator (`...`). The spread operator provides a simple way to combine the properties of multiple objects into a single object without modifying the original objects.
 
-Consider the following example:
+To merge objects using the spread operator, spread each object inside curly braces `{}`. Consider the example below:
 
 ```js
 const info1 = {
