@@ -77,6 +77,102 @@ sumNumbers(1, 2, 3, 4, 5, 6, 7, 8, 9); //👉🏻 Output: 45
 In the example above, the function `sumNumbers` accepts an array of numbers with an undefined length using the rest operator, then loops through the arguments to add each number together and log the result to the console. 
 
 ## Using the spread operator in JavaScript objects
+The spread operator isn't just limited to arrays in JavaScript; it can be used with objects to execute tasks such as copying, merging, and updating object properties. 
+
+### Copying object properties 
+Take a look at the example below:  
+
+```js 
+const book = {
+    name: "Rich Dad Poor Dad",
+    author: "Robert Kiyosaki"
+}
+const bookInfo = {
+    ...book,
+    pages: 336,
+    year: 1997
+}
+
+console.log(bookInfo) 
+/* 👇🏻 Output: {
+  name: 'Rich Dad Poor Dad',
+  author: 'Robert Kiyosaki',
+  pages: 336,
+  year: 1997
+} */
+``` 
+In the example above, the `bookInfo` object copies the properties of the `book` object.  
+
+### Merging objects properties  
+Consider the following example: 
+```js 
+const info1 = {
+    name: "Rich Dad Poor Dad",
+    author: "Robert Kiyosaki"
+}
+const info2 ={
+    pages: 336,
+    year: 1997
+}
+
+const bookInfo = {...info1, ...info2 }
+console.log(bookInfo) 
+/* 👇🏻 Output: {
+  name: 'Rich Dad Poor Dad',
+  author: 'Robert Kiyosaki',
+  pages: 336,
+  year: 1997
+} */
+``` 
+In the example above, the two objects - `info1` and `info2` are merged into one using the spread operator.  
+
+### Updating object properties 
+You can also update the properties of an object with the JavaScript spread operator.  
+
+Consider the example below: 
+```js 
+const book = {
+    name: "Rich Dad Poor Dad",
+    author: "Robert Kiyosaki",
+    year: 2000
+}
+
+const bookInfo = {
+    ...book,
+    year: 1997
+}
+console.log(bookInfo)
+/*👉🏻 Output: { name: 'Rich Dad Poor Dad', author: 'Robert Kiyosaki', year: 1997 } */
+```  
+The code snippet above updates the `year` property within the `bookInfo` object. In some cases, if you need the previous `year` property, you can create a nested object within the `bookInfo` object as shown below: 
+```js
+const book = {
+    name: "Rich Dad Poor Dad",
+    author: "Robert Kiyosaki",
+    year: 2000
+}
+const bookInfo = {
+    ...book,
+    year: 1997,
+    previous: {...book}
+}
+console.log(bookInfo)
+/* 👇🏻 Output: {
+{
+  name: 'Rich Dad Poor Dad',
+  author: 'Robert Kiyosaki',
+  year: 1997,
+  previous: { name: 'Rich Dad Poor Dad', author: 'Robert Kiyosaki', year: 2000 }
+}
+*/
+``` 
+## Key Takeaways
+- The JavaScript spread operator is denoted by three dots (`...`) and can be used to manipulate arrays and objects.
+- With the spread operator, you can create new arrays by adding elements and combining multiple arrays.
+- With the spread operator, you can create new objects by adding or updating object properties and merging multiple objects into one.
+- You can pass multiple arguments into a JavaScript function using the spread operator.
+- The spread operator simplifies and makes your code more readable and efficient.
+
 
 <br />
 
