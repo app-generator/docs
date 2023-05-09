@@ -9,11 +9,54 @@ import SubHeading from "@site/src/components/SubHeading";
 	How to Use the Spread Operator (…) in JavaScript
 </SubHeading>
 
-The spread operator is a powerful JavaScript feature introduced in ECMAScript 6 (ES6) and denoted by three dots (`...`). It expands the values of an iterable (such as an array, string, or object) to enable us to access and manipulate its data.  
+The spread operator is a powerful JavaScript feature introduced in ECMAScript 6 (ES6) and denoted by three dots (`...`). It expands the values of an iterable (such as an array, string, or object) to enable you to access and manipulate the iterable. 
 
 In this tutorial, you'll learn how to use the JavaScript spread operator.
 
-## Using the spread operator in JavaScript arrays
+## Using the spread operator in JavaScript arrays 
+The spread operator is commonly used in JavaScript to expand the elements of an array. In this section, you'll learn how to concatenate and copy arrays using the spread operator. 
+
+```js 
+const arrValue = ['Hello', 'JavaScript'];
+
+console.log(arrValue) //👉 Output: [ 'Hello', 'JavaScript' ]
+console.log(...arrValue); //👉 Output: Hello JavaScript
+``` 
+### Concatenation
+With the spread operator, you can merge multiple arrays into a large one. 
+```js
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+const random = ['b', 'd', 'f'];
+
+const merged = [...vowels, ...random];
+console.log(merged) //👉🏻 Output: ['a', 'e', 'i', 'o', 'u', 'b', 'd', 'f']
+``` 
+From the code snippet above, there are two arrays - `vowels` and `random`. They are merged into one, called `merged` - containing all the elements of the arrays. 
+
+### Copying an array
+The spread operator provides a convenient way to copy an array into another array. 
+```js
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+const backup = [...vowels];
+
+console.log(backup); //👉🏻 Output: [ 'a', 'e', 'i', 'o', 'u' ]
+``` 
+From the code snippet above, the `backup` array copies all the elements in the `vowels` array. 
+
+> 💡 Any further changes to the `vowels` array will not reflect in the `backup` array, unlike the regular assignment operator.
+
+```js
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+const backup = [...vowels];
+const newArray = vowels
+vowels.pop() //👉🏻 removes the last element from the array
+
+
+console.log(vowels) //👉🏻 [ 'a', 'e', 'i', 'o' ]
+console.log(backup); //👉🏻 [ 'a', 'e', 'i', 'o', 'u' ]
+console.log(newArray) //👉🏻 [ 'a', 'e', 'i', 'o' ]
+```
+The `newArray` variable creates a reference to the `vowels` variable instead of copying the entire array value.
 
 <br />
 
