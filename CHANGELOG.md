@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.33] 2023-05-10
+### Changes
+
+- Update [Django](https://docs.appseed.us/technologies/django/) Section
+  - [How to DEBUG Django](https://docs.appseed.us/technologies/django/how-to-debug/)
+
 ## [1.0.32] 2023-05-10
 ### Changes
 
