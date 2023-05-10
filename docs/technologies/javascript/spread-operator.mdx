@@ -9,12 +9,15 @@ import SubHeading from "@site/src/components/SubHeading";
 	How to Use the Spread Operator (…) in JavaScript
 </SubHeading>
 
-The spread operator is a powerful JavaScript feature introduced in ECMAScript 6 (ES6) and denoted by three dots (`...`). It expands the values of an iterable (such as an array, string, or object) to enable you to access and manipulate the iterable.
+The spread operator is a powerful JavaScript feature introduced in ECMAScript 6 (ES6) and denoted by three dots (`...`). 
+It expands the values of an iterable (such as an array, string, or object) to enable you to access and manipulate the iterable.
 
 Whether you're a beginner or an experienced JavaScript developer, learning how to use the spread operator is an essential skill that will take your coding to the next level.
 In this article, we'll explore the ins and outs of the spread operator and show you how to use it to write cleaner, more efficient code. So, let's get started!
 
-## Using the spread operator in JavaScript arrays
+<br />
+
+## Using the `Spread Operator` in Arrays
 
 The spread operator is commonly used in JavaScript to expand the elements of an array. In this section, you'll learn how to concatenate and copy arrays using the spread operator.
 
@@ -25,7 +28,9 @@ console.log(arrValue); //👉 Output: [ 'Hello', 'JavaScript' ]
 console.log(...arrValue); //👉 Output: Hello JavaScript
 ```
 
-### Concatenation
+<br />
+
+### 👉 Concatenation
 
 Concatenation is the process of joining two or more arrays to create a new large array. In JavaScript, you can concatenate arrays using the spread operator (`...`).
 
@@ -41,7 +46,9 @@ console.log(merged); //👉🏻 Output: ['a', 'e', 'i', 'o', 'u', 'b', 'd', 'f']
 
 From the code snippet above, there are two arrays - `vowels` and `random`. They are merged into one, called `merged` - containing all the elements of the arrays.
 
-### Copying an array
+<br />
+
+### 👉 Copying an Array
 
 The spread operator provides a convenient way to copy an array into another array. It is useful when you want to manipulate an array without affecting the original array.
 
@@ -71,7 +78,9 @@ console.log(newArray); //👉🏻 [ 'a', 'e', 'i', 'o' ]
 
 The `newArray` variable creates a reference to the `vowels` variable instead of copying the entire array value.
 
-## Using the spread operator in JavaScript functions
+<br />
+
+## Using the `Spread Operator` in Functions
 
 The spread operator can be used to accept an array of parameters in JavaScript functions; in this case, it is called the Rest Operator. It captures any number of arguments passed to the function and groups them into an array.
 
@@ -86,16 +95,20 @@ function sumNumbers(...args) {
 	console.log(sum);
 }
 
-sumNumbers(1, 2, 3, 4, 5, 6, 7, 8, 9); //👉🏻 Output: 45
+sumNumbers(1, 2, 3, 4, 5, 6, 7, 8, 9); // 👉🏻 Output: 45
 ```
 
 In the example above, the function `sumNumbers` accepts an array of numbers with an undefined length using the rest operator, then loops through the arguments to add each number together and log the result to the console.
 
-## Using the spread operator in JavaScript objects
+<br />
+
+## Using the `Spread Operator` in Objects
 
 The spread operator isn't just limited to arrays in JavaScript; it can be used with objects to execute tasks such as copying, merging, and updating object properties.
 
-### Copying object properties
+<br />
+
+### 👉 Copying Object Properties
 
 With the spread operator, you can copy the properties of an object into a new object. This is useful when creating a copy of an object without modifying the original object.
 
@@ -123,7 +136,9 @@ console.log(bookInfo);
 
 In the example above, the `bookInfo` object copies the properties of the `book` object by using the spread operator to copy the properties of the original `book` object into the `bookInfo` object.
 
-### Merging objects properties
+<br />
+
+### 👉 Merging Objects Properties
 
 You can merge two or more objects into a single object using the spread operator (`...`). The spread operator provides a simple way to combine the properties of multiple objects into a single object without modifying the original objects.
 
@@ -151,7 +166,9 @@ console.log(bookInfo);
 
 In the example above, the two objects - `info1` and `info2` are merged into one using the spread operator.
 
-### Updating object properties
+<br />
+
+### 👉 Updating Object Properties
 
 You can also update the properties of an object with the JavaScript spread operator.
 
@@ -195,6 +212,8 @@ console.log(bookInfo);
 }
 */
 ```
+
+<br />
 
 ## Key Takeaways
 

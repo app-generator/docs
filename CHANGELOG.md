@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.32] 2023-05-10
+### Changes
+
+- Update [JavaScript](https://docs.appseed.us/technologies/javascript/) Section
+  - [Spread Operator](https://docs.appseed.us/technologies/javascript/spread-operator/)
+
 ## [1.0.31] 2023-05-08
 ### Changes
 
