@@ -1,53 +1,89 @@
 ---
-description: Start Flask on Replit
+description: Flask and Replit - How to use it Togheter
 ---
 
-# Start Flask on Replit
+# Flask and Replit
 
 import SubHeading from "@site/src/components/SubHeading";
 
-<SubHeading color="#25c2a0">Learn how to Start Flask on Replit</SubHeading>
+<SubHeading color="#25c2a0">Learn how to Start a Flask project on Replit</SubHeading>
 
-## Introduction to Flask and Replit
-Flask is a lightweight and flexible Python web framework that allows developers to easily build web applications. Flask is known for its simplicity and ease of use, making it a popular choice for building web apps of various sizes and complexities. Flask provides many built-in tools and libraries that make it easy to implement common web development features, such as routing, views, templates, and more.
+## Introduction
 
-Replit is an online integrated development environment (IDE) that allows developers to write, run, and collaborate on code in the cloud. Replit provides an easy-to-use interface that includes a code editor, a terminal, and a file manager, making it easy to create and manage Python projects without the need for local installations. Replit also offers a range of features and tools, such as version control, project sharing, and live coding sessions.
+[Flask](https://flask.palletsprojects.com/en/2.3.x/) is a lightweight and flexible Python web framework that allows developers to easily build web applications. 
+Flask is known for its simplicity and ease of use, making it a popular choice for building web apps of various sizes and complexities. 
+Flask provides many built-in tools and libraries that make it easy to implement common web development features, such as routing, views, templates, and more.
 
-Running Flask on Replit allows developers to build and deploy web applications entirely in the cloud. This eliminates the need for local installations of Python or other dependencies, making it easy to get started with web development quickly and without any setup time. Flask apps can be run on Replit using a built-in server or deployed to a production environment using Replit's hosting capabilities.
+[Replit](https://replit.com/) is an online integrated development environment (IDE) that allows developers to write, run, and collaborate on code in the cloud. 
+`Replit` provides an easy-to-use interface that includes a code editor, a terminal, and a file manager, making it easy to create and manage Python projects without the need for local installations. 
+`Replit` also offers a range of features and tools, such as version control, project sharing, and live coding sessions.
 
-By combining Flask and Replit, developers can easily build, test, and deploy web applications entirely in the cloud, without needing to worry about managing local installations or dealing with complex deployment processes.
+`Running Flask on Replit` allows developers to build and deploy web applications entirely in the cloud. 
+This eliminates the need for local installations of Python or other dependencies, making it easy to get started with web development quickly and without any setup time. 
+Flask apps can be run on Replit using a built-in server or deployed to a production environment using Replit's hosting capabilities.
 
-## Setting up a new Python project in Replit
+By `combining Flask and Replit`, developers can easily build, test, and deploy web applications entirely in the cloud, 
+without needing to worry about managing local installations or dealing with complex deployment processes.
+
+<br />
+
+## Setting up a Python Project in Replit
+
 Sure, here is a breakdown of the second subtopic, "Setting up a new Python project in Replit":
 
-1. Creating a Replit account: To create a new Python project in Replit, you'll first need to create a Replit account if you don't already have one. You can sign up for a free account by visiting the [Replit website](https://replit.com/) and following the on-screen instructions.
+> ✅ **Creating a Replit Account** 
 
-2. Creating a new Python project: Once you've signed up for a Replit account, you can create a new Python project by clicking on the "Create repl" button on the Replit homepage. In the "Create repl" window, select "Python" as the language and give your project a name. For this tutorial, I'll be using `flask-project`.
+To create a new Python project in Replit, you'll first need to create a Replit account if you don't already have one. You can sign up for a free account by visiting the [Replit website](https://replit.com/) and following the on-screen instructions.
+
+> ✅ **Creating a new Python Project**
+
+Once you've signed up for a Replit account, you can create a new Python project by clicking on the "Create repl" button on the Replit homepage. In the "Create repl" window, select "Python" as the language and give your project a name. For this tutorial, I'll be using `flask-project`.
 
 ![Creating new replit project](https://github.com/app-generator/dummy/assets/57325382/281fe624-a37a-4e20-b17f-2510aeee38a6)
 
-3. Configuring the project environment: After creating the new Python project, you may want to configure the project environment to your specific needs. For example, you may want to install specific Python packages or configure environment variables. Replit provides a "Packages" tool and a "Secrets" tool that you can use to manage project dependencies and environment variables, respectively in the "Tools" pane on the left-hand sidebar.
+> ✅ **Configuring the Environment**
 
-4. Setting up Git integration: Replit provides Git integration that allows you to commit changes to your code and push them to a remote repository, such as GitHub. To set up Git integration, navigate to the "Git" tool in the "Tools" pane and follow the on-screen instructions to link your Replit account with your Git provider.
+After creating the new Python project, you may want to configure the project environment to your specific needs. For example, you may want to install specific Python packages or configure environment variables. Replit provides a "Packages" tool and a "Secrets" tool that you can use to manage project dependencies and environment variables, respectively in the "Tools" pane on the left-hand sidebar.
 
-5. Adding code to the project: Once the project environment is configured, you can start writing Python code in the Replit editor. By default, Replit creates a `main.py` file that you can use to start building your Flask app.
+> ✅ **Setting up Git integration**
+
+Replit provides Git integration that allows you to commit changes to your code and push them to a remote repository, such as GitHub. To set up Git integration, navigate to the "Git" tool in the "Tools" pane and follow the on-screen instructions to link your Replit account with your Git provider.
+
+> ✅ **Adding code to the project**
+
+Once the project environment is configured, you can start writing Python code in the Replit editor. By default, Replit creates a `main.py` file that you can use to start building your Flask app.
 
 With these steps, you can easily set up a new Python project in Replit and start building your Flask app. Replit provides a user-friendly interface that allows you to manage project dependencies, environment variables, and Git integration, making it easy to get started with web development quickly and efficiently. Below is a view of the project page and description.
 
 ![Replit project page and description](https://github.com/app-generator/dummy/assets/57325382/9f36ad3f-b2ca-496e-b856-b4f704053c52)
 
-## Installing Flask in a Replit project
-There are two ways to install packages on Replit. You can use the "Packages" tool in the "Tools" pane or use Replit built-in terminal (`shell`) also located in the "Tools" pane. To use the "Packages" tool, open the tools pane and click on packages. A new "Packages" tab will be opened on your editor environment, from the tab search for the package you want to install and click on the "Install" button, to install the package. Alternatively, we can use the "Shell" tool (terminal) that is provided by Replit. The "Shell" tool is opened in a separate tab when a new project is started, but if you can find it, just check the "Tools" pane on the left-hand side of your editor.
+<br />
 
-Replit uses `Poetry` as the package manager, check the [Basic Usage](https://python-poetry.org/docs/basic-usage/) guide to get started. You can see [all commands here](https://python-poetry.org/docs/cli/). By using poetry, you ensure that your project does not have broken dependencies and also gives you the chance to replicate your development environment (package-wise) outside Replit.
+## Installing Flask 
 
-To install Flask in a Replit project using the terminal, you'll need to open the Replit Terminal. You can do this by clicking the "Shell" button in the left-hand sidebar of the Replit editor. Once the Replit Terminal is open, you can use the following command to install Flask in your Replit project:
-```
+There are two ways to install packages on Replit. You can use the "Packages" tool in the "Tools" pane or use Replit built-in terminal (`shell`) also located in the "Tools" pane. 
+To use the "Packages" tool, open the tools pane and click on packages. 
+A new "Packages" tab will be opened on your editor environment, from the tab search for the package you want to install and click on the "Install" button, to install the package. 
+Alternatively, we can use the "Shell" tool (terminal) that is provided by Replit. 
+The "Shell" tool is opened in a separate tab when a new project is started, but if you can find it, just check the "Tools" pane on the left-hand side of your editor.
+
+Replit uses `Poetry` as the package manager, check the [Basic Usage](https://python-poetry.org/docs/basic-usage/) guide to get started. 
+You can see [all commands here](https://python-poetry.org/docs/cli/). 
+By using Poetry, you ensure that your project does not have broken dependencies and also gives you the chance to replicate your development environment (package-wise) outside Replit.
+
+To install Flask in a Replit project using the terminal, you'll need to open the Replit Terminal. You can do this by clicking the "Shell" button in the left-hand sidebar of the Replit editor. 
+Once the Replit Terminal is open, you can use the following command to install Flask in your Replit project:
+
+```bash
 $ poetry add flask
 ```
+
 This command will download and install the latest version of Flask and its dependencies in your project's virtual environment.
 
-* Verifying the installation: After installing Flask, you may want to verify that the installation was successful. You can do this by importing Flask in your Python code and running a simple Flask app. For example, you can add the following code to your `main.py` file:
+> Verifying the installation 
+
+After installing Flask, you may want to verify that the installation was successful. 
+You can do this by importing Flask in your Python code and running a simple Flask app. For example, you can add the following code to your `main.py` file:
 
 ```py
 # main.py
@@ -63,65 +99,103 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0')
 ```
 
-This code defines a simple Flask app that responds with "Hello, World!" when accessed at the root URL. Adding `host='0.0.0.0'` gives you access to Replit "Webview" tool, which you can use to view your project when it is running. You can run the app by clicking the "Run" button in the Replit editor. The "Webview" tool opens automatically, but in the case where it does not, Click on "Webview" in the "Tools" pane.
+This code defines a simple Flask app that responds with "Hello, World!" when accessed at the root URL. Adding `host='0.0.0.0'` gives you access to Replit "Webview" tool, 
+which you can use to view your project when it is running. 
+You can run the app by clicking the "Run" button in the Replit editor. The "Webview" tool opens automatically, but in the case where it does not, Click on "Webview" in the "Tools" pane.
 
 ![Replit with webview and files](https://github.com/app-generator/dummy/assets/57325382/e9b8ccb1-f3a2-4647-ac46-240a9c839c1f)
 
-By following these steps, you can easily install Flask in a Replit project and start building your Flask app. Replit's built-in terminal and package management tools make it easy to install and manage project dependencies, allowing you to focus on developing your app.
+By following these steps, you can easily install Flask in a Replit project and start building your Flask app. 
+Replit's built-in terminal and package management tools make it easy to install and manage project dependencies, allowing you to focus on developing your app.
 
-## Using Flask templates in Replit
-For this tutorial, we will be using [`flask-soft-ui-dashboard`](https://github.com/app-generator/flask-soft-ui-dashboard) created by [`Appseed`](https://appseed.us/). There are several ways to go about using the template, we can fork the repository, and then connect to GitHub from Replit and use the forked repository. For this tutorial, we will be cloning the repository directly and starting it up in Replit.
+<br />
 
-### Cloning Flask Soft UI dashboard
+## Using a Flask Template in Replit
+
+For this use-case, we will be using [Soft UI Dashboard Flask](https://appseed.us/product/soft-ui-dashboard/flask/) a popular open-source starter.
+There are several ways to go about using the template, we can fork the repository, and then connect to GitHub from Replit and use the forked repository. 
+For this section, we will be cloning the repository directly and starting it up in Replit.
+
+<br />
+
+### 👉 Cloning [Flask Soft UI Dashboard](https://github.com/app-generator/flask-soft-ui-dashboard)
+
 To clone the repository, open the "Shell" tool, and run the command
+
 ```bash
 $ git clone https://github.com/app-generator/flask-soft-ui-dashboard.git
 ```
+
 Once the repository is cloned, check the "Files" pane on the left-hand side, you will see the folder 'flask-soft-ui-dashboard`. Now we have the files for the template on Replit.
 
-### Installing template dependencies on Replit
-Inside `flask-soft-ui-dashboard` folder, there is a `requirements.txt` file that contains all the dependencies for the template. We can install them individually using the "Packages" tool or use a command that allows us to install them at once.
-**Note**: Poetry does not have support for reading dependencies from requirements.txt files.
+<br />
 
-To install the dependencies for the template, open the "Shell" tool and run the command
+### 👉 Installing Dependencies on Replit
+
+Inside `flask-soft-ui-dashboard` folder, there is a `requirements.txt` file that contains all the dependencies for the template. 
+We can install them individually using the "Packages" tool or use a command that allows us to install them at once.
+
+> **Note**: Poetry does not have support for reading dependencies from requirements.txt files.
+
+To install the dependencies for the template, open the "Shell" tool and run the command:
+
 ```bash
 $ poetry add $(sed 's/#.*//' requirements.txt)
 ```
+
 Using the `sed` command, we remove all the lines that are comments and send the others as multiple packages to `poetry add` command. Once this is executed completely we can start the Flask application.
 
-### Starting the Flask template
-- Before running the Flask template, we will be making some changes to the "run.py" file in the "flask-soft-ui-dashboard" directory.
+<br />
+
+### 👉 Starting the Flask Template
+
+Before running the Flask template, we will be making some changes to the "run.py" file in the "flask-soft-ui-dashboard" directory.
+
 ```py
 # flask-soft-ui-dashboard/run.py
 ...
 if __name__ == '__main__':
     app.run(host='0.0.0.0') # <-- Updated: host added
 ```
+
 With `host='0.0.0.0'` we can make use of Replit "Webview" tool.
 
-- To start the Flask application, open the "Shell" tool and run the following command
+To start the Flask application, open the "Shell" tool and run the following command
+
 ```bash
 $ python flask-soft-ui-dashboard/run.py
 ```
- Once "Webview" is open, we can check the webpage from our browser using the link shown in the address bar of "Webview", it looks like `https://<project-name>.<user-name.repl.co/`. The start button is not used because it searches for "main.py" file in the root directory of the project.
 
-"Flask soft UI dashboard" opens the login page, create an account using the sign up page, then login to the account to see the homepage of the theme. Below is a picture showing the login page, signup page and homepage respectively.
+Once "Webview" is open, we can check the webpage from our browser using the link shown in the address bar of "Webview", it looks like `https://<project-name>.<user-name.repl.co/`. 
+The start button is not used because it searches for "main.py" file in the root directory of the project.
+
+Flask Soft Dashboard" opens the login page, create an account using the sign up page, then login to the account to see the homepage of the theme. 
+Below is a picture showing the login page, signup page and homepage respectively.
 
 ![Flask soft ui dashboard login page](https://github.com/app-generator/dummy/assets/57325382/c9cca7e1-33eb-4a11-9b38-425ad4609c85)
 
+<br />
+
 ![Flask soft ui dashboard signup page](https://github.com/app-generator/dummy/assets/57325382/187765ba-cdfe-4534-aca1-64709192c1e3)
+
+<br />
 
 ![Flask soft ui dashboard homepage](https://github.com/app-generator/dummy/assets/57325382/b8d7f3a6-e551-48d4-9606-88754c1cae99)
 
- Now we have a flask application that is using `flask-soft-ui-dashboard`. we can make changes to the files to fit our project needs.
+Now we have a flask application that is using `flask-soft-ui-dashboard`. we can make changes to the files to fit our project needs.
 
- ## Conclusion
- In this article, we have learned how to start Flask on Replit and use a Flask template. We first created a new Flask project on Replit, and then we cloned a Flask template from GitHub. We made some changes to the template, and then we ran the Flask application. We were able to successfully start the Flask application and view the dashboard.
+<br />
 
-I hope you found this article helpful! Contact support using the links below if you have any other questions.
+## Conclusion
+
+In this article, we have learned how to start Flask on Replit and use a Flask template. 
+We first created a new Flask project on Replit, and then we cloned a Flask template from GitHub. We made some changes to the template, and then we ran the Flask application. 
+We were able to successfully start the Flask application and view the dashboard. 
+
+<br />
 
 ## Resources
+
+- 👉 [Replit](https://replit.com/) - the official website
 - 👉 Free [Support](https://appseed.us/support/) via Email & Discord
 - 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
-- 👉 [Flask Soft UI dashboard ](https://github.com/app-generator/flask-soft-ui-dashboard)
-- 👉 [Poetry documentation](https://python-poetry.org/docs/cli/)

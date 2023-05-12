@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.34] 2023-05-12
+### Changes
+
+- Update [Flask](https://docs.appseed.us/technologies/flask/) Section
+  - [Learn how to Start a Flask project on Replit](https://docs.appseed.us/technologies/django/how-to-debug/) 
+
 ## [1.0.33] 2023-05-10
 ### Changes
 
