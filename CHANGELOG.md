@@ -4,7 +4,7 @@
 ### Changes
 
 - Update [Flask](https://docs.appseed.us/technologies/flask/) Section
-  - [Learn how to Start a Flask project on Replit](https://docs.appseed.us/technologies/django/how-to-debug/) 
+  - [Learn how to Start a Flask project on Replit](https://docs.appseed.us/technologies/flask/run-on-replit/) 
 
 ## [1.0.33] 2023-05-10
 ### Changes
