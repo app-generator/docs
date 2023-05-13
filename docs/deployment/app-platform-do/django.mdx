@@ -4,84 +4,203 @@ description: How to deploy Django to App Plaform by Digital Ocean
 
 # App Platform - Deploy Django
 
-<SubHeading color="#25c2a0">How to deploy Django to App Plaform by Digital Ocean</SubHeading>
+<SubHeading color="#25c2a0">How to deploy Django to App Platform by Digital Ocean</SubHeading>
 
-@Todo - General information AWS Platform
+DigitalOcean is a cloud infrastructure provider that offers a variety of products to help developers and businesses deploy and manage their applications. One of its key offerings is the App Platform, which simplifies the process of deploying and scaling web applications. With App Platform, users can deploy code directly from their Git repositories and choose from pre-configured language and database options, making it easy to get started without worrying about infrastructure management.
 
 > Topics covered
 
-- `App Plaform` Account Creation
-- `App Plaform` Account Settings
+- `App Platform` Account Creation
 - The project to be deployed
-- `App Plaform` Database set up
-- `App Plaform` Environment set up
-- `App Plaform` Domain settings
-- `App Plaform` SSL certificates
-- `App Plaform` CI/CD from Github
-- `App Plaform` LIVE Service monitoring
+- `App Platform` Setting up project
+- `App Platform` Deploying the application
+- `App Platform` LIVE Service monitoring
 
-\
+## `App Platform` Account Creation
 
-## `App Plaform` Account Creation
+If you want to use the DigitalOcean App Platform to deploy your app, you'll need to create a DigitalOcean account. Here are the steps to get started:
 
-@Todo: Step by step presentation
-
-\
-
-## `App Plaform` Account Settings
-
-@Todo: The most important things to know by a beginner
-
-\
+1. Go to DigitalOcean home page at https://www.digitalocean.com/.
+2. You can directly sign up from button in the hero section or click "Sign up" at the top right corner of the page.
+3. Select your preferred sign up method, you can sign up using Google, Github, or email.
+4. Fill out the survey form, which asks a few questions about your project needs, and then click "Submit".
+5. You will be prompted to set a payment method to verify your identity. Choose your desired payment method and fill out the form provided. If you choose payment with a card, make sure you have at least $1 for the verification. It will be refunded within a few days.
+6. After you have verified, create a project to start using DigitalOcean.
 
 ## The project to be deployed
 
 Source project: https://github.com/app-generator/django-soft-ui-dashboard
 
-\
+If `git` isn't installed, run following command to install it.
 
-## `App Plaform` Database set up
+```bash
+sudo apt-get install git
+```
 
-@Todo:
+Then clone the project by running this command.
 
-- How to set up a PostgreSQL database + user credentials
-- How to set up a MySql database + user credentials
+```bash
+git clone https://github.com/app-generator/django-soft-ui-dashboard
+```
 
-\
+## `App Platform` Setting up project
 
-## `App Plaform` Environment set up
+To ensure that your project runs properly on App Platform, follow these steps to modify the settings:
 
-@Todo:
+1. Open the `core/settings.py` file in the project.
 
-- How to specify the Python version to be used
-- How to set the environment variables used by the app
+2. Search `ALLOWED_HOSTS` and replace the value with the following code.
 
-\
+   ```py
+   ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+   ```
 
-## `App Plaform` Domain settings
+3. Install dj-database-url which allows you to specify database connection settings in a URL format.
 
-@Todo: How to park a domain or a subdomain to the service
+   ```bash
+   pip install dj-database-url
+   ```
 
-\
+4. Find the database configuration and add the following code.
 
-## `App Plaform` SSL certificates
+   ```py
+   import dj_database_url
+   ```
 
-@Todo: How to enhance the service with valid certificates (not self signed)
+   ```python
+   DB_URL      = os.getenv('DB_URL'      , None)
+   ```
 
-\
+   ```python
+   elif DB_URL:
+       DATABASES = {
+           "default": dj_database_url.parse(DB_URL)
+       }
+   ```
 
-## `App Plaform` CI/CD from Github
+5. Your complete database configuration code should look like this:
 
-@Todo: This section explains how to link an automatic deploy from Github on new commits
+   ```python
+   import dj_database_url
+   ...
+   
+   # Database
+   # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+   
+   DB_ENGINE   = os.getenv('DB_ENGINE'   , None)
+   DB_USERNAME = os.getenv('DB_USERNAME' , None)
+   DB_PASS     = os.getenv('DB_PASS'     , None)
+   DB_HOST     = os.getenv('DB_HOST'     , None)
+   DB_PORT     = os.getenv('DB_PORT'     , None)
+   DB_NAME     = os.getenv('DB_NAME'     , None)
+   DB_URL      = os.getenv('DB_URL'      , None)
+   
+   if DB_ENGINE and DB_NAME and DB_USERNAME:
+       DATABASES = { 
+           'default': {
+               'ENGINE'  : 'django.db.backends.' + DB_ENGINE, 
+               'NAME'    : DB_NAME,
+               'USER'    : DB_USERNAME,
+               'PASSWORD': DB_PASS,
+               'HOST'    : DB_HOST,
+               'PORT'    : DB_PORT,
+           }, 
+       }
+   elif DB_URL:
+       DATABASES = {
+           "default": dj_database_url.parse(DB_URL)
+       }
+   else:
+       DATABASES = {
+           'default': {
+               'ENGINE': 'django.db.backends.sqlite3',
+               'NAME': 'db.sqlite3',
+           }
+       }
+   ```
 
-\
+6. Add `dj-database-url` to the `requirements.txt` file.
 
-## `App Plaform` LIVE Service monitoring
+7. Commit your changes and push the revision to Github.
 
-@Todo: How to check out the service health and uptime
+## `App Platform` Deploying the application
 
-\
+DigitalOcean's App Platform is a service that allows you to easily deploy your web applications. In this tutorial, we'll go over the steps to deploy an application on the App Platform.
+
+### Setting up the app
+
+1. Go to https://cloud.digitalocean.com/apps and click on "Create App". This will take you to a page where you can choose your service provider. For this demo, we'll choose GitHub.
+
+2. Click on "Manage Access". You'll be prompted to connect your GitHub account. Connect your account and allow DigitalOcean to access your repositories.
+
+3. Select the repository you want to deploy, choose the branch and source directory, and click "Next".
+
+4. Click "Edit" next to the app to configure your app.
+
+5. Edit the "Run Command", change it to the following command, then click "Save":
+
+   ```bash
+   gunicorn --worker-tmp-dir /dev/shm core.wsgi
+   ```
+
+6. Click "Edit" next to "HTTP Request Routes" and change "Routes" to `/`, then save and click "Back" to go back to the resource page.
+
+### Adding resources
+
+1. Click "Edit" next to "Add Resource" and select "Database". Enter your database name and click "Add".
+2. Click "Add Resource" again, select "Detect from Source Code" to set up the static file, and select the same repository as in the previous step.
+3. Click "Edit" next to the new resource, change the configuration to the following, then save and click "Back":
+   - Name: static (or anything else)
+   - Resource Type: Static Site
+   - Output Directory: staticfiles
+   - HTTP Request Routes: /static
+4. Click "Next" to set up environment variables.
+
+### Setting up environment variables
+
+1. Click "Edit" next to the your app name, then add these variables.
+
+   - `DATABASE_URL`: `${<NAME_OF_YOUR_DATABASE>.DATABASE_URL}`
+   - `ALLOWED_HOSTS`: `${APP_DOMAIN}`
+   - `SECRET_KEY`: enter your secret key and check "Encrypt"
+   - `DEBUG`: True (set to False when your app is running properly)
+2. Click "Save" and then click "Next". 
+
+### Configuring app information
+
+1. If you want to set a name for your app and select the project, click "Edit" under "App Info"
+2. If you want to choose the server region, click "Edit" under "Region". Choose the region nearest to your location.
+3. Click "Next" to continue the process.
+
+### Deploying your app
+
+1. Review your configuration, then click "Create Resources" at the bottom of the page when you are sure.
+
+2. Once the build process completes, go to "Console" tab and run the following commands.
+
+   ```bash
+   python manage.py migrate
+   python manage.py createsuperuser
+   ```
+
+Congratulations, your application is now deployed on DigitalOcean App Platform!
+
+## `App Platform` LIVE Service monitoring
+
+We'll use UptimeRobot to monitor the app. UptimeRobot is a popular online service that monitors the uptime and performance of websites, servers, and other online services.
+
+Go to [UptimeRobot](https://uptimerobot.com/) create an account or sign in if you already have account. Create monitor by clicking "Add New Monitor" button then follow this config:
+
+- Monitor Type: HTTP(s)
+- Friendly Name: django-AWS (or anything else you want)
+- URL (or IP): your_domain
+
+Keep the rest of the config as default and click "Create Monitor"
+
+UptimeRobot will now start monitoring your app. You can view the monitor status and performance data on the UptimeRobot dashboard
 
 ## Links & Resources
 
-@Todo: mention at least two valuable resources (articles or docs)
+- 👉 More [Django Starters](https://appseed.us/apps/django/) - provided by `AppSeed` (free & paid)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- [Django](https://docs.djangoproject.com/en/4.2/releases/4.2) official documentation
