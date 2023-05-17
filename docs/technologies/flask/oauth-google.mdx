@@ -116,7 +116,6 @@ Some changes will be made to the project files to add an authentication mechanis
 │   └── templates
 ├── package.json
 ├── README.md
-├── render.yaml
 ├── requirements.txt
 └── run.py
 ```
@@ -245,15 +244,30 @@ Now requests to `login/google` route will be handled by this route. From your te
 ```
 From your browser visit [`127.0.0.1:5000/login/google`](http://127.0.0.1:5000/login/google). Once you have logged in, you will be able to access protected resources in your Flask app.
 
+## Adding Signin button to login page
+We will be adding a link to the login page to simplify the signin process for the user.
+
+- Add the following code to `apps/templates/accounts/login.html` on line 37
+```html
+<!--apps/templates/accounts/login.html-->
+...
+      <div class="card-body">
+              <a href='login/google' class='btn btn-primary'>Sign in with Google</a>
+...
+```
+This adds a link that points to the authorization route. With this, users can signin to the web application using google authentication wihtout having to change the URL from the browser, making for a better user experience.
+
 ## Conclusion
 In conclusion, this article has provided an overview of OAuth and its importance in modern web applications. We explored the process of creating a Google OAuth Client ID, which is essential for enabling user authentication and authorization using Google accounts. Additionally, we discussed the steps involved in setting up a Flask application, a popular Python web framework, to handle OAuth authentication. 
 
 To facilitate OAuth functionality in our Flask application, we installed and configured Flask-Dance, a Flask extension that simplifies the integration of OAuth providers. Specifically, we focused on configuring Flask-Dance with Google OAuth, allowing users to authenticate with their Google accounts in our application.
 
+By adding the "Sign in with Google" button to your login page, you provide users with a convenient and secure method to access your Flask application using their Google accounts. This not only simplifies the login process but also enhances the user experience and increases user engagement.
+
 By following the steps outlined in this article, developers can leverage the power of OAuth and Google OAuth specifically to enable secure user authentication and authorization in their Flask applications. This process not only enhances the user experience but also provides a seamless integration with widely used social media and identity platforms.
 
 ## Resources
-- 👉 [Flask-Dance] Documentation(https://flask-dance.readthedocs.io/en/latest/)
+- 👉 [Flask-Dance](https://flask-dance.readthedocs.io/en/latest/) Documentation
 - 👉 [Google Cloud Platform](https://console.cloud.google.com/) - the official website
 - 👉 Free [Support](https://appseed.us/support/) via Email & Discord
 - 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
