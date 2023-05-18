@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.35] 2023-05-18
+### Changes
+
+- Update [Flask](https://docs.appseed.us/technologies/flask/) Section
+  - [Flask Google OAuth](https://docs.appseed.us/technologies/flask/oauth-google/) 
+
 ## [1.0.34] 2023-05-12
 ### Changes
 
