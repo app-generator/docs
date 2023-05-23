@@ -31,9 +31,13 @@ If you are developing a website or app that needs to access user data, OAuth is 
 
 To create a Google OAuth Client ID:
 - You will need to create a Google Cloud Platform project. Open Google Cloud Platform [here](https://console.cloud.google.com/)
-- Once you have created a project, you can go to the API Credentials page and click the "Create Credentials" button.
-- Select "OAuth Client ID" and then "Web application".
-- Enter a name for your application and click the "Create" button. You will then be given a Client ID and Client Secret.
+- Once you have created a project, you can go to the "APIs and services" page using the menu on the left. Click on "Credentials" and when the page is loaded click the "Create Credentials" button.
+- Select "OAuth Client ID" and then "Web application" as the application type.
+- Enter a name for your application and add the following below as the "Authorised Redirect URIs".
+    1. http://127.0.0.1:5000/login/google/authorized
+    2. http://localhost:5000/login/google/authorized
+We are using localhost and 127.0.0.1 because we are running a development environment and that is the address of the application on our machine. In a production environment, the uri should be `https://domain-name.<tld(.com)>/login/google/authorized`
+- Click the "Create" button. You will then be given a Client ID and Client Secret.
 
 ## Setting up Flask application
 Flask is a microframework for Python web development. It is a simple, flexible, and extensible framework that can be used to create a wide variety of web applications.
@@ -76,6 +80,8 @@ On `Linux/MacOS`:
 (venv) flask-google-oauth$ export FLASK_ENV=development
 (venv) flask-google-oauth$ export GOOGLE_OAUTH_CLIENT_SECRET=<google_client_secret>
 (venv) flask-google-oauth$ export GOOGLE_OAUTH_CLIENT_ID=<google_client_id>
+(venv) flask-google-oauth$ export OAUTHLIB_RELAX_TOKEN_SCOPE=True
+(venv) flask-google-oauth$ export OAUTHLIB_INSECURE_TRANSPORT=True
 ```
 
 On Windows:
@@ -85,13 +91,20 @@ On Windows:
 (venv) flask-google-oauth$ set FLASK_ENV=development
 (venv) flask-google-oauth$ set GOOGLE_CLIENT_SECRET=<google_client_secret>
 (venv) flask-google-oauth$ set GOOGLE_CLIENT_ID=<google_client_id>
+(venv) flask-google-oauth$ set OAUTHLIB_RELAX_TOKEN_SCOPE=True
+(venv) flask-google-oauth$ set OAUTHLIB_INSECURE_TRANSPORT=True
 (venv) flask-google-oauth$
 (venv) flask-google-oauth$ # Powershell
 (venv) flask-google-oauth$ $env:FLASK_APP = ".\run.py"
 (venv) flask-google-oauth$ $env:FLASK_ENV = "development"
 (venv) flask-google-oauth$ $env:GOOGLE_OAUTH_CLIENT_SECRET = "<google_client_secret>"
 (venv) flask-google-oauth$ $env:GOOGLE_OAUTH_CLIENT_ID = "<google_client_id>"
+(venv) flask-google-oauth$ $env:OAUTHLIB_RELAX_TOKEN_SCOPE=True
+(venv) flask-google-oauth$ $env:OAUTHLIB_INSECURE_TRANSPORT=True
 ```
+`OAUTHLIB_INSECURE_TRANSPORT` allows oauth to be carried out without `https`, this is useful since we are running in development mode and our web applicationis served over `http`.
+
+`OAUTHLIB_RELAX_TOKEN_SCOPE` makes flask_dance to not throw an error in the event where the scope returned by the oauth service provider is different from the one requested.
 
 ## Installing Flask-Dance
 Flask-Dance is a Flask extension that makes it easy to add OAuth authentication to your Flask apps. Flask-Dance provides a single, consistent API for working with OAuth providers, making it easy to add authentication to your app without having to learn the specific OAuth protocol for each provider.
@@ -150,55 +163,69 @@ class OAuth(OAuthConsumerMixin, db.Model): # <-- NEW class
 - We will be creating an `oauth` module to handle the signup and login using Google authentication. Create a file `oauth.py` in the `apps/authentication` folder and add the following code
 ```py
 # apps/authentication/oauth.py
-import os
-
 from flask_login import current_user, login_user
-from flask_dance.consumer import oauth_authorized
+from flask_dance.consumer import oauth_authorized, oauth_error
 from flask_dance.consumer.storage.sqla import SQLAlchemyStorage
 from flask_dance.contrib.google import google, make_google_blueprint
 from sqlalchemy.orm.exc import NoResultFound
 
+from ..config import Config
+
 from .models import Users, db, OAuth
 
-client_id = os.getenv('GOOGLE_CLIENT_ID')
-client_secret = os.getenv('GOOGLE_CLIENT_SECRET')
+client_id = Config.GOOGLE_OAUTH_CLIENT_ID
+client_secret = Config.GOOGLE_OAUTH_CLIENT_SECRET
 
 google_blueprint = make_google_blueprint(
     client_id=client_id,
     client_secret=client_secret,
-    scope='user',
+    offline=True,
     storage=SQLAlchemyStorage(
         OAuth,  
         db.session,
         user=current_user,
         user_required=False
     ),
+    scope=["profile", "email"],
+    reprompt_consent=True
 )
 
 @oauth_authorized.connect_via(google_blueprint)
 def google_logged_in(blueprint, token):
-    info = google.get('/user')
+    info = google.get('/oauth2/v1/userinfo')
 
     if info.ok:
         account_info = info.json()
         print(account_info)
-        username = account_info['login']
+        user_id = account_info['id']
 
-        query = Users.query.filter_by(oauth_google=username)
+        query = Users.query.filter_by(oauth_google=user_id)
         try:
             user = query.one()
             login_user(user)
         except NoResultFound:
+            oauth = OAuth(
+                provider=blueprint.name,
+                token=token,
+                user_id=user_id
+            )
+
             user = Users()
-            user.username = username
-            user.oauth_google = username
-            user.save()
-
+            user.username = 'google_' + account_info['given_name'] + account_info['family_name']
+            user.email = account_info['email']
+            user.oauth_google = user_id
+    
+            db.session.add_all([user, oauth])
+            db.session.commit()
+    
             login_user(user)
-```
-We have created a blueprint that makes use of Google's authentication. We connected the blueprint to the `OAuth` schema.
 
-- Next step is to register the blueprint to our Flask application to make it accessible from the browser route. Update `apps/__init__.py` to register the blueprint
+    return False
+```
+We have created a blueprint that makes use of Google's authentication and passed parameters that define how the authentication process will go and the kind of details being requested(`scope`).
+The code above allows a new user to be registered and also login the web application using google authentication. `@oauth_authorized` decorator is the signal that is called when a user is authorized.
+
+- Now we register the blueprint to our Flask application to make it accessible from the browser route. Update `apps/__init__.py` to register the blueprint
 ```py
 # apps/__init__.py
 ...
@@ -233,7 +260,7 @@ def login_google():
     if not google.authorized:
         return redirect(url_for("google.login"))
 
-    res = google.get("/user")
+    res = google.get("/oauth2/v1/userinfo")
     return redirect(url_for('home_blueprint.index'))
 ```
 Now requests to `login/google` route will be handled by this route. From your terminal you can run the command `flask routes` to see all the routes present in the application.
