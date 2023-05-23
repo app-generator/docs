@@ -196,7 +196,6 @@ def google_logged_in(blueprint, token):
 
     if info.ok:
         account_info = info.json()
-        print(account_info)
         user_id = account_info['id']
 
         query = Users.query.filter_by(oauth_google=user_id)
