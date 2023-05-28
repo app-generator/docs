@@ -14,8 +14,6 @@ Step 1: Create a Django Project
 
 To get started, clone our example code by running the following command:
 
-shellCopy code
-
 `$ git clone https://github.com/app-generator/django-corporate-dashboard`
 
 This will create a new folder called "django-corporate-dashboard" with the project code.
@@ -25,10 +23,10 @@ Step 2: Dockerize the Django Project
 
 Next, navigate to the project directory and run the application with the following command:
 
-shellCopy code
-
-`$ cd django-corporate-dashboard
-$ docker compose up -d --build`
+```
+$ cd django-corporate-dashboard
+$ docker compose up -d --build
+```
 
 Make sure the container is running properly. You can now open your browser and access the application at [http://localhost:5085](http://localhost:5085/).
 
@@ -49,19 +47,18 @@ Let's understand how the auto-reload feature works. It utilizes the `docker volu
 
 1.  In the `Dockerfile`, you will find the following configuration:
 
-DockerfileCopy code
-
-`WORKDIR /app
+```
+WORKDIR /app
 RUN chmod +x /app/entrypoint.sh
-CMD ["bash", "-c", "/app/entrypoint.sh"]`
+CMD ["bash", "-c", "/app/entrypoint.sh"]
+```
 
 These configurations ensure that the application is stored in the `/app` directory and that the `entrypoint.sh` script is executed every time the container is run.
 
 1.  In the `entrypoint.sh` file, you will find the following code:
 
-bashCopy code
-
-`#!/bin/bash
+```
+#!/bin/bash
 set -e
 
 # Function to start Gunicorn with dynamic reload-extra-file options
@@ -75,16 +72,17 @@ start_gunicorn() {
 }
 
 # Start Gunicorn
-start_gunicorn`
+start_gunicorn
+```
 
 This code scans all files with the `.html` extension, and whenever any of these files change, Gunicorn will automatically reload the server. We don't need to add `.py` files in the `entrypoint.sh` because Gunicorn automatically detects changes in `.py` files.
 
 1.  In the `docker-compose.yml` file, you will find the following configuration:
 
-yamlCopy code
-
-`volumes:
-  - ./:/app`
+```
+volumes:
+  - ./:/app
+```
 
 This configuration maps the files inside the Docker container, located at `/app`, to the current directory `./` on your host machine.
 
