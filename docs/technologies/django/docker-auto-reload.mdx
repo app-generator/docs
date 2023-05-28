@@ -7,5 +7,88 @@ import SubHeading from "@site/src/components/SubHeading";
 
 <SubHeading color="#25c2a0">How to execute Django in Docker with Code Persistence</SubHeading>
 
-> Code Sample: https://github.com/app-generator/django-corporate-dashboard
+This guide will walk you through the steps to run a Django application in a Docker container while maintaining code persistence. You will have automatic reloading every time you make changes to your code.
 
+Step 1: Create a Django Project
+-------------------------------
+
+To get started, clone our example code by running the following command:
+
+shellCopy code
+
+`$ git clone https://github.com/app-generator/django-corporate-dashboard`
+
+This will create a new folder called "django-corporate-dashboard" with the project code.
+
+Step 2: Dockerize the Django Project
+------------------------------------
+
+Next, navigate to the project directory and run the application with the following command:
+
+shellCopy code
+
+`$ cd django-corporate-dashboard
+$ docker compose up -d --build`
+
+Make sure the container is running properly. You can now open your browser and access the application at [http://localhost:5085](http://localhost:5085/).
+
+Step 3: Change the Code
+-----------------------
+
+To see the auto-reload feature in action, follow these steps:
+
+1.  Go to the `templates/includes/head.html` file in your project directory.
+2.  Open the file in a text editor and make changes to the title tag.
+3.  Save the file.
+4.  Refresh your browser, and you will see the updated changes.
+
+The Concept
+-----------
+
+Let's understand how the auto-reload feature works. It utilizes the `docker volume` and `gunicorn reload` features.
+
+1.  In the `Dockerfile`, you will find the following configuration:
+
+DockerfileCopy code
+
+`WORKDIR /app
+RUN chmod +x /app/entrypoint.sh
+CMD ["bash", "-c", "/app/entrypoint.sh"]`
+
+These configurations ensure that the application is stored in the `/app` directory and that the `entrypoint.sh` script is executed every time the container is run.
+
+1.  In the `entrypoint.sh` file, you will find the following code:
+
+bashCopy code
+
+`#!/bin/bash
+set -e
+
+# Function to start Gunicorn with dynamic reload-extra-file options
+start_gunicorn() {
+    # Generate the reload-extra-file options dynamically
+    extra_files=$(find /app/templates -name "*.html" -printf "--reload-extra-file %p ")
+
+    # Start Gunicorn
+    echo "Starting Gunicorn..."
+    gunicorn --config gunicorn-cfg.py --reload --reload-engine=poll $extra_files core.wsgi
+}
+
+# Start Gunicorn
+start_gunicorn`
+
+This code scans all files with the `.html` extension, and whenever any of these files change, Gunicorn will automatically reload the server. We don't need to add `.py` files in the `entrypoint.sh` because Gunicorn automatically detects changes in `.py` files.
+
+1.  In the `docker-compose.yml` file, you will find the following configuration:
+
+yamlCopy code
+
+`volumes:
+  - ./:/app`
+
+This configuration maps the files inside the Docker container, located at `/app`, to the current directory `./` on your host machine.
+
+Conclusion
+----------
+
+That concludes the explanation of how to use the auto-reload feature with Docker. Now you can make changes to your Django code, and the server will automatically reload, providing a seamless development experience.
