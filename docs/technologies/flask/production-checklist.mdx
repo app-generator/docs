@@ -10,12 +10,382 @@ import SubHeading from "@site/src/components/SubHeading";
 
 ## Introduction
 
-ToDO 
+ Flask is an open-source Python microframework used for building web applications. Emphasize its simplicity, flexibility, and wide adoption within the Python community.
+
+ Deployment is the process of making your Flask application accessible to users on a live server ensuring its stability, security, and optimal performance.
+
+ For this reference guide, we will be covering some things to be done before deploying your application to ensure the application is both safe and the deployment employ best practices
+
+ We will be making reference to [Flask Berry dashboard](https://github.com/app-generator/flask-berry-dashboard) for this tutorial.
+
+ ## Setting up Flask application
+ - Clone the repository to your machine
+ ```bash
+ $ git clone https://github.com/app-generator/flask-berry-dashboard.git
+ $ cd flask-berry-dashboard
+ ```
+ - Create a virtual environment and activate it
+
+On windows
+ ```bash
+flask-berry-dashboard$ virtualenv venv
+flask-berry-dashboard$ .\venv\Scripts\activate
+(venv) flask-berry-dashboard$
+ ```
+On Linux/Mac
+```bash
+flask-berry-dashboard$ virtualenv venv
+flask-berry-dashboard$ source venv/bin/activate
+(venv) flask-berry-dashboard$
+```
+
+- Install the packages using pip
+```bash
+(venv) flask-berry-dashboard$ pip install -r requirements.txt
+```
+
+Once you have your application set up, we would start making changes to make the app fit for deployment.
+
+## Preparing Flask application for deployment
+We will be going through some general setups for deployment and then some specific setups for deployment on different platforms.
+
+### Configuring application environmental variables
+- Create a file named `.env` in the root folder of your project, this file will hold environmental variables and their values.
+
+```bash
+# .env
+FLASK_APP=run.py # application entry point
+SECRET_KEY=<your-secret-key>
+DB_ENGINE=<database-to-be-used>
+DB_HOST=<db-host-name-or-ip>
+DB_NAME=<database-name>
+DEBUG=False
+```
+`SECRET_KEY` is a random string that is used to protect your Flask application from attack. It is used to encrypt cookies and other sensitive data. If an attacker can guess your secret key, they could potentially steal your users' session data or other sensitive information.
+
+Using the `python-dotenv` package, the contents of the `.env` file are loaded into environmental variables when the application starts.
+
+### Enabling database migration for application
+Migrations are a way to track changes to your database schema over time. This makes it easy to roll back changes if something goes wrong or to deploy your application to a new environment.
+`Flask-Migrate` is a Flask extension that provides support for database migrations.
+
+- From the terminal install flask-migrate
+```bash
+(venv) flask-berry-dashboard$ pip install flask-migrate
+```
+
+- In the entry point of your application (`run.py`) add the following line of code
+```py
+# run.py
+...
+from flask_migrate import Migrate
+...
+# after creating Flask and SQLAlchemy objects
+Migrate(app, db)
+...
+```
+
+- Next step is to create the migration directory and apply the migration to the current database schema
+
+```bash
+(venv) flask-berry-dashboard$ flask db init
+(venv) flask-berry-dashboard$ flask db migrate --message "initial db migration"
+```
+
+By setting up `flask-migrate` you can be able to move scale your application database and alter its schema without losing data.
+
+### Minifying application files using `Flask-Minify`
+`Flask-Minify` is a Flask extension that can be used to minify HTML, CSS, and JavaScript files. Minifying files can help to improve the performance of your Flask application by reducing the size of the files that need to be downloaded by the user.
+
+- Install flask-minify from the terminal with the command
+```bash
+(venv) flask-berry-dashboard$ pip install flask-minify
+```
+
+- Add the following to `run.py` to enable the application to use `flask-minify`
+```py
+# run.py
+...
+from flask_minify import Minify
+...
+# after creating the Flask object
+Minify(app=app, html=True, js=False, cssless=True)
+...
+```
+Test the minification of your files to make sure that it does not break your application. Minification can sometimes introduce errors in your files, so it is important to test them thoroughly before you deploy your application.
+
+### Increasing Application security using `Flask-Talisman`
+
+`Flask-Talisman` is a Flask extension that helps to secure your Flask application by setting HTTP security headers. These headers can help to protect your application from a variety of common web attacks, such as cross-site scripting (XSS), clickjacking, and session hijacking.
+
+- Install `Flask-Talisman` from the terminal
+```bash
+(venv) flask-berry-dashboard$ pip install flask-talisman
+```
+
+- Setup flask-talisman by adding this line of code in `run.py`
+```py
+# run.py
+...
+from flask_talisman import Talisman
+...
+talisman = Talisman(app)
+...
+```
+With this, we have added a new layer of security to our application in a production environment.
+
+### Serve static files using CDN
+A content delivery network (CDN) is a network of servers that are distributed around the world. CDNs can be used to improve the performance of web applications by delivering static content, such as images and JavaScript files, from the server that is closest to the user.
+
+To deploy a Flask application using a CDN, you will need to:
+
+- Choose a CDN provider. There are many CDN providers available, such as Amazon CloudFront, Cloudflare, and Akamai.
+
+- Create an account with the CDN provider.
+
+- Upload your static content to the CDN provider in a compressed format. This will reduce the size of the files and improve the performance of your application.
+
+- To configure your Flask application to use the CDN, add the following to the `.env` file
+```
+# .env
+# CDN Support
+# Note: Used only when DEBUG=False (production mode)
+# CDN_DOMAIN="YYY.ZZZ.com/berry-bootstrap5-v101"
+```
+
+- Install `Flask-cdn` from the terminal
+```
+(venv) flask-berry-dashboard$ pip install Flask-CDN
+```
+
+- Adding `flask-cdn` to the flask application, `apps/__init__.py` contain a function for creating a flask object, that is where we will be initializing our CDN
+```py
+# apps/__init__.py
+...
+from flask_cdn import CDN
+
+cdn = CDN()
+...
+
+def create_app():
+    ...
+    if not DEBUG and 'CDN_DOMAIN' in app.config:
+        cdn.init_app(app)
+
+    return app
+```
+
+- Add the CDN domain to your python flask configuration.
+
+    * Using a configuration file `apps/config.py`
+    ```py
+    # apps/config.py
+    ...
+    class Config:
+        ...
+        CDN_DOMAIN  = os.getenv('CDN_DOMAIN' , None)
+        ...
+    ...
+    ```
+    * From the flask object "app" in run.py
+    ```py
+    # run.py
+    ...
+    app.config['CDN_DOMAIN'] = os.getenv('CDN_DOMAIN' , None)
+    ...
+    ```
+
+With this done, our application is ready to serve static files over a CDN.
+
+## Deploying Flask Application
+Deploying a Flask application is a crucial step in turning your Python web application into a fully functional and accessible website. It involves the process of making your Flask application available to users on a live server, ensuring its stability, security, and optimal performance. Without proper deployment, your Flask application may not reach its intended audience or function as expected.
+
+Deploying a Flask application goes beyond simply running it on your local development environment. It requires careful planning, configuration, and implementation of various steps to ensure a successful deployment.
+
+Before you start the process of deploying your application, execute the command below on your terminal to create an updated `requirements.txt` file
+```
+(venv) flask-berry-dashboard$ pip freeze > requirements.txt
+```
+
+### Deploy using Docker
+Docker is a popular containerization platform that allows you to package and distribute applications along with their dependencies in a portable and isolated environment. It provides a consistent and reproducible way to build, ship, and run applications, making it easier to deploy applications across different environments without worrying about compatibility issues.
+
+For this tutorial, we will be using `Nginx` as the reverse proxy server and `Gunicorn to serve the application. 
+
+A reverse proxy is a server that sits between the internet and a web application. It can be used to improve the performance, security, and reliability of the web application. Gunicorn is an application server that can be used to run web applications. It is designed to be used with a reverse proxy. If Gunicorn is exposed directly to the internet, it can be vulnerable to denial-of-service (DoS) attacks. A DoS attack is an attempt to make a computer or network resource unavailable to its intended users. In the case of Gunicorn, a DoS attack could be performed by creating a load that trickles data to the servers. This type of attack is known as a Slowloris attack.
+
+We will start by configuring our docker container.
+
+- Create a file `docker-compose.yml` in the root folder of your project
+```yml
+# docker-compose.yml
+version: '1.0' # the current version of your application
+services:
+  appseed-app: # can be given any name
+    container_name: appseed_app
+    restart: always
+    build: .
+    networks:
+      - db_network
+      - web_network
+  nginx:
+    container_name: nginx
+    restart: always
+    image: "nginx:latest"
+    ports:
+      - "5085:5085"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d # mapping nginx configuration to a configuration file we will be creating
+    networks:
+      - web_network
+    depends_on: 
+      - appseed-app
+networks:
+  db_network:
+    driver: bridge
+  web_network:
+    driver: bridge
+```
+
+- Create a Nginx configuration file named `appseed-app.conf` in a folder `nginx` in the root of your project as seen under "volumes" from the docker-compose.yml file.
+```
+# nginx/appseed-app.conf
+upstream webapp {
+    server appseed_app:5005; # the address and port of the Gunicorn server 
+}
+
+server {
+    listen 5085;
+    server_name localhost;
+
+    location / {
+        proxy_pass http://webapp;
+        proxy_set_header Host $host:$server_port;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+}
+```
+
+- In the root of your project, create a file `gunicorn-cfg.py`. This is a gunicorn configuration file. Add the following contents to the file
+```py
+# gunicorn-cfg.py
+
+bind = '0.0.0.0:5005'
+workers = 1
+accesslog = '-'
+loglevel = 'debug'
+capture_output = True
+enable_stdio_inheritance = True
+```
+Variables can be changed to meet the demands of your application.
+
+- Create a `.dockerignore` file and add the following
+```
+# .dockerignore
+
+.git
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+```
+
+- Now we will be creating `Dockerfile` which contains the instructions that will be used to build a Docker image.
+```
+# Dockerfile
+FROM python:3.9
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+COPY .env .
+COPY requirements.txt .
+
+# install python dependencies
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# gunicorn
+CMD ["gunicorn", "--config", "gunicorn-cfg.py", "run:app"]
+```
+
+- Execute the command to build the docker image and deploy the application on docker.
+```bash
+(venv) flask-berry-dashboard$ docker-compose up --build
+```
+Now your application is running on docker. If you are running the application on your machine, visit [`http://localhost:5085`](http://localhost:5085) to access your application.
+
+### Deploy on Render
+Deploying Flask application on render is straightforward
+
+- Create an account on [render](https://render.com)
+
+- Ensure your code is present on Github, Gitlab or any public repository
+
+- After completing account creation and verification, open your dashboard, click "New", create a `Web Service` and connect the code repository
+
+- Use the following values when creating the service
+
+  * **Runtime** - Python
+  * **Build Command** - `pip install requirements.txt`
+  * **Start Command** - `gunicorn run:run`
+  Create a web service and check it out with your browser on `https://<service-name>.onrender.com`
+
+### Deploy on Heroku
+- Create an account with [heroku](https://signup.heroku.com/login)
+
+- After account creation, download and install Heroku cli [here](https://signup.heroku.com/login)
+
+- Once the installation is complete, you have to log in using the command
+```bash
+(venv) flask-berry-dashboard$ heroku login
+```
+
+- Create a file `Procfile` with the command for starting the application by executing the command
+```
+(venv) flask-berry-dashboard$ echo "web: gunicorn run:app" > Procfile
+```
+
+- Stage and commit the changes with git
+```bash
+(venv) flask-berry-dashboard$ git add .
+(venv) flask-berry-dashboard$ git commit -m "Changes for deployment"
+```
+
+- Create the Heroku application by executing the command and push the code base to the Heroku repository that the application will be hosted from by executing the commands below
+```
+(venv) flask-berry-dashboard$ heroku create <webapp-name>
+(venv) flask-berry-dashboard$ git push heroku master
+```
+This will set up the application and start the Gunicorn server.
+
+- Open the application by executing the command
+```
+(venv) flask-berry-dashboard$ heroku open
+```
+
+## Conclusion
+In this article, we have covered the steps involved in setting up, preparing, and deploying a Flask application. We have also discussed some of the best practices for securing and optimizing your application.
+
+Here are some of the key takeaways from this article:
+
+- Flask is a powerful Python micro framework that can be used to create a wide variety of web applications.
+- When setting up a Flask application, it is important to configure your application's environment variables and enable database migration.
+- You can improve the security of your application by using Flask-Talisman and serving static files using a CDN.
+- There are a variety of deployment options available for Flask applications, including Docker, Render, and Heroku.
+
+I hope this article has been helpful. For more information on Flask, please visit the official website: https://flask.palletsprojects.com/en/2.1.x/
 
 <br />
 
 ## Resources
-
+- 👉 [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/) documentation
+- 👉 [Flask-Minify](https://github.com/mrf345/flask_minify/) Homepage
+- 👉 [Flask-Talisman](https://github.com/wntrblm/flask-talisman) Homepage
 - 👉 [Replit](https://replit.com/) - the official website
 - 👉 Free [Support](https://appseed.us/support/) via Email & Discord
 - 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
