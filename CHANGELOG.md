@@ -1,5 +1,17 @@
 # Change Log
 
+## [1.0.36] 2023-06-16
+### Changes
+
+- Update [Flask Apps](https://docs.appseed.us/products/flask-apps/) `Section`
+  - Flask Material Kit PRO
+  - Flask Material Kit2
+  - Flask Material Kit2 PRO
+  - Flask Pixel Bootstrap 5
+  - Flask Pixel PRO
+  - Flask Soft Design PRO
+  - Flask Soft Design
+
 ## [1.0.35] 2023-05-18
 ### Changes
 
