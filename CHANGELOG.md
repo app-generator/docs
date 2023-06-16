@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.37] 2023-06-16
+### Changes
+
+- Update [Flask Soft Design PRO](https://docs.appseed.us/products/flask-apps/soft-ui-design-pro/)
+
 ## [1.0.36] 2023-06-16
 ### Changes
 
