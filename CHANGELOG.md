@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.38] 2023-06-16
+### Changes
+
+- Update [Django MKit BS4 PRO](https://docs.appseed.us/products/django-apps/material-kit-pro/)
+
 ## [1.0.37] 2023-06-16
 ### Changes
 
