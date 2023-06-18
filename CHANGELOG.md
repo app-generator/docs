@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.39] 2023-06-18
+### Changes
+
+- UPD [Django Material Dashboard](https://docs.appseed.us/products/django-dashboards/material-dashboard/)
+- UPD [Django Material Dashboard PRO](https://docs.appseed.us/products/django-dashboards/material-dashboard-pro/)
+
 ## [1.0.38] 2023-06-16
 ### Changes
 
