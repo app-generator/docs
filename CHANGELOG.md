@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.41] 2023-06-18
+### Changes
+
+- UPD [Django Star-Admin](https://docs.appseed.us/products/django-dashboards/star-admin/)
+
 ## [1.0.40] 2023-06-18
 ### Changes
 
