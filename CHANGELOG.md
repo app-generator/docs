@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.40] 2023-06-18
+### Changes
+
+- UPD [Django Tabler](https://docs.appseed.us/products/django-dashboards/tabler/)
+- Create [Django Tabler Theme](https://docs.appseed.us/boilerplate-code/django-templates/tabler/)
+
 ## [1.0.39] 2023-06-18
 ### Changes
 
