@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.42] 2023-06-18
+### Changes
+
+- UPD [Django Adminator](https://docs.appseed.us/products/django-dashboards/adminator/)
+- UPD [Django CoreUI](https://docs.appseed.us/products/django-dashboards/coreui/)
+- UPD [Django SB-Admin](https://docs.appseed.us/products/django-dashboards/sb-admin/)
+- UPD [Django Shards](https://docs.appseed.us/products/django-dashboards/shards-dashboard/)
+
 ## [1.0.41] 2023-06-18
 ### Changes
 
