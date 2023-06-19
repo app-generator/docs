@@ -8,6 +8,7 @@ sidebar_label: Argon Dashboard MUI
 <SubHeading>Free Dashboard Template for React and MUI, crafted by Creative-Tim</SubHeading>
 
 Open-source **React Template** project crafted on top of **MUI**, actively supported and versioned by [Creative-Tim](https://www.creative-tim.com/?AFFILIATE=128200).
+It is open-source, free and it features many components that can help you create amazing websites.
 
 - 👉 [Argon Dashboard MUI](https://www.creative-tim.com/product/argon-dashboard-material-ui-v4?AFFILIATE=128200) - `Product page`
 - 👉 [Argon Dashboard MUI](https://demos.creative-tim.com/argon-dashboard-material-ui-v4/#/admin/index?AFFILIATE=128200) - `LIVE Demo`
@@ -15,47 +16,79 @@ Open-source **React Template** project crafted on top of **MUI**, actively suppo
 :::info **v3.0.0** - Release date `2022-06-24`
 :::
 
+<br />
+
+> **Features**
+
+- ✅ Pixel-perfect `MUI` Design
+- ✅ 100+ UI Components 
+- ✅ 6 Sample pages 
+- ✅ 4 Customized plugins 
+- ✅ Community Support 
+
+![React Material UI - Free Dashboard Template crafted by Creative-Tim](https://github.com/app-generator/dummy/assets/51070104/e3d573b0-9d9f-4167-ba65-a1d98bb875ea)
+
+<br />
+
 ## Product Information
 
-Argon dashboard MUI is a free, open-source dashboard that is built on top of ReactJS and Material UI. It is highly customizable, and it comes with a wide range of fully coded components that can be used to create admin dashboards, user signup and sign-in pages, and profile pages. Argon dashboard MUI is a great option for developers who are looking for a powerful and versatile dashboard that is easy to use and highly customizable.
+Argon dashboard MUI is a free, open-source dashboard that is built on top of ReactJS and Material UI. 
+It is highly customizable, and it comes with a wide range of fully coded components that can be used to create admin dashboards, user signup and sign-in pages, and profile pages. 
+Argon dashboard MUI is a great option for developers who are looking for a powerful and versatile dashboard that is easy to use and highly customizable.
+
+<br />
 
 ## What is MUI
 
-MUI stands for Material UI. It is a popular open-source React UI library that provides a wide range of pre-built components that can be used to create beautiful and functional user interfaces. MUI is based on Google's Material Design guidelines, which means that it provides a consistent and cohesive look and feel across your application.
+MUI stands for Material UI. It is a popular open-source React UI library that provides a wide range of pre-built components that can be used to create beautiful and functional user interfaces. 
+MUI is based on Google's Material Design guidelines, which means that it provides a consistent and cohesive look and feel across your application.
 
 MUI is easy to use and can be integrated with any React project. It is also highly customizable, so you can easily change the look and feel of your application to match your brand or style.
 
+<br />
+
 ## How to Compile
+
 To make use of this template, you need git installed, NodeJs (preferably a recent version) and an active internet connection
 
-- Clone the repository
+> **Clone the repository**
+
 ```bash
 $ git clone https://github.com/creativetimofficial/argon-dashboard-material-ui
 $ cd argon-dashboard-material-ui
 ```
 
-- Install all the project dependencies
-  - Using NPM
-  ```bash
-  argon-dashboard-material-ui$ npm install
-  ```
-  - Using Yar
-  ```bash
-  argon-dashboard-material-ui$ yarn
-  ```
+> **Install** all the project **dependencies**
 
-- After all project dependencies have been installed, you can run the project by executing the command
+- Using NPM
 ```bash
-argon-dashboard-material-ui$ npm start # for NPM
-argon-dashboard-material-ui$
-argon-dashboard-material-ui$
-argon-dashboard-material-ui$ yarn start # for yarn
+$ npm install
+```
+
+- Using Yar
+
+```bash
+$ yarn
+```
+
+> **Start for development**
+
+After all project dependencies have been installed, you can run the project by executing the command
+
+```bash
+$ npm start # for NPM
+// OR
+$ yarn start # for yarn
 ```
 
 The web server will be started on port `3000`. If the webpage does not open automatically on your browser, visit [`http://localhost:3000`](http://localhost:3000)
 
-## Integrate Docker 
-- Create a file named `Dockerfile` that would hold the instructions to run the application container and add the following commands
+<br />
+
+## Integrate `Docker` 
+
+> Create a file named `Dockerfile` that would hold the instructions to run the application container and add the following commands:
+
 ```
 # Dockerfile
 FROM node:18-alpine
@@ -72,7 +105,8 @@ COPY . .
 CMD ["npm", "start"]
 ```
 
-- Create a file `docker-compose.yml` that contains information about the container
+> Create a file `docker-compose.yml` that contains information about the container
+
 ```yaml
 # docker-compose.yml
 version: '3'
@@ -97,27 +131,26 @@ node_modules
 ```bash
 argon-dashboard-material-ui$ docker-compose up
 ```
-After the command executes completely and the container is built, view the application on [http://localhost:3000](http://localhost:3000) using your browser. If the port number was changed, use the new port number to access the application
+After the command executes completely and the container is built, view the application on [http://localhost:3000](http://localhost:3000) using your browser. 
+If the port number was changed, use the new port number to access the application
 
-## Deploy on Render via CI/CD 
-Render is a cloud hosting company that provides developers with a fully managed platform to build, deploy, and scale their web applications. Render offers a pay-as-you-go pricing model and a wide range of features. Render is a good choice for developers who want a reliable, scalable, and affordable cloud hosting platform.
+## Deploy on `Render` via CI/CD 
+
+Render is a cloud hosting company that provides developers with a fully managed platform to build, deploy, and scale their web applications. 
+Render offers a pay-as-you-go pricing model and a wide range of features. Render is a good choice for developers who want a reliable, scalable, and affordable cloud hosting platform.
 
 Before deploying the web application on render, you need the repository saved on your profile. Forking the repository on GitHub gives you a copy you have read and write access
 
 - Create an account on [Render](https://render.com/)
-
 - Click the `New` button and select `Static Site`
-
 - Give render access to your GitHub repositories, and select the forked repository from the list of repositories
-
 - Select a name for your web application, and use the following values during the creation
-
   - **Build Command**: `yarn build`
   - **Publish directory**: `build`
-
 - Click on `Create Static Site` and wait for the site to be built and served.
-
 -  The URL to the web application is found on the application dashboard, follow the link to see the deployed site
+
+<br />
 
 ## Screen Shots
 
@@ -142,9 +175,13 @@ Before deploying the web application on render, you need the repository saved on
 <br />
 
 ## Resources
+
 This template can be used to speed up the development process by leveraging MUI and removing the hassle of coding components from scratch.
 
-- Argon Dashboard MUI [documentation](https://www.creative-tim.com/learning-lab/material-ui/overview/argon-dashboard/)
-- Render deploy [Create React App](https://render.com/docs/deploy-create-react-app)
+- Argon Dashboard MUI [documentation](https://www.creative-tim.com/learning-lab/material-ui/overview/argon-dashboard/?AFFILIATE=128200)
 - Free [React Dashboards](https://dev.to/sm0ke/react-dashboards-open-source-apps-1c7j) - a curated list published on Dev
-- [Open-source Dashboards](https://appseed.us/admin-dashboards/open-source) provided by AppSeed&#x20;
+- 🚀 [Argon Dashboard MUI PRO](https://www.creative-tim.com/product/argon-dashboard-material-ui-v4?AFFILIATE=128200) - `Premium Version`
+  - ✅ `Enhanced UI` - more pages and components
+  - ✅ `Priority` on support 
+
+![React Material UI PRO - Premium Dashboard Template crafted by Creative-Tim](https://github.com/app-generator/dummy/assets/51070104/81fa508d-90b1-4da4-bc0b-45b22c5de7bd)
