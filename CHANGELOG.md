@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.0.43] 2023-06-19
+### Changes
+
+- NEW [Argon Dashboard MUI](https://docs.appseed.us/content/react-template/argon-dashboard-mui/)
+  - [Product Information](https://docs.appseed.us/content/react-template/argon-dashboard-mui/#product-information)
+  - [How to Compile](https://docs.appseed.us/content/react-template/argon-dashboard-mui/#how-to-compile)
+  - [Integrate Docker](https://docs.appseed.us/content/react-template/argon-dashboard-mui/#integrate-docker)
+  - Links & Resources
+
 ## [1.0.42] 2023-06-18
 ### Changes
 
