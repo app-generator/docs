@@ -15,59 +15,136 @@ Open-source **React Template** project crafted on top of **MUI**, actively suppo
 :::info **v3.0.0** - Release date `2022-06-24`
 :::
 
-> @Todo Content 
-
-- General Product Information
-  - where we can use it 
-- What is MUI  
-  - short intro 
-- How to compile the product 
-- How to Dockerize the product 
-- How to Deploy the product using CI/CD on render 
-- Screen-Shots + pages info
-  - 800x600 px
-  - 5 pages (saved on GitHub) with some basic input
-- Conclusion & Resources  
-  - A closing sentence and some links for the audience  
- 
-<br />
-
 ## Product Information
 
-@Todo 
-
-<br />
+Argon dashboard MUI is a free, open-source dashboard that is built on top of ReactJS and Material UI. It is highly customizable, and it comes with a wide range of fully coded components that can be used to create admin dashboards, user signup and sign-in pages, and profile pages. Argon dashboard MUI is a great option for developers who are looking for a powerful and versatile dashboard that is easy to use and highly customizable.
 
 ## What is MUI
 
-@Todo 
+MUI stands for Material UI. It is a popular open-source React UI library that provides a wide range of pre-built components that can be used to create beautiful and functional user interfaces. MUI is based on Google's Material Design guidelines, which means that it provides a consistent and cohesive look and feel across your application.
 
-<br />
+MUI is easy to use and can be integrated with any React project. It is also highly customizable, so you can easily change the look and feel of your application to match your brand or style.
 
-## How to Compile 
+## How to Compile
+To make use of this template, you need git installed, NodeJs (preferably a recent version) and an active internet connection
 
-@Todo 
+- Clone the repository
+```bash
+$ git clone https://github.com/creativetimofficial/argon-dashboard-material-ui
+$ cd argon-dashboard-material-ui
+```
 
-<br />
+- Install all the project dependencies
+  - Using NPM
+  ```bash
+  argon-dashboard-material-ui$ npm install
+  ```
+  - Using Yar
+  ```bash
+  argon-dashboard-material-ui$ yarn
+  ```
+
+- After all project dependencies have been installed, you can run the project by executing the command
+```bash
+argon-dashboard-material-ui$ npm start # for NPM
+argon-dashboard-material-ui$
+argon-dashboard-material-ui$
+argon-dashboard-material-ui$ yarn start # for yarn
+```
+
+The web server will be started on port `3000`. If the webpage does not open automatically on your browser, visit [`http://localhost:3000`](http://localhost:3000)
 
 ## Integrate Docker 
+- Create a file named `Dockerfile` that would hold the instructions to run the application container and add the following commands
+```
+# Dockerfile
+FROM node:18-alpine
 
-@Todo 
+WORKDIR /app
 
-<br />
+COPY package.json .
+COPY package-lock.json .
 
-## Deploy on Render via Ci/Cd 
+RUN npm install
 
-@Todo 
+COPY . .
 
-<br />
+CMD ["npm", "start"]
+```
+
+- Create a file `docker-compose.yml` that contains information about the container
+```yaml
+# docker-compose.yml
+version: '3'
+services:
+  argon_app:
+    container_name: argon_dashboard_mui
+    build: .
+    restart: always
+    ports:
+      - 3000:3000
+```
+If port 3000 is in use on your device, change the first port number under `ports` to a different number e.g. `3001:3000`.
+
+- Create a `.dockerignore` file to exclude some folders from the docker file commands
+```bash
+# .dockerignore
+.git
+node_modules
+```
+
+- All the files needed to create a docker container are present, execute the command below to create a docker container
+```bash
+argon-dashboard-material-ui$ docker-compose up
+```
+After the command executes completely and the container is built, view the application on [http://localhost:3000](http://localhost:3000) using your browser. If the port number was changed, use the new port number to access the application
+
+## Deploy on Render via CI/CD 
+Render is a cloud hosting company that provides developers with a fully managed platform to build, deploy, and scale their web applications. Render offers a pay-as-you-go pricing model and a wide range of features. Render is a good choice for developers who want a reliable, scalable, and affordable cloud hosting platform.
+
+Before deploying the web application on render, you need the repository saved on your profile. Forking the repository on GitHub gives you a copy you have read and write access
+
+- Create an account on [Render](https://render.com/)
+
+- Click the `New` button and select `Static Site`
+
+- Give render access to your GitHub repositories, and select the forked repository from the list of repositories
+
+- Select a name for your web application, and use the following values during the creation
+
+  - **Build Command**: `yarn build`
+  - **Publish directory**: `build`
+
+- Click on `Create Static Site` and wait for the site to be built and served.
+
+-  The URL to the web application is found on the application dashboard, follow the link to see the deployed site
 
 ## Screen Shots
 
-@Todo 
+![Argon Dashboard 2 React - Homepage](https://github.com/app-generator/dummy/assets/57325382/755068e1-d9a6-42f0-a0be-d7fc940ce494)
+
+<br />
+
+![Argon Dashboard 2 React - Profile](https://github.com/app-generator/dummy/assets/57325382/82f6adcb-6ca0-4ea5-9f92-2c8deedabcfb)
+
+<br />
+
+![Argon Dashboard 2 React - Signin](https://github.com/app-generator/dummy/assets/57325382/cf8cc22e-e027-439f-9c13-5c05685e407c)
+
+<br />
+
+![Argon Dashboard 2 React - Signup](https://github.com/app-generator/dummy/assets/57325382/a07ba092-9d83-4d14-9013-2502a501a990)
+
+<br />
+
+![Argon Dashboard 2 React - Cards](https://github.com/app-generator/dummy/assets/57325382/ca3dfb17-a66f-4264-b815-dbaceb8c650f)
 
 <br />
 
 ## Resources
+This template can be used to speed up the development process by leveraging MUI and removing the hassle of coding components from scratch.
 
-@Todo 
+- Argon Dashboard MUI [documentation](https://www.creative-tim.com/learning-lab/material-ui/overview/argon-dashboard/)
+- Render deploy [Create React App](https://render.com/docs/deploy-create-react-app)
+- Free [React Dashboards](https://dev.to/sm0ke/react-dashboards-open-source-apps-1c7j) - a curated list published on Dev
+- [Open-source Dashboards](https://appseed.us/admin-dashboards/open-source) provided by AppSeed&#x20;
