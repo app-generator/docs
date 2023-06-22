@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.45] 2023-06-22
+### Changes
+
+- `NEW` Tutorial: [Flask - Checklist for Production](https://docs.appseed.us/technologies/flask/production-checklist/)
+
 ## [1.0.44] 2023-06-22
 ### Changes
 
