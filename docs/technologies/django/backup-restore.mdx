@@ -7,9 +7,102 @@ import SubHeading from "@site/src/components/SubHeading";
 
 <SubHeading color="#25c2a0">Learn how to manage Backups & DB Restore in Django</SubHeading>
 
-Input: 
+## Why is it important to back up your Django database?
+- Data loss prevention: A database backup can help you recover your data in the event of a hardware failure, software corruption, or human error. This can save you a lot of time and money, as you will not have to recreate your data from scratch.
+- Disaster recovery: A database backup can help you recover your data in the event of a natural disaster, such as a flood or fire. This can help you keep your business running even in the event of a major disruption.
+- Compliance: In some industries, some regulations require businesses to keep backups of their data. For example, the financial services industry is required to keep backups of their data for seven years.
 
-- Issue: https://github.com/app-generator/docs/issues/51
-- Coding Sample: https://github.com/app-generator/sample-django-backup-restore
+## Using `django-dbbackup` to backup databases
+`django-dbbackup` is a Django app that can be used to back up your database to a variety of storage locations, including Amazon S3, Dropbox, and the local file system. It also supports compression and encryption, so you can be sure that your backups are secure.
 
+`django-dbbackup` provides management commands to help you back up and restore your project database and media files. It is made to:
+- Allow you to secure your backup with GPG signature and encryption.
+- Archive with compression.
+- Deal easily with remote archiving.
+- Keep your development database up to date.
+- Use Crontab or Celery to setup automated backups
 
+### Setting up the Django project
+For this tutorial, we will be using [`django-material-kit`](https://github.com/app-generator/sample-django-backup-restore)
+
+- Clone the repository
+```bash
+$ git clone https://github.com/app-generator/sample-django-backup-restore
+$ cd sample-django-backup-restore
+sample-django-backup-restore$
+```
+- Create a virtual environment and activate it
+```bash
+sample-django-backup-restore$ virtualenv venv
+sample-django-backup-restore$
+sample-django-backup-restore$ source venv/bin/activate      # On Linux/Mac
+sample-django-backup-restore$
+sample-django-backup-restore$ .\venv\Scripts\activate       # On Windows
+```
+
+### Configuring `django-dbbackup` for the Django project
+
+- Install project dependencies
+```bash
+(venv) sample-django-backup-restore$ pip install -r requirements.txt
+```
+
+- Migrate database tables and create a superuser
+```bash
+(venv) sample-django-backup-restore$ python manage.py migrate
+(venv) sample-django-backup-restore$ python manage.py createsuperuser
+```
+
+- Install `django-dbbackup` using pip
+```
+(venv) sample-django-backup-restore$ pip install django-dbbackup
+```
+
+- Now that `django-dbbackup` has been installed, we will be configuring the Django project to recognize the application. Make the following changes to `core/settings.py`
+```py
+# core/settings.py
+...
+INSTALLED_APPS = (
+    ...
+    'dbbackup',  # django-dbbackup
+)
+...
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': 'backup/'}
+...
+```
+By default, `django-dbbackup` uses the built-in file system storage to manage files in a local directory. This creates a `dump` file in your project directory or the specified directory. `DBBACKUP_STORAGE` is used to specify the storage system to be used and `DBBACKUP_STORAGE_OPTIONS` is a dictionary containing the configuration for the storage system.
+`django-dbbackup` is designed to use the right tool to create dump files when working with any database engine, an example is `psql` for Postgresql databases and `mysqldump` for MySQL databases.
+
+### Creating backup files
+- Execute the command below on your terminal to create backup files for your database
+```bash
+(venv) sample-django-backup-restore$ python manage.py dbbackup
+```
+This command creates a dump file in the location specified in `DBBACKUP_STORAGE_OPTIONS`.
+
+This command can also be executed to create compressed files by adding an optional flag
+```bash
+(venv) sample-django-backup-restore$ python manage.py dbbackup -z       # create compressed dump files
+```
+
+## Restoring database from backup files
+Restoring the database from backup files can be done by executing the command below on your terminal
+```bash
+(venv) sample-django-backup-restore$ python manage.py dbrestore
+(venv) sample-django-backup-restore$
+(venv) sample-django-backup-restore$ python manage.py dbrestore -z      # when restoring from a compressed file
+```
+
+After running the command above, your database would be restored to the state of the last backup made using `django-dbbackup`
+
+## Conclusion
+In conclusion, mastering the art of managing backups and database restores in Django is an essential skill for any Django developer. By understanding the importance of backing up your Django database and learning how to utilize tools like `django-dbbackup`, you can ensure the safety and integrity of your data. 
+
+By applying the knowledge gained from this tutorial, you now possess the necessary skills to effectively manage backups and database restores in Django. Remember to consistently back up your database to safeguard your valuable information and be prepared for any unforeseen events.
+
+## Resources
+- 👉 Django Dbbackup [Documentation](https://django-dbbackup.readthedocs.io/en/master/installation.html)
+- 👉 [Code sample](https://github.com/app-generator/sample-django-backup-restore)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
