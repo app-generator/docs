@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.44] 2023-06-22
+### Changes
+
+- `NEW` Tutorial: [Django DB Backup/Restore](https://docs.appseed.us/technologies/django/backup-restore/)
+  - Coding sample: [Django DB Backup/Restore](https://github.com/app-generator/sample-django-backup-restore)
+
 ## [1.0.43] 2023-06-19
 ### Changes
 
