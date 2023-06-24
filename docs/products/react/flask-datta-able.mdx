@@ -1,35 +1,77 @@
 ---
-title:         Flask React Datta - Open-Source Starter
-sidebar_label: Flask React Datta
+title:         Flask React Datta Able - Open-Source Starter
+sidebar_label: Flask React Datta Able
 ---
 
-# Flask React Datta Able
+# [Flask React Datta Able](https://appseed.us/product/datta-able/api-server-flask/react/)
 
-<SubHeading> Open-source Full Stack seed project built in React and Flask on top of Datta Able Dashboard</SubHeading>
+<SubHeading> Open-source Full Stack seed project built in React and Flask on top of Datta Able Dashboard </SubHeading>
 
-Open-source full-stack seed project coded in **React** and **Flask** on top of a modern design from **CodedThemes**. The **React** / **Flask** codebase is already configured with an SQLite database, API, and JWT token-based authentication flow.
+Open-source full-stack seed project coded in [**React** and **Flask**](https://appseed.us/product/datta-able/api-server-flask/react/) on top of a modern design from **[CodedThemes](https://codedthemes.com/?ref=appseed)**. 
+The **React** / **Flask** codebase is already configured with an SQLite database, API, and JWT token-based authentication flow.
 
-- [Flask React Datta Able](https://appseed.us/product/flask-react-datta-able) - product page
-- [Flask React Datta Able](https://flask-react-datta-able.appseed-srv1.com) - LIVE demo
+- 👉 [Flask React Datta Able](https://appseed.us/product/datta-able/api-server-flask/react/) - `Product Page`
+- 👉 [Flask React Datta Able](https://django-react-datta-able.appseed-srv1.com/) - `LIVE Demo`
 
-![Flask React Datta Able - Fullstack Product.](../../../static/assets/docs-flask-react-datta.jpg)
+![Django React Datta Able](https://github.com/app-generator/dummy/assets/51070104/89738973-e509-4f2e-bf75-b8e9160ce2f3)
+
+<br />
 
 ## Product features
 
-The product expects a running API backend that exposes an interface for login/logout and register actions. By default, the guest users are redirected to the login page. Once the user is authenticated using an existing account or the new one, all private pages are accessible. Here are the steps to compile the product.
+The product expects a running API backend that exposes an interface for login/logout and register actions. 
+By default, the guest users are redirected to the login page. Once the user is authenticated using an existing account or the new one, all private pages are accessible. 
 
-> Dependencies
+<br />
 
-To use the product, **Python3** is required, and **GIT** command-line tool to clone/download the project from the public repository.
+## `React` Datta Able
 
-> **Step #1** - Clone the project
+- `M-UI` based design
+- Modern aesthetics UI design - Designed by *[CodedThemes](https://codedthemes.com/?ref=appseed)*
+- React, Redux, Redux-persist
+
+
+> `Tests` (compatibility matrix using Ubuntu 18 LTS as reference)
+
+| NodeJS | NPM | YARN | 
+| --- | --- | --- |  
+| `v14.0.0` | ✅ | ✅ |
+| `v16.0.0` | ✅ | ✅ | 
+| `v18.0.0` | ❌ | ❌ | 
+
+<br />
+
+## ✨ `Flask API` Features
+
+- Stack: `Flask` / `Flask-RestX` / **SQLite** 
+- **DB Layer**: `SqlAlchemyORM`, `SQLite` persistence
+- **Auth**: JWT tokens managed via `Flask-jwt_extended`
+- [API Definition](https://docs.appseed.us/boilerplate-code/api-unified-definition) - the unified API structure implemented by this server
+
+<br /> 
+
+## ✨ How to use it
+
+Being a full-stack product, the backend and the frontend should be compiled and started separately. 
+Before starting to compile the product, make sure you have the following tools installed in the environment:
+
+- [NodeJS](https://nodejs.org/en/) - version `14.x` or higher
+- [GIT](https://git-scm.com/) - used to clone tjhe sources from Github
+- [Python3](https://www.python.org/) - used in many tools
+
+<br />
+
+### 👉 Start the Frontend 
+
+> **Step 1** - Once the project is downloaded, change the directory to `react-ui`. 
 
 ```bash
-$ git clone https://github.com/app-generator/react-datta-able-dashboard.git
-$ cd react-datta-able-dashboard
+$ cd react-ui
 ```
 
-> **Step #2** - Install dependencies via NPM or yarn
+<br /> 
+
+> **Step 2** - Install dependencies via NPM or yarn
 
 ```bash
 $ npm i
@@ -37,44 +79,35 @@ $ npm i
 $ yarn
 ```
 
-> **Step #3** - Start in development mode
+<br />
+
+> **Step 3** - Start in development mode
 
 ```bash
-$ npm run start
+$ npm run start 
 // OR
 $ yarn start
 ```
 
-> **Step #4** - Configure the backend - `src/config.js`
+<br />
 
-```javascript
-const config = {
-    ...
-    API_SERVER: 'http://localhost:5000/api/'  // <-- The magic line
-};
-```
+At this point, the app is available in the browser `localhost:3000` (the default address).
 
-## Flask API Server
+<br /> 
 
-To use the product and see all features in action an API server should be up and running. This can be done in two ways:
+### 👉 Start the Backend Server 
 
-- Compile and start a simple [**Flask API Server**](https://docs.appseed.us/boilerplate-code/api-server/flask) already built to work with this frontend
-- Mock a test server using the [**API Interface**](../../boilerplate-code/api-server/api-unified-definition.mdx) definition.
+> **Step 1** - Change the directory to `api-server-flask`
 
-![Flask API Server - Open-source Product.](<../../../static/assets/image (10).png>)
-
-Here we will use the first option and build a real API server coded in **Flask Framework** on top of Flask-RestX Library with SQLite persistence.
-
-> **Step #1** - clone the project using GIT
-
-```
-$ git clone https://github.com/app-generator/api-server-flask.git
+```bash
 $ cd api-server-flask
 ```
 
-> **Step #2** - Install dependencies (using a virtual environment)
+<br /> 
 
-```
+> **Step 2** - Install dependencies using a `virtual environment`
+
+```bash
 $ # Virtualenv modules installation (Unix based systems)
 $ virtualenv env
 $ source env/bin/activate
@@ -82,24 +115,18 @@ $
 $ # Virtualenv modules installation (Windows based systems)
 $ # virtualenv env
 $ # .\env\Scripts\activate
-```
-
-Install dependencies in once the `virtualenv` is activated
-
-```
+$
 $ pip install -r requirements.txt
 ```
 
-> **Step #3** - Prepare the environment
+<br />
 
-```
+> **Step 3** - Setup the `Flask` environment 
+
+```bash
 $ export FLASK_APP=run.py
 $ export FLASK_ENV=development
-```
-
-> Or for Windows-based systems
-
-```
+// OR 
 $ (Windows CMD) set FLASK_APP=run.py
 $ (Windows CMD) set FLASK_ENV=development
 $
@@ -107,24 +134,42 @@ $ (Powershell) $env:FLASK_APP = ".\run.py"
 $ (Powershell) $env:FLASK_ENV = "development"
 ```
 
-> **Step #4** - Initialize the database, check `run.py` for shell context
+<br />
 
-```
-$ flask shell
->>> from api import db
->>> db.create_all()
-```
+> **Step 4** - Start the API server (development mode)
 
-> **Step #5** - Start the API server
-
-```
-$ python run.py
-// OR
+```bash
 $ flask run
 ```
 
-Visit `http://localhost:5000` in your browser. The API server will be running.
+Use the API via `POSTMAN` or `Swagger Dashboard` at `localhost:5000`.
 
-With backend and frontend up & running, we can start using the product, register. and authenticate. The React UI will reveal the private pages once the users are authenticated.
+<br /> 
 
-![Flask React Datta Able - Login Page.](<../../../static/assets/image (11).png>)
+## 👉 Codebase Structure
+
+```bash
+< ROOT  >
+    |
+   api-server-flask/
+    ├── api
+    │   ├── config.py
+    │   ├── __init__.py
+    │   ├── models.py
+    │   └── routes.py
+    ├── requirements.txt
+    ├── run.py
+    └── tests.py
+```
+
+<br />
+
+## Resources
+
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
+- 🚀 [Full-Stack React Datta PRO](https://appseed.us/product/datta-able-pro/full-stack/) - `Premium Version`
+  - ✅ `Enhanced UI` - more pages and components
+  - ✅ `Priority` on support 
+
+![Flask React Datta PRO](https://github.com/app-generator/dummy/assets/51070104/dfe88ab5-3aa8-43bc-8cd6-e19fa6ffdf63)

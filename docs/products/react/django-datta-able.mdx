@@ -3,34 +3,77 @@ title:         Django React Datta Able - Open-Source Starter
 sidebar_label: Django React Datta Able
 ---
 
-# Django React Datta Able
+# [Django React Datta Able](https://appseed.us/product/datta-able/api-server-django/react/)
 
 <SubHeading> Open-source Full Stack seed project built in React and Django on top of Datta Able Dashboard </SubHeading>
 
-Open-source full-stack seed project coded in [**React** and **Django**](https://appseed.us/product/django-react-datta-able) on top of a modern design from **CodedThemes**. The **React** / **Django** codebase is already configured with an SQLite database, API, and JWT token-based authentication flow.
+Open-source full-stack seed project coded in [**React** and **Django**](https://appseed.us/product/datta-able/api-server-django/react/) on top of a modern design from **[CodedThemes](https://codedthemes.com/?ref=appseed)**. 
+The **React** / **Django** codebase is already configured with an SQLite database, API, and JWT token-based authentication flow.
 
-- [Django React Datta Able](https://appseed.us/product/django-react-datta-able) - product page
-- [Django React Datta Able](https://django-react-datta-able.appseed-srv1.com/) - LIVE demo
-- [Django React Datta PRO](django-datta-able-pro.mdx) - the premium version
+- 👉 [Django React Datta Able](https://appseed.us/product/datta-able/api-server-django/react/) - `Product Page`
+- 👉 [Django React Datta Able](https://django-react-datta-able.appseed-srv1.com/) - `LIVE Demo`
 
-![Django React Datta Able - Fullstack Product.](../../../static/assets/django-react-datta-able-xs.jpg)
+![Django React Datta Able](https://github.com/app-generator/dummy/assets/51070104/89738973-e509-4f2e-bf75-b8e9160ce2f3)
+
+<br />
 
 ## Product features
 
-The product expects a running API backend that exposes an interface for login/logout and register actions. By default, the guest users are redirected to the login page. Once the user is authenticated using an existing account or the new one, all private pages are accessible. Here are the steps to compile the product.
+The product expects a running API backend that exposes an interface for login/logout and register actions. 
+By default, the guest users are redirected to the login page. Once the user is authenticated using an existing account or the new one, all private pages are accessible. 
 
-> Dependencies
+<br />
 
-To use the product, **Python3** is required, and **GIT** command-line tool to clone/download the project from the public repository.
+## ✨ `React` Datta Able
 
-> **Step #1** - Clone the project
+- Modern aesthetics UI design - Designed by *[CodedThemes](https://bit.ly/37fF9RT)*
+- React, Redux, Redux-persist
+
+<br />
+
+> `Tests` (compatibility matrix)
+
+| NodeJS | NPM | YARN | 
+| --- | --- | --- |  
+| `v14.0.0` | ❌ | ✅ |
+| `v16.0.0` | ✅ | ✅ | 
+| `v18.0.0` | ❌ | ❌ | 
+
+
+<br />
+
+## ✨ `Django API` Features
+
+- Stack: `Django` / `DRF` / **SQLite** 
+- `Up-to-date dependencies`
+- **DB Layer**: Django Native `ORM`, `SQLite` persistence
+- **Auth**: JWT tokens managed via `PyJWT`
+- [API Definition](https://docs.appseed.us/boilerplate-code/api-unified-definition) - the unified API structure implemented by this server
+
+<br /> 
+
+## ✨ How to use it
+
+Being a full-stack product, the backend and the frontend should be compiled and started separately. 
+Before starting to compile the product, make sure you have the following tools installed in the environment:
+
+- [NodeJS](https://nodejs.org/en/) - version `14.x` or higher
+- [GIT](https://git-scm.com/) - used to clone tjhe sources from Github
+- [Python3](https://www.python.org/) - used in many tools
+
+<br />
+
+### 👉 Start the Frontend 
+
+> **Step 1** - Once the project is downloaded, change the directory to `react-ui`. 
 
 ```bash
-$ git clone https://github.com/app-generator/react-datta-able-dashboard.git
-$ cd react-datta-able-dashboard
+$ cd react-ui
 ```
 
-> **Step #2** - Install dependencies via NPM or yarn
+<br />
+
+> **Step 2** - Install dependencies via NPM or yarn
 
 ```bash
 $ npm i
@@ -38,59 +81,74 @@ $ npm i
 $ yarn
 ```
 
-> **Step #3** - Start in development mode
+<br />
+
+> **Step 3** - Start in development mode
 
 ```bash
-$ npm run start
+$ npm run start 
 // OR
 $ yarn start
 ```
 
-> **Step #4** - Configure the backend - `src/config.js`
+<br />
 
-```javascript
-const config = {
-    ...
-    API_SERVER: 'http://localhost:5000/api/'  // <-- The magic line
-};
-```
+At this point, the app is available in the browser `localhost:3000` (the default address).
 
-## Django API Server
 
-To use the product and see all features in action an API server should be up and running. This can be done in two ways:
+<br /> 
 
-- Compile and start a simple [**Django API Server**](../../boilerplate-code/api-server/django.mdx) already built to work with this frontend
-- Mock a test server using the [**API Interface**](../../boilerplate-code/api-server/api-unified-definition.mdx) definition.
+### 👉 Start the Backend Server 
 
-![Django API Server - Open-source product.](../../../static/assets/api-cover-django-xs.jpg)
+> **Step 1** - Change the directory to `api-server-django`
 
-Here we will use the first option and build a real API server coded in **Django Framework** on top of [DRF](https://www.django-rest-framework.org/) Library with SQLite persistence.
-
-> **Step #1** - Clone the API Server from Github
-
-```
-$ git clone https://github.com/app-generator/api-server-django.git
+```bash
 $ cd api-server-django
 ```
 
-> **Step #2** - Install dependencies
+<br />
 
-```
-$ virtualenv -p python3 venv
-$ source venv/bin/activate
+> **Step 2** - Install dependencies using a `virtual environment`
+
+```bash
+$ # Virtualenv modules installation (Unix based systems)
+$ virtualenv env
+$ source env/bin/activate
+$
+$ # Virtualenv modules installation (Windows based systems)
+$ # virtualenv env
+$ # .\env\Scripts\activate
 $
 $ pip install -r requirements.txt
 ```
 
-> **Step #3** - Start the APi Server
+<br />
 
-```
+> **Step 3** - Setup the database 
+
+```bash
+$ python manage.py makemigrations
 $ python manage.py migrate
+```
+
+<br />
+
+> **Step 4** - Start the API server (development mode)
+
+```bash
 $ python manage.py runserver 5000
 ```
 
-The API server will start using the default port `5000`.
+Use the API via `POSTMAN` or `Swagger Dashboard` at `localhost:5000`.
 
-With backend and frontend up & running, we can start using the product, register. and authenticate. The React UI will reveal the private pages once the users are authenticated.
+<br />
 
-![Django React Datta Able.](<../../../static/assets/django-react-datta-able-login-xs (1) (1).jpg>)
+## Resources
+
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
+- 🚀 [Full-Stack React Datta PRO](https://appseed.us/product/datta-able-pro/full-stack/) - `Premium Version`
+  - ✅ `Enhanced UI` - more pages and components
+  - ✅ `Priority` on support 
+
+![Django React Datta PRO](https://github.com/app-generator/dummy/assets/51070104/dfe88ab5-3aa8-43bc-8cd6-e19fa6ffdf63)
