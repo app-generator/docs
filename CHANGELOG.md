@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.0.45] 2023-06-24
+## [1.0.46] 2023-06-24
 ### Changes
 
 - UPD [React Staters](https://docs.appseed.us/products/react/) (DOCS & Codebase)
