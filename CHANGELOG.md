@@ -1,5 +1,17 @@
 # Change Log
 
+## [1.0.45] 2023-06-24
+### Changes
+
+- UPD [React Staters](https://docs.appseed.us/products/react/) (DOCS & Codebase)
+  - [Django React Berry](https://docs.appseed.us/products/react/django-berry-dashboard/)
+  - [Django React Datta PRO](https://docs.appseed.us/products/react/django-datta-able-pro/)
+  - [Django React Datta Able](https://docs.appseed.us/products/react/django-datta-able/)
+  - [React Firebase Datta PRO](https://docs.appseed.us/products/react/firebase-datta-able-pro/)
+  - [React Firebase Datta Able](https://docs.appseed.us/products/react/firebase-datta-able/)
+  - [Flask React Berry](https://docs.appseed.us/products/react/flask-berry-dashboard/)
+  - [Flask React Datta Able](https://docs.appseed.us/products/react/flask-datta-able/)
+ 
 ## [1.0.45] 2023-06-22
 ### Changes
 
