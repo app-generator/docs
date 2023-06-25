@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.47] 2023-06-25
+### Changes
+
+- UPD [React Staters](https://docs.appseed.us/products/react/) (DOCS & Codebase)
+  - [React Node JS Datta Able](https://docs.appseed.us/products/react/node-js-datta-able/)
+  - [React Node JS Datta PRO](https://docs.appseed.us/products/react/node-js-datta-able-pro/)
+  - [React Node JS Berry](https://docs.appseed.us/products/react/node-js-berry-dashboard/)
+
 ## [1.0.46] 2023-06-24
 ### Changes
 
