@@ -2,31 +2,37 @@
 title:         NodeJS React Datta PRO - Premium Starter
 sidebar_label: NodeJS React Datta PRO
 ---
+# [NodeJS React Datta PRO](https://appseed.us/product/datta-able-pro/full-stack/react/)
 
-# React Node JS Datta PRO
+<SubHeading> Premium seed project built in React and NodeJS on top of Datta Able Dashboard (PRO version)</SubHeading>
 
-<SubHeading> Premium seed project built in React and Node JS on top of Datta Able Dashboard (PRO version) </SubHeading>
+Open-source full-stack seed project coded in [**React** and **NodeJS**](https://appseed.us/product/datta-able-pro/full-stack/react/) on top of a modern design from **[CodedThemes](https://codedthemes.com/?ref=appseed)**. 
+The **React** / **Django** codebase is already configured with an SQLite database, API, and JWT token-basedauthentication flow.
 
-Full-stack seed project coded in **React** and **Node JS** on top of a modern design from CodedThemes\*\*: React Datta Abe PRO\*\*. The React / NodeJS codebase is already configured with a Mongo database, API, and authentication flow.
+- 👉 [NodeJS React Datta PRO](https://appseed.us/product/datta-able-pro/full-stack/react/) - `Product Page`
+- 👉 [NodeJS React Datta PRO](https://django-react-datta-able-pro.appseed-srv1.com/) - `LIVE Demo`
 
-- [React Node JS Datta PRO](https://appseed.us/product/react-node-js-datta-able-pro) - product page
-- [React Node JS Datta PRO](https://react-node-js-datta-able-pro.appseed-srv1.com/) - LIVE demo
+![Django React Datta PRO](https://github.com/app-generator/dummy/assets/51070104/dfe88ab5-3aa8-43bc-8cd6-e19fa6ffdf63)
 
-![React Node JS - Datta Able PRO.](<../../../static/assets/react-firebase-datta-able-pro-screen-xs (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).jpg>)
+<br />
 
 ## Product features
 
-The product expects a running API backend that exposes an interface for login/logout and register actions. By default, the guest users are redirected to the login page. Once the user is authenticated using an existing account or the new one, all private pages are accessible. Here are the steps to compile the product.
+The product expects a running API backend that exposes an interface for login/logout and register actions. 
+By default, the guest users are redirected to the login page. Once the user is authenticated using an existing account or the new one, all private pages are accessible. 
+Here are the steps to compile the product.
+
+<br />
 
 > Dependencies
 
-To use the product, a decent version of **Node JS** (>= 12.x) is required, and **GIT** command-line tool to clone/download the project from the public repository.
+To use the product, `Nodejs`, and `Python3` are required in order to compile the product (backend & frontend).
 
-> **Step #1** - Clone the project (private repository)
+> **Step #1** - Download the sources from the [product page](https://appseed.us/product/datta-able-pro/full-stack/react/) (requires a purchase)
 
 ```bash
-$ git clone https://github.com/app-generator/priv-react-datta-able-dashboard-pro.git
-$ cd priv-react-datta-able-dashboard-pro
+$ unzip react-datta-able-dashboard-pro.zip
+$ cd react-datta-able-dashboard-pro
 ```
 
 > **Step #2** - Install dependencies via NPM or yarn
@@ -45,7 +51,7 @@ $ npm run start
 $ yarn start
 ```
 
-> **Step #4** - Configure the backend - `src/config/constant.js`
+> **Step #4** - Configure the backend - `src/config.js`
 
 ```javascript
 const config = {
@@ -54,54 +60,91 @@ const config = {
 };
 ```
 
-## API Server
+<br />
 
-To use the product and see all features in action an API server should be up and running. This can be done in two ways:
+## NodeJS API Server
 
-- Compile and start a simple [Node JS API](https://github.com/app-generator/api-server-nodejs) already built to work with this frontend
-- Mock a test server using the [API Interface](https://github.com/app-generator/api-server-nodejs/blob/master/media/api.postman_collection.json) definition
+Simple Express / Nodejs Starter with JWT authentication, OAuth (Github), and **SQLite** persistance.
 
-Here we will use the first version and build a real API server coded in Node JS/Express and MongoDB.
+### ✨ Requirements
 
-> API Server Description
+- [Node.js](https://nodejs.org/) >= v16.13
+- [SQLite](https://www.sqlite.org/index.html)
 
-Express / Nodejs Starter with JWT authentication, MongoDB where authentication is based on [json web tokens](https://jwt.io/). `passport-jwt` strategy is used to handle the Email/Password authentication. After a successful login, the generated token is sent to the requester.
+## ✨ How to use the code
 
-> Dependencies
-
-- [Node.js](https://nodejs.org/) >= 12.x
-- [MongoDB](https://www.mongodb.com/) server
-
-> **Step #1** - Clone the API Server from Github
+> 👉 **Step 1** - Clone the project
 
 ```bash
 $ git clone https://github.com/app-generator/api-server-nodejs.git
 $ cd api-server-nodejs
 ```
 
-> **Step #2** - Install dependencies via NPM or yarn
+<br />
+
+> 👉 **Step 2** - Install dependencies via `Yarn`
 
 ```bash
 $ npm i
-// OR
+// OR 
 $ yarn
 ```
 
-> **Step #3** - Start in development mode
+<br />
+
+> 👉 **Step 3** - Run the SQLite migration via TypeORM
+
+```
+$ npm run typeorm migration:run
+// OR 
+$ yarn typeorm migration:run
+```
+
+<br />
+
+> 👉 **Step 4** - Edit the `.env` using the template `.env.sample`. 
+
+```env
+PORT=5000                       # API PORT
+SQLITE_PATH=./database.db       # Path to the SQLite database file
+SECRET="Whatever-STRONG"        # Secret for sensitive data hashing 
+```
+
+<br />
+
+> 👉 **Step 5** - Start the API server (development mode)
 
 ```bash
-$ npm dev
+$ npm run dev
 // OR
 $ yarn dev
 ```
 
-The API server will start using the `PORT` specified in `.env` file, default value `5000` , same as the one expected by the front end.
+<br />
 
-From this point, the React Product should be able to authenticate and register new users.
+> 👉 **Step 6** - Production Build (files generated in `build` directory)
 
-![React Node JS Datta PRO - Login Page.](../../../static/assets/react-node-js-datta-able-pro-login-xs.jpg)
+```bash
+$ yarn build
+```
+
+<br />
+
+> 👉 **Step 7** - Start the API server for production (files served from `build/index.js`)
+
+```bash
+$ yarn start
+```
+
+The API server will start using the `PORT` specified in `.env` file (default 5000).
+
+With backend and frontend up & running, we can start using the product, register. and authenticate. The React UI will reveal the private pages once the users are authenticated.
+
+![Django React Datta PRO](https://github.com/app-generator/dummy/assets/51070104/dfe88ab5-3aa8-43bc-8cd6-e19fa6ffdf63)
+
+<br />
 
 ## Resources
 
-- [React Node JS Datta Able](https://appseed.us/product/react-node-js-datta-able) - the open-source version
-- Free [Support](https://appseed.us/support) via eMail and **Discord** (for registered users)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts

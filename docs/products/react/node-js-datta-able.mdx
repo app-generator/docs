@@ -1,36 +1,91 @@
 ---
-title:         NodeJS React Datta - Open-Source Starter
-sidebar_label: NodeJS React Datta
+title:         NodeJS React Datta Able - Open-Source Starter
+sidebar_label: NodeJS React Datta Able
 ---
 
-# React Node JS Datta Able
+# [NodeJS React Datta Able](https://appseed.us/product/datta-able/api-server-nodejs/react/)
 
-<SubHeading> Open-source Full Stack seed project built in React and Node JS on top of Datta Able Dashboard </SubHeading>
+<SubHeading> Open-source Full Stack seed project built in React and NodeJS on top of Datta Able Dashboard </SubHeading>
 
-Open-source full-stack seed project coded in **React** and **Node JS** on top of a modern design from **CodedThemes**. The React / NodeJS codebase is already configured with a Mongo database, API, and authentication flow.
+Open-source full-stack seed project coded in [**React** and **NodeJS**](https://appseed.us/product/datta-able/api-server-nodejs/react/) on top of a modern design from **[CodedThemes](https://codedthemes.com/?ref=appseed)**. 
+The **React** / **NodeJS** codebase is already configured with an SQLite database, API, and JWT token-based authentication flow.
 
-- [React Node JS Datta Able](https://appseed.us/product/react-node-js-datta-able) - product page
-- [React Node JS Datta Able](https://react-node-js-datta-able.appseed-srv1.com/) - LIVE demo
-- [React Node JS Datta PRO](node-js-datta-able-pro.mdx) - Premium Version (more pages and components)
+- 👉 [NodeJS React Datta Able](https://appseed.us/product/datta-able/api-server-nodejs/react/) - `Product Page`
+- 👉 [NodeJS React Datta Able](https://react-node-js-datta-able.appseed-srv1.com) - `LIVE Demo`
 
-![React Node JS - Datta Able (free version).](../../../static/assets/react-datta-able-cover.jpg)
+![Django React Datta Able](https://github.com/app-generator/dummy/assets/51070104/89738973-e509-4f2e-bf75-b8e9160ce2f3)
+
+<br />
 
 ## Product features
 
-The product expects a running API backend that exposes an interface for login/logout and register actions. By default, the guest users are redirected to the login page. Once the user is authenticated using an existing account or the new one, all private pages are accessible. Here are the steps to compile the product.
+The product expects a running API backend that exposes an interface for login/logout and register actions. 
+By default, the guest users are redirected to the login page. Once the user is authenticated using an existing account or the new one, all private pages are accessible. 
 
-> Dependencies
+<br />
 
-To use the product, a decent version of **Node JS** (>= 12.x) is required, and **GIT** command-line tool to clone/download the project from the public repository.
+## ✨ `React` Datta Able
 
-> **Step #1** - Clone the project
+- Modern aesthetics UI design - Designed by *[CodedThemes](https://codedthemes.com/?ref=appseed)*
+- React, Redux, Redux-persist
+
+<br />
+
+> `Tests` (compatibility matrix)
+
+| NodeJS | NPM | YARN | 
+| --- | --- | --- |  
+| `v14.0.0` | ❌ | ✅ |
+| `v16.0.0` | ✅ | ✅ | 
+| `v18.0.0` | ❌ | ❌ | 
+
+
+<br />
+
+## ✨ `NodeJS API` Features
+
+- Stack: `NodeJS` / `Express` / **SQLite** 
+- `TypeScript`, Joy for validation
+- **DB Layer**: `TypeORM`, `SQLite` persistence
+- **Auth**: Passport / `passport-jwt` strategy
+- [API Definition](https://docs.appseed.us/boilerplate-code/api-unified-definition) - the unified API structure implemented by this server
+
+<br />
+
+> `Tests` (compatibility matrix)
+
+| NodeJS | NPM | YARN | 
+| --- | --- | --- | 
+| `v18.0.0`  | ❌ | ✅ |
+| `v17.0.0`  | ❌ | ✅ |
+| `v16.13.0` | ❌ | ✅ | 
+| `v16.0.0`  | ❌ | ❌ | 
+
+
+<br /> 
+
+## ✨ How to use it
+
+Being a full-stack product, the backend and the frontend should be compiled and started separately. 
+Before starting to compile the product, make sure you have the following tools installed in the environment:
+
+- [NodeJS](https://nodejs.org/en/) - version `14.x` or higher
+- [GIT](https://git-scm.com/) - used to clone tjhe sources from Github
+- [Python3](https://www.python.org/) - used in many tools
+
+<br />
+
+### 👉 Start the Frontend 
+
+> **Step 1** - Once the project is downloaded, change the directory to `react-ui`. 
 
 ```bash
-$ git clone https://github.com/app-generator/react-datta-able-dashboard.git
-$ cd react-datta-able-dashboard
+$ cd react-ui
 ```
 
-> **Step #2** - Install dependencies via NPM or yarn
+<br />
+
+> **Step 2** - Install dependencies via NPM or yarn
 
 ```bash
 $ npm i
@@ -38,49 +93,34 @@ $ npm i
 $ yarn
 ```
 
-> **Step #3** - Start in development mode
+<br />
+
+> **Step 3** - Start in development mode
 
 ```bash
-$ npm run start
+$ npm run start 
 // OR
 $ yarn start
 ```
 
-> **Step #4** - Configure the backend - `src/config.js`
+<br />
 
-```javascript
-const config = {
-    ...
-    API_SERVER: 'http://localhost:5000/api/'  // <-- The magic line
-};
-```
+At this point, the app is available in the browser `localhost:3000` (the default address).
 
-## API Server
 
-To use the product and see all features in action an API server should be up and running. This can be done in two ways:
+<br /> 
 
-- Compile and start a simple [Node JS API](https://github.com/app-generator/api-server-nodejs) already built to work with this frontend
-- Mock a test server using the [API Interface](https://github.com/app-generator/api-server-nodejs/blob/master/media/api.postman_collection.json) definition
+### 👉 Start the Backend Server 
 
-Here we will use the first version and build a real API server coded in Node JS/Express and MongoDB.
-
-> API Server Description
-
-Express / Nodejs Starter with JWT authentication, MongoDB where authentication is based on [json web tokens](https://jwt.io/). `passport-jwt` strategy is used to handle the Email/Password authentication. After a successful login, the generated token is sent to the requester.
-
-> Dependencies
-
-- [Node.js](https://nodejs.org/) >= 12.x
-- [MongoDB](https://www.mongodb.com/) server
-
-> **Step #1** - Clone the API Server from Github
+> **Step 1** - Change the directory to `api-server-nodejs`
 
 ```bash
-$ git clone https://github.com/app-generator/api-server-nodejs.git
 $ cd api-server-nodejs
 ```
 
-> **Step #2** - Install dependencies via NPM or yarn
+<br />
+
+> **Step 2** - Install dependencies via NPM or yarn
 
 ```bash
 $ npm i
@@ -88,22 +128,86 @@ $ npm i
 $ yarn
 ```
 
-> **Step #3** - Start in development mode
+<br />
+
+> **Step 3** - Run the SQLite migration via TypeORM
 
 ```bash
-$ npm dev
+$ npm run typeorm migration:run
+// OR 
+$ yarn typeorm migration:run
+```
+
+<br />
+
+> **Step 4** - Start the API server (development mode)
+
+```bash
+$ npm run dev
 // OR
 $ yarn dev
 ```
 
-The API server will start using the `PORT` specified in `.env` file, default value `5000` , same as the one expected by the front end.
+The API server will start using the `PORT` specified in `.env` file (default 5000).
 
-From this point, the React Product should be able to authenticate and register new users.
+<br /> 
 
-![React Node JS Datta Able - Login Page.](../../../static/assets/react-datta-able-login.jpg)
+## 👉 Codebase Structure
+
+```bash
+< ROOT / src >
+     | 
+     |-- config/                              
+     |    |-- config.ts             # Configuration       
+     |    |-- passport.ts           # Define Passport Strategy             
+     | 
+     |-- migration/
+     |    |-- some_migration.ts     # database migrations
+     |
+     |-- models/                              
+     |    |-- activeSession.ts      # Sessions Model (Typeorm)              
+     |    |-- user.ts               # User Model (Typeorm) 
+     | 
+     |-- routes/                              
+     |    |-- users.ts              # Define Users API Routes
+     | 
+     | 
+     |-- index.js                   # API Entry Point
+     |-- .env                       # Specify the ENV variables
+     |                        
+     |-- ************************************************************************
+```
+
+<br />
+
+## 👉 SQLite Path
+
+The SQLite Path is set in `.env`, as `SQLITE_PATH`
+
+<br />
+
+## 👉 Database migration
+
+> Generate migration:
+
+```bash
+$ yarn typeorm migration:generate -n your_migration_name
+```
+
+> run migration: 
+
+```bash
+$ yarn typeorm migration:run
+```
+
+<br />
 
 ## Resources
 
-- [React Node JS Datta Able](https://appseed.us/product/react-node-js-datta-able) - product page
-- [React Node JS Datta Able](https://github.com/app-generator/react-datta-able-dashboard) - source code
-- Free [Support](https://appseed.us/support) via eMail and **Discord** (for registered users)
+- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
+- 🚀 [Full-Stack React Datta PRO](https://appseed.us/product/datta-able-pro/full-stack/) - `Premium Version`
+  - ✅ `Enhanced UI` - more pages and components
+  - ✅ `Priority` on support 
+
+![Django React Datta PRO](https://github.com/app-generator/dummy/assets/51070104/dfe88ab5-3aa8-43bc-8cd6-e19fa6ffdf63)
