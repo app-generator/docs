@@ -1,5 +1,5 @@
 ---
-description: Flask and SocketIO - How to use it Together
+description: Flask and SocketIO - How to Use it Together
 ---
 
 # Flask and SocketIO
@@ -8,15 +8,337 @@ import SubHeading from "@site/src/components/SubHeading";
 
 <SubHeading color="#25c2a0">Learn how to use Flask with SocketIO</SubHeading>
 
-## Introduction
-
-@Todo - explain the concept 
-
 > Coding Sample: https://github.com/app-generator/sample-flask-socketio
 
-<br />
+## Introduction
+Socket.IO is a library that enables real-time, bidirectional, and event-driven communication between a client and a server. It is built on top of the WebSocket protocol, which allows for fast and simultaneous communication between the server and the browser. Socket.IO provides additional features like fallback options for HTTP long-polling and automatic reconnection, enhancing the reliability and versatility of real-time applications.
+
+Here are the key features of Socket.IO:
+
+1. Real-time communication: Socket.IO enables instantaneous and bidirectional data exchange between web clients and servers, eliminating the need for page refreshes.
+
+2. Event-driven: Socket.IO operates on an event-driven model, allowing clients and servers to communicate by sending and receiving events. This simplifies the development of complex real-time applications.
+
+3. Reliability: Socket.IO ensures a reliable connection, even in the presence of network disruptions. It automatically attempts to reconnect if the connection is lost.
+
+4. Scalability: Socket.IO is designed to handle a large number of concurrent connections, making it scalable for applications with high traffic.
+
+Socket.IO finds application in various scenarios, including:
+
+1. Chat applications: Socket.IO is commonly employed for creating chat apps, enabling real-time communication between users.
+
+2. Multiplayer games: Socket.IO facilitates real-time player interactions and synchronization, making it suitable for building multiplayer games.
+
+3. Live streaming applications: Socket.IO can be utilized to construct live streaming platforms, enabling users to watch live streams in real-time.
+
+If you're looking to develop real-time web applications, Socket.IO is an excellent choice. It offers simplicity, reliability, and efficiency, and is well-supported across different browsers and devices.
+
+
+## Using Socket.IO with Flask
+To use Socket.IO with Flask, we will utilize the `flask-socketio` package. In this tutorial, we will demonstrate how Socket.IO can update a card on a Flask dashboard. We will utilize the Flask dashboard called [Flask-gradient-able](https://github.com/app-generator/flask-gradient-able).
+
+### Setting up Flask application
+
+* Clone the repository into your machine
+```bash
+$ git clone https://github.com/app-generator/sample-flask-socketio
+$ cd sample-flask-socketio
+sample-flask-socketio$
+```
+
+* Create a virtual environment and activate the environment to isolate the development environment from your global Python installation
+```bash
+sample-flask-socketio$ virtualenv venv
+sample-flask-socketio$
+sample-flask-socketio$ source venv/bin/activate      # on Linux/machine
+sample-flask-socketio$
+sample-flask-socketio$ .\venv\Scripts\activate       # on Windows
+```
+
+* Install the project dependencies using pip
+```bash
+(venv) sample-flask-socketio$ pip install -r requirements.txt 
+```
+
+* Run the flask application to ensure it is properly setup using the command
+```bash
+(venv) sample-flask-socketio$ flask run
+```
+* Visit [`http://127.0.0.1:5000`](http://127.0.0.1:5000) on your browser.
+
+* Create an account to view the homepage of the application. You can stop the flask server using `Ctrl + c`.
+
+### Integrating Socket.IO with flask
+To integrate Socket.IO into a Flask application, we will utilize the `flask-socketio` package. This package empowers Flask applications to harness the capabilities and advantages of SocketIO.
+
+* Install `flask-socketio` package using the command
+```bash
+(venv) sample-flask-socketio$ pip install flask-socketio
+```
+
+* Create a file in the `apps` folder named `events.py`, this file will be used to create the socketio object and will also contain events that will be handled using socketio
+```py
+# apps/events.py
+
+from flask_socketio import SocketIO,
+
+socketio = SocketIO()
+
+@socketio.on('connect')
+def connect_event():
+    print('Client connected')
+```
+
+* Add Socket.IO to the application by making the following changes to `apps/__init__.py`
+```
+# apps/__init__.py
+...
+from apps.events import socketio
+...
+def create_app(config):
+    app = Flask(__name__)
+    ...
+    socketio.init_app(app)
+    return app
+```
+
+To ensure that the events to be handled by SocketIO are loaded into the `socketio` object and registered with the Flask app, we import `socketio` from `app/events.py` and initialize it with the Flask app using `socketio.init_app(app)`. This ensures that the event handlers are properly integrated with the SocketIO functionality.
+
+* Make the following changes to `run.py`
+```py
+# run.py
+...
+from apps import socketio   # <-- NEW
+...
+
+if __name__ == "__main__":
+    socketio.run(app)     # <-- UPDATED
+```
+
+* Add SocketIO script tag to `apps/templates/home/index.html`, this loads the Socket.IO library and establishes a connection.
+```html
+<!-- apps/templates/home/index.html -->
+...
+  <body>
+    ...
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script>
+      const socket = io();
+      socket.on('connect', function(data) {
+        console.log('Socket.IO is connected!!!')
+      });
+    </script>
+  </body>
+```
+
+To ensure that a connection can be established by your application:
+  1. run the flask app using `flask run` from your terminal.
+  2. Open `http://127.0.0.1:5000` on your browser.
+  3. Log in to the application
+  4. Open the developers console using `Ctrl + Shift + I` or `Command + Option + i` (on Mac).
+
+### Emitting and receiving events between client and server
+SocketIO sends messages as events, allowing for communication between the server and client in both directions. The server can send events to the client, and vice versa. SocketIO includes default events such as `connect` and `message`, but we can create custom events and handle them on both the client and server-side.
+
+Next, we will be sending a message from the client to the server and then we will print that message on the terminal.
+
+* Make the following change to `apps/templates/home/base.html`
+```html
+<!-- apps/templates/home/index.html -->
+...
+    <script type="text/javascript" charset="utf-8">
+      const socket = io();
+      socket.on('connect', function(data) {
+        console.log('Socket.IO is connected!!!')
+      });
+        socket.send('The send method is used to initiate the message event');
+    </script>
+```
+
+* Add the following line of code to `apps/events.py`
+```py
+# apps/events.py
+...
+@socketio.on('message')
+def handle_message(data):
+    print('This is a message:', data)
+```
+Refresh your browser and check your Python terminal. You will observe that the message from the client is printed on the Python terminal.
+
+#### Creating custom events
+In addition to having default events, we can create custom events to tailor our code to various situations. The key distinction between messages and custom events lies in how they are triggered. To trigger a custom event, we utilize the `emit` method, as we will see shortly.
+
+* Create a custom event called `new event` by adding the code below to `apps/events.py`
+```py
+# apps/events.py
+...
+@socketio.on('new event')
+def handle_new_event(data):
+    print('A new event was emitted from the client containing the following payload', data)
+    socketio.emit('server event', {'data': 'This is how you trigger a custom event from the server-side'})
+```
+
+* Add the code below to `apps/templates/home/index.html` to receive and send events from the client side
+```html
+<!-- apps/templates/home/index.html -->
+    <script type="text/javascript" charset="utf-8">
+        ...
+        socket.emit('new event', 'The data can be an object or a string');
+
+        socket.on('server event', function(data) {
+            console.log(data);
+        });
+    </script>
+```
+After making the changes to the code as mentioned, please refresh your browser and examine both your browser console and the Python terminal. You will observe the events being handled by both sides of the application.
+
+## Real-time Updates in Flask
+Using SocketIO, we will implement real-time updates in our Flask application. The details of a card on our dashboard will be updated whenever a new entry is added to our database.
+
+* First we will be creating a `Sales` table using schema. Create a new file in `apps/home` named `model.py` and add the following code
+```py
+# apps/home/model.py
+from apps import db
+
+class Sales(db.Model):
+
+    __tablename__ = 'Sales'
+
+    id = db.Column(db.Integer, primary_key=True)
+    product = db.Column(db.String(64))
+    amount = db.Column(db.String(64))
+    status = db.Column(db.Enum('Completed', 'Not Completed'), default='Not Completed')
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def __repr__(self):
+        return str(self.product)
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+```
+
+* Make the following update to `apps/__init__.py` so the new `Sales` table can be created when the flask server starts up.
+```py
+# apps/__init__.py
+...
+def register_extensions(app):
+    from apps.home.model import Sales   # <--- NEW
+    db.init_app(app)
+    ...
+```
+Please restart the Flask server and visit the homepage. This action will result in the addition of the `Sales` table to the database.
+
+### Implementing real-time updates using Socket.IO
+To implement real-time updates on the application, we will create a new route that allows the addition of entries to the database. Once an entry is added, we will update the card components on the homepage.
+
+* We will be creating a route for adding new entries to the `Sales` table. Add the code below to `apps/home/routes.py`
+```py
+# apps/home/routes.py
+...
+
+from apps.home.model import Sales
+from flask_socketio import emit
+from sqlalchemy.sql import func, funcfilter
+from apps import db
+
+...
+
+@blueprint.route('/sales', methods=['POST'])
+def add_sale():
+    print(request.form)
+
+    sale = Sales(**request.form)
+    sale.save()
+
+    query = db.session.query(func.count(Sales.product), func.count(Sales.product).filter(Sales.status == 'Completed'))
+    result = query.first()
+    data = {'total-sales': result[0], 'sales-completed': result[1]},
+    emit('sales', data, broadcast=True, namespace='/')
+    return jsonify(dict(**request.form), 200)
+```
+Now that we have a route that can add products to the sales database, we emit a `sales` event that is broadcasted to all clients connected to the server.
+
+While the Flask server is running, open another terminal and execute the following command to add entries to your database using the route:
+
+```bash
+curl -X POST -F product=product-name -F amount=product-amount -F status=Completed http://localhost:5000/sales
+```
+**NOTE:** You can replace `product-name` with the value you want to add to the database, and `product-amount` with whatever number you choose. `-F status=Completed` can be removed to create an entry with a status of `Not Completed`.
+
+* Let's add the following line of code to apps/templates/home/index.html to listen for the sales event emitted from the route we created earlier
+```html
+<!-- apps/templates/home/index.html -->
+...
+    <script type="text/javascript" charset="utf-8">
+      ...
+      socket.on('sales', function(data) {
+        // function to be carried out when the event is emitted will go here
+        console.log(data);
+      });
+    </script>
+```
+You can try adding entries to your database using the command mentioned earlier. Upon checking your browser console, you will observe that the data sent using `curl` is displayed in the console.
+
+### Updating a card or component on the Flask dashboard in response to events
+For the final part of our tutorial on using SocketIO to achieve real-time updates in our application, we will write the logic to update the `Orders received` card on the homepage.
+
+* Let's make the following changes to `app/home/routes.py` to add a context that sends the numver of sales and sales completed to the homepage. These values will be used to update the `Orders received` card:
+```py
+# apps/home/routes.py
+...
+@blueprint.route('/index')
+@login_required
+def index():
+    query = db.session.query(func.count(Sales.product), func.count(Sales.product).filter(Sales.status == 'Completed'))
+    sales = query.first()   # returns -> (total sales, sales completed)
+
+    return render_template('home/index.html', segment='index', sales=sales)   # UPDATED
+```
+
+* Let's make the following changes to `apps/templates/home/index.html` to retrieve the orders received from the database
+```html
+<!-- apps/templates/home/index.html -->
+...
+<div class="card-body">   <!-- Line 18 -->
+  <h6 class="text-white">Orders Received</h6>
+  <h2 class="text-end text-white"><i class="feather icon-shopping-cart float-start"></i><span class="total-sales">{{sales[0]}}</span></h2>  <!-- Updated -->
+  <p class="m-b-0">Completed Orders<span class="float-end sales-completed">{{sales[1]}}</span></p>    <!-- Updated -->
+</div>
+...
+```
+**NOTE** Take note of the added `id` attribute inside the `span` tags
+
+* Now let's write the logic to update the cards when a POST request is sent to `http://localhost:5000/sales`. We'll make the following changes to `apps/templates/home/index.html`
+```html
+...
+    <script type="text/javascript" charset="utf-8">
+      ...
+      socket.on('sales', function(data) {
+          // console.log(data);
+          const total_sales = document.getElementById('total-sales');
+          const sales_completed = document.getElementById('sales-completed');
+
+          total_sales.innerHTML = data['total-sales'];
+          sales_completed.innerHTML = data['sales-completed'];
+      });
+    </script>
+...
+```
+When the server emits the `sales` event, it triggers the function responsible for updating the card elements on the homepage. This function is automatically executed in response to the event and is responsible for handling the necessary updates to the card components based on the received data.
+
+## Conclusion
+In this tutorial, we learned how to use Socket.IO with Flask to create real-time updates in web applications. We started by setting up a simple Flask application, and then we integrated Socket.IO with Flask. We then learned how to emit and receive events between the client and server. Finally, we implemented real-time updates using Socket.IO, and we updated a card or component on the Flask dashboard in response to events.
+
+This tutorial has shown how easy it is to use Socket.IO with Flask to create real-time updates in web applications. Socket.IO is a powerful tool that can be used to create a variety of real-time applications, such as chat applications, multiplayer games, and stock tickers.
 
 ## Resources
 
 - 👉 Free [Support](https://appseed.us/support/) via Email & Discord
 - 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
+- 👉 [Socket.IO Documentation](https://socket.io/docs/)
+- 👉 [Flask Documentation](https://flask.palletsprojects.com/)
+- 👉 [Flask-SocketIO Extension](https://flask-socketio.readthedocs.io/)
