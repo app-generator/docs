@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.48] 2023-07-03
+### Changes
+
+- UPD [Flask Section](https://docs.appseed.us/technologies/flask/)
+  - [Flask and SocketIO](https://docs.appseed.us/technologies/flask/socketio/) 
+    - General `Concepts` and `Coding Sample`
+
 ## [1.0.47] 2023-06-25
 ### Changes
 
