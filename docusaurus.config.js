@@ -200,7 +200,7 @@ const config = {
 						items: [
 							{
 								label: "Get Started",
-								to: "introduction",
+								to: "/",
 							},
 							{
 								label: "Dashboards",
