@@ -97,7 +97,7 @@ function HomepageHeaderW() {
 									Free Support for registered users (Email and Discord).
 								</p>
 								<div className="py-4 lg:mr-20 justify-center ">
-									<Link className="bg-slate-900 no-underline hover:no-underline rounded-md text-white px-4 py-2" to="/introduction">
+									<Link className="bg-slate-900 no-underline hover:no-underline rounded-md text-white px-4 py-2" to="/">
 										Get Started
 									</Link>
 								</div>

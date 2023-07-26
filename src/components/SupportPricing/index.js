@@ -29,7 +29,7 @@ export default function SupportPricing({ home }) {
 									<div className="py-4 px-12">
 										<Link
 											className="inline-block px-6 py-2.5  bg-slate-900 dark:bg-white  text-white  dark:text-slate-900 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-pink-700 hover:shadow-lg focus:bg-pink-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full no-underline hover:no-underline  "
-											to="/introduction"
+											to="/"
 										>
 											Buy
 										</Link>
@@ -74,7 +74,7 @@ export default function SupportPricing({ home }) {
 									<div className="py-4 px-4 ">
 										<Link
 											className="inline-block px-6 py-2.5 bg-slate-900 dark:bg-white  text-white dark:text-slate-900  font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-pink-700 hover:shadow-lg focus:bg-pink-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full no-underline hover:no-underline  "
-											to="/introduction"
+											to="/"
 										>
 											Buy
 										</Link>

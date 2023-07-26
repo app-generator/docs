@@ -56,7 +56,7 @@ export default function HomepageFeatures() {
 						</div>
 					</div>
 					<div className="row flex justify-center text-center">
-						<Link className="bg-slate-900 no-underline hover:no-underline rounded-md text-white px-6 py-4" to="/introduction">
+						<Link className="bg-slate-900 no-underline hover:no-underline rounded-md text-white px-6 py-4" to="/">
 							Get Started
 						</Link>
 					</div>
