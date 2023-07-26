@@ -160,8 +160,8 @@ const config = {
 						position: "left",
 						items: [
 							{
-								to: "introduction/",
-								label: "Introduction",
+								to: "/",
+								label: "Intro",
 							},
 							{
 								to: "app-generator/",
