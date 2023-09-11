@@ -7,16 +7,18 @@ sidebar_label: 11ty Soft Design
 
 <SubHeading>Open-source starter built with Eleventy (11ty) and Prismic and Soft UI Design System.</SubHeading>
 
-**Eleventy Soft UI** is an Eleventy adaptation of **[Soft UI Design System](https://appseed.us/product/soft-ui-design/)** (a user-friendly and beautiful design system based on Bootstrap 5), including a Blog system that uses Prismic CMS for content management. 
+**Eleventy Soft UI** is an Eleventy adaptation of **[Soft UI Design System](https://appseed.us/product/soft-ui-design/)** (a user-friendly and beautiful design system based on `Bootstrap 5`), 
+including a `Blog System` that uses [Prismic CMS](https://prismic.io/) for content management. 
+
 **Soft UI Design System** is built with over 70 frontend individual elements, like buttons, inputs, navbars, nav tabs, cards, or alerts, giving you the freedom of choosing and combining. All components can take variations in color, which you can easily modify using SASS files and classes.
 
 - 👉 [Eleventy Soft UI](https://eleventy-soft-ui.appseed-srv1.com/) - LIVE Demo
 
 <br />
 
-> Features:
+> **Features**
 
-- ✅ UI: [Soft UI Design System](https://bit.ly/3v6JYIe) crafted by **Creative-Tim**
+- ✅ UI: [Soft UI Design System](https://www.creative-tim.com/product/material-kit-pro-bs4?AFFILIATE=128200) crafted by **Creative-Tim**
 - ✅ **Prismic CMS** for blog posts
 - ✅ CSS Pipeline (Sass, CleanCSS)
 - ✅ JS Bundling (Webpack)
@@ -89,13 +91,13 @@ This project uses includes a Blog system that uses Prismic CMS. You'll need a fr
 - Add a bunch of content to the Blog Post. This is the data 11ty will use to build your site blog.
 - Find your API endpoint in your repository settings, you will need it when you're setting up your local project and Netlify deploy.
 
-![](../../../static/assets/get-prismic-repo-url.png)
+![Prismic - Get REPO Url](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/266904490-55955e87-aaad-4c7c-879e-673d5f9f6467.png)
 
 <br />
 
 ### Local Development
 
-- After setting up Prismic CMS, Generate a new repo from this repository template which will copy this project into your own new repo.
+- After setting up `Prismic CMS`, Generate a new repo from this repository template which will copy this project into your own new repo.
 - Open the terminal, Clone your new repository with `git clone <https://github.com/YOUR_REPO`>,
 - Navigate to the newly created repo and, and run "npm install" to install all dependencies.
 - Rename the ".env.sample" file (located in the root directory) to ".env" and edit the file to add your Prismic repository API endpoint.
@@ -106,25 +108,29 @@ This project uses includes a Blog system that uses Prismic CMS. You'll need a fr
 ### Deploy to Netlify
 
 - Upload the local repository you set up to Github.
-- Go to [https://app.netlify.com](https://app.netlify.com/). Once you’ve logged in, click the 'New site from Git' button and choose the forked repository you just created.
+- Go to [Netlify](https://app.netlify.com/). Once you’ve logged in, click the 'New site from Git' button and choose the forked repository you just created.
 - Follow the prompts, it will build and deploy the new site on Netlify, bringing you to the site dashboard when the build is complete.
 - When you get to deploy & build settings, you need to add your Prismic repository API endpoint as an environmental variable named PRISMIC_REPOSITORY_NAME
 
-![](../../../static/assets/netlify-env-setup-1.png)
+![Netlify - Env Setup (1)](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/266904687-527240f7-7253-4783-817c-dfcd274195e6.png)
 
-![](../../../static/assets/netlify-env-setup-2.png)
+---
+
+![Netlify - Env Setup (1)](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/266904725-3a999c56-0584-4031-ad96-4d61ff484e70.png) 
+
+<br />
 
 ### Set up a Netlify build hook and a Prismic webhook to trigger Netlify Build
 
 We need to set up a webhook so that when you save a Prismic document, this triggers a Netlify build.
 
-- Go to your Netlify site settings and add a webhook under Build & deploy, you'll get a URL that triggers the webhook:
+> Go to your Netlify site settings and add a webhook under Build & deploy, you'll get a URL that triggers the webhook:
 
-![](../../../static/assets/netlify-build-hooks-1.png)
+![Netlify - Build Hooks (1)](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/266906665-7eded8af-f46d-480c-8a2b-488c28780133.png) 
 
-- Go to your Prismic repository setting and under webhook add the Netlify webhook URL:
+> Go to your Prismic repository setting and under webhook add the Netlify webhook URL:
 
-![](../../../static/assets/netlify-build-hooks-2.png)
+![Netlify - Build Hooks (1)](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/266906680-fe97bdea-4e3a-4c14-b6be-25de868ae3ad.png)
 
 <br />
 
@@ -169,15 +175,17 @@ eleventy-soft-ui-design
 
 ### Customization
 
-**CSS**
+> **CSS**
 
-Styling can be written in Sass. The main index file is in `src/static/assets/styles/main.scss`. Import any SCSS code you want in there; it will be processed and optimized. The output is in `dist/static/assets/styles/main.css`
+Styling can be written in Sass. The main index file is in `src/static/assets/styles/main.scss`. Import any SCSS code you want in there; it will be processed and optimized. 
+The output is in `dist/static/assets/styles/main.css`
 
-**JS**
+> **JS**
 
-Javascript can be written in ES6 syntax. The main index file is in `src/static/assets/scripts/main.js`. It will be transpiled to ES5 with babel, bundled together with webpack, and minified in production. The output is in `dist/static/assets/scripts/main.js`
+Javascript can be written in ES6 syntax. The main index file is in `src/static/assets/scripts/main.js`. It will be transpiled to ES5 with babel, bundled together with webpack, and minified in production. 
+The output is in `dist/static/assets/scripts/main.js`
 
-**Global Data Files**
+> **Global Data Files**
 
 You can update the global data like title, meta description of the site at `src/data/meta.json`
 
