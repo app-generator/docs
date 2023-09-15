@@ -1,7 +1,6 @@
 ---
-sidebar_position: 5
-sidebar_label: Django API Server
-description: Open-source Django API server that explains how to extend an existing codebase
+title         : Django API Server
+sidebar_label : Django API Server
 ---
 
 # Django API Server
@@ -10,12 +9,12 @@ description: Open-source Django API server that explains how to extend an existi
 
 This sample explains how to extend an existing Django API Starter and add another model managed via a new API node.
 
-- [Django API Server](../../boilerplate-code/api-server/django.mdx) - original project
+- [Django API Server](/boilerplate-code/api-server/django.mdx) - original project
 - [Django API Server Sample](https://github.com/app-generator/api-server-django-sample) - the source code with new enhancements
 
-## Codebase structure
+## ✅ Codebase structure
 
-```
+```bash
 PROJECT ROOT
 ├── api                           # App containing all project-specific apps
 │   ├── apps.py
@@ -24,24 +23,13 @@ PROJECT ROOT
 │   │   ├── backends.py           # Handles the active session authentication
 │   │   ├── migrations
 │   │   ├── serializers
-│   │   │   ├── login.py          # Handles the proccess of login for an user
-│   │   │   └── register.py       # Handle the creation of a new user
 │   │   ├── tests.py              # Test for login, registration and session
 │   │   └── viewsets
-│   │       ├── active_session.py # Handles session check
-│   │       ├── login.py          # Handles login
-│   │       ├── logout.py         # Handles logout
-│   │       └── register.py       # Handles registration
 |   |
 │   ├── fixtures                  # Package containg the project fixtures
 │   ├── __init__.py
 │   ├── routers.py                # Define api routes
 │   └── user                      # Implements user app logic
-│       ├── apps.py
-│       ├── __init__.py
-│       ├── migrations
-│       ├── serializers.py       # Handle the serialization of user object
-│       └── viewsets.py          # Handles  the modification of an user
 |
 ├── core                         # Implements app logic
 │   ├── asgi.py
@@ -58,7 +46,7 @@ PROJECT ROOT
 └── requirements.txt             # Contains development packages
 ```
 
-## Used Patterns
+## ✅ Used Patterns
 
 Working with Django Rest Framework, the most common design pattern is the **Template Method Pattern**.
 
@@ -70,7 +58,7 @@ The `UpdateModelMixin` provides the logic to update an object using `PUT`.
 
 We only need to rewrite the method which handles the `updating` and provides the `serializer_class` and the `permission_classes`.
 
-## How to use the API
+## ✅ How to use the API
 
 > POSTMAN usage
 
@@ -205,7 +193,7 @@ curl --request POST \
 }
 ```
 
-## How to extend API
+## ✅ How to extend API
 
 > Add a new model - transactions
 
@@ -224,8 +212,7 @@ Then modify the `apps.py` file.
 ```python
 # api/transaction/apps.py
 
-from django.apps import AppConfig
-
+from django.apps import AppConfig 
 
 class TransactionConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
@@ -273,7 +260,6 @@ A [serializer](https://www.django-rest-framework.org/api-guide/serializers/) all
 
 from api.transaction.models import Transaction
 from rest_framework import serializers
-
 
 class TransactionSerializer(serializers.ModelSerializer):
     info = serializers.CharField(allow_null=True, allow_blank=True)
@@ -518,10 +504,19 @@ urlpatterns = [
 ]
 ```
 
-And that's it. You can start testing the API with Postman.
+At this point, you can start testing the API with Postman.
 
-Congratulations. You just learned :
+`In summary`, You just learned :
 
 - How to add a new model;
 - How to add a serializer for this model;
 - How to rewrite `viewset` behavior and `actions` to match your needs.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
