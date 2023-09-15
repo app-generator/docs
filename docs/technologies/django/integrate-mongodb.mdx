@@ -1,13 +1,14 @@
 ---
-title: Integrate Django with MongoDB
-description: Learn how to integrate Django with MongoDB
+title         : Integrate Django with MongoDB
+sidebar_label : Django and MongoDB
 ---
 
-import SubHeading from "@site/src/components/SubHeading";
+# Integrate Django with MongoDB
 
-<SubHeading color="#25c2a0">Learn how to integrate Django with MongoDB</SubHeading>
+<SubHeading>Learn how to integrate Django with MongoDB</SubHeading>
 
 This page explains `how to integrate` **Django with MongoDB**, two powerful and technologies used in many applications and production-ready projects. 
+
 The `source code` is saved on GitHub for later reference and support. 
 
 - 👉 [Integrate Django & Mongo](https://github.com/app-generator/how-to-integrate-django-with-mongo) - `sample project` 
@@ -17,11 +18,11 @@ The `source code` is saved on GitHub for later reference and support.
 
 <br />
 
-## Introduction
+## ✅ Introduction
 
 This section presents more insights regarding `MongoDB` and the power features compared to a `Relational Database` like MySql or PostgreSQL.  
 
-### ✅ What is MongoDB
+### What is MongoDB
 
 `MongoDB` is an open-source, document-oriented NoSQL database that was designed for scalability and high availability. 
 MongoDB stores data in JSON-like documents, which makes it easy for developers to work with data because it does not require a fixed schema. 
@@ -30,7 +31,7 @@ This means you can store data without having to define a strict structure, which
 MongoDB supports CRUD (Create, Read, Update, Delete) operations, ad-hoc queries, and indexing, making it an excellent choice for modern web and mobile applications. 
 It is widely used across various industries because of its flexibility, scalability, and fast performance. 
 
-### ✅ MongoDB vs Relational DBMS
+### MongoDB vs Relational DBMS
 
 > **Data Model** 
 
@@ -54,7 +55,7 @@ Relational databases are well-suited for transactional systems, such as online b
 
 <br />
 
-## Install MongoDB
+## ✅ Install MongoDB
 
 For this tutorial, you need MongoDB installed on your device to get started. To install MongoDB follow the links below and follow the steps outlined to get it done.
 
@@ -75,7 +76,7 @@ $ sudo systemctl start mongod
 
 <br />
 
-## MongoDB shell
+## ✅ MongoDB shell
 
 `Mongosh`, the MongoDB shell is used to interact with the **MongoDB** server from the terminal. For Linux, it is installed with the MongoDB server.
 For Windows `mongosh` is not installed with the MongoDB server, and needs to be installed from this location:
@@ -99,7 +100,7 @@ This shows that `mongosh` has successfully connected to the MongoDB server. Now 
 
 <br />
 
-## Create a `Django` Project
+## ✅ Create a `Django` Project
 
 From the terminal run the following commands to create a new folder, change the directory into the new folder and create a new virtual environment
 
@@ -137,7 +138,7 @@ The project is created in the current directory because of `.` added to the comm
 
 <br />
 
-### ✅ Add dependencies for `MongoDB`
+### Add dependencies for `MongoDB`
 
 Django was built to integrate seamlessly with Relational Databases. 
 To use MongoDB with Django and still leverage features like the database modeling, admin panel and so on, we will be needing a package called `Djongo`. 
@@ -151,7 +152,7 @@ The proceeding steps will help us install and configure our Django project to us
 
 <br />
 
-### ✅ Update Configuration for `MongoDB`
+### Update Configuration for `MongoDB`
 
 Open `core/settings.py` and make the following changes to allow Django uses `djongo` as the database engine.
 
@@ -169,7 +170,7 @@ DATABASES = {
 
 <br />
 
-### ✅ Create a Superuser
+### Create a Superuser
 
 Before creating a superuser, we need to apply the default database migration.
 Run the command below to apply database migration and then create a superuser
@@ -185,11 +186,11 @@ Now you can start the application and visit the admin panel using the superuser 
 
 <br />
 
-## Checking the information
+## ✅ Checking the information
 
 just to double check the set up, we can access the `admin` section (reserved for superusers) or use the Django CLI to inspect the information. 
 
-### ✅ Accessing the `ADMIN` Section
+### Accessing the `ADMIN` Section
 
 Run the application using the command below
 
@@ -212,7 +213,7 @@ This is the route to the admin section. Once you log in you will see the admin p
 
 <br />
 
-### ✅ Visualizing the data in `MongoDB`
+### Visualizing the data in `MongoDB`
 
 To see the data added to your database, open your terminal and run the following command
 
@@ -268,7 +269,7 @@ This command will return a list of all the users registered. For now, we have on
 
 <br />
 
-## Style the Project
+## ✅ Styling the Project
 
 This section explains how to style the project with a an open-source theme that covers the admin section but also the rest of the website.
 
@@ -276,13 +277,13 @@ The theme to be added is the [Django Soft Dashboard](https://github.com/app-gene
 
 The proceeding steps will guide you in integrating this theme with your Django project.
 
-> ✅ `Install the theme`
+> `Install the theme`
 
 ```bash
 (venv) $ pip install django-admin-soft-dashboard
 ```
 
-> ✅ `Update Settings` 
+> `Update Settings` 
 
 After installation, we need to make changes to our project files to allow the project to recognize and use the theme. Open the file `core/settings.py` and make the following changes.
 
@@ -304,7 +305,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # ... (truncated content) 
 ```
 
-> ✅ `Edit Routes`
+> `Edit Routes`
 
 Next step is to add a route that points to the theme. Open `core/urls.py and make the following change
 
@@ -337,7 +338,7 @@ At this point, our Django & MongoDB project is also styled with a nice, modern d
 
 <br />
 
-## Conclusions
+## ✅ Conclusions
 
 Congratulations on completing the tutorial, so far we have covered the basics of setting up a Django project, connecting Django with MongoDB, 
 viewing data stored in our MongoDB database and also using a prebuilt theme to get a head start in developing a Django application. 
@@ -348,8 +349,10 @@ With the power of Django's web framework and MongoDB's scalability and high avai
 By following the above steps, you'll be able to connect Django to MongoDB quickly and begin building powerful and scalable web applications. 
 You can visit [Appseed](https://appseed.us/) for more templates like the one used for this tutorial.
 
-## Resources
+<br />
 
-- 👉 [Djongo Documentation](https://www.djongomapper.com/get-started/)
-- 👉 [Django Soft Admin Dashboard](https://github.com/app-generator/django-admin-soft-dashboard)
-- 🚀 Free [Support](https://appseed.us/support/) via Email & Discord
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
