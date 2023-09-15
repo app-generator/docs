@@ -1,5 +1,24 @@
 # Change Log
 
+## [1.0.49] 2023-09-15
+### Changes
+
+- UPD [VueJS Section](https://docs.appseed.us/technologies/vuejs/)
+  - [Getting Started with VueJS](https://docs.appseed.us/technologies/vuejs/getting-started/)
+  - [Vue.js CORE Concepts](https://docs.appseed.us/technologies/vuejs/concepts/)
+- UPD [Django Section](https://docs.appseed.us/technologies/django/)
+  - [Getting Started with Django](https://docs.appseed.us/technologies/django/getting-started/)
+  - [Backup/Restore Use-case](https://docs.appseed.us/technologies/django/backup-restore/)
+  - [Django & Plotly](https://docs.appseed.us/technologies/django/charts-plotly/)
+  - [Simple Charts](https://docs.appseed.us/technologies/django/charts-simple/)
+  - [Django API and Chart.JS](https://docs.appseed.us/technologies/django/charts-via-api/)
+  - [DB Docker Persistence](https://docs.appseed.us/technologies/django/database-docker-persistence/)
+  - [Django - HOT Reload in Docker](https://docs.appseed.us/technologies/django/docker-auto-reload/)   
+  - [How to DEBUG Django](https://docs.appseed.us/technologies/django/how-to-debug/)
+  - [Integrate Django with Celery](https://docs.appseed.us/technologies/django/integrate-celery/)
+  - [Integrate Django with MongoDB](https://docs.appseed.us/technologies/django/integrate-mongodb/)
+  - [Django Popular Modules](https://docs.appseed.us/technologies/django/popular-modules/)
+
 ## [1.0.48] 2023-07-03
 ### Changes
 
