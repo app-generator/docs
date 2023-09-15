@@ -1,19 +1,25 @@
 ---
-title: DB Docker Persistence
-description: How to execute Django in Docker with DB persistence 
+title         : DB Docker Persistence
+sidebar_label : Docker DB Persistence
 ---
 
-import SubHeading from "@site/src/components/SubHeading";
+# DB Docker Persistence
 
-<SubHeading color="#25c2a0">How to execute Django in Docker with DB persistence</SubHeading>
+<SubHeading>How to execute Django in Docker with DB persistence</SubHeading>
 
-Docker is a platform that allows developers to package and distribute applications with their dependencies into portable containers. Docker offers a powerful solution to simplify the development and deployment process. In this tutorial, we'll show you how to leverage Docker to execute your Django application with database persistence. By the end, you'll be equipped with the knowledge and tools to efficiently develop and deploy your Django projects using Docker.
+Docker is a platform that allows developers to package and distribute applications with their dependencies into portable containers. 
+Docker offers a powerful solution to simplify the development and deployment process. 
 
-## Prerequisites
+In this tutorial, we'll show you how to leverage Docker to execute your Django application with database persistence. By the end, you'll be equipped with the knowledge and tools to efficiently develop and deploy your Django projects using Docker.
 
-Before we begin, make sure you have Docker and Docker Compose installed on your system. Docker allows us to containerize our Django application, while Docker Compose helps manage multiple containers and their configurations. If you haven't installed Docker yet, you can find detailed installation instructions for your operating system on the [official Docker website](https://docs.docker.com/get-docker/).
+## ✅ Prerequisites
 
-## Step 1: Set up Django project
+Before we begin, make sure you have `Docker` and `Docker Compose` installed on your system. 
+Docker allows us to containerize our Django application, while Docker Compose helps manage multiple containers and their configurations. 
+
+If you haven't installed Docker yet, you can find detailed installation instructions for your operating system on the [official Docker website](https://docs.docker.com/get-docker/).
+
+## ✅ Set up a Django project
 
 > Coding Sample: https://github.com/app-generator/sample-django-docker-db-persistence
 
@@ -29,76 +35,82 @@ Then clone the project by running this command.
 git clone https://github.com/app-generator/sample-django-docker-db-persistence
 ```
 
-## Step 2: Set up the Dockerfile
+## ✅ Set up the Dockerfile
 
-To containerize your Django application, you'll need a Dockerfile—a configuration file that defines the image's specifications. Our Dockerfile sets up a Python runtime environment, installs project dependencies, copies the code into the container, and configures the necessary port exposure. This ensures seamless execution of your Django application within a Docker container. Follow these steps:
+To containerize your Django application, you'll need a Dockerfile—a configuration file that defines the image's specifications. 
+Our Dockerfile sets up a Python runtime environment, installs project dependencies, copies the code into the container, and configures the necessary port exposure. 
+
+This ensures seamless execution of your Django application within a Docker container. Follow these steps:
 
 1. Open your Django project and search a file called `Dockerfile` in your project's root directory.
 
 2. If the `Dockerfile` doesn't exist, create one and add the following content, then save it.
 
-   ```dockerfile
-   FROM python:3.9
-   
-   # set environment variables
-   ENV PYTHONDONTWRITEBYTECODE 1
-   ENV PYTHONUNBUFFERED 1
-   
-   WORKDIR /app
-   
-   COPY requirements.txt .
-   
-   # install python dependencies
-   RUN pip install --upgrade pip
-   RUN pip install --no-cache-dir -r requirements.txt
-   
-   COPY . .
-   ```
+```dockerfile
+FROM python:3.9
 
-## Step 3: Set up the Docker Compose
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-Docker Compose simplifies the management of multiple containers and their dependencies. In this step, we'll create a `docker-compose.yml` file to configure our Django application and the database. This will ensure that our database data persists even if the container is restarted.
+WORKDIR /app
+
+COPY requirements.txt .
+
+# install python dependencies
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+```
+
+## ✅ Set up the Docker Compose
+
+Docker Compose simplifies the management of multiple containers and their dependencies. 
+In this step, we'll create a `docker-compose.yml` file to configure our Django application and the database. 
+
+This will ensure that our database data persists even if the container is restarted.
 
 1. Open `docker-compose.yml` file in your project's root directory.
 
 2. If it doesn't exist, create one and add the following content.
 
-   ```yml
-   version: '3.8'
-   services:
-     appseed-app:
-       container_name: appseed_app
-       restart: always
-       build: .
-       networks:
-         - db_network
-         - web_network
-       command: >
-         sh -c "python manage.py makemigrations &&
-                python manage.py migrate &&
-                gunicorn --config gunicorn-cfg.py core.wsgi"
-     nginx:
-       container_name: nginx
-       restart: always
-       image: "nginx:latest"
-       ports:
-         - "5085:5085"
-       volumes:
-         - ./nginx:/etc/nginx/conf.d
-       networks:
-         - web_network
-       depends_on: 
-         - appseed-app
-   networks:
-     db_network:
-       driver: bridge
-     web_network:
-       driver: bridge
-   ```
+```yml
+version: '3.8'
+services:
+  appseed-app:
+    container_name: appseed_app
+    restart: always
+    build: .
+    networks:
+      - db_network
+      - web_network
+    command: >
+      sh -c "python manage.py makemigrations &&
+            python manage.py migrate &&
+            gunicorn --config gunicorn-cfg.py core.wsgi"
+  nginx:
+    container_name: nginx
+    restart: always
+    image: "nginx:latest"
+    ports:
+      - "5085:5085"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - web_network
+    depends_on: 
+      - appseed-app
+networks:
+  db_network:
+    driver: bridge
+  web_network:
+    driver: bridge
+```
 
 3. Copy and paste the following content into the file.
 
-   - For PostgreSQL
+   - **For PostgreSQL**
 
      ```yml
      services:
@@ -118,7 +130,7 @@ Docker Compose simplifies the management of multiple containers and their depend
        postgres_data:
      ```
 
-   - For MySQL
+   - **For MySQL**
 
      ```yml
      services:
@@ -139,7 +151,7 @@ Docker Compose simplifies the management of multiple containers and their depend
        mysql_data:
      ```
 
-   - For SQLite
+   - **For SQLite**
 
      You need to add volume in the `appseed-app` service. The SQLite database will be stored as a file within the container.
 
@@ -203,9 +215,7 @@ Docker Compose simplifies the management of multiple containers and their depend
      postgres_data:
    ```
 
-   
-
-## Step 4: Configure Django settings
+## ✅ Configure Django settings
 
 To establish a connection between Django and the database container, we need to modify the environment variable.
 
@@ -253,7 +263,7 @@ To establish a connection between Django and the database container, we need to 
    - `psycopg2-binary`: for PostgreSQL
    - `mysqlclient`: for MySQL
 
-### SQLite
+### SQLite Settings
 
 If you are using SQLite as your database, you need to update your project settings by following these steps:
 
@@ -277,16 +287,18 @@ If you are using SQLite as your database, you need to update your project settin
        DATABASES = {
            'default': {
                'ENGINE': 'django.db.backends.sqlite3',
-               'NAME': os.path.join(BASE_DIR, 'data/db.sqlite3'), # replace this line
+               'NAME': os.path.join(BASE_DIR, 'data', 'db.sqlite3'), # <-- NEW
            }
        }
    ```
 
-   Replace the line `'NAME': os.path.join(BASE_DIR, 'db.sqlite3')` with `'NAME': os.path.join(BASE_DIR, 'db.sqlite3')`. This ensures that the SQLite database file will be stored in a folder named `data` with the filename `db.sqlite3`.
+Replace the line `'NAME': os.path.join(BASE_DIR, 'db.sqlite3')` with `'NAME': os.path.join(BASE_DIR, 'data', 'db.sqlite3')`. 
+This ensures that the SQLite database file will be stored in a folder named `data` with the filename `db.sqlite3`.
 
-## Step 5: Build and run the containers
+## ✅ Build and run the containers
 
-We'll build and run our Docker containers using the Docker Compose file we created. This will start the Django development server and connect it to the PostgreSQL database container.
+We'll build and run our Docker containers using the Docker Compose file we created. 
+This will start the Django development server and connect it to the `PostgreSQL` database container.
 
 1. In your terminal, navigate to your project's root directory.
 
@@ -302,11 +314,12 @@ We'll build and run our Docker containers using the Docker Compose file we creat
 
 3. Docker Compose will create and configure the containers based on the specifications in the Compose file.
 
-## Step 6: Access your Django application
+## ✅ Visit the app in Browser 
 
-Once the containers are running, open your web browser and visit [http://localhost:5085](http://localhost:5085). You should see your Django application running. However, if this is your first time running the application, you'll need to create a superuser to log in and access the admin interface.
+Once the containers are running, open your web browser and visit [http://localhost:5085](http://localhost:5085). 
+You should see your Django application running. However, if this is your first time running the application, you'll need to create a superuser to log in and access the admin interface.
 
-Here's a step-by-step guide to creating a superuser:
+Here's a `step-by-step` guide to creating a superuser inside Docker:
 
 1. Open a terminal and enter your Django container by running the following command:
 
@@ -322,9 +335,10 @@ Here's a step-by-step guide to creating a superuser:
 
 After providing the necessary details, the superuser will be created successfully. You can now use these credentials to log in to your Django application and access the admin interface
 
-## Resources
+<br />
 
-- 👉 [Django Documentation](https://www.djongomapper.com/get-started/)
-- 👉 [Docker Installation Documentation](https://docs.docker.com/get-docker/)
-- 👉 [Django Soft Admin Dashboard](https://github.com/app-generator/django-admin-soft-dashboard)
-- 🚀 Free [Support](https://appseed.us/support/) via Email & Discord
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
