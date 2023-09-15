@@ -1,0 +1,164 @@
+---
+title:         How to install Python on MacOS, Windows, Ubuntu and CentOS 
+sidebar_label: Install Python
+---
+
+# How to install Python
+
+<SubHeading>Learn how to install Python on different platforms (MacOS, Windows, Ubuntu and CentOS), a step-by-step guide</SubHeading>
+
+Python can be easily installed on these operating systems, and I'll walk you through the process for each one.
+
+<br />
+
+## ✅ Installing Python on MacOS
+
+MacOS comes with a pre-installed version of Python 2.x. To install Python 3, you can follow these steps:
+
+### **Open Terminal**
+
+Go to the "Applications" folder, then open the "Utilities" folder, and finally, open the "Terminal" app.
+
+### **Install Homebrew (if not already installed)**
+
+If you don't have Homebrew installed, you can install it by running the following command in the Terminal:
+
+```bash
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### **Install Python 3**
+
+Use Homebrew to install Python 3 by running:
+
+```bash
+$ brew install python@3
+```
+
+### **Verify Installation**
+
+To check if Python 3 is installed, type:
+
+```bash
+$ python3 --version
+```
+
+<br />
+
+## ✅ Installing Python on Windows
+
+### **Download Python**
+
+- Open a web browser and go to the official Python website: https://www.python.org/downloads/windows/
+- You will see the latest stable version of Python available for Windows. Choose the version you want to install. It's recommended to download the latest version (e.g., Python 3.8.7).
+- Scroll down to the "Files" section and select the installer that matches your system architecture (usually 64-bit for modern systems).
+
+### **Run the Installer**
+
+Once the installer is downloaded, double-click on it to run it.
+
+### **Configure Python Installation**
+
+- Check the box that says "Add Python X.X to PATH" during installation (replace "X.X" with the version number).
+- Click the "Customize installation" button if you want to customize the installation location or components. For most users, the default settings are fine.
+
+### **Install Python**
+
+Click the "Install Now" button to start the installation.
+
+### **Verify Installation**
+
+- Open the Command Prompt by searching for "cmd" or "Command Prompt" in the Start menu.
+- Type `python --version` and press Enter. You should see the installed Python version.
+
+<br />
+
+## ✅ Installing Python on Ubuntu
+
+Python is pre-installed on most versions of Ubuntu. However, you can follow these steps to ensure you have the latest version or to install it if it's missing.
+
+### **Open the Terminal**:
+
+Press `Ctrl+Alt+T` to open a terminal window.
+
+### **Update Package Lists**
+
+Run the following command to update the package lists:
+
+```bash
+$ sudo apt update
+```
+
+### **Install Python**
+
+To install Python 3, run:
+
+```bash
+$ sudo apt install python3
+```
+
+### **Verify Installation**:
+   
+To check if Python 3 is installed, type:
+
+```bash
+$ python3 --version
+```
+
+<br />
+
+## ✅ Installing Python on CentOS
+
+Open the terminal in CentOS, by pressing `Ctrl+Alt+T` or search for "Terminal" in the Applications menu.
+
+### **Update Package Lists**
+
+Before installing Python, it's a good practice to update your system's package lists. Run the following command:
+
+```bash
+$ sudo yum update
+```
+
+### **Install Python**
+
+CentOS typically comes with Python 2.x pre-installed. To install Python 3, run the following command:
+
+```bash
+$ sudo yum install python3
+```
+
+### **Verify Installation**
+
+To check if Python 3 is installed, type:
+
+```bash
+$ python3 --version
+```
+
+### **Installing PIP** (Optional)
+
+To install pip for Python 3, you can use the following command:
+   
+```bash
+$ sudo yum install python3-pip
+```
+
+### **Verify PIP** (Optional)
+
+To check if pip is installed, you can use the following command:
+
+```bash
+$ pip3 --version
+```
+
+<br /> 
+
+You've successfully installed Python on Windows, Ubuntu, and macOS. You can now start using Python for your programming needs on each of these operating systems.
+
+<br /> 
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
