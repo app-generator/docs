@@ -1,62 +1,79 @@
 ---
-title: Django - API and Chart.JS
-description: Learn how to showcase charts with Django & Chart.JS
+title         : Django API and Chart.JS
+sidebar_label : API and Chart.JS
 ---
 
-import SubHeading from "@site/src/components/SubHeading";
+# Django API and Chart.JS
 
-<SubHeading color="#25c2a0">Learn how to showcase charts with Django & Chart.JS</SubHeading>
+<SubHeading>Learn how to showcase charts with Django & Chart.JS</SubHeading>
 
-> Input: 
+**Django** is a robust web framework that enables the swift and effortless development of complex web applications. 
+It is commonly used for creating data-centric web apps that display information through charts and graphs. 
 
-- Sample REPO: https://github.com/app-generator/django-api-and-chart-js
+This guide will explore how to integrate Django with Plotly to create an interactive chart that visualizes data in a web application.
 
-## Introduction
-Django is a robust web framework that enables the swift and effortless development of complex web applications. It is commonly used for creating data-centric web apps that display information through charts and graphs. This guide will explore how to integrate Django with Plotly to create an interactive chart that visualizes data in a web application.
+**Chart.js** is a data visualization library that enables you to generate interactive, high-quality graphs and charts in Python, R, and other programming languages. 
+With Chart.js, you can produce various types of visualizations, including line charts, scatter plots, bar charts, box plots, and more.
 
-Chart.js is a data visualization library that enables you to generate interactive, high-quality graphs and charts in Python, R, and other programming languages. With Chart.js, you can produce various types of visualizations, including line charts, scatter plots, bar charts, box plots, and more.
+`Chart.js` primary feature is its ability to create interactive visualizations, allowing you to add hover-over tooltips, zoom in and out, pan across the graph, and click on data points to display more detailed information.
+ These interactive features make it easier to explore and understand your data.
 
-Chart.js' primary feature is its ability to create interactive visualizations, allowing you to add hover-over tooltips, zoom in and out, pan across the graph, and click on data points to display more detailed information. These interactive features make it easier to explore and understand your data.
-
-Chart.js also offers a wide range of customization options, allowing you to modify colors, fonts, and layouts to produce charts that match your specific needs. Furthermore, Chart.js graphs can be easily embedded in web apps or shared with others by exporting them to various file formats like PNG, SVG, or PDF.
+`Chart.js` also offers a wide range of customization options, allowing you to modify colors, fonts, and layouts to produce charts that match your specific needs. 
+Furthermore, Chart.js graphs can be easily embedded in web apps or shared with others by exporting them to various file formats like PNG, SVG, or PDF.
 
 In this tutorial, we will use the Django material dashboard and modify its homepage to create sales charts using data from Django models, the data will be served using [`Django API Generator`](https://github.com/app-generator/django-api-generator), a tool that generates secure APIs on top of `Django REST framework`.
 
-To get started, we will create a new Django project and establish a new application to serve as the homepage for our program. Then, we will create a model to store our sales data. Then we will add `Django API Generator` to our Django project and we will create a view to serve this data to the front-end. Finally, using Chart.js, we will generate interactive line charts, bar charts, and pie charts that will display data sourced from the sales model.
+To get started, we will create a new Django project and establish a new application to serve as the homepage for our program. 
 
-## Setting up a Django project
-- To set up a new Django project, start by creating a new folder using the "mkdir" command followed by the desired name of the folder. Then, change into the newly created directory using the "cd" command followed by the name of the folder.
+Then, we will create a model to store our sales data. Then we will add `Django API Generator` to our Django project and we will create a view to serve this data to the front-end. 
+Finally, using Chart.js, we will generate interactive line charts, bar charts, and pie charts that will display data sourced from the sales model.
+
+## ✅ Setting up Django
+
+To set up a new Django project, start by creating a new folder using the "mkdir" command followed by the desired name of the folder. 
+Then, change into the newly created directory using the "cd" command followed by the name of the folder.
+
 ```bash
 $ mkdir django_api_and_chartjs
 $ cd django_api_and_chartjs
 django_api_and_chartjs$
 ```
-- Afterward, create a new virtual environment within the folder using the virtualenv module bundled with Python, using the command "virtualenv venv".
+
+Afterward, create a new virtual environment within the folder using the virtualenv module bundled with Python, using the command "virtualenv venv".
 To activate the virtual environment, run the command `source venv/bin/activate` on MacOS/Linux or `./venv/Scripts/activate` on Windows.
 
-On MacOS/Linux:
+> `On MacOS/Linux`
+
 ```bash
 django_api_and_chartjs$ virtualenv venv
 django_api_and_chartjs$ source venv/bin/activate
 (venv) django_api_and_chartjs$
 ```
-On Windows:
+
+> `On Windows`
+
 ```bash
 django_api_and_chartjs$ virtualenv venv
 django_api_and_chartjs$ .\venv\Scripts\activate
 (venv) django_api_and_chartjs$
 ```
-- Next, install the necessary packages including Django and material-design, and create a new Django project.
+
+Next, install the necessary packages including **Django** and material-design, and create a new Django project.
+
 ```bash
 (venv) django_api_and_chartjs$ pip install django django-admin-material-dashboard django-api-generator
 (venv) django_api_and_chartjs$ django-admin startproject core .
 ```
-- To create a new Django application, use the command
+
+To create a new Django application, use the command
+
 ```bash
 (venv) django_api_and_chartjs$ python manage.py startapp home
 ```
 
-- Make the following changes in the `core/settings.py` file allowing our Django project to recognize the `home` application just created and `django-admin-material-dashboard`. Additionally, we will be setting the default directory for template files, static files and also the route user login redirects to
+Make the following changes in the `core/settings.py` file allowing our Django project to recognize the `home` application just created and `django-admin-material-dashboard`. 
+Additionally, we will be setting the default directory for template files, static files and also the route user login redirects to
+
 ```py
 # core/settings.py
 import os             # <-- NEW import
@@ -97,7 +114,9 @@ urlpatterns = [
 ]
 ```
 
-- In the `home/views.py` file, create a view of the homepage of the web application using the index function, which returns the rendered `pages/index.html` template. **Note** `pages/index.html` exists in `django-admin-material-dashboard`, soon we will be adding our own `index.html` file
+In the `home/views.py` file, create a view of the homepage of the web application using the index function, 
+which returns the rendered `pages/index.html` template. **Note** `pages/index.html` exists in `django-admin-material-dashboard`, soon we will be adding our own `index.html` file.
+
 ```py
 # home/views.py
 ...
@@ -107,7 +126,8 @@ def index(request):
     return render(request, 'pages/index.html')
 ```
 
-- Create a new file named `urls.py` inside the `home` folder and add a route to the index view.
+Create a new file named `urls.py` inside the `home` folder and add a route to the index view.
+
 ```py
 # home/urls.py
 from django.urls import path
@@ -119,17 +139,23 @@ urlpatterns = [
 ]
 ```
 
-- Finally, run the Django server from the terminal using the `python manage.py runserver` command and access the homepage in your browser using the URL `http://127.0.0.1:8000`. This shows the installed material dashboard theme.
+Finally, run the Django server from the terminal using the `python manage.py runserver` command and access the homepage in your browser using the URL `http://127.0.0.1:8000`. 
+This shows the installed material dashboard theme.
+
 ```bash
 (venv) django_api_and_chartjs$ python manage.py runserver
 ```
 Now that our Django application is running, we will be creating a model to store data in our database.
 
-## Creating `Sales` model for data storage
-To display dynamic sales data in our Django and Chart.js web applications, we first need to create a model to store the data in our database. This can be achieved using Django's Object-Relational Mapper (ORM) to define the structure of the database.
+## ✅ Creating `Sales` Model
+
+To display dynamic sales data in our Django and Chart.js web applications, we first need to create a model to store the data in our database. 
+This can be achieved using Django's Object-Relational Mapper (ORM) to define the structure of the database.
 
 ### Define `Sales` table structure
-- Open the `home/models.py` file and make the necessary changes to create a new `Sales` model
+
+Open the `home/models.py` file and make the necessary changes to create a new `Sales` model
+
 ```py
 # home/models.py
 from django.db import models
@@ -154,7 +180,9 @@ class Sales(models.Model):
 ```
 
 ### Adding `Sales` data to the database
-- To access the database from the admin panel, we need to register it. Open `home/admin.py` and make the following changes:
+
+To access the database from the admin panel, we need to register it. Open `home/admin.py` and make the following changes:
+
 ```py
 # home/admin.py
 ...
@@ -177,14 +205,17 @@ The first command will prompt you to enter a username, email (optional), and pas
 
 ![Django Admin material dashboard](https://user-images.githubusercontent.com/57325382/234968310-2806aec3-2165-4dfd-bde6-294a61f4deb0.png)
 
-- Once you have accessed the admin panel, you can click on the "Add sale" button to add new sales data to the database. This data will then be available for us to retrieve and display dynamically in our web application using Chart.js.
+Once you have accessed the admin panel, you can click on the "Add sale" button to add new sales data to the database. This data will then be available for us to retrieve and display dynamically in our web application using Chart.js.
 
 ![Django Admin material dashboard](https://user-images.githubusercontent.com/57325382/234968317-be8dfc18-da96-4570-9db1-10354888c0d4.png)
 
-## `Django API Generator` Installation and Setup
-The Django API generator is used to create API routes for our Django models, which allows us to perform Create-Read-Update-Delete (CRUD) operations on that model. It is built on top of the `Django REST framework`.
+## ✅ `Django API Generator` Installation and Setup
+
+The Django API generator is used to create API routes for our Django models, which allows us to perform Create-Read-Update-Delete (CRUD) operations on that model. 
+It is built on top of the `Django REST framework`.
 
 ### Installing `Django API Generator
+
 `Django API Generator` was installed earlier when we were installing packages needed for this tutorial. To install the package separately use the command `pip install django-api-generator`
 
 ### Setup `Django API Generator
@@ -247,12 +278,16 @@ Now if we head to `http://127.0.0.1/api/sales` we will be able to see the view s
 
 With the API set up, we can now proceed to create charts on our Django application using Chart.js and leveraging data from the API.
 
-## Using Chart.Js with a Django application
-### Installing Chart.js
-There are several ways Chart.js can be used in a web development project. It can be done using CDN and using npm to install the chart.js package. Check chartjs [installation guide](https://www.chartjs.org/docs/latest/getting-started/installation.html) for directions to install chart.js
+## ✅ Using Chart.Js with Django
 
-### Integrating Chart.js into a Django application
-We will be using the CDN method for this tutorial. Create a base template inside your templates folder named base.html and add the code
+There are several ways Chart.js can be used in a web development project. 
+It can be done using CDN and using npm to install the chart.js package. Check chartjs [installation guide](https://www.chartjs.org/docs/latest/getting-started/installation.html) for directions to install chart.js
+
+### Integrating Chart.js with Django
+
+We will be using the CDN method for this tutorial. 
+Create a base template inside your templates folder named base.html and add the code
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -276,14 +311,17 @@ We will be using the CDN method for this tutorial. Create a base template inside
 
 The `{% block javascript %}` contains a script to the chart.js cdn and this will provide the Classes needed to add charts to the web application.
 
-**NB:** `django-admin-material-dashboard` already uses `Chart.js`, without defining our script, we can make use of it.
+**Note:** `django-admin-material-dashboard` already uses `Chart.js`, without defining our script, we can make use of it.
 
-## Creating dynamic charts with Chart.js using API data
+## ✅ Creating Dynamic Charts
+
 We will be using external javascript to create the charts, and using javascript `fetch` API to query the API for data.
 
-Copy `index.html` file from `venv/lib/python3.10/site-packages/admin_material/templates/pages` and paste it into `templates/pages`. Now our `index.html` page for the application will be served by the file in `templates/pages`
+Copy `index.html` file from `venv/lib/python3.10/site-packages/admin_material/templates/pages` and paste it into `templates/pages`. 
+Now our `index.html` page for the application will be served by the file in `templates/pages`
 
 ### Extracting the data from the API
+
 - Create a folder called `static` in the root directory of your project. Inside the folder create another folder `js` and create the file `getModelData.js` and add the following
 ```js
 // static/js/getModelData.js
@@ -343,7 +381,9 @@ data.then(data => {
 });
 
 ```
+
 Because the labels and data used in `Chartjs` is an array, we had to perform some preprocessing on the data so we can produce proper charts from the data.
+
 `country` and `countrySales` in the `salesData` object hold the countries from the database and the total sales from that country respectively. Using their index to match them together.
 `month` and `monthlySales` takes account of the months from the database and the total sales in each month respectively.
 
@@ -352,6 +392,7 @@ Because the labels and data used in `Chartjs` is an array, we had to perform som
 The code after the function, processes the data from the `getData` function further to make it useful for visualization.
 
 ### Creating a Bar chart from data
+
 The bar chart will show total sales by country. The `salesData` object earlier contained `country` and `countrySales`. `country` will serve as the label and `countrySales` as the data.
 Since `django_admin_material_dashboard` already uses Chartjs, no additional setting is required to display charts on templates.
 
@@ -433,7 +474,8 @@ function barChart() {
 } 
 ```
 
-- Now, we will be making changes to `index.html` that we copied earlier to display the chart from the `barChart` function. At the bottom of `templates/index.html` inside the `{% block scripts %}` tag. Delete the code for the default static charts being displayed and add the following.
+Now, we will be making changes to `index.html` that we copied earlier to display the chart from the `barChart` function. At the bottom of `templates/index.html` inside the `{% block scripts %}` tag. Delete the code for the default static charts being displayed and add the following.
+
 ```hbs
 <!-- templates/index.html -->
   {% block scripts %}
@@ -451,9 +493,11 @@ By adding the `getModelData.js` and `drawChart.js` scripts, we have access to th
 The `barChart` function is called inside the `setTimeout` function to allow the data from the API to be loaded since the fetch API is an asynschronous function and it returns a promise. By doing this, the promise can get resolved and the data passed to the `barChart` function.
 
 ### Creating a Line chart from data
+
 The line chart will show the sales trend by month. The `salesData` object earlier contained `month` and `monthlySales`. `month` will serve as the label and `monthlySales` as the data.
 
-- Add the following to `static/drawChart.js`
+> Add the following to `static/drawChart.js`
+
 ```js
 function lineChart() {
   const ctx2 = document.getElementById("chart-line").getContext("2d");
@@ -541,7 +585,8 @@ function lineChart() {
 }
 ```
 
-- After creating the function, now we need to call the function to make the chart show on the dashboard. Make the following changes to `templates/index.html`
+After creating the function, now we need to call the function to make the chart show on the dashboard. Make the following changes to `templates/index.html`
+
 ```hbs
 <!-- templates/index.html -->
 ...
@@ -554,9 +599,11 @@ function lineChart() {
 ```
 
 ### Creating a Pie chart from data
+
 The pie chart will use the same data as the bar chart, just displaying it differently.
 
-- Add the function below to `static/drawChart.js`
+Add the function below to `static/drawChart.js`
+
 ```js
 function pieChart() {
   const ctx3 = document.getElementById("chart-pie").getContext("2d");
@@ -592,7 +639,8 @@ function pieChart() {
 }
 ```
 
-- The `ctx3` variable for our `pieChart` function is pointing to the `chart-pie` id, and that id does not exist on our template. Head to line 125 and make the changes
+The `ctx3` variable for our `pieChart` function is pointing to the `chart-pie` id, and that id does not exist on our template. Head to line 125 and make the changes
+
 ```hbs
 <!-- templates/index.html -->
 ...
@@ -614,14 +662,24 @@ Open your browser and open `http://127.0.0.1` and you can see the charts being c
 
 ![Workspace 1_024 resized](https://user-images.githubusercontent.com/57325382/236335392-79048745-b5f0-407d-81da-98bbc7659285.png)
 
-## Conclusion
-In this tutorial, we've explored how to use Django, Django API generator and Chart.js together to build a web application that displays data in an interactive chart. We started by setting up a new Django project and app, creating a model to store our sales data, and populating the database with sample data. Next, we registered the database in the Django admin panel, created a superuser, and used the admin panel to add more data to the database. We then generated an API for our sales model using the `django-api-generator` package and tested the API to ensure it was working properly.
+## ✅ Conclusion
 
-Finally, we integrated Chart.js into our Django application and created a dynamic chart that displays the sales data fetched from the API. We also added user interactivity to the chart by allowing the user to filter data by date range.
+In this tutorial, we've explored how to use Django, Django API generator and Chart.js together to build a web application that displays data in an interactive chart. 
+We started by setting up a new Django project and app, creating a model to store our sales data, and populating the database with sample data. 
+
+Next, we registered the database in the Django admin panel, created a superuser, and used the admin panel to add more data to the database. 
+
+We then generated an API for our sales model using the `django-api-generator` package and tested the API to ensure it was working properly.
+
+Finally, we integrated Chart.js into our Django application and created a dynamic chart that displays the sales data fetched from the API. 
+We also added user interactivity to the chart by allowing the user to filter data by date range.
 
 Overall, this tutorial demonstrates how Django, Django API generator and Chart.js can be used together to build powerful and interactive web applications.
 
-## Resources
-- [Chartjs](https://www.chartjs.org/docs/latest/configuration/)
-- 👉 More [Django Starters](https://appseed.us/admin-dashboards/django/) crafted by AppSeed
-- 🚀 Free [Support](https://appseed.us/support/) via Email & Discord
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
