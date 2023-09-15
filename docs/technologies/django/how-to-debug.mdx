@@ -1,28 +1,27 @@
 ---
-title: How to DEBUG Django
-description: Learn how to DEBUG Django and activate Logging
+title         : How to DEBUG Django
+sidebar_label : How to DEBUG
 ---
 
-import SubHeading from "@site/src/components/SubHeading";
+# How to DEBUG Django
 
-<SubHeading color="#25c2a0">Learn how to DEBUG Django and activate Logging</SubHeading>
+<SubHeading>Learn how to DEBUG Django and activate Logging</SubHeading>
 
 **Logging** and **Debugging** are essential aspects of any web application, as it allows developers to record and analyze the execution of their code, making it easier to identify and resolve issues. 
+
 In a **Django** application, proper logging can not only save valuable time during development and debugging but also help you ensure the stability and security of your application in production.
 
 In this article, we will discuss the importance of logging and debugging in Django applications. Our journey will be divided into three key sections:
 
-* ✅ Configuring Django for Logging
-    
-* ✅ Using `pdb` in a Django Application
-    
-* ✅ Configuring Django Debug Toolbar
+- Configuring Django for Logging
+- Using `pdb` in a Django Application
+- Configuring Django Debug Toolbar
 
 So, let's dive in and explore the world of Django logging!
 
 <br />
 
-## Project Setup
+## ✅ Project Setup
 
 For this article, you can find the code on GitHub at **[How to DEBUG Django Sample](https://github.com/app-generator/sample-django-debug)**.
 
@@ -46,21 +45,27 @@ $ python manage.py runserver
 
 <br />
 
-## Configuring Django for Logging
+## ✅ Configuring Django for Logging
 
 Django natively integrates logging using Python's built-in logging module. This integration allows developers to easily track events, monitor application behavior, and diagnose issues.
- Django allows you principally to use the default logging system or to create your custom loggers.
 
-* **Default logging settings**: Django provides a default logging configuration that is applied if you don't explicitly configure logging in your `settings.py`. This default configuration logs messages with the `WARNING` level and above to the console. In `DEBUG` mode, Django also logs SQL queries.
-    
-* **Custom loggers**: Django allows you to create custom loggers for your applications by defining the `LOGGING` dictionary in your settings.py file, as explained in the previous answer. This gives you full control over the logging behavior of your application, allowing you to configure loggers, handlers, filters, and formatters to meet your specific requirements.
-    
+Django allows you principally to use the default logging system or to create your custom loggers.
 
+> **Default logging settings** 
+
+Django provides a default logging configuration that is applied if you don't explicitly configure logging in your `settings.py`. 
+This default configuration logs messages with the `WARNING` level and above to the console. In `DEBUG` mode, Django also logs SQL queries.
+    
+> **Custom loggers** 
+
+Django allows you to create custom loggers for your applications by defining the `LOGGING` dictionary in your settings.py file, as explained in the previous answer. 
+This gives you full control over the logging behavior of your application, allowing you to configure loggers, handlers, filters, and formatters to meet your specific requirements.
+    
 We will write our configuration for Logging in the next lines.
 
 <br />
 
-### Custom Logging Settings
+## ✅ Custom Logging Settings
 
 As stated in the previous section, customizing the `Logging` in Django add the following configuration in `core/settings.py`.
 
@@ -210,9 +215,10 @@ In the next section, we will explore how to use `pdb` for debugging in a Django 
 
 <br />
 
-## Using **PDB** for Debugging
+## ✅  Using **PDB** for Debugging
 
 `pdb`, short for "Python Debugger", is a built-in Python module that provides a way to interactively debug your code. 
+
 You can use `pdb` in a Django application to debug your views, models, or other code within the app. We will use `pdb` in the `test_logs` view by adding `pdb.set_trace()` after the line `users = User.objects.all()`.
 
 ```python
@@ -250,6 +256,7 @@ Here are some useful `pdb` commands you can use during the debugging session:
     
 
 Visit this URL again [http://localhost:8000/test\_logs](http://localhost:8000/test_logs) and go on the terminal when you are running the Django server and let's type some commands. 
+
 You can check the results of these commands typed in the image below.
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1682867617748/b896ea35-e0e3-4300-987e-b123af4ba1fa.png)
@@ -273,25 +280,38 @@ In the next section, we will learn why and how to use `django-debug-toolbar`.
 
 <br />
 
-## Integrating `django-debug-toolbar`
+## ✅ Integrating `django-debug-toolbar`
 
 As a developer, you might have already faced issues such as performance issues, SQL queries, template rendering issues, and more, all within the context of your application.
 
-[**Django Debug Toolbar**](https://django-debug-toolbar.readthedocs.io/en/latest/) is a third-party package that provides a set of panels displaying various debug information about the current request/response in your Django application. 
+[**Django Debug Toolbar**](https://django-debug-toolbar.readthedocs.io/en/latest/) is a third-party package that provides a set of panels 
+displaying various debug information about the current request/response in your Django application. 
+
 It is an essential tool for Django developers and it can help you with the following issues:
 
-1. **Performance analysis**: It allows you to analyze the performance of your views, identifying potential bottlenecks and slow database queries.
+> **Performance analysis** 
+
+It allows you to analyze the performance of your views, identifying potential bottlenecks and slow database queries.
     
-2. **SQL query inspection**: It provides detailed information about the SQL queries executed during a request, including their execution times and the ability to see the full query with parameters.
+> **SQL query inspection** 
+
+It provides detailed information about the SQL queries executed during a request, including their execution times and the ability to see the full query with parameters.
     
-3. **Template debugging**: It displays the context and inheritance of your templates, making it easier to debug template-related issues.
+> **Template debugging** 
+
+It displays the context and inheritance of your templates, making it easier to debug template-related issues.
     
-4. **Cache usage**: It shows cache usage statistics, helping you optimize your application's caching strategy.
+> **Cache usage** 
+
+It shows cache usage statistics, helping you optimize your application's caching strategy.
     
-5. **Signals**: It displays a list of signals triggered during the request, which can be useful for debugging signal-related issues.
+> **Signals** 
+
+It displays a list of signals triggered during the request, which can be useful for debugging signal-related issues.
     
-6. **Request/response data**: It provides information about the request and response, such as HTTP headers, cookies, and more.
-    
+> **Request/response data** 
+
+It provides information about the request and response, such as HTTP headers, cookies, and more.
 
 Let's install the package and configure it in our Django application. First of all, install the package using `pip`.
 
@@ -367,22 +387,37 @@ The configuration is done and you can visit `http://localhost:8000` and you will
 
 As you can see, you have many options on the panel that you can explore
 
-* **Timer**: Displays the time taken to process the request, render the template, and execute SQL queries.
+> **Timer** 
+
+Displays the time taken to process the request, render the template, and execute SQL queries.
     
-* **SQL**: Shows the number of SQL queries executed during the request, along with the total time taken. Clicking on this panel reveals a list of executed queries with their execution times, and you can click on each query to see the full SQL statement with parameters. This can help you identify slow or redundant queries and optimize your database interactions.
+> **SQL** 
+
+Shows the number of SQL queries executed during the request, along with the total time taken. Clicking on this panel reveals a list of executed queries with their execution times, and you can click on each query to see the full SQL statement with parameters. This can help you identify slow or redundant queries and optimize your database interactions.
     
-* **Cache**: Provides cache usage statistics, including the number of cache hits, misses, and sets during the request. This can help you optimize your application's caching strategy.
+> **Cache** 
+
+Provides cache usage statistics, including the number of cache hits, misses, and sets during the request. This can help you optimize your application's caching strategy.
     
-* **Templates**: Displays information about the templates used in the current request, such as the context and inheritance. This can help you debug template-related issues.
+> **Templates** 
+
+Displays information about the templates used in the current request, such as the context and inheritance. This can help you debug template-related issues.
     
-* **Static files**: Shows information about the static files used in the current request, including the number of files and their total size. This can help you optimize your application's static file usage.
+> **Static files** 
+
+Shows information about the static files used in the current request, including the number of files and their total size. This can help you optimize your application's static file usage.
     
-* **Signals**: Lists the signals triggered during the request, which can be useful for debugging signal-related issues.
+> **Signals** 
+
+Lists the signals triggered during the request, which can be useful for debugging signal-related issues.
     
-* **Request**: Displays information about the current request, such as the HTTP headers, cookies, and query parameters.
+> **Request** 
+
+Displays information about the current request, such as the HTTP headers, cookies, and query parameters.
     
-* **Response**: Provides information about the response, such as the status code, content type, and content length.
-    
+> **Response** 
+
+Provides information about the response, such as the status code, content type, and content length.
 
 And we are done.🚀 We have just integrated `django-debug-toolbar` in the Django application and you can have stats that can help you optimize the application.
 
@@ -390,15 +425,15 @@ Coupled with `pdb` and `logging`, you have a set of powerful tools you can use f
 
 <br />
 
-## Conclusion
+## ✅ Conclusion
 
 In this article, we have talked about `Django Debug Toolbar`, `pdb`, and `logging` which are essential tools for efficient Django application development. 
 Utilizing these tools, you can identify performance bottlenecks, debug code issues, and optimize database queries with ease.
 
 <br />
 
-## Resources
+## ✅ Resources 
 
-- 👉 [How to DEBUG Django](https://github.com/app-generator/sample-django-debug) - the sample updated for this tutorial  
-- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
-- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
