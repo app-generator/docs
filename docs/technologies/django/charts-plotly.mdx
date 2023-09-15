@@ -1,11 +1,11 @@
 ---
-title: Django & Plotly 
-description: Learn how to showcase charts with Django & Plotly
+title         : Django & Plotly
+sidebar_label : Django & Plotly
 ---
 
-import SubHeading from "@site/src/components/SubHeading";
+# Django & Plotly
 
-<SubHeading color="#25c2a0">Learn how to showcase charts with Django & Plotly</SubHeading>
+<SubHeading>Learn how to showcase charts with Django & Plotly</SubHeading>
 
 **Django** is a robust web framework that facilitates the rapid and easy development of intricate web applications. 
 One common application of Django is in developing data-centric web applications that exhibit information using charts and graphs. 
@@ -23,7 +23,7 @@ These interactive features make it easier to explore and understand your data. `
 
 <br />
 
-## Introduction
+## ✅ Introduction
 
 `Plotly` also offers a wide range of customization options, allowing you to change colors, fonts, and layouts to create graphs that match your specific needs. 
 Additionally, you can easily embed Plotly graphs in web applications or share them with others by exporting them to various file formats such as PNG, SVG, or PDF.
@@ -39,7 +39,7 @@ Subsequently, we will devise a model to preserve our sales data and a view to se
 
 <br />
 
-## Setting up `Django`
+## ✅ Setting up `Django`
 
 You can create a new folder, change the directory into the new folder, and create a new virtual environment by running the following commands in the terminal:
 
@@ -49,13 +49,13 @@ You can create a new folder, change the directory into the new folder, and creat
 $ mkdir django-charts
 ```
 
-> ✅ To change the directory into the new folder, use the "cd" command followed by the name of the folder you just created.
+> To change the directory into the new folder, use the "cd" command followed by the name of the folder you just created.
 
 ```bash
 $ cd django-charts
 ```
 
-> ✅ To create a new virtual environment, you can use the `virtualenv` module bundled with Python.
+> To create a new virtual environment, you can use the `virtualenv` module bundled with Python.
 
 ```bash
 $ virtualenv venv
@@ -89,13 +89,13 @@ To install Django and `material-design` and also create a new Django project, ru
 
 Once the Django project has been created, the next step is to create a new Django application and modify the project to recognize the application and the `material dashboard` that was installed earlier.
 
-> ✅ Create a new Django application by executing the command
+> Create a new Django application by executing the command
 
 ```bash
 (venv) $ python manage.py startapp home
 ```
 
-> ✅ Open `core/settings.py` and make the following changes
+> Open `core/settings.py` and make the following changes
 
 ```py
 # core/settings.py
@@ -125,7 +125,7 @@ LOGIN_REDIRECT_URL = '/'
 ...
 ```
 
-> ✅ Make the following changes to `core/urls.py` to add routes to the application created and `material dashboard`
+> Make the following changes to `core/urls.py` to add routes to the application created and `material dashboard`
 
 ```py
 # core/urls.py
@@ -138,7 +138,7 @@ urlpatterns = [
 ]
 ```
 
-> ✅ We will be creating a view to the homepage of the web application inside `home/views.py`.
+> We will be creating a view to the homepage of the web application inside `home/views.py`.
 
 ```py
 # home/views.py
@@ -150,7 +150,7 @@ def index(request):
 
 ```
 
-> ✅ Create the file `urls.py` inside `home` folder and create a route to the index view created.
+> Create the file `urls.py` inside `home` folder and create a route to the index view created.
 
 ```py
 # home/urls.py
@@ -172,11 +172,11 @@ As we progress through this tutorial, we will learn how to utilize data from our
 
 <br />
 
-## Creating a new Model
+## ✅ Creating a new Model
 
 The application already has static charts, to display dynamic sales data in our Django and Chart.js web application, we need to first create a model to store the data in our database.
 
-### 👉 Defining Model Schema
+### Defining Model Schema
 
 - We will be using Django Object Relational Mapper to define the structure of the database. Open `home/models.py` and make the changes
 ```py
@@ -204,7 +204,7 @@ class Sales(models.Model):
 
 <br />
 
-### 👉 Populating the Database
+### Populating the Database
 
 - Now we need to register the database so we can access it from the admin panel. Make the following changes to `home/admin.py`
 ```py
@@ -237,14 +237,14 @@ With your browser visit `http://127.0.0.1:8000/admin`, You will see the sales ta
 
 <br />
 
-### 👉 Using Plotly with a Django application
+### Using Plotly with a Django application
 
 To use Plotly in a Django application, we need to install a package called `djang_plotly_dash` using `pip`. 
 The purpose of this package is to enable Plotly dash applications to be served as part of a Django application.
 
 <br />
 
-### 👉 Installation and setup of `django_plotly_dash`
+### Installation and setup of `django_plotly_dash`
 
 - From the terminal execute the command
 ```bash
@@ -288,15 +288,14 @@ urlpatterns = [
 
 <br />
 
-## Creating Charts with Plotly
+## ✅ Creating Charts with Plotly
 
 Copy `index.html` file from `venv/lib/python3.10/site-packages/admin_material/templates` and paste it into `templates/pages`. 
 Now our `index.html` page for the application will be served by the file in `templates` folder.
 
-
 <br />
 
-### 👉 Plotly Bar Chart 
+### Plotly Bar Chart 
 
 > Create a file `plotly_plot.py` inside the `home` folder, this is where the functions for generating charts will be written. Add the code
 
@@ -376,7 +375,7 @@ def index(request):
 
 <br />
 
-### 👉 Creating a Line chart with Plotly
+### Creating a Line chart with Plotly
 
 For line chart, we will be creating another function inside the `home/plotly_plot.py` file.
 
@@ -462,7 +461,7 @@ def index(request):
 
 <br />
 
-### 👉 Creating a Pie chart with Plotly
+### Creating a Pie chart with Plotly
 
 Creating a pie chart with Plotly will follow the same pattern as `bar chart` and `line chart` with a little difference in the function that generates the chart.
 
@@ -607,7 +606,7 @@ To further style them, check out [ploty official documentation](https://plotly.c
 
 <br />
 
-## Conclusion
+## ✅ Conclusion
 
 So far we have learned how to create a Django project, integrate an existing Django theme with our project, and create a bar chart, line chart and pie chart using Plotly in Django. 
 Plotly is a powerful visualization tool and can be used with Django to create a wide range of charts.
@@ -615,8 +614,10 @@ Plotly is a powerful visualization tool and can be used with Django to create a 
 By following this tutorial, you should now have a good understanding of how to use Django and Plotly to build a data-driven web application that displays information in an interactive chart. 
 You can use this knowledge to build your web applications and customize the chart to fit your specific use case.
 
-## Resources
+<br />
 
-- 👉 [Plotly Docs](https://plotly.com/python/) - the official website
-- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
-- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
