@@ -1,39 +1,46 @@
 ---
-title: Django Simple Charts
-description: Learn how to showcase charts in Django
+title         : Django Simple Charts
+sidebar_label : Simple Charts
 ---
 
-import SubHeading from "@site/src/components/SubHeading";
+# Simple Charts
 
-<SubHeading color="#25c2a0">Learn how to showcase charts in Django</SubHeading>
+<SubHeading>Learn how to showcase charts in Django</SubHeading>
 
-> Input: 
+**Django** is a powerful web framework that allows developers to build complex web applications quickly and easily. 
+One popular use case for Django is building data-driven web applications that display information in charts and graphs. 
+In this tutorial, we will explore **how to use Django and Chart.js together** to build a web application that displays data in an interactive chart.
 
-- Sample REPO: https://github.com/app-generator/django-simple-charts
+Before we get started, let's briefly introduce [Chart.js](https://www.chartjs.org/). 
+Chart.js is a JavaScript library that allows developers to create beautiful and responsive charts and graphs using HTML5 canvas. 
+It provides a wide range of chart types, including line, bar, pie, radar, and more. Chart.js is easy to use and highly customizable, making it a popular choice for data visualization on the web.
 
-## Introduction
-Django is a powerful web framework that allows developers to build complex web applications quickly and easily. One popular use case for Django is building data-driven web applications that display information in charts and graphs. In this tutorial, we will explore how to use Django and Chart.js together to build a web application that displays data in an interactive chart.
+In this tutorial, we will be making use of [Django Material Dashboard](https://github.com/app-generator/django-material-dashboard), 
+and we will be modifying its homepage to create sales charts using data from Django models.
 
-Before we get started, let's briefly introduce Chart.js. Chart.js is a JavaScript library that allows developers to create beautiful and responsive charts and graphs using HTML5 canvas. It provides a wide range of chart types, including line, bar, pie, radar, and more. Chart.js is easy to use and highly customizable, making it a popular choice for data visualization on the web.
+To get started, we will first set up a new Django project and create a new app that will serve as the homepage of our application. 
+We will then create a model to store our sales data and create a view to serve the data to our front-end. 
 
-In this tutorial, we will be making use of [Django material dashboard](https://github.com/app-generator/django-material-dashboard), and we will be modifying its homepage to create sales charts using data from Django models.
+Finally, we will use Chart.js to create an interactive bar chart, line chart and pie chart that displays data from the sales model.
 
-To get started, we will first set up a new Django project and create a new app that will serve as the homepage of our application. We will then create a model to store our sales data and create a view to serve the data to our front-end. Finally, we will use Chart.js to create an interactive bar chart, line chart and pie chart that displays data from the sales model.
+## ✅ Setting up Django
 
-## Setting up a Django project
 You can create a new folder, change the directory into the new folder, and create a new virtual environment by running the following commands in the terminal:
 
-1. To create a new folder, use the "mkdir" command followed by the name you want to give to the folder.
+> To create a new folder, use the "mkdir" command followed by the name you want to give to the folder.
+
 ```bash
 $ mkdir django-charts
 ```
 
-2. To change the directory into the new folder, use the "cd" command followed by the name of the folder you just created.
+> To change the directory into the new folder, use the "cd" command followed by the name of the folder you just created.
+
 ```bash
 $ cd django-charts
 ```
 
-3. To create a new virtual environment, you can use the `virtualenv` module bundled with Python.
+> To create a new virtual environment, you can use the `virtualenv` module bundled with Python.
+
 ```bash
 django-charts$ virtualenv venv
 ```
@@ -135,13 +142,19 @@ Run the Django server from your terminal by executing the command
 ```bash
 (venv) django-charts$ python manage.py runserver
 ```
-From your browser, head to `http://127.0.0.1:8000`, this shows the theme installed. You will see the `material dashboard` theme. As we progress through this tutorial, we will learn how to utilize data from our Django models to make the charts dynamic.
+From your browser, head to `http://127.0.0.1:8000`, this shows the theme installed. You will see the `material dashboard` theme. 
+As we progress through this tutorial, we will learn how to utilize data from our Django models to make the charts dynamic.
 
-## Creating a model to store sales data
+<br />
+
+## ✅ Create a new Model
+
 The application already has static charts, to display dynamic sales data in our Django and Chart.js web application, we need to first create a model to store the data in our database.
 
 ### Defining Model Schema
-- We will be using Django Object Relational Mapper to define the structure of the database. Open `home/models.py` and make the changes
+
+We will be using Django Object Relational Mapper to define the structure of the database. Open `home/models.py` and make the changes
+
 ```py
 # home/models.py
 from django.db import models
@@ -166,6 +179,7 @@ class Sales(models.Model):
 ```
 
 ### Population the database with sales data
+
 - Now we need to register the database so we can access it from the admin panel. Make the following changes to `home/admin.py`
 ```py
 # home/admin.py
@@ -195,12 +209,17 @@ With your browser visit `http://127.0.0.1:8000/admin`, You will see the sales ta
 
 ![Admin dashboard with populated data](https://user-images.githubusercontent.com/57325382/234968317-be8dfc18-da96-4570-9db1-10354888c0d4.png)
 
-## Using Chart.Js with a Django application
+<br />
+
+## ✅ Using Chart.Js with Django
 
 ### Installing Chart.js
-There are several ways Chart.js can be used in a web development project. It can be done using CDN and using npm to install the chart.js package. Check chart.js [installation guide](https://www.chartjs.org/docs/latest/getting-started/installation.html) for directions to install chart.js
 
-### Integrating Chart.js into a Django application
+There are several ways Chart.js can be used in a web development project. It can be done using CDN and using npm to install the chart.js package. 
+Check chart.js [installation guide](https://www.chartjs.org/docs/latest/getting-started/installation.html) for directions to install chart.js
+
+### Integrate Chart.js 
+
 We will be using the CDN method for this tutorial. Create a base template for inside your templates folder named `base.html` and add the code
 ```html
 <!DOCTYPE html>
@@ -229,10 +248,14 @@ The `{% block javascript %}` contains a script to the chart.js cdn and this will
 
 - copy `index.html` file from `venv/lib/python3.10/site-packages/admin_material/templates/pages` and paste it into `templates/pages`. Now our index.html page for the application will be served by the file in `templates/pages`
 
-## Creating dynamic charts in Django using Chart.js
+<br />
+
+## ✅ Creating charts with Chart.js
+
 So far the charts have displayed static data hardcoded into it. Now we will be making the chart display values from the sales model.
 
 ### Creating Bar chart with Chart.js
+
 The bar chart to be created will be showing details of total sales made on every product.
 
 - Making changes to the index views to send data from the model as context to `index.html`. Open home/views.py` and make the changes
@@ -282,6 +305,7 @@ def index(request):
 `labels_product|safe` is done so the array is not HTML-escaped, because that will cause errors.
 
 ### Creating Line chart with Chart.js
+
 The line to be displayed is to show the total sales made on days of the week.
 
 - We will be making some changes to `home/views.py` and altering the `index` function
@@ -344,6 +368,7 @@ You can checkout full code for `home/views.py` [here](#creating-pie-chart-with-c
 ```
 
 ### Creating a Pie chart with Chart.js
+
 The pie chart to be added to the web page will be showing the sales distribution of each product. The Pie chart will utilize the same data as the bar chart added earlier. Below is the full code for `home/views.py`
 
 ```py
@@ -453,16 +478,24 @@ the first change to be made, will be done line 125 by updating the id of the can
 ```
 The pie chart contains lesser configuration because a lot of the details added by those configurations are not needed for the pie chart
 
-
 ![admin_material dashboard with dynamic charts](https://user-images.githubusercontent.com/57325382/235132678-284b74eb-d6bc-43c8-8d60-58064097e210.png)
 
 We have added charts to our Django application, but there's a lot more configuration that can be added to our charts to change their look and feel, and also make them blend perfectly with our application. [`Chart.js`](https://www.chartjs.org/docs/latest/configuration/) contains detailed documentation on how to configure charts.
 
-## Conclusion
-In this tutorial, we've explored how to use Django and Chart.js together to build a web application that displays data in an interactive chart. We started by setting up a new Django project and app, creating a model to store our sales data, and populating the database with sample data.
+<br />
 
-By following this tutorial, you should now have a good understanding of how to use Django and Chart.js to build a data-driven web application that displays information in an interactive chart. You can use this knowledge to build your web applications and customize the chart to fit your specific use case.
+## ✅ Conclusion
 
-## Resources
-- 👉 More [Django Starters](https://appseed.us/admin-dashboards/django/) crafted by `AppSeed`
-- 🚀 Free [Support](https://appseed.us/support/) via Email & Discord
+In this tutorial, we've explored how to use Django and Chart.js together to build a web application that displays data in an interactive chart. 
+We started by setting up a new Django project and app, creating a model to store our sales data, and populating the database with sample data.
+
+By following this tutorial, you should now have a good understanding of how to use Django and Chart.js to build a data-driven web application that displays information in an interactive chart. 
+You can use this knowledge to build your web applications and customize the chart to fit your specific use case.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
