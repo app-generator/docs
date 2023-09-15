@@ -114,7 +114,7 @@ const config = {
 			},
 			announcementBar: {
 				id: "welcome",
-				content: '🎁 <strong><a target="_blank" href="https://appseed.us/discounts/">Summer PROMO Campaign - 50%OFF</a></strong>.',
+				content: '🎁 <strong><a target="_blank" href="https://appseed.us/discounts/">PROMO Campaign - 30%OFF</a></strong>.',
 				backgroundColor: "#ec407a",
 				// textColor: "#091E42",
 				textColor: "#000000",
