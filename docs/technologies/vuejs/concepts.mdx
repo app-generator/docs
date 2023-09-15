@@ -1,0 +1,145 @@
+---
+title         : Vue.js Concepts
+sidebar_label : Concepts
+---
+
+# Vue.js Concepts
+
+<SubHeading>Learn more about Vue.js concepts with coding samples for each one.</SubHeading>
+
+Absolutely! Let's dive deeper into these key Vue.js concepts with coding samples for each one.
+
+## ✅ Templates
+
+Templates in Vue.js are used to define the structure of your application's HTML. 
+They provide a way to declaratively render the DOM based on the application's state. Vue.js templates use a special syntax that allows you to bind data and apply directives.
+
+**Coding Sample:**
+
+```html
+<div id="app">
+  <p>{{ message }}</p>
+</div>
+```
+
+In this example, `{{ message }}` is a template expression that binds the value of the `message` property to the paragraph element.
+
+## ✅ Data
+
+Data in Vue.js represents the application's state. You can define data properties in your Vue instance, and they are reactive, meaning changes to the data automatically update the DOM.
+
+**Coding Sample:**
+
+```javascript
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello, Vue.js!'
+  }
+});
+```
+
+Here, `message` is a data property.
+
+## ✅ Directives
+
+Directives are special markers in the DOM that tell Vue.js to do something to a DOM element or a group of elements. They are prefixed with `v-`. Vue provides a set of built-in directives for common tasks.
+
+**Coding Sample:**
+
+```html
+<div id="app">
+  <p v-if="showMessage">{{ message }}</p>
+  <button v-on:click="toggleMessage">Toggle Message</button>
+</div>
+```
+
+In this example, `v-if` is a directive that conditionally renders the `<p>` element based on the `showMessage` data property. `v-on:click` is a directive that listens 
+for a click event and calls the `toggleMessage` method when clicked.
+
+## ✅ Methods
+
+Methods in Vue.js are functions defined in the Vue instance that you can call in response to user interactions or to perform other logic. You can use methods to modify data properties.
+
+**Coding Sample:**
+
+```javascript
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello, Vue.js!',
+    showMessage: true
+  },
+  methods: {
+    toggleMessage: function () {
+      this.showMessage = !this.showMessage;
+    }
+  }
+});
+```
+
+In this example, `toggleMessage` is a method that toggles the value of the `showMessage` data property when called.
+
+## ✅ Computed Properties
+
+Computed properties in Vue.js are functions that are cached based on their dependencies. They are useful for performing calculations based on reactive data properties without the need to recompute them every time.
+
+**Coding Sample:**
+
+```javascript
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello, Vue.js!',
+    length: 0
+  },
+  computed: {
+    messageLength: function () {
+      return this.message.length;
+    }
+  }
+});
+```
+
+In this example, `messageLength` is a computed property that calculates the length of the `message` data property.
+
+## ✅ VueJS Components
+
+Components in Vue.js allow you to create reusable and encapsulated building blocks for your application's user interface. Each component can have its own template, data, methods, and more.
+
+**Coding Sample:**
+
+```javascript
+// Define a component
+Vue.component('my-component', {
+  template: '<p>{{ message }}</p>',
+  data: function () {
+    return {
+      message: 'This is a component!'
+    }
+  }
+});
+
+// Create a Vue instance with the component
+var app = new Vue({
+  el: '#app',
+});
+```
+
+In this example, we define a component called `'my-component'` with its template and data. Then, we use it within the `#app` element. The component's template will be rendered where it's placed.
+
+## ✅ Summary
+
+These concepts are the building blocks of Vue.js applications. 
+As you become more familiar with them, you'll be able to create more complex and interactive Vue.js applications. 
+
+Don't hesitate to practice and experiment to deepen your understanding of Vue.js.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

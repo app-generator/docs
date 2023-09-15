@@ -1,0 +1,133 @@
+---
+sidebar_position : 0
+title            : Getting Started with VueJS
+sidebar_label    : Getting Started
+---
+
+# Getting Started with VueJS
+
+<SubHeading>Getting Started with VueJS</SubHeading>
+
+Vue.js is a popular JavaScript framework for building user interfaces. It's known for its simplicity and flexibility. 
+
+In this **getting started guide**, you can go through the basics of Vue.js `step by step`.
+
+**Prerequisites:** Before we begin, you should have a basic understanding of HTML, CSS, and JavaScript. If you're new to JavaScript, it's a good idea to get comfortable with it first.
+
+## ✅ Set UP the Environment
+
+To start using Vue.js, you'll need a code editor (e.g., Visual Studio Code) and Node.js installed on your computer. Here are the steps to set up your environment:
+
+1. **Install Node.js:** Download and install Node.js from the [official website](https://nodejs.org/). Node.js comes with npm (Node Package Manager), which you'll use to manage packages and dependencies.
+
+2. **Create a Project Folder:** Create a new folder for your Vue.js project. You can do this using your file explorer or the command line.
+
+3. **Open a Terminal:** Open a command-line terminal (e.g., Command Prompt on Windows, Terminal on macOS/Linux) and navigate to your project folder using the `cd` command:
+
+   ```bash
+   cd path/to/your/project-folder
+   ```
+
+4. **Initialize a New npm Project:** Run the following command to create a `package.json` file for your project. Follow the prompts to set up your project:
+
+   ```bash
+   npm init
+   ```
+
+## ✅ Installing VueJS
+
+Now that you have your project set up, let's install Vue.js as a dependency.
+
+1. In your terminal, run the following command to install Vue.js:
+
+   ```bash
+   npm install vue
+   ```
+
+2. Vue.js is now installed in your project, and you can start using it.
+
+## ✅ First Vue Application
+
+Let's create a simple Vue.js application to display a message. Create an HTML file (e.g., `index.html`) in your project folder and add the following code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Vue App</title>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello, Vue.js!'
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+This code creates a simple Vue instance that binds the `message` data property to the `#app` element in your HTML. The double curly braces `{{ }}` are used to display the value of `message`.
+
+## ✅ Running Vue App
+
+To view your Vue.js application, follow these steps:
+
+1. Open a terminal, navigate to your project folder, and start a local development server. You can use `live-server`, `http-server`, or any other development server of your choice. If you don't have one installed, you can install `live-server` globally:
+
+   ```bash
+   npm install -g live-server
+   ```
+
+2. Start the server:
+
+   ```bash
+   live-server
+   ```
+
+3. Open your web browser and go to `http://localhost:8080` (or another address provided by your development server). You should see your Vue.js app displaying the "Hello, Vue.js!" message.
+
+## ✅ Understanding Vue Concepts
+
+Vue.js has several core concepts you should become familiar with as you continue your learning journey:
+
+- **Templates**: Vue uses declarative templates with a simple and flexible syntax. Templates are where you define your HTML structure and data binding.
+
+- **Data**: Data properties are used to store the application's state. In our example, `message` is a data property.
+
+- **Directives**: Vue provides directives that you can use in templates to apply special behavior to HTML elements. For example, `v-bind` is used for attribute binding, and `v-on` is used for event handling.
+
+- **Methods**: You can define methods in your Vue instances to handle user interactions or perform other logic.
+
+- **Computed Properties**: These are like methods but with caching. They are useful for complex or expensive calculations.
+
+- **Components**: Vue allows you to build large applications by breaking them down into reusable components.
+
+## ✅ Further Learning
+
+To deepen your understanding of Vue.js, you can explore the official Vue.js documentation, which is well-structured and provides comprehensive information and examples:
+
+- [Vue.js Official Documentation](https://vuejs.org/)
+
+Additionally, you may want to learn about Vue Router for building single-page applications (SPAs) and Vuex for state management in larger Vue applications.
+
+Finally, consider working on small projects and gradually increasing complexity as you become more comfortable with Vue.js. Practice is key to mastering any framework.
+
+Remember that learning a new framework takes time and patience, so don't hesitate to consult the documentation and seek help from online communities if you encounter challenges along the way. Happy coding!
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
