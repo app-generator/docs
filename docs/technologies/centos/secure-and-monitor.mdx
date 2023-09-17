@@ -1,0 +1,256 @@
+---
+title            : Secure CentOS
+sidebar_label    : Secure & Monitor
+---
+
+# How to Secure CentOS
+
+<SubHeading>Learn how to make your CentOS more secure</SubHeading>
+
+Securing a **CentOS Server** for production deployment is crucial to ensure the confidentiality, integrity, and availability of your services and sensitive data. 
+
+![CentOS - Cover Image](https://user-images.githubusercontent.com/51070104/235929403-b0825364-9172-492b-9d41-87640adfc9e9.png)
+
+Here's a step-by-step guide to help you secure your CentOS server:
+
+## ✅ **Update the System**
+
+Ensure that your CentOS system is up to date with the latest security patches and updates. Run the following commands:
+
+```bash
+sudo yum update
+sudo yum upgrade
+```
+
+## ✅ **Firewall Configuration**
+ 
+Use firewalld to set up a firewall and only allow necessary ports and services. For example, if you're running a web server, allow HTTP (port 80) and HTTPS (port 443) traffic:
+
+```bash
+sudo firewall-cmd --zone=public --add-service=http --permanent
+sudo firewall-cmd --zone=public --add-service=https --permanent
+sudo firewall-cmd --reload
+```
+
+## ✅ **SSH Security**
+
+Secure SSH access by changing the default SSH port (optional but recommended) and disable root login. Edit the SSH configuration file `/etc/ssh/sshd_config`:
+
+```bash
+Port 2222  # Change to a non-default port
+PermitRootLogin no
+PasswordAuthentication no  # Use key-based authentication
+```
+
+After making these changes, restart the SSH service:
+
+```bash
+sudo systemctl restart sshd
+```
+
+## ✅ **Regular User Accounts**
+
+Avoid using the root account for regular tasks. Create a separate user with sudo privileges for administrative tasks:
+
+```bash
+sudo useradd -m -s /bin/bash yourusername
+sudo passwd yourusername
+sudo usermod -aG wheel yourusername
+```
+
+## ✅ **Set Up SSH Keys**
+
+Use SSH keys for authentication instead of passwords. Generate an SSH key pair on your local machine and copy the public key to your server:
+
+```bash
+ssh-keygen -t rsa
+ssh-copy-id yourusername@server_ip
+```
+
+## ✅ **Fail2Ban**
+
+Install and configure Fail2Ban to protect against brute force attacks:
+
+```bash
+sudo yum install fail2ban
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+```
+
+## ✅ **Install and Configure SELinux**
+
+CentOS comes with SELinux, a security enhancement. Ensure it's enabled and properly configured:
+
+```bash
+sudo setenforce 1
+```
+
+## ✅ **Regular Backups**
+
+Implement a regular backup strategy to ensure data recovery in case of a breach or hardware failure.
+
+## ✅ **Security Updates**
+
+Continuously monitor and apply security updates. You can use tools like `yum-cron` or `dnf-automatic` to automate this process.
+
+## ✅ **Application Security**
+
+Harden the security of your applications by following best practices and regularly updating them.
+
+## ✅ **Monitoring and Intrusion Detection**
+
+Use monitoring tools like `Prometheus`, `Grafana`, and intrusion detection systems like `Tripwire` or `AIDE` to detect and respond to security incidents.
+
+## ✅ **Regular Security Audits**
+
+Perform regular security audits and vulnerability assessments to identify and address potential weaknesses.
+
+## ✅ **Network Security**
+
+Implement network security measures, like network segmentation and VLANs, to isolate critical systems and minimize attack surfaces.
+
+## ✅ **Physical Security**
+
+Ensure physical security of the server by restricting physical access to authorized personnel only.
+
+## ✅ **Logging and Auditing**
+
+Configure comprehensive system logging and auditing to track and investigate security incidents.
+
+## ✅ Detecting Real-time Changes
+
+Detecting real-time changes to system-critical files and emitting alerts is essential for maintaining the security and integrity of your CentOS server. 
+You can achieve this by using file integrity monitoring (FIM) tools like `auditd`, `tripwire`, or `osquery`. Here, I'll provide an example using `auditd`, which is a built-in auditing tool in CentOS:
+
+### **Install and Enable `auditd`**
+
+If it's not already installed, you can install `auditd` with the following command:
+
+```bash
+sudo yum install audit
+```
+
+Enable and start the `auditd` service:
+
+```bash
+sudo systemctl enable auditd
+sudo systemctl start auditd
+```
+
+### **Configure Audit Rules**
+
+You can set up custom audit rules to monitor specific files or directories. For example, to monitor changes to the `/etc` directory, create a custom audit rule in a file named `/etc/audit/rules.d/custom.rules`:
+
+```bash
+sudo nano /etc/audit/rules.d/custom.rules
+```
+
+Add the following rule to monitor file changes in `/etc`:
+
+```
+-w /etc -p wa
+```
+
+This rule will watch the `/etc` directory for write (w) and attribute (a) changes. You can adjust the rules to fit your specific needs.
+
+### **Restart `auditd`**:
+
+   After adding or modifying audit rules, restart the `auditd` service to apply the changes:
+
+   ```bash
+   sudo systemctl restart auditd
+   ```
+
+### **View Audit Logs**:
+
+You can view the audit logs in real-time using the `auditd` tools. For example, you can use the `ausearch` command to search for file-related events:
+
+```bash
+sudo ausearch -f /etc
+```
+
+This command will display audit events related to changes in the `/etc` directory.
+
+### **Set Up Alerts**
+
+To emit alerts when changes are detected, you can use a variety of methods, including email notifications, custom scripts, or central logging solutions like `syslog-ng`, `rsyslog`, or `ELK Stack` 
+(Elasticsearch, Logstash, Kibana).
+
+Here's an example of setting up an email notification when `auditd` logs an event:
+
+> Install `auditd` email alerts:
+
+```bash
+sudo yum install auditd-plugins-mail
+```
+
+> Edit the `/etc/audit/auditd.conf` file and configure the `action_mail_acct` and `admin_space_left_action` options. For example:
+
+```
+action_mail_acct = root
+admin_space_left_action = halt
+```
+
+> Create a custom script that will be executed when an audit event occurs. For example:
+
+```bash
+sudo nano /etc/audit/rules.d/audit-alert.rules
+```
+
+Add the following rule:
+
+```
+-a always,exit -F arch=b64 -S open -F dir=/etc -k audit-alert
+```
+
+This rule logs file openings in the `/etc` directory.
+
+> Restart `auditd` to apply the changes:
+
+```bash
+sudo systemctl restart auditd
+```
+
+> Create a script (e.g., `/etc/audit/audit-alert.sh`) to send an email alert when an audit event is detected.
+
+```bash
+#!/bin/bash
+ausearch -k audit-alert | mail -s "Audit Alert on Server" your@email.com
+```
+
+**Make the script executable**
+
+```bash
+sudo chmod +x /etc/audit/audit-alert.sh
+```
+
+> Use a cron job to run the script at regular intervals to check for audit events and send alerts:
+
+```bash
+sudo crontab -e
+```
+
+Add the following line to run the script every 15 minutes:
+
+```
+*/15 * * * * /etc/audit/audit-alert.sh
+```
+
+With these steps, you'll have a basic file integrity monitoring system in place that detects changes to system-critical files and emits alerts when such changes occur. 
+You can customize the rules, alerts, and notifications to meet your specific requirements and integrate them into your server monitoring and incident response procedures.
+
+<br />
+
+## ✅ `In Summary` 
+
+Security is an ongoing process. Helps alot to stay informed about the latest security threats and best practices, and adapt your security measures accordingly. 
+
+Regularly review and update your security policies and procedures to **maintain a secure production environment for CentOS**.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
