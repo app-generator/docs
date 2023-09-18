@@ -1,5 +1,22 @@
 # Change Log
 
+## [1.0.50] 2023-09-15
+### Changes
+
+- Update [Django](https://docs.appseed.us/technologies/django/) Section
+  - [Getting Started with Django](https://docs.appseed.us/technologies/django/getting-started/)
+  - [Django Releases](https://docs.appseed.us/technologies/django/releases/)
+  - [Integrate Django with Stripe](https://docs.appseed.us/technologies/django/integrate-stripe/)
+  - [Integrate Django with PayPal](https://docs.appseed.us/technologies/django/integrate-paypal/)
+- Update [Flask](https://docs.appseed.us/technologies/flask/) Section
+  - [Getting Started with Flask](https://docs.appseed.us/technologies/flask/getting-started/)
+  - [Async Support in Flask](https://docs.appseed.us/technologies/flask/async-support/)
+  - [Integrate Flask with Celery](https://docs.appseed.us/technologies/flask/integrate-celery/)
+- Update [AWS](https://docs.appseed.us/deployment/aws/) Section
+  - [Getting Started with AWS](https://docs.appseed.us/deployment/aws/getting-started/)
+- Update [Javascript](https://docs.appseed.us/technologies/javascript/)
+  - [Getting Started with Javascript](https://docs.appseed.us/technologies/javascript/getting-started/)  
+
 ## [1.0.49] 2023-09-15
 ### Changes
 
