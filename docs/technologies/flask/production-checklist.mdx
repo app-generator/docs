@@ -1,12 +1,11 @@
 ---
-description: Learn how to prepare Flask for production
+title            : Prepare Flask for production
+sidebar_label    : Changes for Production
 ---
 
-# Flask Checklist for Production
+# Prepare Flask for production
 
-import SubHeading from "@site/src/components/SubHeading";
-
-<SubHeading color="#25c2a0">Learn how to prepare Flask for production</SubHeading>
+<SubHeading>Learn how to prepare Flask for production</SubHeading>
 
 ## Introduction
 
@@ -20,7 +19,7 @@ import SubHeading from "@site/src/components/SubHeading";
 
 <br />
 
-## Setting up Flask Application
+## ✅ Setting up Flask Application
 
  > Clone the repository to your machine
  
@@ -55,13 +54,13 @@ Once you have your application set up, we would start making changes to make the
 
 <br />
 
-## Codebase `Update for Deployment`
+## ✅ Codebase `Update for Deployment`
 
 We will be going through some general setups for deployment and then some specific setups for deployment on different platforms.
 
 <br />
 
-### `Update Environment` Variables
+## ✅ `Update Environment` Variables
 
 - Create a file named `.env` in the root folder of your project, this file will hold environmental variables and their values.
 
@@ -82,7 +81,7 @@ Using the `python-dotenv` package, the contents of the `.env` file are loaded in
 
 <br />
 
-## Handle `DataBase Migration`
+## ✅ Handle `DataBase Migration`
 
 Migrations are a way to track changes to your database schema over time. This makes it easy to roll back changes if something goes wrong or to deploy your application to a new environment.
 `Flask-Migrate` is a Flask extension that provides support for database migrations.
@@ -114,7 +113,7 @@ By setting up `flask-migrate` you can be able to move scale your application dat
 
 <br />
 
-## Compressing Assets via `Flask-Minify`
+## ✅ Compressing Assets via `Flask-Minify`
 
 `Flask-Minify` is a Flask extension that can be used to minify HTML, CSS, and JavaScript files. 
 Minifying files can help to improve the performance of your Flask application by reducing the size of the files that need to be downloaded by the user.
@@ -142,7 +141,7 @@ Minification can sometimes introduce errors in your files, so it is important to
 
 <br />
 
-## Increasing Security using `Flask-Talisman`
+## ✅ Increasing Security using `Flask-Talisman`
 
 `Flask-Talisman` is a Flask extension that helps to secure your Flask application by setting HTTP security headers. These headers can help to protect your application from a variety of common web attacks, such as cross-site scripting (XSS), clickjacking, and session hijacking.
 
@@ -164,7 +163,7 @@ With this, we have added a new layer of security to our application in a product
 
 <br />
 
-## Serve Static Files via `CDN`
+## ✅ Serve Static Files via `CDN`
 
 A content delivery network (CDN) is a network of servers that are distributed around the world. 
 CDNs can be used to improve the performance of web applications by delivering static content, such as images and JavaScript files, from the server that is closest to the user.
@@ -234,7 +233,7 @@ With this done, our application is ready to serve static files over a CDN.
 
 <br />
 
-## Deploying Flask Application
+## ✅ Deploying Flask Application
 
 Deploying a Flask application is a crucial step in turning your Python web application into a fully functional and accessible website. 
 It involves the process of making your Flask application available to users on a live server, ensuring its stability, security, and optimal performance. 
@@ -431,7 +430,7 @@ This will set up the application and start the Gunicorn server.
 
 <br />
 
-## Conclusion
+## ✅ In Summary
 
 In this article, we have covered the steps involved in setting up, preparing, and deploying a Flask application. 
 We have also discussed some of the best practices for securing and optimizing your application.
@@ -443,11 +442,11 @@ Here are some of the key takeaways from this article:
 - You can improve the security of your application by using Flask-Talisman and serving static files using a CDN.
 - There are a variety of deployment options available for Flask applications, including Docker, Render, and Heroku.
 
-We hope this article has been helpful. For more information on Flask, please visit the official website: https://flask.palletsprojects.com/en/2.1.x/
-
 <br />
 
-## Resources
+## ✅ Resources 
 
-- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
-- 👉 [Custom Development Services](https://appseed.us/custom-development/) provided by experts
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

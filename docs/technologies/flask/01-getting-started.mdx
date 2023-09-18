@@ -1,0 +1,139 @@
+---
+title            : Getting Started with Flask
+sidebar_label    : Getting Started
+---
+
+# Getting Started with Flask
+
+import SubHeading from "@site/src/components/SubHeading";
+
+<SubHeading>A comprehensive introduction to Flask</SubHeading>
+
+Flask is a lightweight and popular Python web framework that makes it easy to build web applications. 
+In this presentation, I'll provide you with an overview of Flask, its key features, and some coding samples to help you get started.
+
+![Getting Started with Flask - Tutorial provided by AppSeed](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268566349-c41e65a5-2ab9-4b54-8cbc-350ab6da746c.png)
+
+## What is Flask?
+
+- Flask is a micro web framework for Python.
+- It's designed to be simple, lightweight, and easy to use.
+- Flask provides the essentials for building web applications without imposing too much structure or complexity.
+
+## Key Features of Flask
+
+**Minimalistic** 
+
+Flask doesn't include a lot of built-in functionality, allowing you to choose and integrate the components you need for your project.
+
+> **Routing** 
+
+Define URL routes and map them to Python functions for handling requests.
+
+> **HTTP Methods** 
+
+Easily handle HTTP methods (GET, POST, PUT, DELETE, etc.) for different routes.
+
+> **Templates** 
+
+Flask includes a templating engine (Jinja2) for rendering HTML templates.
+
+> **Web Forms** 
+
+Flask-WTF and other extensions make it easy to work with web forms and user input.
+
+> **Database Support** 
+
+Integration with various databases (SQLAlchemy, SQLite, etc.) for data storage.
+
+> **Extensions** 
+
+A rich ecosystem of extensions for adding functionality like authentication, API development, and more.
+
+> **RESTful API Support** 
+
+Flask can be used to build RESTful APIs for serving data.
+
+> **Development Server** 
+
+Comes with a built-in development server for testing your application locally.
+
+> **Easy to Learn** 
+
+Flask's simplicity makes it a great choice for beginners.
+
+## Code Sample 
+
+Let's look at some basic Flask code samples to get a feel for how it works.
+
+> **1. Hello, World!**
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello, World!"
+
+if __name__ == "__main__":
+    app.run()
+```
+
+- This code defines a Flask application and a single route (`/`) that returns "Hello, World!" when accessed in a web browser.
+
+> **2. Routing and Dynamic URLs**
+
+```python
+@app.route("/user/<username>")
+def user_profile(username):
+    return f"User Profile: {username}"
+```
+
+- Here, we define a dynamic route that captures a username from the URL and displays it.
+
+> **3. Templates and Rendering HTML**
+
+```python
+from flask import render_template
+
+@app.route("/hello/<name>")
+def hello_name(name):
+    return render_template("hello.html", name=name)
+```
+
+- Flask uses Jinja2 templates to render HTML. In this example, we render an HTML template with a dynamic `name` variable.
+
+> **4. Handling Forms**
+
+```python
+from flask import Flask, render_template, request
+
+@app.route("/submit", methods=["POST"])
+def submit_form():
+    if request.method == "POST":
+        username = request.form.get("username")
+        return f"Form submitted with username: {username}"
+    return "Invalid request method"
+
+```
+
+This code handles form submissions and extracts data from the POST request.
+
+## ✅ In Summary
+
+Flask is a versatile and easy-to-learn web framework for building web applications and APIs in Python. 
+Its simplicity and flexibility make it a great choice for a wide range of projects. 
+
+To dive deeper into Flask, explore its documentation (https://flask.palletsprojects.com/) and consider exploring extensions and advanced topics like authentication, database integration, and deployment.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
+
