@@ -1,0 +1,102 @@
+---
+title         : FastAPI & Docker Integration
+sidebar_label : Docker Integration
+slug          : docker-integration
+---
+
+# FastAPI & Docker Integration
+
+<SubHeading>Learn how to integrate Docker and Docker Compose to a FastAPI project</SubHeading>
+
+Dockerizing a FastAPI project involves creating a Docker image that contains your FastAPI application and its dependencies. 
+
+![FastAPI & Docker Integration - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268560126-0274f12d-ba96-43cc-9e0d-a9eaf791e7c0.png) 
+
+> Here's a step-by-step guide on **how to dockerize a FastAPI project**:
+
+## ✅ **Create a Dockerfile**
+
+In your FastAPI project directory, create a file named `Dockerfile` (without any file extension) with the following content:
+
+```Dockerfile
+# Use a base Python image
+FROM python:3.x
+
+# Set environment variables
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirements.txt /app/
+
+# Install project dependencies
+RUN pip install -r requirements.txt
+
+# Copy the rest of the application code into the container
+COPY . /app/
+
+# Expose the port your FastAPI app will run on
+EXPOSE 8000
+
+# Command to run your FastAPI app with uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+Make sure to replace `3.x` with the Python version you are using. This Dockerfile sets up a basic environment for running a FastAPI application.
+
+## ✅ **Create a `.dockerignore` File**
+
+In the same directory as your `Dockerfile`, create a `.dockerignore` file to specify files and directories that should be excluded when copying files into the Docker image. For example:
+
+```
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+```
+
+This helps keep unnecessary files out of the Docker image.
+
+## ✅ **Build the Docker Image**
+
+Open a terminal and navigate to your project directory containing the Dockerfile. Run the following command to build the Docker image:
+
+```bash
+docker build -t my-fastapi-app .
+```
+
+Replace `my-fastapi-app` with a name you choose for your Docker image. The `.` at the end specifies the build context (current directory).
+
+## ✅ **Run the Docker Container**
+
+Once the image is built, you can run a Docker container from it:
+
+```bash
+docker run -d -p 8000:8000 my-fastapi-app
+```
+
+This command maps port 8000 inside the container to port 8000 on your host system. Adjust the port mapping as needed.
+
+## ✅ **Access Your FastAPI App**
+
+Your FastAPI app should now be running inside a Docker container. You can access it by visiting `http://localhost:8000` in your web browser or making API requests to that address.
+
+## ✅ `In Summary`
+
+At this point, you've successfully dockerized your FastAPI project. 
+You can customize the Dockerfile further to suit your project's specific requirements, such as adding environment variables, configuring additional services (e.g., databases), 
+or setting up production-ready settings for serving your FastAPI application.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

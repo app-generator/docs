@@ -1,0 +1,124 @@
+---
+title            : Getting Started with FastAPI
+sidebar_label    : Getting Started
+---
+
+# Getting Started with FastAPI
+
+<SubHeading>Getting Started with FastAPI, a high-performance, web framework for building APIs with Python</SubHeading>
+
+FastAPI is a modern, high-performance, web framework for building APIs with Python. 
+It's designed to be easy to use, efficient, and to provide automatic generation of interactive documentation. 
+FastAPI is built on top of Starlette and Pydantic, and it leverages Python 3.6+ type hints for request and response validation. 
+
+![Getting Started with FastAPI - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268560126-0274f12d-ba96-43cc-9e0d-a9eaf791e7c0.png) 
+
+In this introduction, I'll provide you with code samples to help you get started with FastAPI.
+
+## **Installation**
+
+You can install FastAPI using pip:
+
+```bash
+pip install fastapi
+```
+
+You'll also want to install a web server like `uvicorn` to serve your FastAPI application:
+
+```bash
+pip install uvicorn
+```
+
+## **Creating a FastAPI App**
+
+Here's a basic example of a FastAPI application:
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def read_root():
+    return {"message": "Hello, World"}
+```
+
+Save this code to a Python file (e.g., `main.py`).
+
+## **Running the FastAPI App**
+
+You can run your FastAPI app using `uvicorn`:
+
+```bash
+uvicorn main:app --reload
+```
+
+This command tells `uvicorn` to run the `app` instance in the `main.py` file and enables auto-reloading for development.
+
+## **Routes and Path Parameters**
+
+FastAPI makes it easy to define routes and path parameters. Here's an example that includes path parameters:
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def read_root():
+    return {"message": "Hello, World"}
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: int, query_param: str = None):
+    return {"item_id": item_id, "query_param": query_param}
+```
+
+In this example, we define a route `/items/{item_id}` that takes an `item_id` as a path parameter and an optional `query_param` as a query parameter.
+
+## **Request and Response Models**
+
+FastAPI allows you to define request and response models using Pydantic models. Here's an example:
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class Item(BaseModel):
+    name: str
+    description: str = None
+    price: float
+    tax: float = None
+
+@app.post("/items/")
+async def create_item(item: Item):
+    return item
+```
+
+In this example, we define a Pydantic model `Item` for the request body of the POST request to `/items/`. 
+FastAPI automatically validates and parses the incoming JSON data based on this model.
+
+## **Automatic Documentation**
+
+One of FastAPI's standout features is its automatic generation of interactive API documentation. 
+To access the documentation, go to `http://localhost:8000/docs` in your web browser while your FastAPI app is running.
+
+## **Validation and Serialization**
+
+FastAPI automatically validates incoming requests and serializes responses based on the Pydantic models you define. If data doesn't match the expected model, FastAPI will return validation errors.
+
+## ✅ In Summary
+
+These are just some of the basics of FastAPI. It provides many more features for building robust and efficient APIs, including dependency injection, authentication, and more. 
+FastAPI's official documentation is excellent and provides in-depth information on all of its features - [FastAPI Official Documentation](https://fastapi.tiangolo.com/).
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
+
