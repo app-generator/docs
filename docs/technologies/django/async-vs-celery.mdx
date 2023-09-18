@@ -1,0 +1,123 @@
+---
+title         : Django Async vs. Celery
+sidebar_label : Async vs. Celery
+---
+
+# Django Async vs. Celery
+
+<SubHeading>Learn the key differences between Django Async and Celery</SubHeading>
+
+This page explains the key differences between [Django Async](https://docs.djangoproject.com/en/4.2/topics/async/) and [Celery](https://docs.celeryq.dev/en/stable/), 
+two asynchronous technologies used in Python-based projects. 
+
+**Celery and Django Async** are both technologies used for handling asynchronous tasks in Python web applications, but they serve different purposes and have some key differences. 
+
+> Here are **the key differences** between them and also some code samples for each.
+
+## ✅ **Celery**
+
+**Celery** is a distributed task queue system that allows you to offload time-consuming or background tasks to be executed asynchronously. 
+It's not tied to any specific web framework and can be used with various frameworks or standalone applications.
+
+![Celery, distributed task queue manager - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268673174-b1b52623-c517-4156-b2a8-c6cea9f69733.jpg) 
+
+### **Key Features of Celery**
+
+- Distributed and scalable.
+- Supports various message brokers like RabbitMQ, Redis, and others.
+- Task prioritization and scheduling.
+- Supports periodic (cron-like) tasks.
+
+Here's a basic example of how to use Celery:
+
+```python
+# Install Celery and a message broker (e.g., Redis or RabbitMQ) first
+
+from celery import Celery
+
+# Create a Celery instance
+app = Celery('myapp', broker='redis://localhost:6379/0')
+
+# Define a Celery task
+@app.task
+def add(x, y):
+    return x + y
+
+# Call the task asynchronously
+result = add.delay(4, 5)
+
+# Get the result later
+print(result.get())
+```
+
+<br />
+
+## ✅ **Django Async**
+
+**Django Async** is a feature introduced in Django 3.1+ that allows you to write asynchronous code within your Django web application. 
+It's primarily used for improving the performance of I/O-bound operations within Django views, but it's not a full-fledged task queue like Celery.
+
+![Django Async vs. Celery - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+### **Key Features of Django Async**
+
+- Works within the Django framework.
+- Supports asynchronous views, middleware, and database queries.
+- Utilizes Python's `async` and `await` syntax.
+- Useful for I/O-bound tasks within Django views.
+
+Here's a basic example of how to use `Django Async` in a view:
+
+```python
+# Django 3.1+ is required for async support
+
+from django.http import JsonResponse
+from django.db import transaction
+from asgiref.sync import async_to_sync
+
+# Import the database model
+from myapp.models import MyModel
+
+@transaction.atomic
+@async_to_sync
+async def async_view(request):
+    # Perform an asynchronous database query
+    async with MyModel.objects.using('my_db').async_db.transaction():
+        instance = await MyModel.objects.using('my_db').async_db.get(pk=1)
+
+    # Return a JSON response
+    return JsonResponse({'result': instance.field_value})
+```
+
+<br />
+
+## ✅ **Key Differences**
+
+### **Use Case**
+
+- Use `Celery` for handling general-purpose background tasks and offloading heavy computation.
+- Use `Django Async` for optimizing I/O-bound operations within Django views or middleware.
+
+### **Integration**
+   
+- `Celery` is a standalone tool and can be used with any Python application.
+- `Django Async` is specific to the Django framework and can be used within Django projects.
+
+### **Complexity**
+
+- `Celery` provides a more comprehensive task queue system with features like scheduling and prioritization.
+- `Django Async` is simpler and designed for handling asynchronous operations within Django.
+
+## ✅ In Summary
+
+Choose the tool that best fits your project's requirements. If you need a robust task queue system for various tasks and background processing, **Celery** is a better choice. 
+If you want to optimize **Django** views with asynchronous I/O operations, then Django Async is a suitable option.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
