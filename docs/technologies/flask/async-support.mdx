@@ -1,0 +1,89 @@
+---
+title         : Async Support in Flask 
+sidebar_label : Async Support
+---
+
+# Async Support in Flask 
+
+<SubHeading>Understand async support in Flask</SubHeading>
+
+Prior to [version 2.0](https://palletsprojects.com/blog/flask-2-0-released/), **Flask** does not provide native support for asynchronous programming. 
+However, you can use Python's [asyncio library](https://docs.python.org/3/library/asyncio.html) in conjunction with Flask to achieve asynchronous behavior when needed. 
+
+![Understand async support in Flask - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268566349-c41e65a5-2ab9-4b54-8cbc-350ab6da746c.png) 
+
+Flask is traditionally a synchronous framework, but you can integrate asynchronous code as required.
+
+For those that are forced to use legacy versions of Flask, here's how you can work with asynchronous code in Flask:
+
+## ✅ **Using asyncio**
+
+You can use Python's `asyncio` library to handle asynchronous operations within your Flask application. Here's a simple example of how you might use `asyncio` in a Flask route:
+
+```python
+from flask import Flask
+import asyncio
+
+app = Flask(__name__)
+
+@app.route('/')
+async def async_route():
+    result = await some_async_function()
+    return f'Result: {result}'
+
+async def some_async_function():
+    await asyncio.sleep(2)  # Simulating an asynchronous operation
+    return 'Async data'
+
+if __name__ == '__main__':
+    app.run()
+```
+
+In this example, the `async_route` function is marked as `async`, and it awaits the result of an asynchronous operation within `some_async_function`. 
+The route handler will not block, allowing the server to handle other requests during the waiting period.
+
+## ✅ **Using Flask with gevent**
+
+Another way to achieve asynchronous behavior in Flask is to use the gevent library, which provides a cooperative multitasking environment. Gevent can be used as a WSGI server for Flask, allowing it to handle multiple requests concurrently.
+
+First, install gevent:
+
+```bash
+pip install gevent
+```
+
+Then, you can use gevent with Flask like this:
+
+```python
+from flask import Flask
+from gevent.pywsgi import WSGIServer
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello, World!'
+
+if __name__ == '__main__':
+    http_server = WSGIServer(('0.0.0.0', 5000), app)
+    http_server.serve_forever()
+```
+
+In this example, the gevent-based WSGIServer enables multiple requests to be handled concurrently without blocking.
+
+
+## ✅ In Summary
+
+Please note that asynchronous programming is typically used for I/O-bound operations to improve the responsiveness and efficiency of your web application. 
+Flask is well-suited for such use cases when combined with appropriate asynchronous libraries like `asyncio` or gevent. 
+
+However, for CPU-bound tasks, you might want to explore other asynchronous frameworks like FastAPI, which has native support for asynchronous programming. 
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
