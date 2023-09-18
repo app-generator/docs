@@ -1,0 +1,168 @@
+---
+title         : Integrate Django with PayPal
+sidebar_label : Integrate PayPal
+---
+
+# Integrate Django with PayPal
+
+<SubHeading>Learn how to integrate Django with PayPal for payments</SubHeading>
+
+Integrating PayPal with Django allows you to accept online payments through PayPal's payment gateway. 
+PayPal offers different integration methods, but one of the most common and straightforward approaches is to use PayPal's REST API. 
+
+![Integrate Django with PayPal - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268709753-d2b4f9a7-2380-4bdb-844e-3144f5c68919.jpg) 
+
+Here's a step-by-step guide on **how to integrate PayPal with Django** using the REST API:
+
+## ✅ **Set Up a PayPal Business Account**
+
+Before you can integrate PayPal with your Django application, you need to have a PayPal Business account. 
+If you don't have one already, you can sign up for a PayPal Business account on the [PayPal website](https://www.paypal.com).
+
+## ✅ **Create a PayPal REST App**
+
+Once you have a **PayPal Business** account, you'll need to create a PayPal REST app to obtain your client ID and secret key. `Here's how you can do it`:
+
+- Log in to your PayPal Business account.
+- Navigate to the [PayPal Developer Dashboard](https://developer.paypal.com/developer/applications) and log in with your PayPal credentials.
+- Click on "My Apps & Credentials" and then click the "Create App" button under the REST API apps section.
+- Give your app a name, select the sandbox developer account, and click "Create App."
+- You will now see your client ID and secret key on the app details page. Keep these credentials secure as you'll need them in your Django application.
+
+## **Install the `paypalrestsdk` Library**
+
+You'll need to install the `paypalrestsdk` library to interact with PayPal's REST API in your Django application. Install it using pip:
+
+```bash
+pip install paypalrestsdk
+```
+
+## ✅ **Configure Django Settings**
+
+In your Django project's settings, add your PayPal client ID and secret key:
+
+```python
+# settings.py
+
+PAYPAL_CLIENT_ID = 'your_client_id'
+PAYPAL_SECRET_KEY = 'your_secret_key'
+```
+
+## ✅ **Create a Payment View**
+
+Create a Django view that handles the payment process using the PayPal REST API. Below is an example view:
+
+```python
+# views.py
+
+import paypalrestsdk
+from django.conf import settings
+from django.shortcuts import render, redirect
+
+paypalrestsdk.configure({
+    "mode": "sandbox",  # Use "live" for production
+    "client_id": settings.PAYPAL_CLIENT_ID,
+    "client_secret": settings.PAYPAL_SECRET_KEY
+})
+
+def create_payment(request):
+    payment = paypalrestsdk.Payment({
+        "intent": "sale",
+        "payer": {
+            "payment_method": "paypal"
+        },
+        "redirect_urls": {
+            "return_url": "http://localhost:8000/payment/execute/",
+            "cancel_url": "http://localhost:8000/payment/cancel/"
+        },
+        "transactions": [{
+            "item_list": {
+                "items": [{
+                    "name": "Item Name",
+                    "sku": "item001",
+                    "price": "10.00",
+                    "currency": "USD",
+                    "quantity": 1
+                }]
+            },
+            "amount": {
+                "total": "10.00",
+                "currency": "USD"
+            },
+            "description": "Payment for Item Name"
+        }]
+    })
+
+    if payment.create():
+        for link in payment.links:
+            if link.rel == "approval_url":
+                # Redirect the user to PayPal for payment approval
+                return redirect(link.href)
+    else:
+        print(payment.error)
+
+    return render(request, 'payment/create_payment.html')
+```
+
+## ✅ **Create Payment Execution View**
+
+Create a view that handles the execution of the PayPal payment after the user approves it:
+
+```python
+# views.py
+
+def execute_payment(request):
+    payment_id = request.GET.get('paymentId')
+    payer_id = request.GET.get('PayerID')
+
+    payment = paypalrestsdk.Payment.find(payment_id)
+
+    if payment.execute({"payer_id": payer_id}):
+        # Payment successful
+        return render(request, 'payment/success.html')
+    else:
+        print(payment.error)
+        # Handle payment failure
+        return render(request, 'payment/failure.html')
+```
+
+## ✅ **Configure URL Patterns**
+
+Set up URL patterns in your Django project's `urls.py` to map to the views created above:
+
+```python
+# urls.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('payment/create/', views.create_payment, name='create_payment'),
+    path('payment/execute/', views.execute_payment, name='execute_payment'),
+    # Add other URL patterns as needed
+]
+```
+
+## ✅ **Create Templates**
+
+Create HTML templates for your payment views (`create_payment.html`, `success.html`, `failure.html`) to provide a user interface for the payment process and to display payment status.
+
+## ✅ **Run Django Application**
+
+Start your Django development server, visit the `create_payment` view, and follow the PayPal payment process. Make sure to use PayPal's sandbox environment for testing.
+
+## ✅ In Summary
+
+This is a basic integration of PayPal with Django using the REST API. 
+Depending on your requirements, you can explore additional features such as handling webhooks, handling multiple currencies, and customizing the payment process further. 
+
+Be sure to refer to the [PayPal REST API documentation](https://developer.paypal.com/docs/api/overview/) for more details on advanced features and customization options.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
