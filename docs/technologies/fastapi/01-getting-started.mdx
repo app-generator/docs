@@ -15,7 +15,7 @@ FastAPI is built on top of Starlette and Pydantic, and it leverages Python 3.6+ 
 
 In this introduction, I'll provide you with code samples to help you get started with FastAPI.
 
-## **Installation**
+## ✅ **Installation**
 
 You can install FastAPI using pip:
 
@@ -29,7 +29,7 @@ You'll also want to install a web server like `uvicorn` to serve your FastAPI ap
 pip install uvicorn
 ```
 
-## **Creating a FastAPI App**
+## ✅ **Creating a FastAPI App**
 
 Here's a basic example of a FastAPI application:
 
@@ -45,7 +45,7 @@ async def read_root():
 
 Save this code to a Python file (e.g., `main.py`).
 
-## **Running the FastAPI App**
+## ✅ **Running the FastAPI App**
 
 You can run your FastAPI app using `uvicorn`:
 
@@ -55,7 +55,7 @@ uvicorn main:app --reload
 
 This command tells `uvicorn` to run the `app` instance in the `main.py` file and enables auto-reloading for development.
 
-## **Routes and Path Parameters**
+## ✅ **Routes and Path Parameters**
 
 FastAPI makes it easy to define routes and path parameters. Here's an example that includes path parameters:
 
@@ -75,7 +75,7 @@ async def read_item(item_id: int, query_param: str = None):
 
 In this example, we define a route `/items/{item_id}` that takes an `item_id` as a path parameter and an optional `query_param` as a query parameter.
 
-## **Request and Response Models**
+## ✅ **Request and Response Models**
 
 FastAPI allows you to define request and response models using Pydantic models. Here's an example:
 
@@ -99,18 +99,19 @@ async def create_item(item: Item):
 In this example, we define a Pydantic model `Item` for the request body of the POST request to `/items/`. 
 FastAPI automatically validates and parses the incoming JSON data based on this model.
 
-## **Automatic Documentation**
+## ✅ **Automatic Documentation**
 
 One of FastAPI's standout features is its automatic generation of interactive API documentation. 
 To access the documentation, go to `http://localhost:8000/docs` in your web browser while your FastAPI app is running.
 
-## **Validation and Serialization**
+## ✅ **Validation and Serialization**
 
 FastAPI automatically validates incoming requests and serializes responses based on the Pydantic models you define. If data doesn't match the expected model, FastAPI will return validation errors.
 
 ## ✅ In Summary
 
 These are just some of the basics of FastAPI. It provides many more features for building robust and efficient APIs, including dependency injection, authentication, and more. 
+
 FastAPI's official documentation is excellent and provides in-depth information on all of its features - [FastAPI Official Documentation](https://fastapi.tiangolo.com/).
 
 <br />
