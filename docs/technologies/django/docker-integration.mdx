@@ -1,0 +1,124 @@
+---
+title         : Django & Docker Integration
+sidebar_label : Docker Integration
+slug          : docker-integration
+---
+
+# Django & Docker Integration
+
+<SubHeading>Learn how to integrate Docker and Docker Compose to a Django project</SubHeading>
+
+**Adding Docker and Docker Compose to a Django project** can be a valuable step to containerize your application and manage its dependencies more effectively. 
+
+![Docker DB Persistence - How to implement for a Django Project](https://github.com/app-generator/assets/assets/51070104/567987be-5875-4baa-bf9f-4b69be4f0a51)
+
+> Here's a step-by-step guide on how to do this:
+
+## ✅ **Prerequisites**
+
+You should have Docker and Docker Compose installed on your system. 
+If not, you can download and install them from the official Docker website: [Docker Installation](https://docs.docker.com/get-docker/) and [Docker Compose Installation](https://docs.docker.com/compose/install/).
+
+Now, let's proceed with integrating Docker and Docker Compose into your Django project:
+
+## ✅ **Create a Django Project**
+   
+If you haven't already, create a Django project using the following command:
+
+```bash
+$ django-admin startproject projectname
+```
+
+## ✅ **Create a Dockerfile**
+
+In the root directory of your Django project, create a file named `Dockerfile` (without any file extension) with the following content. This file will define how your Django application should be built inside a Docker container:
+
+```Dockerfile
+# Use the official Python image from Docker Hub
+FROM python:3.x
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Create and set the working directory
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirements.txt /app/
+
+# Install dependencies
+RUN pip install -r requirements.txt
+
+# Copy the Django project code into the container
+COPY . /app/
+```
+
+Make sure to replace `3.x` with the Python version you are using.
+
+## ✅ **Create a requirements.txt File**
+
+In the same directory as your `Dockerfile`, create a `requirements.txt` file containing all the Python dependencies your Django project requires. You can generate this file by running:
+
+```bash
+$ pip freeze > requirements.txt
+```
+
+## ✅ **Add Docker Compose Configuration**
+
+Create a file named `docker-compose.yml` in your project's root directory to define your Docker Compose configuration. Here's a basic example:
+
+```yaml
+version: '3'
+
+services:
+    web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+        - "8000:8000"
+    volumes:
+        - .:/app
+    depends_on:
+        - db
+
+    db:
+    image: postgres:12
+    environment:
+        POSTGRES_DB: dbname
+        POSTGRES_USER: dbuser
+        POSTGRES_PASSWORD: dbpassword
+```
+
+Customize the `POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD` values to match your Django project's database settings.
+
+## ✅ **Docker Compose Commands**
+
+You can use Docker Compose to build and run your Django project with the following commands:
+
+- Build the Docker images:
+    ```bash
+    $ docker-compose build
+    ```
+
+- Start the containers:
+    ```bash
+    $ docker-compose up
+    ```
+
+Your Django application should now be running in a Docker container, and you can access it at `http://localhost:8000` in your web browser.
+
+## ✅ `In Summary`
+
+At this point, you've successfully added Docker and Docker Compose to your Django project, allowing you to easily manage the development environment and dependencies. 
+
+Remember to adjust the configuration and settings as needed for your specific project.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start fast your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
