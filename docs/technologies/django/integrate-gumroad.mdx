@@ -1,0 +1,100 @@
+---
+title         : Integrate Django with GUMROAD
+sidebar_label : Integrate GUMROAD
+---
+
+# Integrate Django with GUMROAD
+
+<SubHeading>Learn how to integrate Django with GUMROAD for payments</SubHeading>
+
+**Integrating Django with Gumroad** allows you to sell digital products or services through Gumroad's platform while using your Django website to promote and manage your products. 
+Gumroad provides embeddable widgets and a flexible API that you can use to integrate Gumroad's purchase functionality into your Django application. 
+
+![Integrate Django with GUMROAD - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268712118-c1ca58ad-044e-4250-a533-f896cc367ce0.jpg)
+
+Here's a general guide on **how to integrate Django with Gumroad**:
+
+## ✅ **Create a Gumroad Account**
+
+If you don't already have a Gumroad account, sign up for one at [https://gumroad.com](https://gumroad.com).
+
+## ✅ **Create Products on Gumroad**
+
+In your Gumroad dashboard, create the digital products or services you want to sell. Gumroad allows you to define product details, pricing, and delivery settings. 
+Each product you create will have a unique URL or product ID that you'll use in your Django application.
+
+## ✅ **Embed Gumroad Widgets**
+
+Gumroad provides embeddable widgets that you can use to showcase your products on your Django website. You can embed Gumroad product cards, buy buttons, or even entire product listings on your site.
+
+Here's an example of how to embed a Gumroad product card into a Django template:
+
+```html
+<!-- Django template -->
+
+<div class="gumroad-product-card"
+  data-gumroad-product-id="your-product-id"
+  data-gumroad-iframe="true">
+</div>
+
+<script src="https://gumroad.com/js/gumroad-embed.js"></script>
+```
+
+Replace `"your-product-id"` with the actual product ID provided by Gumroad. 
+This will embed the Gumroad product card on your web page, allowing users to view product details and make purchases.
+
+## ✅ **Handle Purchase Completion**
+
+After a user completes a purchase on Gumroad, Gumroad provides a webhook feature that allows you to receive notifications about the purchase on your server. 
+You can use this webhook to update your Django application's database, send confirmation emails, or grant access to digital products.
+
+Here's a simplified example of how you might handle a Gumroad webhook in your Django application:
+
+```python
+# views.py
+
+from django.http import JsonResponse
+
+def gumroad_webhook(request):
+    # Verify that the webhook request is valid and secure (implement this logic)
+    
+    # Extract relevant data from the webhook payload
+    product_id = request.POST.get('product_id')
+    sale_id = request.POST.get('sale_id')
+    purchaser_email = request.POST.get('purchaser_email')
+    
+    # Update your database or perform other actions as needed
+    # ...
+
+    # Respond to the webhook with a success status
+    return JsonResponse({'status': 'success'})
+```
+
+Make sure to secure your webhook endpoint and verify the authenticity of incoming webhook requests to prevent unauthorized access.
+
+## ✅ **Testing and Deployment**
+
+Test the integration thoroughly in a development or staging environment before deploying it to your production server. Ensure that the product purchase, webhook handling, and database updates work as expected.
+
+## ✅ **Styling and Customization**
+
+You can customize the appearance of Gumroad widgets to match the design of your Django website using CSS. Gumroad provides customization options to adjust the look and feel of the embedded elements.
+
+## ✅ **Monitoring and Analytics**
+
+**Gumroad** offers analytics and reporting features that allow you to track sales, revenue, and customer interactions. 
+You can also integrate Google Analytics or other tracking tools to gain insights into user behavior on your site.
+
+## ✅ In Summary
+
+Remember to refer to Gumroad's official documentation for the latest integration options, security recommendations, and best practices. 
+The steps provided here are a general guideline to get you started, but the specifics of your integration may vary based on your product offerings and requirements.
+
+<br />
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
