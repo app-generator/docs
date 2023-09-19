@@ -50,13 +50,13 @@ $ mkdir my-django-project
 $ cd my-django-project
 ```
 
-&#x20;Inside the directory, we will generate the core of our project using _**django-admin** tool :_
+Inside the directory, we will generate the core of our project using _**django-admin** tool :_
 
 ```
 $ django-admin startproject config .
 ```
 
-&#x20;**Note**: Take into account that `.` at the end of the command*.*
+**Note**: Take into account that `.` at the end of the command*.*
 
 > Create the database and the app tables
 
@@ -79,7 +79,7 @@ At this point we should see the default Django page in the browser:
 
 ### Create New Application
 
-In the previous section, we've generated the core of the project that handles the configuration and now we will create the first Django application to serve a simple page to the users.&#x20;
+In the previous section, we've generated the core of the project that handles the configuration and now we will create the first Django application to serve a simple page to the users.
 
 ```
 $ python manage.py startapp app
@@ -130,7 +130,7 @@ def hello(request):                      # <-- NEW
 
 ### Request Object Properties
 
-The `request` object in Django comes with a few interesting properties:&#x20;
+The `request` object in Django comes with a few interesting properties:
 
 | Item / Helper           | Sample Value | Short Information                       |
 | ----------------------- | ------------ | --------------------------------------- |
@@ -157,11 +157,11 @@ def hello(request):
         return HttpResponse("Received a POST request")
 ```
 
-For newcomers, `GET` is used to pull information from the server without altering anything. Search is a good example of a `GET` request when we try to locate information on Google or Wikipedia.&#x20;
+For newcomers, `GET` is used to pull information from the server without altering anything. Search is a good example of a `GET` request when we try to locate information on Google or Wikipedia.
 
 `POST` is used to update the information on the server like change the title for a book or register a new item in our service.
 
-Another difference between `GET` and `POST` is the location of the submitted information.&#x20;
+Another difference between `GET` and `POST` is the location of the submitted information.
 
 - GET submits data in URL: `http://myservice.com?search=all_books`
 - POST submits data in the request body (not visible in the URL)
@@ -187,7 +187,7 @@ Here is the script output executed using a local development server:
 
 ### Read Request Variables
 
-Django provides dictionaries for `GET` and `POST` requests populated with all variables sent by the client. We can access the variables by `key` or using `get()` helper for both cases.&#x20;
+Django provides dictionaries for `GET` and `POST` requests populated with all variables sent by the client. We can access the variables by `key` or using `get()` helper for both cases.
 
 > Read **GET variables**
 
@@ -201,7 +201,7 @@ def parse_get(request):
     var3 = request.GET.get('var_3', 1) # Soft Read with Default value
 ```
 
-> For **POST,** the process is identical. \*\*\*\*&#x20;
+> For **POST,** the process is identical. \*\*\*\*
 
 ```python
 def parse_post(request):
@@ -213,9 +213,9 @@ def parse_post(request):
     post_var3 = request.POST.get('var_3', 9) # Soft Read with Default value
 ```
 
-> Thanks for reading! For more topics, feel free to [contact](https://appseed.us/support) Appseed.&#x20;
+> Thanks for reading! For more topics, feel free to [contact](https://appseed.us/support) Appseed.
 
-### Resources&#x20;
+### Resources
 
 - Read more about [Django](https://www.djangoproject.com/) (official docs)
-- Start fast a new project using _development-ready_ [Django Starters](https://appseed.us/admin-dashboards/django)&#x20;
+- Start fast a new project using _development-ready_ [Django Starters](https://appseed.us/admin-dashboards/django)
