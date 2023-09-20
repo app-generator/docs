@@ -1,0 +1,79 @@
+---
+title            : What is Panini Template Engine 
+sidebar_label    : What IS Panini 
+---
+
+# What is Panini Template Engine 
+
+<SubHeading> Short introduction to Panini Template Engine</SubHeading>
+
+Panini is a lightweight, flexible, and easy-to-use templating engine for building static websites. It simplifies the process of creating and maintaining HTML templates for static web pages.
+
+> Here are some **key features and concepts related to Panini templates**:
+
+## ✅ **Handlebars Templates** 
+
+Panini uses the Handlebars templating language. Handlebars allows you to define dynamic templates with placeholders, called "partials" and "helpers," which are filled in with data during the build process.
+
+## ✅ **Partial Templates** 
+
+Partials are reusable code snippets or templates that can be included in other templates. This encourages the creation of modular and DRY (Don't Repeat Yourself) code.
+
+## ✅ **Layouts** 
+
+Panini allows you to define layout templates that wrap around the content of individual pages. This is useful for maintaining a consistent look and feel across your website.
+
+## ✅ **Data Files** 
+
+You can use data files (typically in JSON or YAML format) to provide dynamic data to your templates. Data files are particularly useful for generating pages from structured content.
+
+## ✅ **Helpers** 
+
+Handlebars helpers are custom functions that you can define to extend the capabilities of your templates. Panini provides some built-in helpers, and you can create your own as needed.
+
+## ✅ **Content Folders** 
+
+Panini typically expects a specific folder structure for your project. Common folders include a "src" folder for source templates, a "dist" folder for the generated output, and additional folders for data and assets.
+
+## ✅ **Command-Line Interface (CLI)** 
+
+Panini often comes with a command-line interface that simplifies tasks like generating the site, starting a development server, and watching for changes in your source files.
+
+# ✅ Example 
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+    <header>
+        <h1>{{title}}</h1>
+    </header>
+    
+    <main>
+        {{> content}}
+    </main>
+    
+    <footer>
+        &copy; {{year}} My Website
+    </footer>
+</body>
+</html>
+```
+
+In this example, the template uses placeholders like `{{title}}` and `{{year}}`, which can be filled in with data from data files or configuration. The `{{> content}}` syntax includes a partial template called "content."
+
+## ✅ In Summary
+
+Panini simplifies the process of building static websites by automating tasks like compiling templates, generating pages, and handling data. 
+It is often used in combination with other build tools and static site generators to streamline web development workflows.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
