@@ -1,5 +1,21 @@
 # Change Log
 
+## [1.0.51] 2023-09-20
+### Changes
+
+- Update [What IS](https://docs.appseed.us/content/what-is/) Section
+  - [What IS Apache](https://docs.appseed.us/content/what-is/apache/)
+  - [What IS ASGI](https://docs.appseed.us/content/what-is/asgi/)
+  - [What IS Boilerplate Code](https://docs.appseed.us/content/what-is/boilerplate-code/)
+  - [What IS Bulma](https://docs.appseed.us/content/what-is/bulma-css/)
+  - [What IS CentOS](https://docs.appseed.us/content/what-is/centos/)
+  - [What IS Django](https://docs.appseed.us/content/what-is/django/)
+  - [What IS Eleventy (11ty)](https://docs.appseed.us/content/what-is/eleventy/)
+  - [What IS Yarn](https://docs.appseed.us/content/what-is/yarn/)
+  - [What IS WSGI](https://docs.appseed.us/content/what-is/wsgi/)
+  - [N-Tier Architecture](https://docs.appseed.us/content/what-is/n-tier-architecture/)
+  - [What IS Svelte](https://docs.appseed.us/content/what-is/svelte-js/)
+
 ## [1.0.50] 2023-09-15
 ### Changes
 
