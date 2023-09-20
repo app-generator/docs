@@ -1,0 +1,70 @@
+---
+title            : What IS PNPM 
+sidebar_label    : What IS PNPM 
+---
+
+# What IS PNPM
+
+<SubHeading>Short introduction to PNPM, a popular open-source package manager for JavaScript.</SubHeading>
+
+[PNPM](https://pnpm.io/) (pronounced "pin-pm") is an open-source package manager for JavaScript and Node.js applications. 
+It is designed to manage project dependencies efficiently while addressing some of the limitations and challenges associated with other package managers like npm (Node Package Manager) and Yarn. 
+
+![What IS PNPM - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269238582-ee5e1528-ab9b-467e-8b5e-3d7ab9ea4be9.jpg) 
+
+PNPM is particularly known for its approach to dependency management, which involves shared and linked dependencies.
+
+> Here are some **key features and aspects of PNPM**:
+
+## ✅ **Shared Dependencies** 
+
+One of the defining features of PNPM is its use of shared dependencies. 
+Instead of duplicating packages in each project's `node_modules` directory, PNPM stores a single copy of each package in a global store. 
+
+This approach reduces disk space usage and speeds up installation times, especially when multiple projects share common dependencies.
+
+## ✅ **Linking Dependencies** 
+
+PNPM creates symbolic links (or hard links on Windows) from the project's `node_modules` directory to the global store, allowing projects to access shared dependencies as if they were locally installed. 
+This reduces the overhead of copying or downloading the same package multiple times.
+
+## ✅ **Deterministic** 
+
+PNPM uses a `pnpm-lock.yaml` file to ensure deterministic and consistent dependency resolution. 
+This means that when you install dependencies for a project, PNPM ensures that the same versions of packages are used across different installations, reducing the likelihood of dependency conflicts.
+
+## ✅ **Concurrent Installs:** 
+
+Like Yarn, PNPM supports concurrent (parallel) package installations, taking advantage of multiple network connections and CPU cores to speed up the installation process.
+
+## ✅ **Offline Mode** 
+
+PNPM has an offline mode that allows you to install packages without an internet connection, making it suitable for development in environments with limited connectivity.
+
+## ✅ **Workspaces** 
+
+Similar to Yarn, PNPM supports workspaces, which makes it easier to manage multiple packages within a single repository. This is beneficial for monorepos and multi-package projects.
+
+## ✅ **Cross-Platform** 
+
+PNPM is cross-platform and can be used on various operating systems, including Windows, macOS, and Linux.
+
+## ✅ **Custom Registries** 
+
+PNPM allows you to specify custom package registries, making it suitable for organizations with private package repositories.
+
+## ✅ **Maturity and Adoption** 
+
+PNPM has gained traction within the JavaScript and Node.js community and is used in various projects. It has matured over time and has an active community of users and contributors.
+
+## ✅ In Summary
+
+While PNPM offers several advantages, it's important to note that it may require some adjustment in development workflows compared to traditional package managers like npm. 
+Developers and teams can choose to use PNPM based on their specific needs, project requirements, and preferences for managing JavaScript dependencies.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

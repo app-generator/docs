@@ -1,61 +1,75 @@
 ---
-sidebar_position: 18
-description: Short introduction to Svelte
+title            : Two-Tier Svelte
+sidebar_label    : Two-Tier Svelte
 ---
 
 # What IS Svelte
 
 <SubHeading> Short introduction to Svelte</SubHeading>
 
-This is a short introduction to [Svelte](https://svelte.dev/) a JS Framework that provides a new approach to code user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app.
+[Svelte](https://svelte.dev/) is an open-source JavaScript framework for building user interfaces (UIs) and web applications. 
+It is designed to make front-end development more efficient by compiling components into highly optimized JavaScript code that runs in the browser. 
 
-Rather than putting a `<script src='svelte.js'>` tag on the page, or bringing it into your app with import or require, Svelte is a compiler that works behind the scenes to turn your component files into beautifully optimized JavaScript.
+![What IS Svelte - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269228958-d1fbb1a5-d725-4d0b-9aed-2dcda115f7ee.jpg)
 
-Svelte provides a different approach to building web apps than some of the other frameworks covered in this module. While frameworks like React and Vue do the bulk of their work in the user's browser while the app is running, Svelte shifts that work into a compile step that happens only when you build your app, producing highly optimized vanilla JavaScript.
+Svelte is known for its simplicity, performance, and innovative approach to building web applications.
 
-### **Advantages of using** [**Svelte**](https://svelte.dev/)
+> Here are some **key aspects and characteristics of Svelte**:
 
-- Svelte is Fast - the execution time is fast because Svelte surgically updates only the parts of the DOM that change. In contrast to React, Vue.js, and other Virtual DOM frameworks, Svelte doesn’t use a virtual DOM.
-- Svelte is Small - when a Svelte app is compiled, the resulting bundle size is tiny compared to most other popular frameworks.
-- Svelte is Compiled - the reason Svelte apps are so tiny is because Svelte, in addition to being a framework, is also a compiler.
+## **Compiler-Based Approach** 
 
-### How does [Svelte](https://svelte.dev/) work?
+Svelte takes a compiler-based approach to web development. 
+Instead of shipping a large runtime library to the client's browser, Svelte compiles components into efficient JavaScript code during the build process. 
 
-Being a compiler, Svelte can extend HTML, CSS, and JavaScript, generating optimal JavaScript code without any runtime overhead. To achieve this, Svelte extends vanilla web technologies in the following ways:
+This results in smaller bundle sizes and faster load times for web applications.
 
-- It extends HTML by allowing JavaScript expressions in markup and providing directives to use conditions and loops, in a fashion similar to handlebars.
-- It extends CSS by adding a scoping mechanism, allowing each component to define their own styles without the risk of clashing with other component's styles.
-- It extends JavaScript by reinterpreting specific directives of the language to achieve true reactivity and ease component state management.
+## **Component-Based** 
 
-The compiler only intervenes in very specific situations and only in the context of Svelte components. Extensions to the JavaScript language are minimal and carefully picked in order to not break JavaScript syntax nor alienate developers. In fact, you will be mostly working with vanilla JavaScript.
+Like other modern front-end frameworks, Svelte encourages a component-based architecture. You can create reusable UI components that encapsulate specific functionality and appearance.
 
-### Simple [Svelte](https://svelte.dev/) App
+## ✅ **Declarative Syntax** 
 
-The easiest way to create a starter app template is to just download the starter template application. You can do that by visiting `sveltejs/template` on GitHub or you can avoid having to download and unzip it and just use `degit`.
+Svelte uses a declarative syntax similar to HTML to define components and their behavior. 
+You write code that describes how the UI should look based on the application's state, and Svelte handles updating the DOM efficiently when the state changes.
 
-To create your starter app template, run the following terminal commands:
+## ✅ **Reactivity** 
 
-```bash
-$ npx degit sveltejs/template moz-todo-svelte
-$ cd moz-todo-svelte
-$ npm install
-$ npm run dev
-```
+Svelte introduces reactivity by automatically generating code to update the DOM when data changes. 
+This is done without the need for manual event listeners or observers, making code concise and easier to reason about.
 
-###
+## ✅ **CSS** 
 
-### Svelte Starter [Notus](https://www.creative-tim.com/product/notus-svelte?AFFILIATE=128200)
+Svelte supports scoped CSS, allowing you to define styles for components without worrying about global scope or naming collisions.
 
-Notus Admin Template is an open-source product provided by Creative-Tim on top of Svelte and Tailwind CSS. It features multiple HTML and Svelte elements and it comes with dynamic components for Svelte. It is based on Tailwind Starter Kit by Creative Tim, and it is built with both presentation pages, and pages for an admin dashboard.
+## ✅ **Server-Side Rendering (SSR)** 
 
-- [Svelte Template Notus](https://www.creative-tim.com/product/notus-svelte?AFFILIATE=128200) - product page
-- [Svelte Template Notus](https://demos.creative-tim.com/notus-svelte/?AFFILIATE=128200) - LIVE Demo
+Svelte can be used for server-side rendering, which improves the initial load time of web applications and provides better SEO (search engine optimization) capabilities.
 
-![Svelte JS - Notus, open-source Svelte starter.](https://raw.githubusercontent.com/ui-themes/svelte-admin-template-notus/master/media/svelte-admin-template-notus-screen-product.jpg)
+## ✅ **Routing** 
 
-####
+While Svelte itself does not include a built-in router, you can use external routing libraries (e.g., SvelteKit) to handle client-side routing.
 
-#### Resource
+## ✅ **Small Bundle Sizes** 
 
-- [Svelte JS](https://svelte.dev/) - official website
-- [Getting started with Svelte](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Svelte_getting_started) - tutorial provided by Mozilla
+Svelte's compiler optimizes the generated JavaScript code, resulting in smaller bundle sizes compared to some other frameworks. This is beneficial for performance and faster page loads.
+
+## ✅ **Growing Ecosystem** 
+
+Svelte has a growing ecosystem of libraries and tools built by the community, including SvelteKit (a framework for building applications), Sapper (a legacy framework), and various Svelte-based UI component libraries.
+
+## ✅ **Community and Adoption** 
+
+Svelte has gained popularity in the front-end development community due to its simplicity and performance. 
+It is used by individual developers and companies to build a wide range of web applications, including single-page applications (SPAs), progressive web apps (PWAs), and more.
+
+## ✅ In Summary
+
+Svelte's approach to front-end development simplifies the development process by reducing the amount of boilerplate code and runtime overhead typically associated with other frameworks. 
+It has quickly gained traction among developers looking for an efficient and modern way to build web applications with a focus on performance and maintainability.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

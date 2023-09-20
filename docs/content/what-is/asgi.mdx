@@ -1,0 +1,71 @@
+---
+title            : What IS ASGI 
+sidebar_label    : What IS ASGI 
+---
+
+# What IS ASGI
+
+<SubHeading>Short introduction to ASGI (Asynchronous Server Gateway Interface).</SubHeading>
+
+ASGI stands for "Asynchronous Server Gateway Interface." It is a standard interface or protocol for building asynchronous web applications in Python. 
+ASGI is designed to address the limitations of the traditional WSGI (Web Server Gateway Interface) when it comes to handling concurrent and long-lived connections, 
+making it suitable for real-time and asynchronous web applications.
+
+> **Key points about ASGI include**
+
+## ✅ **Asynchronous Programming** 
+
+ASGI is built on the principles of asynchronous programming, which allows web applications to handle multiple incoming requests concurrently without blocking. 
+This is particularly important for applications that involve real-time communication, such as chat applications, online gaming, and streaming services.
+
+## ✅ **Concurrency** 
+
+ASGI servers can efficiently handle a large number of concurrent connections, making them suitable for applications with high traffic or many simultaneous users.
+
+## ✅ **WebSocket Support** 
+
+ASGI includes support for WebSocket communication, which enables full-duplex communication between clients and servers, making it suitable for real-time applications that require bidirectional data flow.
+
+## ✅ **Compatibility** 
+
+ASGI is designed to be compatible with existing web frameworks and libraries. 
+Many popular Python web frameworks and libraries have ASGI adapters or support, allowing developers to migrate existing applications to ASGI or build new ones from scratch.
+
+## ✅ **ASGI Servers** 
+
+Various ASGI servers are available, including Daphne, Uvicorn, Hypercorn, and more. 
+These servers are responsible for handling incoming HTTP requests, managing WebSocket connections, and routing traffic to ASGI applications.
+
+## ✅ **Middleware** 
+
+ASGI supports middleware components that can be used to add functionality to an ASGI application's request and response flow, similar to how middleware works in WSGI-based applications.
+
+## ✅ **Framework Agnostic** 
+
+ASGI is not tied to any specific web framework or library, which means developers have the flexibility to choose the framework that best suits their project while using the same ASGI-compatible server.
+
+## ✅ **Performance** 
+
+ASGI's asynchronous nature allows for efficient resource usage and improved performance, making it well-suited for modern web applications and APIs.
+
+## ✅ **Scalability** 
+
+ASGI applications can be horizontally scaled to handle increased traffic by deploying multiple instances of the application behind a load balancer.
+
+## ✅ **Long Polling** 
+
+ASGI is well-suited for long polling, which is a technique used to simulate real-time updates in web applications by holding connections open until new data is available.
+
+## ✅ In Summary
+
+While ASGI is gaining popularity and is particularly well-suited for building real-time and high-concurrency web applications, 
+it may have a steeper learning curve compared to traditional WSGI for developers who are new to asynchronous programming. 
+
+However, it offers significant advantages in terms of performance and scalability for applications that require handling a large number of concurrent connections or real-time communication.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

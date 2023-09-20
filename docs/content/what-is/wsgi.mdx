@@ -1,34 +1,67 @@
 ---
-sidebar_position: 21
-description: >-
-  Short introduction to WSGI interface implemented by well-known libraries like
-  Flask and Django.
+title            : What IS WSGI 
+sidebar_label    : What IS WSGI 
 ---
 
 # What IS WSGI
 
 <SubHeading>Short introduction to WSGI interface implemented by well-known libraries like Flask and Django.</SubHeading>
 
-**WSGI** is the Web Server Gateway Interface. It is a specification that describes how a web server communicates with web applications, and how web applications can be chained together to process one request. WSGI is a Python standard described in detail in [PEP 3333](https://www.python.org/dev/peps/pep-3333/).
+[WSGI](https://wsgi.readthedocs.io/en/latest/what.html) stands for "Web Server Gateway Interface." 
+It is a standardized interface or protocol that defines how web servers and web applications written in Python should communicate with each other. 
 
-### What is WSGI
+WSGI acts as a bridge between web servers and Python web frameworks or applications, allowing for interoperability and compatibility between different components of a web application stack.
 
-In a single sentence, WSGI is just an interface specification by which the server and application communicate. 
-This interface used by many popular frameworks like Flas and Django is defined in the [PEP 3333](https://www.python.org/dev/peps/pep-3333) specification for both parties: server and WSGI application.
+> **Key points about WSGI include**
 
-Python 2.5 and later comes with a WSGI server which will be used in this tutorial. In 2.4 and earlier it can be installed.
+## ✅ **Standardization** 
 
-## WSGI Frameworks
+WSGI was created to standardize the way web servers interact with Python web applications. 
+Prior to WSGI, various web frameworks had their own server interfaces, which made it challenging to deploy Python web applications on different web servers.
 
-A short-list with web frameworks with native WSGI support:
+## ✅ **Separation of Concerns** 
 
-- [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Flask is a microframework for Python based on Werkzeug, Jinja 2 and good intentions
-- [Django](https://www.djangoproject.com/) - The web framework for perfectionists with deadlines.
-- [Pyramid](http://www.pylonsproject.org/projects/pyramid/about) - Pyramid is a minimalist web framework aiming at composability and making developers paying only for what they use.
-- [Falcon](http://www.pylonsproject.org/projects/pyramid/about) - Falcon is a high-performance Python framework for building cloud APIs
+WSGI promotes a clear separation of concerns in web application development. 
+It defines a simple and consistent API that separates the responsibilities of the web server (handling incoming HTTP requests) and the web application or framework (processing requests and generating responses).
 
-## WSGI Resources
+## ✅ **Compatibility** 
 
-- [WSGI](https://wsgi.readthedocs.io/en/latest/) - official documentation
-- [An introduction to WSGI](http://ivory.idyll.org/articles/wsgi-intro/what-is-wsgi.html) by Titus Brown
-- [Frameworks that run on WSGI](https://wsgi.readthedocs.io/en/latest/frameworks.html) - a curated list
+Web servers that support WSGI can host a wide range of Python web applications and frameworks, making it easier to switch between different frameworks or deploy multiple applications on the same server.
+
+## ✅ **Middleware** 
+
+WSGI allows developers to implement middleware components, which are reusable pieces of code that can intercept and process requests and responses as they pass through the application stack. 
+Middleware can perform tasks like authentication, logging, or response manipulation.
+
+## ✅ **WSGI Application:** 
+
+In WSGI, a web application is referred to as a "WSGI application." 
+A WSGI application is a callable Python object (usually a function or a class with a `__call__` method) that takes two arguments: an environment dictionary containing information about the request, 
+and a callable object (usually called `start_response`) for sending HTTP headers.
+
+Here's a simplified example of a minimal WSGI application:
+
+```python
+def simple_app(environ, start_response):
+    status = '200 OK'
+    headers = [('Content-type', 'text/plain')]
+    start_response(status, headers)
+    return [b'Hello, WSGI World!']
+```
+
+In this example, `simple_app` is a basic WSGI application that returns a simple "Hello, WSGI World!" message.
+
+To run a WSGI application, you typically need a web server that supports WSGI. Common choices include Gunicorn, uWSGI, and mod_wsgi for Apache. 
+These web servers act as the interface between incoming HTTP requests and the WSGI application, invoking the application when a request is received and passing the request and response objects to it.
+
+## ✅ In Summary
+
+Overall, WSGI has played a crucial role in the Python web development ecosystem by providing a standard interface for building and deploying web applications, 
+fostering compatibility between web servers and Python frameworks, and promoting clean and modular web application design.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

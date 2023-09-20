@@ -1,50 +1,66 @@
 ---
-sidebar_position: 14
-description: Short introduction to Pipenv
+title            : What IS Pipenv
+sidebar_label    : What IS Pipenv
 ---
 
 # What IS Pipenv
 
 <SubHeading> Short introduction to Pipenv</SubHeading>
 
-**Pipenv** is a dependency manager for Python projects similar to Npm/Yarn for Node that provides more features than his older brother `pip`. Pipenv aims to help users manage environments, dependencies, and imported packages on the command line. While PIP alone is often sufficient for personal use, Pipenv is recommended for collaborative projects as it’s a higher-level tool that simplifies dependency management for common use cases.
+[Pipenv](https://pipenv.pypa.io/en/latest/) is a dependency management tool for Python applications. 
+It is designed to simplify and streamline the process of managing project-specific Python packages (dependencies) and virtual environments. 
 
-**How to use Pipenv**
+![What IS Pipenv - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269008856-f4b5efaf-5313-4260-ba18-44645a058c2d.jpg) 
 
-```bash
-$ pip install pipenv
-```
+Pipenv combines the functionality of two older Python tools, pip and virtualenv, into a single, more user-friendly tool. Here are some key aspects of Pipenv:
 
-Once `pipenv` is installed we can start using it in our projects. To install `Django` for instance, we must type:
+## ✅ **Dependency Management** 
 
-```bash
-$ pipenv install django
-```
+Pipenv helps you manage project dependencies by keeping track of the packages required for your Python project. 
+It uses a `Pipfile` to specify the dependencies and their versions, similar to the traditional `requirements.txt` file but with additional features and structure.
 
-This command will create automatically a virtual environment and install Django package.
+## ✅ **Virtual Environments** 
 
-**Start a shell**
+Pipenv automatically creates and manages virtual environments for your Python projects. 
+Virtual environments are isolated environments where project-specific packages are installed, ensuring that your project's dependencies do not conflict with system-wide packages or other projects.
 
-```bash
-$ pipenv shell
-```
+## ✅ **Locking Dependencies** 
 
-**Run a Python script**
+Pipenv generates a `Pipfile.lock` file, which is a manifest that records the exact versions of dependencies used in your project. 
+This ensures that every member of your development team, or anyone else working on the project, uses the same package versions, reducing the risk of compatibility issues between environments.
 
-```bash
-$ pipenv run python hello.py
-```
+## ✅ **User-Friendly CLI** 
 
-To use an exiting `requirements.txt` with `pipenv`:
+Pipenv provides a user-friendly command-line interface (CLI) for common development tasks, such as installing dependencies, creating and activating virtual environments, 
+and running Python scripts within the project's context. This simplifies the development workflow.
 
-```bash
-pipenv install requirements.txt
-```
+## ✅ **Automatic Dependency Resolution** 
 
-This will create a Pipfile and install the specified requirements. Consider your project upgraded!
+Pipenv automatically resolves and installs compatible versions of dependencies, minimizing the need for manual management of version constraints. 
+It also offers advanced dependency resolution features, such as automatically updating packages within specified version ranges.
 
-#### Resources
+## ✅ **Integration with Popular Tools** 
 
-- [Pipenv](https://pipenv-fork.readthedocs.io/en/latest/) - Python Dev Workflow for Humans
-- [Why Python devs should use Pipenv](https://opensource.com/article/18/2/why-python-devs-should-use-pipenv)
-- [Pipenv](https://docs.pipenv.org/basics/) - Basic Usage
+Pipenv integrates with popular Python development tools like PyTest, Flake8, and Black. 
+It can automatically create development and production environments and isolate test-specific dependencies.
+
+## ✅ **Pipenv Commands**
+
+- `pipenv install`: Installs project dependencies defined in the `Pipfile`.
+- `pipenv lock`: Generates or updates the `Pipfile.lock` file to record specific versions of dependencies.
+- `pipenv shell`: Activates the project's virtual environment, allowing you to work within it.
+- `pipenv run <command>`: Runs a command within the context of the virtual environment.
+- `pipenv graph`: Displays a dependency graph for the project's packages.
+
+## ✅ In Summary
+
+Pipenv has gained popularity for its user-friendly interface and its ability to help developers manage Python projects more efficiently. 
+However, it's worth noting that there are other tools available for Python dependency management, 
+and the choice of tool may depend on the specific requirements and preferences of your project and development team.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

@@ -1,103 +1,77 @@
 ---
-sidebar_position: 20
-description: Short introduction to uWSGI server and architecture
+title            : What IS uWsgi 
+sidebar_label    : What IS uWsgi 
 ---
 
 # What IS uWsgi
 
 <SubHeading> Short introduction to uWSGI server and architecture</SubHeading>
 
-The **uWSGI** project aims at developing a full stack for building hosting services. Application servers (for various programming languages and protocols), proxies, process managers, and monitors are all implemented using a common API and a common configuration style. Thanks to its pluggable architecture it can be extended to support more platforms and languages.
+[uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) (pronounced "micro WSGI") is an application server and web server gateway interface (WSGI) server for serving Python web applications. 
+It is a popular choice for deploying Python web applications and is widely used in production environments. 
 
-- [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) - official documentation
+![What IS uWsgi - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269224103-ea077c63-d4db-4f29-a7f0-25ac0155e894.jpg)
 
-### uWSGI Components
+uWSGI is known for its performance, flexibility, and the ability to serve a variety of web frameworks and applications.
 
-- The Core (implements configuration, processes management, sockets creation, monitoring, logging, shared memory areas, ipc, cluster membership)
-- Request plugins (implement application server interfaces for various languages and platforms: WSGI, PSGI, Rack, Lua WSAPI, CGI, PHP, Go …)
-- Gateways (implement load balancers, proxies and routers)
+> Here are some **key features and characteristics of uWSGI**:
 
-### Quickstart for Python
+## ✅ **WSGI Compatibility** 
 
-This quickstart will show you how to deploy simple WSGI applications and common web frameworks. In order to start using uWSGI we need the `build-essential python-dev` tooling.
+uWSGI is fully compliant with the WSGI standard, making it compatible with a wide range of Python web frameworks and applications, including Django, Flask, Pyramid, and more.
 
-> Install on Debian-based distro
+## ✅ **High Performance** 
 
-```bash
-$ apt-get install build-essential python-dev
-```
+uWSGI is designed for high performance and can handle a large number of concurrent requests. It supports various worker processes and threading models to optimize application performance.
 
-> Install on CentOS distro
+## ✅ **Flexibility** 
 
-```bash
-$ yum install build-essential python-dev
-```
+uWSGI is highly configurable, allowing developers to fine-tune various aspects of the server, such as request routing, load balancing, and process management. 
+It also supports plugins for extending its functionality.
 
-###
+## ✅ **Protocol Support** 
 
-### Install uWSGI
+In addition to serving WSGI applications, uWSGI can handle other protocols, such as HTTP, FastCGI, and SCGI, making it versatile for various use cases.
 
-> Before installing uWSGI module, make sure the workstation has the Python development installed.
+## ✅ **Load Balancing** 
 
-```bash
-$ # Ubuntu, Debian
-$ sudo apt-get install python-dev   # for python2.x installs
-$ sudo apt-get install python3-dev  # for python3.x installs
-$
-$ # CentOS, RHEL
-$ sudo yum install python-devel     # for python2.x installs
-$ sudo yum install python3-devel    # for python3.x installs
-$
-$ # Fedora
-sudo dnf install python2-devel  # for python2.x installs
-sudo dnf install python3-devel  # for python3.x installs
-```
+uWSGI can be used as a load balancer to distribute incoming requests across multiple application instances or servers, improving reliability and scalability.
 
-> uWSGI Via PIP
+## ✅ **Application Containerization** 
 
-```bash
-$ pip install uwsgi
-```
+uWSGI supports running applications in containers like Docker, making it suitable for containerized deployments and microservices architectures.
 
-> Using the network installer
+## ✅ **Monitoring and Management** 
+
+uWSGI provides various tools and interfaces for monitoring and managing application instances, including a built-in stats server, command-line utilities, and integration with monitoring systems like Prometheus.
+
+## ✅ **Security Features** 
+
+uWSGI includes features for enhancing security, such as support for running applications in isolated environments, sandboxing, and privilege separation.
+
+## ✅ **Ease of Deployment** 
+
+uWSGI is relatively easy to set up and deploy. It can be configured using configuration files or command-line options.
+
+## ✅ **Community and Documentation** 
+
+uWSGI has an active community of users and contributors, and it offers extensive documentation and tutorials to help developers get started.
+
+To deploy a Python web application using uWSGI, you typically configure uWSGI with the appropriate settings and then point it to your WSGI-compatible application or framework. Here's a simple example of running a Flask application with uWSGI:
 
 ```bash
-$ curl http://uwsgi.it/install | bash -s default /tmp/uwsgi
+uwsgi --http :8080 --wsgi-file myapp.py
 ```
 
-###
+In this example, `myapp.py` is the entry point of the Flask application, and uWSGI is configured to serve the application on port 8080.
 
-### Simple uWSGI app
+## ✅ In Summary
 
-Let’s start with a simple “Hello World” example:
+Overall, **uWSGI is a versatile and performant option for deploying Python web applications**, and it is commonly used in conjunction with web servers like Nginx or Apache to serve web content to users.
 
-```python
-def application(env, start_response):
-    start_response('200 OK', [('Content-Type','text/html')])
-    return [b"Hello World"]
-```
+## ✅ Resources 
 
-Let's save this minimal app as `hitme.py`
-
-As you can see, it is composed of a single Python function. It is called “application” as this is the default function that the uWSGI Python loader will search for.
-
-> Deploy it on HTTP port 9090
-
-```bash
-$ uwsgi --http :9090 --wsgi-file hitme.py
-```
-
-In case we need monitoring, the stats subsystem allows you to export uWSGI’s internal statistics as JSON:
-
-```bash
-$ uwsgi --http :9090 --wsgi-file hitme.py --master --processes 4 --threads 2 --stats 127.0.0.1:9191
-```
-
-By visiting port `9090` in the browser, we should see `Hello World` message served by uWSGI.
-
-###
-
-### uWSGI Resources
-
-- [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) - the official website
-- [What is the point of uWSGI?](https://stackoverflow.com/questions/38601440/what-is-the-point-of-uwsgi)
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

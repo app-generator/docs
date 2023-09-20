@@ -1,22 +1,63 @@
 ---
-sidebar_position: 23
-description: Short introduction to Single Tier Architecture
+title            : Single-Tier Architecture
+sidebar_label    : Single-Tier Architecture
 ---
 
 # Single-Tier Architecture
 
 <SubHeading>Short introduction to Single Tier Architecture</SubHeading>
 
-Or, One-tier architecture involves putting all of the required components for a software application or technology on a single server or platform. Basically, a one-tier architecture keeps all of the elements of an application, including the interface, middleware, and back-end data, in one place. Some experts describe them as applications that could be installed and run on a single computer.
+Single-tier architecture, also known as single-tier model or monolithic architecture, 
+is a traditional software architecture in which all the components of an application are combined into a single software module or codebase. 
 
-![Single Tier architecture](https://raw.githubusercontent.com/app-generator/static/master/docs/single-tier-architecture.jpg)
+In this architecture, the user interface (UI), application logic, and data storage are tightly integrated into a single executable or application.
 
-### Sample Apps
+![Single-Tier Architecture - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269203674-16ea5071-19fa-4bab-bbc1-31aad7d7d4f5.jpg)
 
-- [JAMstack](https://docs.appseed.us/content/what-is/jamstack) apps where all the code is executed on the client side, in browser: [Fractal](https://appseed.us/apps/jamstack/html5up-fractal), [Landed](https://appseed.us/apps/jamstack/html5up-landed)
-- [Single page application](https://en.wikipedia.org/wiki/Single-page_application) (without a backend server)
+> Key **characteristics of single-tier architecture** include:
 
-### Resources
+## ✅ **All-in-One** 
 
-- Wikipedia [Multitier Architecture](https://en.wikipedia.org/wiki/Multitier_architecture)
-- Techopedia [One-Tier Architecture](https://www.techopedia.com/definition/17374/one-tier-architecture)
+In a single-tier architecture, the entire application, including the user interface, business logic, and data management, runs on a single machine or within a single software process. 
+There is no separation between these components.
+
+## ✅ **Simplified Development** 
+
+Building and deploying applications in a single-tier architecture can be relatively straightforward. 
+Developers write code that handles both the presentation and the application's core functionality in a single codebase.
+
+## ✅ **Limited Scalability** 
+
+Single-tier applications typically lack scalability because they run on a single machine. 
+Scaling can be challenging and often requires manual efforts, such as upgrading hardware.
+
+## ✅ **Limited Reusability** 
+
+Components and functions in a single-tier architecture are tightly coupled, making it difficult to reuse code across different parts of the application or in other projects.
+
+## ✅ **Maintenance Challenges** 
+
+As the application grows, maintaining and updating code in a single-tier architecture can become complex and error-prone. 
+Changes to one part of the application can impact other parts.
+
+## ✅ **Resource Consumption** 
+
+Single-tier applications may consume significant system resources, as all components are running on the same machine.
+
+## ✅ In Summary
+
+Single-tier architectures are typically found in small, simple applications or prototypes, where the development and maintenance overhead of more complex architectures is not justified.
+They are also common in legacy systems that were developed before more modern and scalable architectural patterns became prevalent.
+
+However, single-tier architectures have limitations that make them less suitable for larger, more complex, and scalable applications. 
+As a result, modern software development tends to favor multi-tier architectures, such as two-tier (client-server), three-tier, or n-tier architectures, which separate the UI, application logic, 
+and data management into distinct layers or tiers. 
+
+These architectures offer better scalability, maintainability, and reusability of code and are more aligned with contemporary software development best practices.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

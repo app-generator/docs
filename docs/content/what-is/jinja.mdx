@@ -1,143 +1,78 @@
 ---
-sidebar_position: 11
-description: Short introduction to Jinja
+title            : What IS Jinja
+sidebar_label    : What IS Jinja
 ---
 
 # What IS Jinja
 
 <SubHeading>Short introduction to Jinja</SubHeading>
 
-[Jinja](https://jinja.palletsprojects.com/en/2.11.x/) is a modern and designer-friendly templating language for Python, modeled after Django’s templates. It is fast, widely used, and secure with the optional sandboxed template execution environment. Jinja is basically an engine used to generate HTML or XML returned to the user via an HTTP response.
+[Jinja](https://jinja.palletsprojects.com/en/3.1.x/) is a popular templating engine for Python web applications. It is used primarily in web frameworks like Flask and Django to generate dynamic HTML, XML, or other markup documents. 
+Jinja templates allow developers to embed Python-like expressions and logic directly within HTML or other template files, enabling the dynamic generation of content to be displayed in a web application.
 
-For those who have not been exposed to a templating language before, such languages essentially contain variables as well as some programming logic, which when evaluated (or rendered into HTML) are replaced with actual values.
+![What IS Jinja - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269188380-4c7aa7ac-88e8-480a-b428-240ab3616a30.jpg) 
 
-### Why do we need [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)?
+> Key **features and characteristics of Jinja** include:
 
-**Sandboxed Execution** - It provides a protected framework for automation of testing programs, whose behavior is unknown and must be investigated.
+## ✅ **Expression Interpolation** 
 
-**HTML Escaping** - Jinja has a powerful automatic HTML Escaping, which helps to prevent Cross-site Scripting (XSS Attack). There are special characters like >,<,&, etc. which carry special meanings in the templates. So, if you want to use them as regular text in your documents then, replace them with entities. Not doing so might lead to XSS-Attack.
+Jinja allows you to embed Python expressions inside template files using double curly braces, like `{{ variable_name }}`. 
+These expressions are evaluated, and their results are inserted into the template when it's rendered.
 
-**Template Inheritance** - This feature helps us to generate new pages starting from a base template that we inherit a common structure.
+## ✅ **Control Structures** 
 
-### [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) Environment
+You can use control structures such as `if` statements, `for` loops, and `macro` definitions in Jinja templates. 
+This allows for conditional rendering of content and iteration over data collections.
 
-Being a Python library, Jinja requires Python to run and expose the features. If you're not sure if Python is installed, just open a terminal and type `python --version`. The output should be something like this:
+## ✅ **Template Inheritance** 
 
-```bash
-$ # Check Python version
-$ python --version
-Python 3.7.2 # <--- All good
-```
+Jinja supports template inheritance, where you can define a base template with common structure and placeholders for content. 
+Subtemplates can then extend the base template and fill in the content placeholders.
 
-**How to get Jinja2**
+## ✅ **Filters and Functions** 
 
-To start playing with it, just open a terminal and type:
+Jinja provides a variety of filters and functions that allow you to manipulate and format data within templates. 
+For example, you can use filters to format dates, convert text to lowercase, or perform other transformations.
 
-```bash
-$ pip install jinja2
-```
+## ✅ **Custom Macros** 
 
-**Jinja in action**
+You can define custom macros in Jinja templates to encapsulate reusable pieces of HTML or logic. These macros can be included in multiple templates.
 
-Simple runtime replace
+## ✅ **Autoescaping** 
 
-```python
->>> from jinja2 import Template
->>> t = Template("Hello {{ token }}!")
->>> t.render(token="Jinja2")
-u'Hello Jinja2!'
-```
+Jinja includes an autoescaping feature to help prevent cross-site scripting (XSS) attacks. 
+It automatically escapes potentially unsafe data by default but allows developers to mark content as safe if necessary.
 
-The engine will replace the inner token with value Jinja2. This is quite useful when we use this block for different token values.
+Here's a basic example of a Jinja template:
 
-**Lists iteration**
-
-In web development, we can have cases when a list should be displayed on the page: registered users, for instance, or a simple list of options. In Jinja, we can use a `for structure` as bellow:
-
-```python
-# Define data structure
-my_list=[0,1,2,3,4,5] # a simple list with integers
-```
-
-In Jinja, we can iterate with ease, using a for block:
-
-```markup
-...
-      <ul>
-
-{% raw %}
-{% for n in my_list %}
-        <li>{{n}}</li>
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ page_title }}</title>
+</head>
+<body>
+    <h1>Welcome, {{ user_name }}!</h1>
+    
+    <ul>
+        {% for item in shopping_cart %}
+            <li>{{ item }}</li>
         {% endfor %}
-{% endraw %}
-
-      </ul>
-...
-```
-
-**Template Inheritance**
-
-Templates usually take advantage of inheritance, which includes a single base template that defines the basic structure of all subsequent child templates. You use the tags { extends } and { block } to implement inheritance.
-
-Let's take a look at a real sample:
-
-**Parent HTML** - saved as base.html
-
-```markup
-<html>
-  <head>
-    <title>My Jinja
-{% raw %}
-{% block title %}{% endblock %}
-{% endraw %} </title>
-  </head>
-  <body>
-    <div class="container">
-      <h2>This is from the base template</h2>
-      <br>
-      { block content }{ endblock }
-      <br>
-    </div>
-  </body>
+    </ul>
+</body>
 </html>
 ```
 
-**The Child template** - saved as child.html
+In this example, `{{ page_title }}`, `{{ user_name }}`, and `{% for item in shopping_cart %}` are Jinja template expressions and control structures.
 
-```markup
-{ extends "base.html" }
+## ✅ In Summary
 
-{ block title } MySample { endblock }
+Jinja's simplicity and flexibility make it a popular choice for web developers working with Python-based web frameworks. 
+It separates the logic from the presentation layer, making it easier to maintain and modify web templates.
 
-{ block content }
-  Cool content here
-{ endblock }
-```
+## ✅ Resources
 
-When Jinja loads `child.html`, the `{ extends }` block informs the engine to merge the `base.html` template with the content provided by `child.html`.
-
-- `{ block title }` becomes `MySample`
-- `{ block content }` becomes `Cool content here`
-
-Here is the final HTML generated by Jinja:
-
-```markup
-<html>
-  <head>
-    <title>My Jinja MySample</title>
-  </head>
-  <body>
-    <div class="container">
-      <h2>This is from the base template</h2>
-      <br>
-      Cool content here
-      <br>
-    </div>
-  </body>
-</html>
-```
-
-## Links & Resources
-
-- [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) - official website
-- [Jinja Template](https://github.com/app-generator/jinja-template) - a curated list with starters published on Github
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

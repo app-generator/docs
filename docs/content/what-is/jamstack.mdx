@@ -1,50 +1,60 @@
 ---
-sidebar_position: 10
-description: Short introduction to JAMstack
+title            : What IS JAMStack
+sidebar_label    : What IS JAMStack
 ---
 
 # What IS JAMStack
 
 <SubHeading>Short introduction to JAMstack</SubHeading>
 
-Modern web development architecture based on client-side JavaScript, reusable APIs, and prebuilt Markup
+JAMstack is a modern web development architecture and methodology that stands for JavaScript, APIs, and Markup. 
+It represents a shift in how web applications and websites are built and delivered. 
 
-### JAMstack - Short Introduction
+![What IS JAMStack - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269188374-322db117-586a-49d1-b0e5-112eedd0aec0.jpg) 
 
-Apps built in Jamstack architecture met the following criteria:
+> Here's a **breakdown of each component of JAMstack**:
 
-- **JavaScript**, any dynamic programming during the request/response cycle is handled by JavaScript, running entirely on the client
-- **APIs**, all server-side processes or database actions are abstracted into reusable APIs, accessed over HTTPS with JavaScript
-- **Markup**, templated markup should be prebuilt at deploy time, usually using a site generator for content sites, or a build tool for web apps
+## ✅ **JavaScript (JS)** 
 
-### Why using a JAMstack app?
+JavaScript is used for client-side functionality and interactivity in JAMstack applications. 
+It typically handles tasks such as user interface enhancements, form handling, and dynamic content rendering in the browser. 
+JAMstack projects often use modern JavaScript frameworks like React, Vue.js, or Angular for this purpose.
 
-The major advantages met by the JAMstack pattern are:
+## ✅ **APIs** 
 
-- Apps are much faster because there is no more dynamic build of the pages
-- Security - a static app with less API endpoints reduce allot the risk of being hacked
-- Better developer experience - using a JAMstack app a developer needs only a simple editor and a console to create and deploy an app
+APIs (Application Programming Interfaces) play a crucial role in JAMstack. They provide the dynamic functionality and data retrieval needed for web applications. 
+These APIs can be third-party services, serverless functions, or custom-built endpoints that deliver data in a structured format (usually JSON) for consumption by the frontend.
 
-### Sample JAMstack App
+## ✅ **Markup** 
 
-For instance, let's build a sample JAMstack app by getting the source code from [Github](https://github.com/search?q=jamstack+fractal). Let's pick up the first result, open the [README](https://github.com/app-generator/jamstack-fractal/blob/master/README.mdx) file and follow the intructions provided:
+Markup refers to the pre-built, static HTML files that make up the core content and structure of a JAMstack site. 
+These files are generated at build time, meaning they don't change unless you explicitly rebuild the site. 
+This static nature has several benefits, including better performance, security, and scalability.
 
-```
-$ git clone https://github.com/app-generator/jamstack-fractal.git
-$ cd jamstack-fractal
+## ✅ JAMstack Advantages
 
-$ yarn # install modules
-$ yarn start # start the app for development
+- **Performance:** Static files are served directly from content delivery networks (CDNs), which are optimized for speed and global distribution. This results in faster load times.
 
-$ yarn build # build for production
-```
+- **Security:** Since there's no server-side code execution in the traditional sense, many common security vulnerabilities are mitigated.
 
-If all goes well, the app can be visited on `http://localhost:8000` As we can see, building an app in JAMstack architecture is quite an easy job.
+- **Scalability:** Scaling static assets is straightforward because CDNs can handle large amounts of traffic easily.
 
-### Related Resources
+- **Developer Experience:** Separating the frontend from the backend allows for a clear separation of concerns. Developers can work on the frontend independently, and the deployment process is simplified.
 
-- [JAMstack](https://jamstack.org/) - the website
-- [WTF is JAMstack](https://jamstack.wtf/) - an well-known resource fpr JAMstack developers
-- [Apps built in JAMstack](https://appseed.us/apps/jamstack) - index provided by AppSeed
-- Open-Source [JAMstack Apps](https://github.com/app-generator/jamstack) published on [Github](https://github.com/search?q=jamstack)
-- [Landed](https://appseed.us/apps/jamstack/html5up-landed) a very popular open-source app designed by **Html5 Up** and coded in JAMstack architecture
+- **Maintainability:** JAMstack sites are easier to maintain and update because changes can be made to the content or frontend without worrying about the backend infrastructure.
+
+- **Reduced Hosting Costs:** Hosting static files on CDNs is often more cost-effective than traditional server-based hosting.
+
+## ✅ In Summary
+
+While JAMstack has many advantages, it's not suitable for every type of web application. 
+It works best for content-driven sites, blogs, e-commerce stores, and other projects where most of the content is relatively static and doesn't require real-time updates. 
+
+For more dynamic applications, JAMstack can be combined with serverless functions or other backend services to handle specific functionalities while still benefiting from the overall architecture.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

@@ -1,23 +1,66 @@
 ---
-sidebar_position: 22
-description: Short introduction to Two-Tier Architecture
+title            : Two-Tier Architecture
+sidebar_label    : Two-Tier Architecture
 ---
 
 # Two-Tier Architecture
 
 <SubHeading>Short introduction to Two-Tier Architecture</SubHeading>
 
-A **two-tier architecture** is a software architecture in which a presentation layer or interface runs on a client, and a data layer or data structure gets stored on a server. Separating these two components into different locations represents a two-tier architecture, as opposed to a single-tier architecture.
+Two-tier architecture, also known as two-layer architecture or client-server architecture, is a software architecture model that divides an application into two distinct parts or tiers: 
+the client tier and the server tier. Each tier has specific responsibilities and functions within the overall application, and they communicate with each other to provide the desired functionality.
 
-![Two Tier architecture](https://raw.githubusercontent.com/app-generator/static/master/docs/two-tier-architecture.jpg)
+![Two-Tier Architecture - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269203685-75fe6577-1ba3-4d34-9716-901bb9c544fc.jpg) 
 
-## Sample Apps
+> Here are the **key components and characteristics of a two-tier architecture**:
 
-- [Material Kit](https://appseed.us/apps/react/express/material-kit-creative-tim) coded in **React** and **Express**, where React implements the presentation layer, and the application login is coded in Express, the popular Node.js Framework.
-- [Argon Design](https://appseed.us/apps/vuejs/laravel/argon-design-system-creative-tim) coded in **Vue.js** and **Laravel**.
-- [BulmaPlay](https://appseed.us/apps/flask-apps/bulmaplay-flask-and-bulma-css) - presentation layer coded in jQuery and the server-side implemented in Flask
+## ✅ **Client Tier** 
 
-## Resources
+This tier represents the user interface or client-side of the application. It is responsible for presenting the application's user interface to the end-users and collecting user inputs. 
+The client tier typically runs on the user's device, such as a desktop computer, mobile device, or web browser. It may include components like user interfaces, presentation logic, and user input handling.
 
-- Wikipedia [Multitier Architecture](https://en.wikipedia.org/wiki/Multitier_architecture) - blog article
-- Techopedia [One-Tier Architecture](https://www.techopedia.com/definition/17374/one-tier-architecture) - blog article
+## ✅ **Server Tier** 
+
+The server tier, also known as the backend or server-side, handles the application's core logic, data processing, and data storage. 
+It responds to requests from the client tier, processes those requests, interacts with databases, and generates responses. 
+The server tier can run on a remote server or a cloud-based infrastructure, separate from the client devices. It typically includes components like application servers, business logic, and databases.
+
+## ✅ **Communication** 
+
+Communication between the client and server tiers occurs over a network, usually through well-defined protocols such as HTTP, TCP/IP, or custom application-specific protocols. 
+The client sends requests to the server, which processes them and returns the appropriate responses.
+
+## ✅ **Data Flow** 
+
+In a two-tier architecture, data flow is often bi-directional. 
+Clients send requests to the server, which processes these requests, interacts with databases or other data sources if necessary, and sends back the results or responses to the client.
+
+## ✅ **Responsibilities** 
+
+The client tier focuses on presenting information to users and collecting their inputs, while the server tier manages data processing, business logic, security, and data storage. 
+The division of responsibilities between the tiers helps maintain separation of concerns and modularity in the application.
+
+## ✅ **Scalability** 
+
+Two-tier architectures can scale vertically (by adding more resources to a single server) or horizontally (by adding more servers) to handle increased traffic or workload. 
+However, scaling may be limited by the capabilities of the server hardware.
+
+## ✅ **Examples** 
+
+Traditional desktop applications, where the client runs on a user's computer and communicates with a central server, are classic examples of two-tier architectures. 
+Additionally, web applications with a client-side user interface (e.g., web browser) and a server-side backend are another common example.
+
+## ✅ In Summary
+
+Two-tier architectures are relatively straightforward and can be well-suited for simple applications where the client's responsibilities are mainly presentation and user input, 
+and the server handles most of the application's logic and data processing. 
+
+However, they may face limitations in terms of scalability and flexibility as applications grow in complexity or need to accommodate a large number of users. 
+In such cases, more advanced architectures like three-tier or n-tier architectures are often preferred.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
