@@ -7,9 +7,10 @@ sidebar_label: Django Dockerizing App
 
 <SubHeading>How to setup a Django project to run in Docker</SubHeading>
 
-This page explains how to Dockerize a Django application with ease. For newcomers, Django is a leading web framework crafted in Python and Docker is a virtualization software used to isolate the execution of a service or product using virtual containers.
+This page explains how to Dockerize a Django application with ease. 
+For newcomers, Django is a leading web framework crafted in Python and Docker is a virtualization software used to isolate the execution of a service or product using virtual containers.
 
-### Adding Docker
+## ✅ Adding Docker
 
 First of all, make sure you have Docker installed and running on your machine. Refer to the official [documentation](https://docs.docker.com/engine/install/) and follow the steps.
 
@@ -55,7 +56,7 @@ $ docker run -p 5000:3000 django_app
 
 You can now access your app on localhost:5000.
 
-### Adding Docker Compose
+## ✅ Adding Docker Compose
 
 If you want to create multiple images and run them using the precedent Docker configuration, you'll have to create multiple `Dockerfile`.
 
@@ -101,9 +102,9 @@ docker-compose up --build
 
 And your application will be running on localhost:5000.
 
-### Dockerize a production-ready app
+## ✅ Dockerize a production-ready app
 
-@please refer to the configuration implemented by the reference [Django Codebase](https://github.com/app-generator/boilerplate-code-django-dashboard)
+Please refer to the configuration implemented by the reference [Django Codebase](https://github.com/app-generator/boilerplate-code-django-dashboard)
 
 - Django App
   - short info regarding the codebase
@@ -118,8 +119,6 @@ And your application will be running on localhost:5000.
 - Docker-compose
   - included sections - short description
   - sample - [docker-compose.yml](https://github.com/app-generator/boilerplate-code-django-dashboard/blob/master/docker-compose.yml)
-
-<br />
 
 ## ✅ Resources 
 
