@@ -13,7 +13,7 @@ This page explains how to deploy a simple [Flask](https://www.palletsprojects.co
 this setup was tested on CentOS but can be easily adapted to be executed on other platforms.
 :::
 
-### Dependencies
+## ✅ Dependencies
 
 - [Apache](https://httpd.apache.org/) / `httpd` (on CentOS) server
 - [mod_wsgi](https://modwsgi.readthedocs.io/)
@@ -21,7 +21,7 @@ this setup was tested on CentOS but can be easily adapted to be executed on othe
 - [Python3](https://www.python.org/)
 - [Virtualenv](https://virtualenv.pypa.io/)
 
-### Prepare the environment
+## ✅ Prepare the environment
 
 > Install [Apache](https://httpd.apache.org/) server
 
@@ -56,9 +56,7 @@ Virtual environments will sandbox the app to run isolated from the global server
 $ sudo pip install virtualenv
 ```
 
-###
-
-### Code the [Flask](https://www.palletsprojects.com/p/flask/) App
+## ✅ Code the [Flask](https://www.palletsprojects.com/p/flask/) App
 
 We will use a simple [Flask](https://www.palletsprojects.com/p/flask/) application that serves a simple `Hello World` message for all routes. As mentioned before, this setup is executed on CentOs. The steps are:
 
@@ -105,9 +103,7 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=port, debug=True)
 ```
 
-###
-
-### Test the Flask App
+## ✅ Test the Flask App
 
 We have the test application, now let's start it to see something on the screen. First, we need to create and activate the virtual environment.
 
@@ -132,11 +128,10 @@ $ flask run # start the app
 $ # our app is running on port 5000
 ```
 
-###
+## ✅ Apache Configuration
 
-### Apache Configuration
-
-To execute a Flask application under the Apache HTTP server we need to bridge our application to the Apache engine using the mod_wsgi module. For this we need to create a new file `wsgi.py` inside our project folder:
+To execute a Flask application under the Apache HTTP server we need to bridge our application to the Apache engine using the mod_wsgi module. 
+For this we need to create a new file `wsgi.py` inside our project folder:
 
 ```bash
 /var/www/hitme
@@ -192,8 +187,6 @@ $ lynx localhost # lynx
 ```
 
 ![Flask App deployed on Apache](https://raw.githubusercontent.com/app-generator/static/master/docs/flask-apache-centos-running-app.jpg)
-
-<br />
 
 ## ✅ Resources 
 
