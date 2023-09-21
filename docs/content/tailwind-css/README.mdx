@@ -7,15 +7,103 @@ sidebar_label: Tailwind CSS
 
 <SubHeading>Tailwind-related content providd by AppSeed.</SubHeading>
 
-import DocCardList from "@theme/DocCardList";
-import { useCurrentSidebarCategory } from "@docusaurus/theme-common";
-import SubHeading from "@site/src/components/SubHeading";
+Tailwind CSS is a popular utility-first CSS framework that allows you to rapidly build user interfaces by composing classes. 
+It's known for its simplicity and flexibility. 
+
+![What IS Tailwind CSS - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269556078-dc0469ef-47dc-4e82-bf25-cdab6963a0e7.jpg) 
+
+> Here's a **comprehensive introduction with coding samples** to get you started:
+
+## ✅ **Installation**
+
+Before using Tailwind CSS, you need to install it via npm or yarn. Make sure you have a new or existing HTML file to work with.
+
+```bash
+# Install Tailwind CSS
+npm install tailwindcss
+
+# Create a configuration file (if not already present)
+npx tailwindcss init
+```
+
+## ✅ **Setting Up HTML**
+
+Create an HTML file (e.g., `index.html`) and include Tailwind CSS in the head of your document.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <title>Your App</title>
+</head>
+<body>
+    <!-- Your content goes here -->
+</body>
+</html>
+```
+
+## ✅ **Basic Styling**
+
+Let's create a button using Tailwind CSS classes.
+
+```html
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Click me
+</button>
+```
+
+This code creates a blue button with white text that turns darker on hover.
+
+## ✅ **Responsive Design**
+
+Tailwind makes it easy to create responsive layouts. Here's a simple example of a responsive grid.
+
+```html
+<div class="lg:flex lg:justify-between">
+    <div class="lg:w-1/4">Sidebar</div>
+    <div class="lg:w-3/4">Main Content</div>
+</div>
+```
+
+In this example, the layout changes from a single column to a two-column layout on large screens (`lg` breakpoint).
+
+## ✅ **Customization**
+
+You can customize Tailwind CSS by editing your `tailwind.config.js` file. For example, if you want to add your custom colors:
+
+```javascript
+// tailwind.config.js
+module.exports = {
+    theme: {
+        extend: {
+            colors: {
+                'primary': '#FF5722',
+                'secondary': '#2196F3',
+            },
+        },
+    },
+    variants: {},
+    plugins: [],
+};
+```
+
+Now, you can use these custom colors in your HTML:
+
+```html
+<div class="bg-primary text-white">Primary Background</div>
+<div class="bg-secondary text-white">Secondary Background</div>
+```
+
+These examples should give you a good start with Tailwind CSS. For production-ready starters & templates, feel free to access the products listed in this section: 
 
 <DocCardList />
 
-<br />
+## ✅ Resources 
 
-## Resources
-
-- 👉 More [Free Starters](https://appseed.us/admin-dashboards/open-source/) - crafted by AppSeed
-- 👉 Free [Support](https://appseed.us/support/) via Email & Discord
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
