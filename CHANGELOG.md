@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.0.51] 2023-09-21
+## [1.0.52] 2023-09-21
 ### Changes
 
 - [Django - Add Debug Toolbar](https://docs.appseed.us/content/how-to/django-add-debug-toolbar/)
