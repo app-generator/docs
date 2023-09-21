@@ -1,5 +1,18 @@
 # Change Log
 
+## [1.0.51] 2023-09-21
+### Changes
+
+- [Django - Add Debug Toolbar](https://docs.appseed.us/content/how-to/django-add-debug-toolbar/)
+- [Django Customize Admin UI](https://docs.appseed.us/content/how-to/django-admin-customization/)
+- [Install WSL](https://docs.appseed.us/content/how-to/wsl-install/)
+- [Setup Windows for Coding](https://docs.appseed.us/content/how-to/setup-windows-for-development/)
+- [OAuth GitHub Secrets](https://docs.appseed.us/content/how-to/oauth-github-secrets/)
+- [Django Chart Example](https://docs.appseed.us/content/how-to/django-chart-example/)
+- Update [Glossary of Terms](https://docs.appseed.us/content/what-is/)
+  - [What IS OAuth](https://docs.appseed.us/content/what-is/oauth/)
+  - [What IS Tailwind CSS](https://docs.appseed.us/content/what-is/tailwind-css/)
+
 ## [1.0.51] 2023-09-20
 ### Changes
 
