@@ -7,14 +7,13 @@ sidebar_label: Django Customize Admin UI
 
 <SubHeading> How To customize Django Admin Interface</SubHeading>
 
-This page explains how to override Django admin and import a custom template to it. Along with the tutorial, we provide a working sample coded on top of Black Dashboard design (free version) designed by Creative-Tim.
+This page explains how to override Django admin and import a custom template to it. 
+Along with the tutorial, we provide a working sample coded on top of [Black Dashboard](https://www.creative-tim.com/product/black-dashboard?AFFILIATE=128200) design (free version) designed by **Creative-Tim**.
 
-**Links & Resources**
+- 👉 [Django Black Dashboard](https://appseed.us/product/black-dashboard/django/) - the product page
+- 👉 [Django Admin Black](https://github.com/app-generator/django-admin-black) - admin section customized using Black Design
 
-- [Django Black Dashboard](https://appseed.us/admin-dashboards/django-dashboard-black) - the product page
-- [Django Admin Black](https://github.com/app-generator/django-admin-black) - admin section customized using Black Design
-
-## The Basics
+## ✅ The Basics
 
 Django provides default pages for login, registration, 404 and 500 pages (etc) the full list can be found in the `site-packages/django` folder:
 
@@ -52,9 +51,10 @@ Django provides default pages for login, registration, 404 and 500 pages (etc) t
     └── password_reset_form.html
 ```
 
-To customize a template, we need to provide the page in a custom templates directory and inform Django to use it. When a template page is used, Django will try to resolve the file by scanning the templates provided by the user and after this step, it defaults to ones provided by the Django core.
+To customize a template, we need to provide the page in a custom templates directory and inform Django to use it. 
+When a template page is used, Django will try to resolve the file by scanning the templates provided by the user and after this step, it defaults to ones provided by the Django core.
 
-### Customize 404 page
+## ✅ Customize 404 page
 
 The admin templates come in two directories:
 
@@ -63,7 +63,7 @@ The admin templates come in two directories:
 
 To customize the `404` page, you need to override the right file. The relative path leading to the file has to be the same as the one being overridden. The file you’re interested in is `404.html`.
 
-**Step #1 - Create template directory**
+### **Create Templates Directory**
 
 ```bash
 # Django Root Project <-- you are here
@@ -99,7 +99,7 @@ TEMPLATES = [
 
 As mentioned before, Django will try to resolve a template file by scanning the directories defined by the user in the settings file. If nothing is found, the default version will be used from `site-packages/django/contrib/admin/templates/` directory.
 
-**Step #3 - Customize 404 page**
+### **Customize 404 page**
 
 The custom version of our 404 page can be easily done by copying the default version from `admin/templates/` directory and save it in the directory created in **Step #2**
 
@@ -130,15 +130,16 @@ vi templates/404.html
 
 Once we save the file, Django will use it when a 404 error case occur when users interacts with our application.
 
-### A complete example
+## ✅ Complete Sample
 
 This section explains the process of integrating Black Dashboard design (free version) to style the default admin section for Django.
 
 **Download UI Kit & Assets**
 
-Download your favorite template which usually contains **css**, **js**, **images** and **fonts** files. The sample we are using here (Black Dashboard) can be downloaded from the [product page](https://www.creative-tim.com/product/black-dashboard?AFFILIATE=128200).
+Download your favorite template which usually contains **css**, **js**, **images** and **fonts** files. 
+The sample we are using here (Black Dashboard) can be downloaded from the [product page](https://www.creative-tim.com/product/black-dashboard?AFFILIATE=128200).
 
-![Django Admin Black](https://raw.githubusercontent.com/app-generator/django-dashboard-black/master/media/django-dashboard-black-screen.png)
+![Django Admin Black](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269554859-7d0efba6-f016-4ab7-aa1c-c6cbf2b2678d.jpg)
 
 > Please note that you may have to change the template slightly to do this. Because the relevant template must be usable for Django Admin features.
 
