@@ -10,7 +10,9 @@ sidebar_label: WSL How to install
 The Windows Subsystem for Linux lets developers run a GNU/Linux environment directly on Windows. 
 The latest version is WSL 2, which powers the Windows Subsystem for Linux to run ELF64 Linux binaries on Windows.
 
-> List available WSL distros
+![WSL How to install - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/269541668-c7ef0ff3-aad1-458b-ace6-3a189ac9ad96.jpg) 
+
+## ✅ List available WSL distros
 
 ```bash
 $ wsl -l -o
@@ -26,7 +28,7 @@ Ubuntu-18.04    Ubuntu 18.04 LTS
 Ubuntu-20.04    Ubuntu 20.04 LTS
 ```
 
-> Install WSL via `powershell`
+## ✅ Install WSL via `powershell`
 
 Below command installs Ubuntu distribution.
 
@@ -34,19 +36,45 @@ Below command installs Ubuntu distribution.
 $ wsl --install Ubuntu
 ```
 
-> Check Current WSL Version
+## ✅ Check Current WSL Version
 
 ```bash
 $ wsl -l -v
 ```
 
-> Update from **WSL 1** to **WSL 2**
+## ✅ Update from **WSL 1** to **WSL 2**
 
 ```bash
 $ wsl --set-version Ubuntu 2
 ```
 
-<br />
+## ✅ In Summary
+
+WSL stands for "Windows Subsystem for Linux." It is a compatibility layer provided by Microsoft that allows you to run a Linux distribution natively on a Windows operating system. 
+WSL essentially enables you to use Linux command-line tools, utilities, and even run Linux applications alongside your Windows applications without the need for a separate virtual machine or dual-boot setup. 
+
+This is particularly useful for developers and system administrators who work in heterogeneous environments or need access to Linux tools on a Windows machine.
+
+Currently, are two major versions of WSL:
+
+### **WSL 1** 
+
+The first version of WSL is built on a translation layer that converts Linux system calls into Windows system calls. 
+While it provides some compatibility with Linux applications, it may not offer full system call compatibility, and performance can be somewhat limited.
+
+### **WSL 2** 
+
+The second version of WSL uses a virtualization technology called Hyper-V to provide a more complete and efficient Linux kernel experience. 
+WSL 2 offers better performance and improved compatibility with Linux applications. It allows for running a full-fledged Linux distribution with its own kernel alongside Windows.
+
+Key features and use cases of WSL include:
+
+- Running Linux terminal and command-line tools within a Windows terminal.
+- Accessing and managing files in a Linux filesystem from Windows.
+- Running Linux server applications and development tools (e.g., web servers, databases, Docker) directly on Windows.
+- Developing cross-platform applications that need to be tested on both Windows and Linux.
+- Leveraging Linux package managers (e.g., apt, yum) to install and manage software packages on Windows.
+- WSL allows developers to use familiar Linux tools and workflows, making it easier to work with Linux-based technologies while using a Windows development environment.
 
 ## ✅ Resources 
 
