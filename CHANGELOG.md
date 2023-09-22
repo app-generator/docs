@@ -1,5 +1,17 @@
 # Change Log
 
+## [1.0.53] 2023-09-22
+### Changes
+
+- Added [Glossary of Terms](https://docs.appseed.us/glossary/)
+- Update [Tailwind Templates](https://docs.appseed.us/content/tailwind-css/) Section
+  - [Notus React Tailwind](https://docs.appseed.us/content/tailwind-css/notus-react/) - new template
+- Update [DEVELOPER TOOLS](https://docs.appseed.us/developer-tools/) Section
+  - [Django API Generator](https://docs.appseed.us/developer-tools/django-api-generator/)
+  - [Django Dynamic API](https://docs.appseed.us/developer-tools/django-dynamic-api/)
+  - [Flask Dynamic API](https://docs.appseed.us/developer-tools/flask-dynamic-api/)
+  - [Flask Dynamic DataTables](https://docs.appseed.us/developer-tools/flask-dynamic-datatables/)    
+
 ## [1.0.52] 2023-09-21
 ### Changes
 
