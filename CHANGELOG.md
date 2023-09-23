@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.56] 2023-09-23
+### Changes
+
+- [Glossary of Terms](https://docs.appseed.us/glossary/)
+- [What IS Bootstrap](https://docs.appseed.us/content/what-is/bootstrap/)
+- [Bootstrap Templates](https://docs.appseed.us/content/bootstrap-template/)
+
 ## [1.0.55] 2023-09-23
 ### Changes
 
