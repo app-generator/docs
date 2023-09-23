@@ -1,0 +1,99 @@
+---
+title        : Getting Started with HEROKU
+sidebar_label: Getting Started 
+---
+
+# Getting Started with HEROKU
+
+<SubHeading>Short intro to HEROKU</SubHeading>
+
+Getting started with Heroku is relatively straightforward, as Heroku is a Platform-as-a-Service (PaaS) that abstracts much of the underlying infrastructure management, 
+allowing you to focus on deploying and running your applications. 
+
+![Getting Started with HEROKU - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270108978-cbc1203c-56cc-4f49-a346-9ecd9204b33c.jpg)
+
+> Here's a **step-by-step guide to getting started with Heroku**:
+
+## **Create a Heroku Account**
+
+- Visit the Heroku website (https://www.heroku.com/).
+- Click the "Get Started for Free" button to create an account.
+- You can sign up using your email address.
+
+## **Install the Heroku CLI**
+
+- The Heroku Command Line Interface (CLI) is a tool that allows you to manage your Heroku applications and perform various tasks from the command line.
+- Download and install the Heroku CLI for your operating system from here: https://devcenter.heroku.com/articles/heroku-cli
+
+## **Log In to the Heroku CLI**
+
+- Open a terminal or command prompt.
+- Run `heroku login` and follow the prompts to log in to your Heroku account. This will associate your local machine with your Heroku account.
+
+## **Create a Heroku Application**
+
+- After logging in, you can create a new Heroku application from the command line using the `heroku create` command:
+    ```
+    heroku create your-app-name
+    ```
+- Heroku will generate a random name for your app if you don't specify one.
+
+## **Deploy Your Application**
+
+- To deploy your application to Heroku, make sure your code is in a Git repository.
+- Add and commit your changes to Git:
+    ```
+    git add .
+    git commit -m "Initial commit"
+    ```
+- Then, push your code to Heroku:
+    ```
+    git push heroku master
+    ```
+
+## **Access Your Application**
+
+After successfully deploying your application, Heroku will provide you with a URL where your app is accessible. You can also open it using:
+```
+heroku open
+```
+
+## **Scaling Your Application**
+
+Heroku makes it easy to scale your application by adjusting the number of dynos (containers) running your app. 
+
+You can scale up or down as needed from the Heroku Dashboard or using the `heroku ps` command.
+
+## **Database and Add-Ons**
+
+Heroku offers various add-ons, including managed databases (e.g., PostgreSQL, MySQL, MongoDB), caching, and more. You can add these to your application as needed.
+
+## **Environment Variables**
+
+Use Heroku's environment variables to store sensitive information, configuration settings, and API keys securely. 
+You can set them via the Heroku Dashboard or using the `heroku config` command.
+
+## **Logs and Monitoring**
+
+Heroku provides a centralized logging system. You can access logs with the `heroku logs` command to troubleshoot issues and monitor your app's performance.
+
+## **Collaboration and Teams**
+
+If you're working with a team, you can invite members to collaborate on your Heroku apps.
+
+## **Billing and Payment**
+
+Review Heroku's billing options and add payment information if needed. Heroku offers a free tier, but additional resources and features may incur charges.
+
+## ✅ In Summary
+
+Heroku is known for its ease of use and developer-friendly experience. It supports multiple programming languages and frameworks, making it suitable for a wide range of applications. 
+
+Their documentation and support resources are comprehensive, so you can find help and guidance for more advanced topics as you become more familiar with the platform.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

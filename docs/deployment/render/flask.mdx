@@ -7,13 +7,14 @@ sidebar_label: Flask & Render
 
 <SubHeading color="#25c2a0">How to go LIVE with a Flask project using Render Deployment Platform</SubHeading>
 
-This page explains how to go live with a **Flask** project on **Render**, a popular deployment platform. For newcomers, [Render](https://render.com/) supports the deployment for all major languages, Free Certificates, DDoS protection, and auto deploys from GitHub.
+This page explains how to go live with a **Flask** project on **Render**, a popular deployment platform. 
+For newcomers, [Render](https://render.com/) supports the deployment for all major languages, Free Certificates, DDoS protection, and auto deploys from GitHub.
 
 > The VIDEO version - published on YouTube
 
 <YoutubeEmbed url="https://www.youtube.com/embed/jWxYzKVkcwY" title="How to deploy Flask on Render Platform" />
 
-### Render Account Creation
+## ✅ Render Account Creation
 
 The Sign UP is provided via classic Email and Social Authentication for well-known providers like GitHub, GitLab, or Google. Once the sign-up process is finished, the user is redirected to the dashboard.
 
@@ -24,7 +25,7 @@ The Sign UP is provided via classic Email and Social Authentication for well-kno
 	</figcaption>
 </figure>
 
-### Create a new project
+## ✅ Create a new project
 
 All projects that use a dynamic language during runtime (Python, NodeJs) should be created as web services. This option can be found in the navigation bar, as shown below:
 
@@ -35,7 +36,7 @@ All projects that use a dynamic language during runtime (Python, NodeJs) should 
 	</figcaption>
 </figure>
 
-### Link GitHub Repository
+## ✅ Link GitHub Repository
 
 The next step is to associate a Flask project with the newly created web service. Render support account linkage with external platforms like GitHub, GitLab, and BitBucket. In our demonstration, an open-source repository is used as a working sample.
 
@@ -57,17 +58,17 @@ The next step is to associate a Flask project with the newly created web service
 	</figcaption>
 </figure>
 
-### The project settings
+## ✅ The project settings
 
 Before going LIVE, we need to configure the future web service. Here is the information required by Render:
 
-- ✅ The **name of the project** (mandatory)
-- ✅ The **root** of the project (leave it blank)
-- ✅ **Environment**: for a Flask project, we should select Python
-- ✅ **Region**: only if the location of the server is relevant
-- ✅ **Source Branch**: the main branch is used
-- ✅ **Build Command**: a simple [BASH script](https://github.com/app-generator/sample-flask-stripe/blob/master/build.sh) is used
-- ✅ **Start Command**: the entry point, usually managed by [Gunicorn](https://gunicorn.org/)
+- The **name of the project** (mandatory)
+- The **root** of the project (leave it blank)
+- **Environment**: for a Flask project, we should select Python
+- **Region**: only if the location of the server is relevant
+- **Source Branch**: the main branch is used
+- **Build Command**: a simple [BASH script](https://github.com/app-generator/sample-flask-stripe/blob/master/build.sh) is used
+- **Start Command**: the entry point, usually managed by [Gunicorn](https://gunicorn.org/)
 
 A visual representation of the above settings used to deploy the project can be found below:
 
@@ -78,7 +79,8 @@ A visual representation of the above settings used to deploy the project can be 
 	</figcaption>
 </figure>
 
-**The next step** is to specify the billing plan for the project. **Render** platform, at the moment this material is edited, provides a free plan only for static sites built with **React**, **Vue**, **Next**, and all other frameworks.
+**The next step** is to specify the billing plan for the project. 
+**Render** platform, at the moment this material is edited, provides a free plan only for static sites built with **React**, **Vue**, **Next**, and all other frameworks.
 
 <figure>
 	<img src="../../.gitbook/assets/render-05-create-web-service-plans-min.jpg" alt="" />
@@ -89,10 +91,10 @@ A visual representation of the above settings used to deploy the project can be 
 
 The last step in this tutorial is to expand the "Advanced" section and provide a few **Environment variables** required by **Flask** and the Stripe feature.
 
-- ✅ **Debug** Flag: False (the recommended value in production)
-- ✅ [SECRET_KEY](https://flask.palletsprojects.com/en/2.2.x/config/#SECRET_KEY) variable: used to sign session secrets
-- ✅ **SERVER_ADDRESS**: Used by Stripe to redirect after a payment
-- ✅ **Stripe Secrets:** PRIVATE and PUBLIC keys (provided by Stripe)
+- **Debug** Flag: False (the recommended value in production)
+- [SECRET_KEY](https://flask.palletsprojects.com/en/2.2.x/config/#SECRET_KEY) variable: used to sign session secrets
+- **SERVER_ADDRESS**: Used by Stripe to redirect after a payment
+- **Stripe Secrets:** PRIVATE and PUBLIC keys (provided by Stripe)
 
 <figure>
 	<img src="../../.gitbook/assets/render-06-create-web-service-env-variables-min.jpg" alt="" />
@@ -119,15 +121,15 @@ An important aspect of the build is the **automatic deployment** that is enabled
 	</figcaption>
 </figure>
 
-### Trigger Manual Deployment
+## ✅ Trigger Manual Deployment
 
 The LIVE version of the project can be updated and even rollbacked anytime with ease via the UI. Here are the steps required by the LIVE update:
 
-- ✅ Access **Manual Deploy** Option
-- ✅ Select Deploy a specific commit
-- ✅ Add the commit HASH to be used (provided by Github)
-- ✅ Confirm/select the commit
-- ✅ Confirm the action and trigger the deploy
+- Access **Manual Deploy** Option
+- Select Deploy a specific commit
+- Add the commit HASH to be used (provided by Github)
+- Confirm/select the commit
+- Confirm the action and trigger the deploy
 
 > 👉 **Step #1 -** Select Specific Deployment Option
 
