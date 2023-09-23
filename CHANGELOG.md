@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.54] 2023-09-23
+### Changes
+
+- [What IS HTMX](https://docs.appseed.us/content/what-is/htmx/)
+- [HTMX vs. React](https://docs.appseed.us/content/what-is/htmx/#-htmx-vs-react)
+
 ## [1.0.53] 2023-09-22
 ### Changes
 
