@@ -1,0 +1,164 @@
+---
+title            : What IS HTMX 
+sidebar_label    : What IS HTMX
+---
+
+# What IS HTMX
+
+<SubHeading>All about HTMX, a JavaScript library that allows you to build web applications with modern, dynamic user interfaces.</SubHeading>
+
+[HTMX](https://htmx.org/) is a JavaScript library that allows you to build web applications with modern, dynamic user interfaces while keeping the server-side rendering and simplicity of traditional web development. 
+It's often used in conjunction with HTML, Python, and other server-side technologies.
+
+![What IS HTMX - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270097048-4c4435f4-80db-4dc1-88ea-4c15f095f37b.jpg) 
+
+> Here's a **basic overview of HTMX** and how to get started:
+
+## ✅ **Installation**
+
+You can include HTMX in your project by adding the HTMX script to your HTML file. 
+You can either download it and host it locally or include it from a CDN (Content Delivery Network). Here's an example of including HTMX from a CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@1.7.0/dist/htmx.min.js"></script>
+```
+
+## ✅ **Adding HTMX Attributes**
+
+HTMX is primarily used by adding attributes to your HTML elements. These attributes tell HTMX how to handle interactions with the server. 
+
+> **The most commonly used attributes are**:
+
+- `hx-get`: Fetch data from the server using a GET request.
+- `hx-post`: Send data to the server using a POST request.
+- `hx-trigger`: Define the event that triggers the request (e.g., `click`, `input`).
+- `hx-target`: Specify where the response from the server should be inserted.
+
+Here's an example of a button that makes an HTMX request when clicked:
+
+```html
+<button hx-get="/endpoint" hx-trigger="click">Fetch Data</button>
+<div hx-target="#result"></div>
+```
+
+## ✅ **Server-Side Handling**
+
+On the server-side, you need to create endpoints that HTMX will interact with. 
+These endpoints can be implemented using your preferred server-side language (e.g., Python, Node.js, PHP). 
+
+When an HTMX request is made, the server should respond with the necessary data or HTML.
+
+## ✅ **Handling Responses**
+
+HTMX allows you to specify where the server's response should be placed in the HTML document. You can use the `hx-target` attribute to identify the target element. For example:
+
+```html
+<div hx-target="#result"></div>
+```
+
+The server's response will be inserted into the element with the `id="result"`.
+
+## ✅ **Additional Features**
+
+HTMX offers many other features like handling form submissions, dynamic updating of content, animations, and more. 
+You can explore these features in the [HTMX documentation](https://htmx.org/docs/).
+
+## ✅ **Sample Project**
+
+To help you get started, you might want to create a simple project or experiment with HTMX. 
+Start with a small project, and gradually explore more advanced features as you become more comfortable with the library.
+
+## ✅ **Resources**
+
+- [HTMX Documentation](https://htmx.org/docs/): The official documentation is a great resource for learning more about HTMX and its capabilities.
+- [HTMX GitHub Repository](https://github.com/bigskysoftware/htmx): You can find the source code and examples in the HTMX GitHub repository.
+
+Remember that HTMX is a flexible library, and its usage may vary depending on your specific project requirements. 
+Feel free to ask more specific questions or seek guidance on particular aspects of HTMX as you explore it further.
+
+## ✅ HTMX vs. React
+
+**HTMX and React** are both JavaScript libraries/frameworks, but they serve different purposes and have distinct characteristics. 
+
+> **Here's a detailed comparison between the two**:
+
+### **Purpose and Use Cases**
+
+- **HTMX:**
+  - **Server-Side Rendering (SSR):** HTMX is designed to enhance traditional server-side rendering (SSR) web applications. It allows you to add dynamic behavior to your existing server-rendered HTML pages without completely overhauling your architecture.
+  - **Progressive Enhancement:** HTMX focuses on progressive enhancement, which means you start with a basic HTML page and then progressively add interactivity and dynamic behavior as needed.
+
+- **React:**
+  - **Single-Page Applications (SPAs):** React is often used to build single-page applications (SPAs) where most of the application logic is handled on the client side. It's especially popular for building complex, highly interactive web applications.
+  - **Virtual DOM:** React uses a virtual DOM to efficiently update and render components, making it well-suited for applications with frequent UI updates.
+
+### **Learning Curve:**
+
+- **HTMX:**
+  - HTMX has a relatively low learning curve, especially if you're already familiar with HTML, CSS, and traditional web development.
+  - It doesn't require you to learn a new component-based architecture like React.
+
+- **React:**
+  - React has a steeper learning curve, particularly if you're new to component-based UI development and concepts like JSX.
+  - It may take some time to become proficient in React's ecosystem, including libraries like Redux for state management.
+
+### **Performance:**
+
+- **HTMX:**
+  - HTMX relies on the browser's built-in capabilities and server-side rendering, which can lead to good initial load performance.
+  - It may be less performant for highly dynamic SPAs compared to React due to frequent server requests.
+
+- **React:**
+  - React's virtual DOM and efficient updates can lead to excellent runtime performance for SPAs with complex UIs.
+  - However, React apps may have a heavier initial load because they require downloading JavaScript bundles.
+
+### **Data Flow and State Management:**
+
+- **HTMX:**
+  - HTMX doesn't provide built-in state management. It relies on the server for data.
+  - You can use traditional server-side techniques for managing application state.
+
+- **React:**
+  - React has a built-in state management system and can work with various state management libraries (e.g., Redux, Mobx) for more complex applications.
+  - It offers a unidirectional data flow, making it easier to manage and update component state.
+
+### **Ecosystem and Community:**
+
+- **HTMX:**
+  - HTMX has a smaller ecosystem and community compared to React.
+  - There are fewer third-party libraries and tools available for HTMX.
+
+- **React:**
+  - React has a large and active community with a vast ecosystem of third-party libraries, tools, and resources.
+  - This strong community support makes it easier to find solutions to common problems and integrate with other technologies.
+
+### **Integration:**
+
+- **HTMX:**
+  - HTMX can be integrated into existing server-rendered applications with relative ease.
+  - It can work with various server-side languages and frameworks.
+
+- **React:**
+  - React often requires a more significant overhaul of your application architecture if you're transitioning from a non-SPA to an SPA model.
+  - It's commonly used with Node.js on the server side for server rendering (Next.js, for example).
+
+### **Project Type:**
+
+- **HTMX:**
+  - Suitable for projects where SEO and initial load performance are critical.
+  - Great for enhancing traditional websites with small amounts of interactivity.
+
+- **React:**
+  - Ideal for building complex, interactive SPAs or web applications where real-time updates and interactivity are central.
+
+## ✅ In Summary
+
+In summary, **the choice between HTMX and React** depends on your project requirements and familiarity with each technology. 
+**HTMX** is well-suited for enhancing traditional server-rendered websites with progressive interactivity, while **React** is a robust choice for building modern SPAs with complex user interfaces.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
