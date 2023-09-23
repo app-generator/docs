@@ -1,5 +1,16 @@
 # Change Log
 
+## [1.0.55] 2023-09-23
+### Changes
+
+- Update [Deployment](https://docs.appseed.us/deployment/) Section
+- [Getting Started with DigitalOcean](https://docs.appseed.us/deployment/app-platform-do/getting-started/)
+- [Getting Started with AWS](https://docs.appseed.us/deployment/aws/getting-started/)
+- [Getting Started with Azure](https://docs.appseed.us/deployment/azure/getting-started/)
+- [Getting Started with GCP](https://docs.appseed.us/deployment/gcp/getting-started/)
+- [Getting Started with HEROKU](https://docs.appseed.us/deployment/heroku/getting-started/)
+- [Getting Started with Render](https://docs.appseed.us/deployment/render/getting-started/)
+
 ## [1.0.54] 2023-09-23
 ### Changes
 
