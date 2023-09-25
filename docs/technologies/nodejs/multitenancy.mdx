@@ -1,0 +1,89 @@
+---
+title         : Multitenancy in Node.js
+sidebar_label : Multitenancy
+---
+
+# Multitenancy in Node.js
+
+<SubHeading>The concept of Multitenancy in Node.js</SubHeading>
+
+Implementing multitenancy in a Node.js application involves designing your codebase and database schema to support multiple tenants, each with its data and configurations. 
+There are several approaches you can take, depending on your requirements and the complexity of your application. 
+
+![Multitenancy in Node.js - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270248512-e8d3e48e-7245-4445-a767-b8feeaa188ae.jpg) 
+
+> Here's a basic overview of **how you can implement multitenancy in Node.js**:
+
+## **Shared Database Schema**
+
+- In this approach, all tenants share the same database schema, but data is segregated using a tenant identifier. This identifier is included in every relevant database query to ensure data separation.
+- You can use a middleware or a function to determine the current tenant based on request data (e.g., subdomain, URL parameter, or authentication token).
+
+## **Isolated Database Schemas**
+
+- Each tenant has its own isolated database schema. This approach ensures complete data isolation but can be more resource-intensive.
+- You can dynamically switch between database connections based on the current tenant during request processing.
+
+Here's a simplified example of implementing multitenancy in a Node.js application using the shared database schema approach:
+
+```javascript
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+
+// Connect to the MongoDB database
+mongoose.connect('mongodb://localhost/myapp', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Middleware to set the current tenant based on request data
+app.use((req, res, next) => {
+  // Determine the current tenant based on request data (e.g., subdomain or URL parameter)
+  const tenant = req.query.tenant || 'default'; // Use a default tenant if none is specified
+  req.currentTenant = tenant;
+  next();
+});
+
+// Define a schema for your data model
+const itemSchema = new mongoose.Schema({
+  name: String,
+  tenant: String, // Include a field to store the tenant identifier
+});
+
+// Create a model based on the schema
+const Item = mongoose.model('Item', itemSchema);
+
+// Example route to fetch items for the current tenant
+app.get('/items', async (req, res) => {
+  try {
+    // Query the database, filtering by the current tenant
+    const items = await Item.find({ tenant: req.currentTenant });
+    res.json(items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+```
+
+In this example, we use Express.js with Mongoose (an Object-Document Mapper for MongoDB) to create a simple multitenant application. 
+
+The `req.currentTenant` variable is set in the middleware based on a query parameter, and it's used to filter records in the `/items` route.
+
+## ✅ In Summary
+
+Please note that this is a basic example, and in a real-world application, you would need to handle database connection pooling, authentication, and security more rigorously. 
+
+Additionally, the choice between a shared schema or isolated schema approach depends on your specific use case and scalability requirements.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
