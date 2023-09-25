@@ -1,0 +1,132 @@
+---
+title            : Getting Started with Node.js
+sidebar_label    : Getting Started
+---
+
+# Getting Started with Node.js
+
+<SubHeading>Node.js is an open-source, cross-platform JavaScript runtime environment that allows you to execute JavaScript code outside of a web browser</SubHeading>
+
+[Node.js](https://nodejs.org/) is an open-source, cross-platform JavaScript runtime environment that allows you to execute JavaScript code outside of a web browser. 
+It provides a runtime environment for building server-side and networked applications. Node.js is built on the V8 JavaScript engine, which is the same engine used by Google Chrome.
+
+![Getting Started with Node.js - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270248512-e8d3e48e-7245-4445-a767-b8feeaa188ae.jpg) 
+
+Getting started with Node.js is a great choice if you want to build scalable and efficient server-side applications using JavaScript. 
+
+> Here's a **step-by-step guide to help you get started with Node.js**:
+
+## ✅ **Install Node.js**
+
+- Visit the official Node.js website (https://nodejs.org/).
+- Download the recommended LTS (Long-Term Support) version for your operating system.
+- Follow the installation instructions for your platform.
+
+## ✅ **Verify Installation**
+
+- Open your terminal or command prompt.
+- Run the following commands to check if Node.js and npm (Node Package Manager) are properly installed:
+    ```
+    node -v
+    npm -v
+    ```
+- You should see version numbers displayed for both Node.js and npm.
+
+## ✅ **Create a Simple Node.js Application**
+
+- Create a new directory for your Node.js project and navigate to it in your terminal.
+- Create a new JavaScript file (e.g., `app.js`) using a text editor of your choice.
+
+## ✅ **Hello World Example**
+
+- In your `app.js` file, write a simple "Hello, World!" program:
+    ```javascript
+    console.log("Hello, World!");
+    ```
+- Save the file.
+
+## ✅ **Run Your Node.js Application**
+
+- In your terminal, navigate to the directory where your `app.js` file is located.
+- Run the following command to execute your Node.js script:
+    ```
+    node app.js
+    ```
+- You should see "Hello, World!" printed in the terminal.
+
+## ✅ **Install External Packages**
+
+- Node.js allows you to easily add external packages and libraries to your project using npm. For example, to install the popular Express.js web framework, you can run:
+    ```
+    npm install express
+    ```
+- This will add the Express.js package to your project, and you can start using it in your code.
+
+## **Create a Basic Web Server (Optional)**
+
+- Node.js is often used to create web servers. You can quickly create a basic HTTP server using the built-in `http` module:
+    ```javascript
+    const http = require('http');
+
+    const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, World!\n');
+    });
+
+    const port = 3000;
+    server.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+    });
+    ```
+- Save this code to a file (e.g., `server.js`) and run it with `node server.js`. Your server will be accessible at `http://localhost:3000`.
+
+## ✅ **Learn JavaScript**
+
+Node.js is built on JavaScript, so having a good understanding of JavaScript is essential. You can start with JavaScript basics and then explore advanced topics.
+
+## ✅ **Explore Node.js Modules and Packages**
+
+Node.js provides a vast ecosystem of built-in modules and external packages to extend its functionality. You can explore the Node.js documentation (https://nodejs.org/docs/) and npm registry (https://www.npmjs.com/) to find modules and packages that suit your project's needs.
+
+## ✅ **Build Projects and Practice**
+
+- The best way to learn Node.js is by building projects. Start with small projects and gradually work your way up to more complex applications.
+- Consider learning popular Node.js frameworks and libraries like Express.js, Socket.io, and MongoDB (for database interaction) as your skills progress.
+
+## ✅ **Join the Node.js Community**
+
+Participate in Node.js forums, online communities, and meetups to learn from others, share your experiences, and get help when needed. The Node.js community is vast and supportive.
+
+## ✅ **Keep Learning**
+
+Node.js is continually evolving, so keep up with the latest updates, best practices, and security considerations through blogs, tutorials, and official documentation.
+
+## ✅ [NodeJS Samples](https://www.creative-tim.com/templates/nodejs?AFFILIATE=128200)
+
+### 👉 [NodeJS & React - Material PRO Design](https://www.creative-tim.com/product/material-dashboard-pro-react-nodejs?AFFILIATE=128200)
+
+The look & feel is based on Material Design 2, Google's approach to designing components and interfaces. Add in Nodejs CRUD endpoints for the most widely used features in any CMS and hundreds of handcrafted, 
+reusable UI components and you've got the perfect customizable blueprint for your next app.
+
+![NodeJS & React - Material PRO Design, crafted by Creative-Tim.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270252692-ceb7c571-48aa-448c-919b-8024679c27c3.png)
+
+### 👉 [Material Dashboard Nodejs](https://www.creative-tim.com/product/material-dashboard-react-nodejs?AFFILIATE=128200)
+
+Material Dashboard 2 React Node.js comes with authentication, registration and user profile, a must-have for any app you're going to build. 
+Instead of investing time in doing the integration, you have everything you need to get started right away. 
+
+![NodeJS & React - Material Dashboard Design, crafted by Creative-Tim.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270256250-fe776357-000e-4200-8f3c-40733abf5a9f.png) 
+
+## ✅ In Summary 
+
+That's a basic guide to getting started with Node.js. 
+Remember that Node.js is a versatile runtime environment, and you can use it for a wide range of applications, including web development, server-side scripting, automation, and more. 
+
+As you gain experience, you can explore more advanced topics and use cases.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
