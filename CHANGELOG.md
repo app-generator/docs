@@ -1,5 +1,19 @@
 # Change Log
 
+## [1.0.58] 2023-09-25
+### Changes
+
+- [Glossary of Programming Terms](https://docs.appseed.us/glossary/)
+- [Laravel](https://docs.appseed.us/technologies/laravel/)
+  - [Getting Started with Laravel](https://docs.appseed.us/technologies/laravel/getting-started/)
+  - [What is Laravel](https://docs.appseed.us/content/what-is/laravel/)
+- [NodeJS](https://docs.appseed.us/technologies/nodejs/)
+- [NextJS](https://docs.appseed.us/technologies/next-js/)
+  - [Getting Started with Next.js](https://docs.appseed.us/technologies/next-js/getting-started/)
+  - [Best Practices for NextJS](https://docs.appseed.us/technologies/next-js/best-practices-for-nextjs-projects/)
+  - [Deploy Next.js on Netlify](https://docs.appseed.us/technologies/next-js/deploy-a-next.js-application-on-netlify/)
+  - [Sample Next.js Project](https://docs.appseed.us/technologies/next-js/sample-next.js-project/)  
+
 ## [1.0.57] 2023-09-25
 ### Changes
 
