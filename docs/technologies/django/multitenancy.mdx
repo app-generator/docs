@@ -1,0 +1,85 @@
+---
+title         : Multitenancy in Django
+sidebar_label : Multitenancy
+---
+
+# Multitenancy in Django
+
+<SubHeading>The concept of Multitenancy in Django</SubHeading>
+
+**Multitenancy can be implemented in Django**, a popular Python web framework, using various techniques and approaches. 
+Django provides a flexible environment that allows you to design and build multitenant applications. 
+
+![Multitenancy in Django Releases - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> Here are some common methods for `implementing multitenancy in Django`:
+
+## **Shared Schema Approach**
+
+- In this approach, all tenants share the same database schema, but data is segregated using a tenant identifier in each table. This identifier associates each record with a specific tenant.
+- You can implement this approach using a middleware component that adds a `tenant_id` to each query based on the current tenant's context.
+- Libraries like `django-tenant-schemas` provide tools to manage shared-schema multitenancy.
+
+## **Isolated Schema Approach**
+
+- Each tenant has its own database schema. This approach ensures complete data isolation between tenants, but it can be more resource-intensive.
+- Django allows you to set up multiple database connections in your settings, and you can dynamically switch between them based on the current tenant.
+- Libraries like `django-tenants` help with managing isolated-schema multitenancy.
+
+## **Dynamic Routing Approach**
+
+- With this approach, you dynamically choose the database connection based on the current tenant during the request processing.
+- You can create custom middleware or decorators to switch between database connections for different tenants.
+
+Here's a basic example of implementing multitenancy in Django using the shared schema approach:
+
+```python
+# Middleware to set the current tenant based on the request
+class TenantMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        # Determine the current tenant based on the request (e.g., subdomain, header, etc.)
+        tenant = get_tenant_from_request(request)
+        
+        # Set the current tenant for this request
+        set_current_tenant(request, tenant)
+        
+        response = self.get_response(request)
+        return response
+
+# Custom manager for models to filter records by tenant
+class TenantModelManager(models.Manager):
+    def get_queryset(self):
+        # Filter records by the current tenant
+        return super().get_queryset().filter(tenant=get_current_tenant())
+
+# Sample model using the custom manager
+class MyModel(models.Model):
+    name = models.CharField(max_length=255)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    
+    # Attach the custom manager
+    objects = TenantModelManager()
+
+# Example usage in a view
+def my_view(request):
+    # Query the model for records of the current tenant
+    data = MyModel.objects.all()
+    return render(request, 'template.html', {'data': data})
+```
+
+## ✅ In Summary
+
+This is a simplified example, and in a real-world scenario, you'd need to handle database routing, migrations, and security considerations more carefully. 
+Depending on your specific requirements, you may choose a shared schema or isolated schema approach and implement the necessary components to make multitenancy work in your Django application. 
+
+Libraries and packages like `django-tenant-schemas` and `django-tenants` can simplify many of the tasks involved in implementing multitenancy in Django.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
