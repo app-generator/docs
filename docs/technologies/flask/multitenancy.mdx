@@ -1,0 +1,83 @@
+---
+title         : Multitenancy in Flask
+sidebar_label : Multitenancy
+---
+
+# Multitenancy in Flask
+
+<SubHeading>The concept of Multitenancy in Flask</SubHeading>
+
+import SubHeading from "@site/src/components/SubHeading";
+
+<SubHeading>A comprehensive introduction to Flask</SubHeading>
+
+**Flask** is a lightweight and flexible Python web framework that allows you to implement multitenancy in your web applications. 
+Like in Django, there are several **approaches to implement multitenancy in Flask**. 
+
+![Multitenancy in Flask - Tutorial provided by AppSeed](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268566349-c41e65a5-2ab9-4b54-8cbc-350ab6da746c.png)
+
+> Here's a basic overview of **how you can achieve multitenancy in Flask**:
+
+## **Shared Database Schema**
+
+- Similar to the shared schema approach in Django, all tenants share the same database schema, but data is segregated using a tenant identifier.
+- You can create a middleware or context manager to set the current tenant for each request based on a URL parameter, subdomain, or any other criteria.
+- When querying the database, you include the tenant identifier in your queries to ensure data separation.
+
+## **Isolated Database Schemas**
+
+- Each tenant has its own isolated database schema. This approach ensures complete data isolation but can be more resource-intensive.
+- Flask allows you to connect to multiple databases using database connectors like SQLAlchemy.
+- You can dynamically switch between database connections based on the current tenant during request processing.
+
+Here's a simplified example of implementing multitenancy in Flask using the shared database schema approach:
+
+```python
+from flask import Flask, request
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'your_database_uri_here'
+db = SQLAlchemy(app)
+
+# Middleware to set the current tenant based on request data
+@app.before_request
+def set_current_tenant():
+    # Determine the current tenant based on request data (e.g., URL parameter)
+    tenant = request.args.get('tenant')
+    if tenant:
+        g.current_tenant = tenant
+    else:
+        g.current_tenant = 'default'  # Set a default tenant if none is specified
+
+# Sample model with a tenant identifier
+class MyModel(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    tenant = db.Column(db.String(50))
+
+# Example usage in a view
+@app.route('/')
+def my_view():
+    # Query the model for records of the current tenant
+    data = MyModel.query.filter_by(tenant=g.current_tenant).all()
+    return render_template('template.html', data=data)
+```
+
+In this example, we use Flask with SQLAlchemy to create a basic multitenant application. 
+The `set_current_tenant` middleware sets the current tenant based on a query parameter, and we use it to filter records by the current tenant in the view.
+
+## ✅ In Summary
+
+Keep in mind that this is a simplified example, and in a real-world application, you would need to handle database connection pooling, migrations, and security concerns carefully. 
+Additionally, you can explore extensions and libraries for Flask, such as Flask-SQLAlchemy or Flask-Talisman, to help with database management and security in a multitenant context. 
+
+The specific implementation may vary depending on your project's requirements and the level of isolation needed for your tenants.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
+
