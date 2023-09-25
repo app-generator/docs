@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.0.59] 2023-09-25
+### Changes
+
+- [Glossary of Programming Terms](https://docs.appseed.us/glossary/)
+- [Docker](https://docs.appseed.us/technologies/docker/)
+  - [What IS Docker](https://docs.appseed.us/content/what-is/docker/)
+  - [Getting Started with Docker](https://docs.appseed.us/technologies/docker/getting-started/)
+  - [Docker - Complete Cheat Sheet](https://docs.appseed.us/technologies/docker/cheat-sheet/)
+
 ## [1.0.58] 2023-09-25
 ### Changes
 
