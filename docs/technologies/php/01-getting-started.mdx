@@ -1,0 +1,151 @@
+---
+title            : Getting Started with PHP
+sidebar_label    : Getting Started
+---
+
+# Getting Started with PHP
+
+<SubHeading>Learn hot to getting started with PHP, a leading programming langiage for the web.</SubHeading>
+
+Getting started with PHP is relatively straightforward, and it's an excellent choice if you want to build dynamic web applications. 
+Below are the steps to get started with PHP, along with some coding samples to help you understand the basics.
+
+![Getting Started with PHP, tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270268362-0d36a57c-aa00-4e0d-a229-e163027b3916.jpg) 
+
+## **Install PHP**
+
+Before you start coding in PHP, you need to have PHP installed on your computer. Here's how to do it:
+
+- **For Windows**:
+  - Download the latest PHP installer for Windows from the official PHP website (https://windows.php.net/download/).
+  - Run the installer and follow the installation instructions.
+  - Add the PHP installation directory to your system's PATH environment variable for command-line usage.
+
+- **For macOS**:
+  - PHP is pre-installed on macOS. Open Terminal and type `php -v` to check the installed PHP version.
+
+- **For Linux**:
+  - Use your distribution's package manager to install PHP. For example, on Ubuntu, you can run `sudo apt-get install php` to install PHP.
+
+## **Create Your First PHP File**
+
+Now that PHP is installed, let's create a simple PHP script.
+
+1. Create a new file named `hello.php` using a text editor of your choice.
+
+2. Add the following code to `hello.php`:
+
+```php
+<?php
+  echo "Hello, World!";
+?>
+```
+
+## **Run Your PHP Script**
+
+- Open your terminal or command prompt.
+
+- Navigate to the directory where you saved `hello.php`.
+
+- Run the PHP script by typing the following command:
+
+  ```
+  php hello.php
+  ```
+
+  You should see "Hello, World!" printed to the console.
+
+## **Create a Basic Web Page**
+
+PHP is often used to generate dynamic web content. Let's create a simple PHP web page.
+
+1. Create a new file named `index.php` in your web server's document root directory (e.g., `htdocs` for Apache).
+
+2. Add the following code to `index.php`:
+
+```php
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My First PHP Page</title>
+</head>
+<body>
+  <h1>Hello, PHP!</h1>
+  <?php
+    echo "This page was generated using PHP!";
+  ?>
+</body>
+</html>
+```
+
+## Start your web server (e.g., Apache, Nginx).
+
+## Access the Page in Browser
+
+Open your web browser and navigate to `http://localhost/index.php`. You should see the HTML content along with the PHP-generated message.
+
+## **Handling User Input**
+
+PHP can also process user input from forms. Let's create a simple form that takes a user's name and displays a greeting.
+
+1. Create a new file named `greet.php`:
+
+```php
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Greeting Form</title>
+</head>
+<body>
+  <h1>Welcome to the Greeting Page</h1>
+  
+  <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $name = $_POST["name"];
+      echo "Hello, $name!";
+    }
+  ?>
+  
+  <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <label for="name">Your Name:</label>
+    <input type="text" name="name" id="name" required>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
+```
+
+2. Start your web server if it's not already running.
+
+3. Open your web browser and navigate to `http://localhost/greet.php`. You'll see a form where you can enter your name. Upon submission, it will greet you with your name.
+
+## ✅ In Summary
+
+These are the fundamental steps to get started with PHP. You've created a basic PHP script, built a simple web page, and handled user input from a form. 
+From here, you can explore more advanced PHP topics, such as working with databases, creating dynamic web applications, and using PHP frameworks like Laravel or Symfony for more complex projects.
+
+## ✅ [PHP/Laravel Samples](https://www.creative-tim.com/templates/laravel?AFFILIATE=128200)
+
+### 👉 [Soft Dashboard Laravel Livewire](https://www.creative-tim.com/product/soft-ui-dashboard-laravel-livewire?AFFILIATE=128200)
+
+Soft UI Dashboard Laravel Livewire comes with dozens of handcrafted UI elements tailored for Bootstrap 5 and an out of the box Laravel backend. 
+The Livewire integration allows you to build dynamic interfaces easier without leaving the comfort of your favourite framework. 
+
+If you combine this even further with Alpine.js, you get the perfect combo for kickstarting your next project.
+
+![Soft UI Dashboard Laravel Livewire, crafted by Creative-Tim.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270264605-5d2206b4-dd44-43b5-acbe-25d83046b360.png)
+
+### 👉 [Material Dashboard PRO Laravel](https://www.creative-tim.com/product/material-dashboard-pro-laravel?AFFILIATE=128200)
+
+The dashboard's look & feel is based on Material Design 2, Google's new approach to designing components and interfaces. 
+
+Add in ready-made CRUDs and you've got a full stack tool for building awesome-looking Laravel apps.
+
+![Material Dashboard PRO Laravel, crafted by Creative-Tim.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270265063-32f8944c-ed0e-4a77-a8b6-725d6dc4b3cb.png)
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
