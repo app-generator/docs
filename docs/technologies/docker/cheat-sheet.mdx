@@ -1,0 +1,261 @@
+---
+title            : Docker - Complete Cheat Sheet
+sidebar_label    : Cheat Sheet
+---
+
+# Docker - Complete Cheat Sheet
+
+<SubHeading>Learn how to hack Docker via a complete cheat sheet.</SubHeading>
+
+A **[Docker](https://www.docker.com/) Cheat Sheet** provides a quick reference guide for common Docker commands and concepts. 
+
+**Docker** is a containerization platform that allows you to package and distribute applications along with their dependencies in containers. 
+
+![Docker, complete Cheat Sheet - Tutorial provided by AppSeed](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268558520-a87dbf5e-83a8-4daf-9b10-8417b58c60e1.png) 
+
+> Here's a **Docker cheat sheet with commonly used commands and concepts**:
+
+## ✅ **Docker Commands**
+
+### **Pull an Image** 
+
+Download a Docker image from a registry (e.g., Docker Hub).
+
+```bash
+$ docker pull image_name:tag
+```
+
+### **List Images** 
+
+View a list of locally available Docker images.
+
+```bash
+$ docker images
+```
+
+### **Run a Container** 
+
+Start a new container from an image.
+
+```bash
+$ docker run image_name:tag
+```
+
+- Add `-d` to run in detached mode.
+- Use `--name` to specify a custom container name.
+- Use `-p` to map ports (e.g., `-p host_port:container_port`).
+
+### **List Containers** 
+
+View a list of running containers.
+
+```bash
+$ docker ps
+```
+
+- Add `-a` to see all containers, including stopped ones.
+
+### **Stop a Container** 
+
+Stop a running container gracefully.
+
+```bash
+$ docker stop container_id
+```
+
+### **Remove a Container** 
+
+Delete a stopped container.
+
+```bash
+$ docker rm container_id
+```
+
+### **Remove an Image** 
+
+Delete a Docker image.
+
+```bash
+$ docker rmi image_name:tag
+```
+
+### **Inspect Container** 
+
+View detailed information about a container.
+
+```bash
+$ docker inspect container_id
+```
+
+## ✅ **Docker Compose**
+
+Docker Compose is a tool for defining and running multi-container Docker applications.
+
+### **Create and Start Services** 
+
+Start containers defined in a `docker-compose.yml` file.
+
+```bash
+$ docker-compose up
+```
+
+- Add `-d` to run in detached mode.
+
+### **Stop Services** 
+
+Stop containers defined in a `docker-compose.yml` file.
+
+```bash
+$ docker-compose down
+```
+
+### **List Services** 
+
+View a list of services defined in the `docker-compose.yml` file.
+
+```bash
+$ docker-compose ps
+```
+
+## ✅ **Docker Volumes**
+
+Docker volumes are used to persist data between container runs.
+
+### **Create a Volume** 
+
+Create a named volume.
+
+```bash
+$ docker volume create volume_name
+```
+
+### **List Volumes** 
+
+View a list of available volumes.
+
+```bash
+$ docker volume ls
+```
+
+### **Attach a Volume to a Container** 
+
+Mount a volume to a container.
+
+```bash
+$ docker run -v volume_name:/container_mount_point image_name
+```
+
+## ✅ **Docker Networks**
+
+Docker networks allow containers to communicate with each other.
+
+### **Create a Network** 
+
+Create a custom network.
+
+```bash
+$ docker network create network_name
+```
+
+### **List Networks** 
+
+View a list of available networks.
+
+```bash
+$ docker network ls
+```
+
+### **Attach a Container to a Network** 
+
+Connect a container to a custom network.
+
+```bash
+$ docker network connect network_name container_name
+```
+
+## ✅ **Dockerfile**
+
+A Dockerfile is a script used to create a Docker image.
+
+### **Create a Dockerfile** 
+
+Create a Dockerfile in your project directory.
+
+```Dockerfile
+# Example Dockerfile
+FROM base_image:tag
+RUN command_to_run
+```
+
+### **Build an Image** 
+
+Build a Docker image using a Dockerfile.
+
+```bash
+$ docker build -t image_name:tag .
+```
+
+## ✅ **Additional Docker Commands**
+
+### **Logs** 
+
+View container logs.
+
+```bash
+$ docker logs container_id
+```
+
+### **Exec** 
+
+Run a command in a running container.
+
+```bash
+$ docker exec -it container_id command
+```
+
+### **Prune** 
+
+Remove stopped containers, unused networks, and dangling images.
+
+```bash
+$ docker system prune
+```
+
+### **Login to a Registry** 
+
+Log in to a Docker image registry (e.g., Docker Hub).
+
+```bash
+$ docker login
+```
+
+## ✅ Docker Templates
+
+This section contains a few open-source starters that include production-ready Docker setups:
+
+### 👉 [Django Bootstrap 5 Volt](https://appseed.us/product/volt-dashboard/django/)
+
+Free starter built on top of **Bootstrap 5 and Django** with Database, DB Tools, OAuth via Github and Docker Support.
+
+![Django Bootstrap 5 Volt - Open-source Starter with Docker Support.](https://user-images.githubusercontent.com/51070104/269347618-1f21456d-b0b5-4d4b-9ee5-99ccb6c22188.jpg)
+
+### 👉 [Django Modernize](https://appseed.us/product/modernize-dashboard/django/)
+
+Open-Source Seed Project crafted on top of Modernize **Bootstrap 5 and Django**.
+
+The product comes with session-based authentication, DB tools, and Docker support.
+
+![Django Modernize - Open-source Starter with Docker Support.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270395275-0f223ca7-be26-472d-8af1-6c5e643f4ed6.jpg)
+
+## ✅ In Summary 
+
+This cheat sheet provides a quick reference for common Docker commands and concepts. 
+
+**Docker** has many more features and options, so be sure to consult the official Docker documentation for more detailed information: https://docs.docker.com/
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
