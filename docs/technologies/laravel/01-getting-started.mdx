@@ -1,0 +1,123 @@
+---
+title            : Getting Started with Laravel
+sidebar_label    : Getting Started
+---
+
+# Getting Started with Laravel
+
+<SubHeading>Laravel is an open-source PHP web application framework that provides a robust set of tools and libraries for building web applications. </SubHeading>
+
+Getting started with Laravel is a rewarding experience, as Laravel is known for its developer-friendly features and robust toolset for building web applications. 
+
+![What IS Laravel - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270265561-a3cac094-f9ae-4690-982c-b9f904becc0e.jpg)
+
+> To **get started with Laravel**, follow these steps:
+
+## ✅ **Prerequisites**
+
+Before you begin, ensure you have the following prerequisites installed on your development environment:
+
+- PHP: Laravel requires PHP 7.3.0 or higher.
+- Composer: A PHP package manager used for Laravel and its dependencies.
+- A web server (e.g., Apache, Nginx) with PHP support.
+- MySQL, PostgreSQL, SQLite, or another compatible database system.
+
+## ✅ **Install Laravel**
+
+- Open your terminal or command prompt.
+- Use Composer to create a new Laravel project. Run the following command, replacing `mylaravelapp` with your desired project name:
+    ```
+    composer create-project --prefer-dist laravel/laravel mylaravelapp
+    ```
+- Composer will download Laravel and set up a new project in a directory named `mylaravelapp`.
+
+## ✅ **Configure Environment**
+
+- Navigate to the project directory using the `cd` command:
+    ```
+    cd mylaravelapp
+    ```
+- In the project root, you'll find a `.env.example` file. Duplicate this file and name the copy `.env`. Modify the `.env` file to configure your database and other settings.
+
+## ✅ **Generate an Application Key**
+
+- In your terminal, run the following command to generate an application key for your Laravel project:
+    ```
+    php artisan key:generate
+    ```
+
+## ✅ **Database Configuration**
+
+Configure your database connection by modifying the `DB_*` variables in the `.env` file to match your database setup (e.g., database name, username, password).
+
+## ✅ **Migrate the Database**
+
+- Laravel provides a migration system for managing database schemas. To run the initial migrations, execute the following command:
+```
+php artisan migrate
+```
+
+## ✅ **Start the Development Server**
+
+- Start the Laravel development server by running the following command:
+    ```
+    php artisan serve
+    ```
+- This will start a local development server at `http://localhost:8000`.
+
+## ✅ **Access Your Application**
+
+Open your web browser and navigate to `http://localhost:8000`. You should see the default Laravel welcome page.
+
+## ✅ **Explore Laravel's Documentation**
+
+Laravel has extensive documentation available at https://laravel.com/docs. It covers all aspects of Laravel, from routing and views to authentication and testing.
+
+## ✅ **Learn the Basics**
+
+Begin with the basics of Laravel, such as routing, views, controllers, and models. The documentation provides step-by-step tutorials and examples for each topic.
+
+## ✅ **Build Your First Application**
+
+Start building your web application by creating routes, controllers, and views. Follow Laravel's conventions to organize your code effectively.
+
+## ✅ **Explore Laravel Ecosystem**
+
+Laravel has a rich ecosystem of packages and extensions available via Composer. You can use Composer to install additional packages to enhance your Laravel application's functionality.
+
+## ✅ **Join the Community**
+
+Laravel has a thriving community of developers. Consider participating in forums, attending meetups, and following Laravel-related blogs and tutorials to learn from others and seek help when needed.
+
+## ✅ [Laravel Samples](https://www.creative-tim.com/templates/laravel?AFFILIATE=128200)
+
+### 👉 [Soft UI Dashboard Laravel Livewire](https://www.creative-tim.com/product/soft-ui-dashboard-laravel-livewire?AFFILIATE=128200)
+
+Soft UI Dashboard Laravel Livewire comes with dozens of handcrafted UI elements tailored for Bootstrap 5 and an out of the box Laravel backend. 
+The Livewire integration allows you to build dynamic interfaces easier without leaving the comfort of your favourite framework. 
+
+If you combine this even further with Alpine.js, you get the perfect combo for kickstarting your next project.
+
+![Soft UI Dashboard Laravel Livewire, crafted by Creative-Tim.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270264605-5d2206b4-dd44-43b5-acbe-25d83046b360.png)
+
+### 👉 [Material Dashboard PRO Laravel](https://www.creative-tim.com/product/material-dashboard-pro-laravel?AFFILIATE=128200)
+
+The dashboard's look & feel is based on Material Design 2, Google's new approach to designing components and interfaces. 
+
+Add in ready-made CRUDs and you've got a full stack tool for building awesome-looking Laravel apps.
+
+![Material Dashboard PRO Laravel, crafted by Creative-Tim.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270265063-32f8944c-ed0e-4a77-a8b6-725d6dc4b3cb.png)
+
+## ✅ In Summary 
+
+Getting started with Laravel is just the beginning. 
+As you become more familiar with the framework, you can explore more advanced features like authentication, middleware, and database interactions. 
+
+Laravel's elegant syntax and extensive toolset make it a powerful choice for building modern web applications.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
