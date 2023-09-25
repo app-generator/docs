@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.0.57] 2023-09-25
+### Changes
+
+- [What IS Multitenancy](https://docs.appseed.us/content/what-is/multitenancy/)
+- [Multitenancy in Django](https://docs.appseed.us/technologies/django/multitenancy/)
+- [Multitenancy in Flask](https://docs.appseed.us/technologies/flask/multitenancy/)
+- [Multitenancy in Node.js](https://docs.appseed.us/technologies/nodejs/multitenancy/)
+- [Getting Started with Node.js](https://docs.appseed.us/technologies/nodejs/getting-started/)
+- [What IS Node.js](https://docs.appseed.us/content/what-is/nodejs/)
+
 ## [1.0.56] 2023-09-23
 ### Changes
 
