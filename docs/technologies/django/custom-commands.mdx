@@ -7,7 +7,7 @@ sidebar_label : Custom Commands
 
 <SubHeading>Learn how to add our own commands in Django Framework</SubHeading>
 
-This article explains how to **write our own Django custom commands** that might help us to test, upload data or extract valuable information in a production environment from a Django project. 
+This article explains how to **Write our own Django custom commands** that might help us to test, upload data, or extract valuable information in a production environment from a **Django** project.
 
 For newcomers, [Django](https://www.djangoproject.com/) is a popular web framework designed and written in Python by experienced developers. 
 
@@ -29,7 +29,7 @@ That means you can import models, execute queries to the database using Django�
 
 ## ✅ Create a new Django App
 
-This tutorial assumes that we have a working Django project and we will move forward and create a new app via startapp subcommand:
+This tutorial assumes that we have a working Django project and we will move forward and create a new app via `startapp` subcommand:
 
 ```bash
 $ python manage.py startapp app_customcmd
@@ -48,7 +48,7 @@ Inside the new app directory, we need to create a directory structure as shown b
  |    |         +-- cmd_....py  <-- module where all commands are saved
 ```
 
-Once we have built and configure Django to use the new app, all commands defined in commands directory are automatically discovered even without an application restart.
+Once we have built and configured Django to use the new app, all commands defined in the commands directory are automatically discovered even without an application restart.
 
 ## ✅ Configure Django 
 
@@ -68,11 +68,11 @@ INSTALLED_APPS = [
 
 ## ✅ Custom Commands
 
-This section presents for custom commands that will access and report a few things related to a Django project internals - Let's go!
+This section presents custom commands that will access and report a few things related to a Django project internals - Let's go!
 
-### Show Current Time
+### 👉 Show Current Time
 
-This simple custom command help us to accommodate with the concept. Here is the code, saved in the `app_customcmd/management/commands` directory:
+This simple custom command helps us to accommodate the concept. Here is the code, saved in the `app_customcmd/management/commands` directory:
 
 ```python
 from django.core.management.base import BaseCommand
@@ -95,7 +95,7 @@ It 09:18:08                  <-- The output from our custom CMD
 
 The most important aspect regarding the code is the usage of BaseCommand as a super-class for our definition.
 
-### Show Registered Apps
+### 👉 Show Registered Apps
 
 This sample will iterate over all registered and active apps and print their names.
 
@@ -124,9 +124,9 @@ $ python manage.py cmd_apps
  APP -> App_Customcmd                      # <-- Our NEW App    
 ```
 
-### Show models for each app
+### 👉 Show models for each app
 
-This command is quite similar with the previous one, but provide also the registered models for each app.
+This command is quite similar to the previous one, but provide also the registered models for each app.
 
 ```python
 from django.core.management.base import BaseCommand
@@ -170,9 +170,9 @@ $ python manage.py cmd_models
          |- (model) -> <class 'app.models.Book'> 
 ```
 
-### Print Config Variables
+### 👉 Print Config Variables
 
-This custom command scan the settings object for proprieties and print all values.
+This custom command scans the settings object for proprieties and prints all values.
 
 ```python 
 from django.core.management.base import BaseCommand
@@ -216,7 +216,7 @@ class Command(BaseCommand):
 
 ## ✅ In Summary 
 
-Writing custom commands in our Django projects might help us to extract stats, execute cron jobs, and check the health of a project that runs in production.
+Writing custom commands in our Django projects might help us extract stats, execute cron jobs, and check the health of a project that runs in production.
 
 ## ✅ Resources 
 
