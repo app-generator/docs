@@ -1,0 +1,149 @@
+---
+sidebar_position : 0
+title            : Getting Started with Vuetify
+sidebar_label    : Getting Started
+---
+
+# Getting Started with Vuetify
+
+<SubHeading>Getting Started with Vuetify - KickOff for Beginners</SubHeading>
+
+**Getting started with [Vuetify](https://vuetifyjs.com/)** is relatively straightforward, and it involves setting up a Vue.js project with Vuetify as your UI framework. 
+
+![What IS Vuetify - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270630877-a0d15af1-c7e1-4246-ab69-9284cee625b2.jpg) 
+
+Here are step-by-step instructions on how to get started:
+
+## ✅ Install Dependencies  
+
+Install Node.js and Vue CLI (if not already installed)**
+
+If you don't have Node.js installed, download and install it from the official website: https://nodejs.org/
+
+Once Node.js is installed, you can use npm (Node Package Manager) to install Vue CLI globally by running this command in your terminal:
+
+```bash
+npm install -g @vue/cli
+```
+
+## ✅ Create The Project
+
+**Create a New Vue.js Project**
+
+Now that you have Vue CLI installed, you can create a new Vue.js project with the Vue CLI's command-line interface. Replace "my-vuetify-app" with your desired project name.
+
+```bash
+vue create my-vuetify-app
+```
+
+During the project setup, you'll be prompted to pick a preset. You can either choose the default preset or manually select features. 
+
+Ensure you have the Babel, ESLint, and Vue Router features enabled since Vuetify works well with them.
+
+## ✅ Install Vuetify
+
+Navigate to your project directory:
+
+```bash
+cd my-vuetify-app
+```
+
+Install Vuetify using npm or yarn:
+
+```bash
+npm install vuetify
+# or
+yarn add vuetify
+```
+
+## ✅ Configure Vuetify
+
+After installing Vuetify, you need to configure it. Open the `src/main.js` file and add the following lines to import and use Vuetify:
+
+```javascript
+import Vue from 'vue'
+import App from './App.vue'
+import vuetify from './plugins/vuetify' // Import Vuetify from your plugins folder
+
+Vue.config.productionTip = false
+
+new Vue({
+  render: h => h(App),
+  vuetify // Add Vuetify as a plugin to your Vue instance
+}).$mount('#app')
+```
+
+## ✅ Create Components 
+
+Now, you can create a simple Vuetify component. Open the `src/App.vue` file and replace its contents with the following example:
+
+```vue
+<template>
+  <v-app>
+    <v-main>
+      <v-container>
+        <v-btn color="primary">Click me</v-btn>
+      </v-container>
+    </v-main>
+  </v-app>
+</template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+```
+
+This example uses Vuetify's `v-btn` component to create a button with a primary color.
+
+## ✅ Run The Application
+
+You're ready to run your Vue.js application with Vuetify. In your project directory, run:
+
+```bash
+npm run serve
+# or
+yarn serve
+```
+
+This command will start the development server, and you can access your application at `http://localhost:8080` (or another port if 8080 is in use). You'll see your Vuetify button in action.
+
+## ✅ In Summary  
+
+To create more complex and feature-rich applications with Vuetify, explore the official documentation, which provides detailed information about Vuetify components, layouts, theming, and customization: https://vuetifyjs.com/en/
+
+You can also check out the documentation's "Getting Started" section for additional guidance: https://vuetifyjs.com/en/getting-started/quick-start
+
+With these steps, you have successfully set up a basic Vue.js project with Vuetify. You can now start building modern, responsive web applications using Vuetify's extensive component library and Material Design guidelines.
+
+## ✅ Vuetify Templates 
+
+### 👉 [Modernize Free Vuetify](https://adminmart.com/product/modernize-free-vuetify-vue-js-admin-dashboard/?ref=1)
+
+This free Vuejs admin template is developer-friendly, highly customizable, and very easy to use. It allows you to create web apps in no time without any hassle.
+
+- [Modernize Free Vuetify](https://adminmart.com/product/modernize-free-vuetify-vue-js-admin-dashboard/?ref=1) - product page (contains download link)
+- More [Admin Templates](https://adminmart.com/templates/free-admin-templates/?ref=1) provided by AdminMart (all free)
+
+Developing a web app from scratch is a nightmare of every developer while getting a free Vuejs template like this is every developer’s dream.
+
+![Modernize Free Vuetify - Free Vue Dashboard by AdminMart](https://github.com/admin-dashboards/vue-dashboard/assets/51854817/2723cbf7-db1f-4dd8-a130-a6180a14f417)
+
+<br />
+
+### 👉 [Vue Dashboard - Vuetify Material](https://www.creative-tim.com/product/vuetify-material-dashboard?AFFILIATE=128200)
+
+Vuetify **Vue Dashboard** is developed exactly according to Material Design spec. Every component is handcrafted to bring you the best possible UI tools to your next great app. The development doesn't stop at the core components outlined in Google's spec. Through the support of community members and sponsors, additional components will be designed and made available for everyone to enjoy.
+
+- [Vue Dashboard Vuetify Material](https://www.creative-tim.com/product/vuetify-material-dashboard?AFFILIATE=128200) - `product page`
+- [Vue Dashboard Vuetify Material](https://demos.creative-tim.com/vuetify-material-dashboard/#/?AFFILIATE=128200) - `LIVE demo` 
+
+![Vue Dashboard Vuetify Material - main dashboard screen](https://raw.githubusercontent.com/admin-dashboards/vue-dashboard/master/media/vuetify-material-dashboard-screen.png)
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
