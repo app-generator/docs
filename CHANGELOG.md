@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.60] 2023-09-26
+### Changes
+
+- [Django Custom Commands](https://docs.appseed.us/technologies/django/custom-commands/)
+- [Django Templates - Admin Customization](https://docs.appseed.us/technologies/django/templates/)
+
 ## [1.0.59] 2023-09-25
 ### Changes
 
