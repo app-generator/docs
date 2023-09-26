@@ -1,0 +1,218 @@
+---
+title         : Django Templates - Admin Customization 
+sidebar_label : Admin Templates
+---
+
+# Django Templates - Admin Customization
+
+<SubHeading>Learn how to customize the admin section for a Django Project</SubHeading>
+
+This article explains how to customize the default Django admin interface using a free and modern UI Kit - **Black Dashboard** crafted by `Creative-Tim`. 
+The final package is available for download directly from Github (MIT License) and can be used in any Django Project (new or legacy). 
+
+- 👉 [Django Black Dashboard](https://appseed.us/product/black-dashboard/django/) - `Product Page`
+- 👉 [Django Admin Black](https://github.com/app-generator/django-admin-black) - sources published on Github
+
+![Django Admin Black - Modern template for Django admin interface, animated presentation.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270555350-2bbfd6aa-ae21-4aff-b175-74b9cfe06477.jpg)
+
+## ✅ Django Default Admin
+
+Being a "batteries-included" framework, Django provides by default a rich set of pages commonly used in all modern web applications: Login, Registration, change password, error pages (404, 500 pages), widgets to paginate and manage tables plus other resources used in the Admin section.
+
+We can visualize all default pages by accessing the installation directory for Django. Below is a snapshot with just a few default pages and components shipped by Django: 
+
+```bash
+.../site-packages/django/contrib/admin/templates/
+│
+├── admin/
+│   │
+│   ├── auth/
+│   │   └── user/
+│   │       ├── add_form.html
+│   │       └── change_password.html
+│   │
+│   ├── 404.html
+│   ├── 500.html
+│   ├── actions.html
+│   ├── app_index.html
+│   ├── base.html
+│   ├── base_site.html
+│   ├── index.html
+│   ├── invalid_setup.html
+│   ├── login.html
+│   ├── pagination.html
+│   ├── popup_response.html
+│   └── submit_line.html
+│
+└── registration/
+    ├── logged_out.html
+    ├── password_change_done.html
+    ├── password_change_form.html
+    ├── password_reset_complete.html
+    ├── password_reset_confirm.html
+    ├── password_reset_done.html
+    ├── password_reset_email.html
+    └── password_reset_form.html
+```  
+
+To customize any default page we need to create our own template directory, create the file using the same name and position in the parent directory, and inform Django to use it. 
+
+To go deeper, we will customize the 404 error page and configure Django to use it. `Let's go!`
+
+## ✅ Customize 404 Page
+
+As mentioned above, the first step is to create a template directory:
+
+```bash
+# Django Root Project <-- you are here
+$ mkdir -p templates/ 
+```
+
+> **Update Django Settings**
+
+To use the new templates the project settings file should be updated as below:
+
+```python
+# core/settings.py
+# ...
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+
+        # Add the templates directory to the DIR option:
+        "DIRS": [os.path.join(BASE_DIR, "templates"), ], # <- New Line
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+] 
+```
+
+When the application requests a template file, Django will try to resolve a template file by scanning first the directories defined by the user in the settings file. 
+If nothing is found, the default version will be used from `site-packages/django/contrib/admin/templates/` directory (the default location).
+
+> **Customize 404 page**
+
+The custom version of our 404 page can be easily done by copying the default version from admin/templates/ directory and save it in the directory created above. 
+
+```bash
+# Django Root Project <-- you are here
+$ vi templates/404.html
+```
+
+```html
+<!-- templates/404.html --> 
+
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Page not found' %}{% endblock %}
+
+{% block content %}
+
+<!-- The updated line -->
+<h2>{% trans 'Page not found' %} - SOMETHING Custom</h2>
+
+<p>{% trans "We're sorry, but the requested page could not be found." %}</p>
+
+{% endblock %}
+```
+
+Once we save the file, Django will use it when a 404 error case occurs when users interact with our application.
+
+## ✅ [Django Admin Black](https://appseed.us/product/black-dashboard/django/)
+
+This free sample can be used in any Django project by typing a few commands in the terminal and later, update the settings file to use the new interface. Here are the installation steps: 
+
+> **Install the package** via `PIP`
+
+```bash
+$ pip install django-admin-black
+// OR
+$ pip install git+https://github.com/app-generator/django-admin-black.git
+```
+
+> Add `admin_black` application to the `INSTALLED_APPS` setting of your Django project `settings.py` file (note it should be before `django.contrib.admin`):
+
+```python
+    INSTALLED_APPS = (
+        ...
+        'admin_black.apps.AdminBlackConfig',
+        'django.contrib.admin',
+    )
+```
+
+> Add `admin_black` urls in your Django Project `urls.py` file.
+
+```python
+    from django.urls import path, include
+
+    urlpatterns = [
+        ...
+        path('', include('admin_black.urls')),
+    ]
+```
+
+> **Collect static** if you are in `production environment`:
+
+```bash
+$ python manage.py collectstatic
+```
+
+> **Start the app**
+
+```bash
+$ # Set up the database
+$ python manage.py makemigrations
+$ python manage.py migrate
+$
+$ # Create the superuser
+$ python manage.py createsuperuser
+$
+$ # Start the application (development mode)
+$ python manage.py runserver # default port 8000
+```
+
+Access the `app` in the browser: `http://127.0.0.1:8000/` (default Django PORT)
+
+![Django Admin Customization for Black Dashboard - Tutorial provided by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270555350-2bbfd6aa-ae21-4aff-b175-74b9cfe06477.jpg)
+
+## ✅ More Django Templates (`all free`)
+
+### 👉 [Datta Able Django](https://appseed.us/product/datta-able/django/)
+
+Datta Able Bootstrap Lite is the most stylized Bootstrap 4 Template, among all other Lite/Free admin templates in the market. 
+
+It comes with high feature-rich pages and components with fully developer-centric code - design from `CodedThemes`.
+
+![Datta Able Django - Django Admin fully customized by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270557006-0f7903b5-4f6f-4eaa-b481-7ea2774d61df.jpg)
+
+### 👉 [Django Argon Dashboard](https://appseed.us/product/argon-dashboard/django/)
+
+Open-source **Django** project crafted on top of **[Argon Dashboard](https://appseed.us/product/argon-dashboard/django/)**, an open-source `Bootstrap 5` design from [Creative-Tim](https://www.creative-tim.com/?AFFILIATE=128200).
+
+The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. `Material Material` has easy and intuitive responsive design whether it is viewed on retina screens or laptops.
+
+![Django Argon Dashboard - Django Admin fully customized by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270557009-1cbdcf70-f927-4ddf-86c6-6bd6267c8fe3.jpg)
+
+### 👉 [Django Material Dashboard](https://appseed.us/product/material-dashboard/django/)
+
+Open-source **Django** project crafted on top of **[Material Dashboard](https://appseed.us/product/material-dashboard/django/)**, an open-source `Boostrap 5` design from [Creative-Tim](https://www.creative-tim.com/?AFFILIATE=128200)
+
+The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. `Material Material` has easy and intuitive responsive design whether it is viewed on retina screens or laptops.
+
+![Django Material Dashboard - Django Admin fully customized by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/270557013-f0c12538-56c7-4b3d-b565-9194a211c2ae.jpg) 
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
