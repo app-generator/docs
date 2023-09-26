@@ -1,0 +1,226 @@
+---
+title         : Django Custom Commands 
+sidebar_label : Custom Commands
+---
+
+# Django Custom Commands
+
+<SubHeading>Learn how to add our own commands in Django Framework</SubHeading>
+
+This article explains how to **write our own Django custom commands** that might help us to test, upload data or extract valuable information in a production environment from a Django project. 
+
+For newcomers, [Django](https://www.djangoproject.com/) is a popular web framework designed and written in Python by experienced developers. 
+
+The main advantage of a custom command is that all Django machinery is loaded and ready to be used. 
+That means you can import models, execute queries to the database using Django’s ORM and interact with all your project’s resources.
+
+![Django Releases - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> Topics 
+
+- Create a new Django App and Update Django to use it
+- Visualize the required directory structure inside the app
+- Code end execute a few custom commands:
+  - `cmd_time.py` - show current timestamp
+  - `cmd_apps` - list all registered apps
+  - `cmd_models` - list all apps and associated models
+  - `cmd_showcfg` - list all CFG keys and values
+- The [source code](https://github.com/app-generator/django-learn-by-coding) can be found on Github (MIT License)
+
+## ✅ Create a new Django App
+
+This tutorial assumes that we have a working Django project and we will move forward and create a new app via startapp subcommand:
+
+```bash
+$ python manage.py startapp app_customcmd
+```
+
+Inside the new app directory, we need to create a directory structure as shown below:
+
+```bash
+< PROJECT ROOT >                          <-- project directory
+ |
+ |-- app_customcmd/                                <-- app directory
+ |    |-- management/
+ |    |    +-- __init__.py
+ |    |    +-- commands/
+ |    |         +-- __init__.py
+ |    |         +-- cmd_....py  <-- module where all commands are saved
+```
+
+Once we have built and configure Django to use the new app, all commands defined in commands directory are automatically discovered even without an application restart.
+
+## ✅ Configure Django 
+
+To execute our custom commands we need to activate app_customcmd in the project configuration:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'app_customcmd',               # <-- NEW
+]
+```
+
+## ✅ Custom Commands
+
+This section presents for custom commands that will access and report a few things related to a Django project internals - Let's go!
+
+### Show Current Time
+
+This simple custom command help us to accommodate with the concept. Here is the code, saved in the `app_customcmd/management/commands` directory:
+
+```python
+from django.core.management.base import BaseCommand
+from django.utils import timezone
+
+class Command(BaseCommand):
+    help = 'Displays current time'
+
+    def handle(self, *args, **kwargs):
+        time = timezone.now().strftime('%X')
+        self.stdout.write("It's %s" % time)
+```
+
+The actual executed code resides in the handle method and the execution should display something similar to this:
+
+```bash
+$ python manage.py cmd_time
+It 09:18:08                  <-- The output from our custom CMD 
+```
+
+The most important aspect regarding the code is the usage of BaseCommand as a super-class for our definition.
+
+### Show Registered Apps
+
+This sample will iterate over all registered and active apps and print their names.
+
+```python
+from django.core.management.base import BaseCommand
+from django.apps import apps
+
+class Command(BaseCommand):
+    help = 'Displays registered apps'
+
+    def handle(self, *args, **kwargs):
+        for app in apps.get_app_configs():
+            self.stdout.write(" APP -> %s" % app.verbose_name) 
+```
+
+> **Script execution and output**
+
+```bash
+$ python manage.py cmd_apps
+ APP -> Administration                     # Default Django App   
+ APP -> Authentication and Authorization   # Default Django App
+ APP -> Content Types                      # Default Django App
+ APP -> Sessions                           # Default Django App
+ APP -> Messages                           # Default Django App
+ APP -> Static Files                       # Default Django App
+ APP -> App_Customcmd                      # <-- Our NEW App    
+```
+
+### Show models for each app
+
+This command is quite similar with the previous one, but provide also the registered models for each app.
+
+```python
+from django.core.management.base import BaseCommand
+
+from django.apps import apps
+
+class Command(BaseCommand):
+    help = 'Displays registered apps and models'
+
+    def handle(self, *args, **kwargs):
+
+        # Iterate over apps
+        for app in apps.get_app_configs():
+            self.stdout.write(" APP -> %s" % app.verbose_name)
+
+            # Iterate over models                                # <-- New Code 
+            for model in app.get_models():                       # <-- New Code 
+                self.stdout.write("\t |- (model) -> %s" % model) # <-- New Code 
+```
+
+> **The execution and output**
+
+```bash
+$ python manage.py cmd_models
+ APP -> Administration
+         |- (model) -> <class 'django.contrib.admin.models.LogEntry'>
+ APP -> Authentication and Authorization
+         |- (model) -> <class 'django.contrib.auth.models.Permission'>
+         |- (model) -> <class 'django.contrib.auth.models.Group'>
+         |- (model) -> <class 'django.contrib.auth.models.User'>
+ APP -> Content Types
+         |- (model) -> <class 'django.contrib.contenttypes.models.ContentType'>
+ APP -> Sessions
+         |- (model) -> <class 'django.contrib.sessions.models.Session'>        
+ APP -> Messages
+ APP -> Static Files
+ APP -> App_Forms
+ APP -> App_Pdf
+ APP -> App_Customcmd
+ APP -> App
+         |- (model) -> <class 'app.models.Book'> 
+```
+
+### Print Config Variables
+
+This custom command scan the settings object for proprieties and print all values.
+
+```python 
+from django.core.management.base import BaseCommand
+from django.utils import timezone
+
+from django.conf import settings
+
+class Command(BaseCommand):
+    help = 'Displays project config'
+
+    def handle(self, *args, **kwargs):
+
+        # type( settings ) => <class 'django.conf.LazySettings'>
+        # settings.__dict__
+
+        # Iterate over apps
+        for key in settings.__dict__.keys():
+
+            self.stdout.write(" Cfg Key: " + key + " -> %s" % settings.__dict__[ key ] )
+```            
+
+> **The output and execution**
+
+```bash
+(env) PS D:\work\repo-samples\django-learn-by-coding> python manage.py cmd_showcfg
+ Cfg Key: _wrapped -> <Settings "config.settings">
+ Cfg Key: INSTALLED_APPS -> ['django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles', 'app_forms', 'app_pdf', 'app_customcmd', 'app']
+ Cfg Key: DEBUG -> True
+ Cfg Key: LOGGING_CONFIG -> logging.config.dictConfig
+ Cfg Key: LOGGING -> {}
+ Cfg Key: DEFAULT_EXCEPTION_REPORTER -> django.views.debug.ExceptionReporter
+ Cfg Key: FORCE_SCRIPT_NAME -> None
+ Cfg Key: DEFAULT_TABLESPACE ->
+ Cfg Key: DEFAULT_AUTO_FIELD -> django.db.models.BigAutoField
+ Cfg Key: ABSOLUTE_URL_OVERRIDES -> {}
+ Cfg Key: AUTH_USER_MODEL -> auth.User
+ Cfg Key: DATABASES -> {'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': WindowsPath('D:/work/repo-samples/django-learn-by-coding/db.sqlite3'), 'ATOMIC_REQUESTS': False, 'AUTOCOMMIT': True, 'CONN_MAX_AGE': 0, 'OPTIONS': {}, 'TIME_ZONE': None, 'USER': '', 'PASSWORD': '', 'HOST': '', 'PORT': '', 'TEST': {'CHARSET': None, 'COLLATION': None, 'MIGRATE': True, 'MIRROR': None, 'NAME': None}}}
+...
+(truncated output) 
+```
+
+## ✅ In Summary 
+
+Writing custom commands in our Django projects might help us to extract stats, execute cron jobs, and check the health of a project that runs in production.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
