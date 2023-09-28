@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.61] 2023-09-28
+### Changes
+
+- [Glossary of Programming Terms](https://docs.appseed.us/glossary/)
+- [What IS AdminLTE](https://docs.appseed.us/content/what-is/adminlte/)
+- [What IS MUI](https://docs.appseed.us/content/what-is/mui/)
+- [What IS Nuxt.JS](https://docs.appseed.us/content/what-is/nuxt/)
+
 ## [1.0.60] 2023-09-26
 ### Changes
 
