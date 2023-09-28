@@ -1,18 +1,21 @@
 ---
-sidebar_position: 5
-description: Learn how to manage users in Django with ease - tutorial for beginners.
+title            : Django Auth System
+sidebar_label    : Django Auth 
 ---
 
 # Django Auth System
 
 <SubHeading>Learn how to manage users in Django with ease - tutorial for beginners.</SubHeading>
 
-Being a "batteries-included" framework, Django comes with a powerful authentication/authorization system that we can use and extend in our projects with ease. For those that start from nothing, feel free to access the resources mentioned below and come back here once the content is understood:
+Being a "batteries-included" framework, Django comes with a powerful authentication/authorization system that we can use and extend in our projects with ease. 
+For those that start from nothing, feel free to access the resources mentioned below and come back here once the content is understood:
 
 - [How to install Django](django-how-to-install.mdx) - simple, tested steps to install Django
 - [Django for beginners](django-for-beginners.mdx) - a comprehensive tutorial that covers the basics
 
-> Topics covered in this tutorial
+![Django Auth System - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> **Topics covered in this tutorial**
 
 - `User` the table where the information is saved
 - How to create a new user using the Django CLI
@@ -20,7 +23,7 @@ Being a "batteries-included" framework, Django comes with a powerful authenticat
 - How to `update the password` - Django CLI
 - Create a user using forms
 
-### User Model
+## ✅ User Model
 
 As mentioned in the official Django documentation, the **User** model represents the core entity used to save and manage authentication. The fields managed by the User model can be found below:
 
@@ -59,7 +62,7 @@ $ .\env\Scripts\activate
 $ pip install django
 ```
 
-### Create Users - Django CLI
+## ✅ Create Users - Django CLI
 
 The user creation process using the terminal is usually related to the `superuser` that allows us to access the `admin` section. For newcomers, the admin section manages the registered users, groups defined in our project.
 
@@ -111,9 +114,7 @@ As we can see, new users can be created with ease using the `create-user` helper
 <QuerySet [<User: admin>, <User: test>]>
 ```
 
-
-
-### Create Users via UI
+## ✅ Create Users via UI
 
 Using the console to create and manage users might be fun but might be also useful in our projects to allow users to register themselves using a public web page. To do this, we need a simple page where the form is exposed and a backend to handle the information sent to the user.
 
@@ -257,7 +258,7 @@ def register_user(request):
     return render(request, "accounts/register.html", {"form": form, "msg" : msg })
 ```
 
-### Authenticated User
+## ✅ Authenticated User
 
 Django hooks the authenticated in the `request` object and we can check if a request is done by an authenticated user or not by calling a helper. The same check is available in views.
 
@@ -290,7 +291,7 @@ def testme(path):
 {% endraw %}
 ```
 
-### Logout Users
+## ✅ Logout Users
 
 The `logout` helper is provided by `Django.contrib.auth` middleware package:
 
@@ -306,7 +307,9 @@ If the user is authenticated all session information will be deleted. If the use
 
 > Thanks for reading! For more topics, feel free to [contact](https://appseed.us/support) Appseed.
 
-### Resources
+## ✅ Resources 
 
-- Read more about [Django](https://www.djangoproject.com/) (official docs)
-- Start fast a new project using _development-ready_ [Django Starters](https://appseed.us/admin-dashboards/django)
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

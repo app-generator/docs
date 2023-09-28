@@ -1,15 +1,19 @@
 ---
-sidebar_position: 2
-description: A comprehensive introduction to Django for beginners
+title            : Django For Beginners
+sidebar_label    : Django For Beginners
 ---
 
 # Django For Beginners
 
 <SubHeading>A comprehensive introduction to Django for beginners</SubHeading>
 
-This tutorial aims to help beginners getting started with Django, a popular Web Framework written in Python. To get maximum from this content, the audience should be familiar with a terminal and have a minimal set of tools already installed. [Python3](https://www.python.org/), a modern code editor ([VsCode](https://code.visualstudio.com/), [Atom](https://atom.io/)), and [GIT](https://git-scm.com/) versioning command-line tool should be enough to experiment with all the code.
+This tutorial aims to help beginners getting started with Django, a popular Web Framework written in Python. 
+To get maximum from this content, the audience should be familiar with a terminal and have a minimal set of tools already installed. 
+[Python3](https://www.python.org/), a modern code editor ([VsCode](https://code.visualstudio.com/), [Atom](https://atom.io/)), and [GIT](https://git-scm.com/) versioning command-line tool should be enough to experiment with all the code.
 
-### Install Python
+![Django For Beginners - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+## ✅ Install Python
 
 The core of dependency for Django is Python and we should install the interpreter first. Most of the systems come with Python already installed and we can easily check in the terminal:
 
@@ -18,9 +22,12 @@ $ python --version
 Python 3.8.4       <-- All Good
 ```
 
-If the version displayed in the terminal is Python2, please note that this version [has been discontinued](https://www.python.org/doc/sunset-python-2/) for versioning and development since Jan.2020. To download and install Python access the [official page](https://www.python.org/downloads/), select the installer that matches the operating system, and follow the installation setup. Once the process is finished, recheck the Python version in the terminal.
+If the version displayed in the terminal is Python2, please note that this version [has been discontinued](https://www.python.org/doc/sunset-python-2/) for versioning and development since Jan.2020. 
+To download and install Python access the [official page](https://www.python.org/downloads/), select the installer that matches the operating system, and follow the installation setup. 
 
-### Manage Dependencies
+Once the process is finished, recheck the Python version in the terminal.
+
+## ✅ Manage Dependencies
 
 With **Python** up and running, we can install Django and other modules required by our development. The recommended way to install and manage the dependencies for a Python project is to use a virtual environment, a safe way to isolate the dependencies across multiple projects.
 
@@ -45,7 +52,7 @@ $ pip install django
 
 The above command will install the latest stable version of Django. From this point, we can use all tools provided by Django to create a new project, apps and manage the project via Django CLI.
 
-### Install a Code Editor
+## ✅ Install a Code Editor
 
 This section has plenty of options from the old-school (yet modern) [Vim](https://www.vim.org/download.php) to [VsCode](https://code.visualstudio.com/) and [Atom](https://atom.io/). For those unfamiliar with any of these tools, VsCode might be a good choice to get started fast.
 
@@ -54,7 +61,7 @@ This section has plenty of options from the old-school (yet modern) [Vim](https:
 
 ![Programming Kit - VSCode editor.](../../../static/assets/programming-kit-vscode.jpg)
 
-### Build a Django Project
+## ✅ Build a Django Project
 
 A new project can be generated with ease in Django by using _django-admin_ that provides a collection of settings for the database, Django, and security layer.
 
@@ -92,7 +99,7 @@ At this point we should see the default Django page in the browser:
 
 ![Django - Default Project Page.](../../../static/assets/django-framework-cover-xs.png)
 
-### Create New Application
+## ✅ Create New Application
 
 In the previous section, we've generated the core of the project that handles the configuration and now we will create the first Django application to serve a simple page to the users.
 
@@ -149,9 +156,10 @@ After saving all changes we should no longer see the Django default page (the on
 
 ![Django For Beginners - The first page.](<../../../static/assets/image (9).png>)
 
-### Create New Model
+## ✅ Create New Model
 
-Even simple applications require minimal storage for persistent data. Django provides _out-of-the-box_ an SQLite database, just to help us start fast. During this section, we will create and interact with a new table (model).
+Even simple applications require minimal storage for persistent data. Django provides _out-of-the-box_ an SQLite database, just to help us start fast. 
+During this section, we will create and interact with a new table (model).
 
 > Visualize the default SQL settings - `config/settings.py`
 
@@ -265,9 +273,7 @@ $ python manage.py shell
 
 ```
 
-###
-
-### Using Admin Section
+## ✅ Using Admin Section
 
 **Django** comes by default with a usable admin dashboard that allows us to manage all app models and users with ease. In order to access the module, a `superuser` should be created using the Django CLI:
 
@@ -308,7 +314,9 @@ admin.site.register(Book)       # <- NEW
 
 > Thanks for reading! For more topics, feel free to [contact](https://appseed.us/support) Appseed.
 
-### Resources
+## ✅ Resources 
 
-- Read more about [Django](https://www.djangoproject.com/) (official docs)
-- Start fast a new project using _development-ready_ [Django Starters](https://appseed.us/admin-dashboards/django)
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

@@ -1,8 +1,6 @@
 ---
-sidebar_position: 8
-description: >-
-  This page explains how to parse and extract information from a page (local or
-  remote).
+title            : Parse HTML Components
+sidebar_label    : Parse HTML
 ---
 
 # Parse HTML Components
@@ -24,7 +22,7 @@ For newcomers, **AppSeed** uses automation tools to convert lifeless UI Kits int
 - [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - a well-known parsing library
 - [Lxml](https://lxml.de/) - used to compensate BS4 limitations
 
-### The process
+## ✅ The process
 
 The flow explained in this article will execute a few simple steps:
 
@@ -63,7 +61,9 @@ $ python [ENTER]
 >>> html_page = page.content
 ```
 
-At this point `html_page` variable contains the entire HTML content (string type) and we can use it in BS4 or Lxml to extract the components. To visualize the page structure we can use browser tools:
+At this point `html_page` variable contains the entire HTML content (string type) and we can use it in BS4 or Lxml to extract the components. 
+
+To visualize the page structure we can use browser tools:
 
 ![HTML Parser - Target Component Inspection.](../../../static/assets/html-parser-target-component-inspect.jpg)
 
@@ -133,8 +133,9 @@ The component is fully extracted and parsable:
 
 ![HTML Parser - Extracted Component.](../../../static/assets/html-parser-target-component.jpg)
 
-### Resources
+## ✅ Resources 
 
-- [Use XPath in Beautiful Soup](https://stackoverflow.com/questions/11465555/can-we-use-xpath-with-beautifulsoup) - related article published on StackOverflow
-- [Web Scraping](https://docs.python-guide.org/scenarios/scrape/) - the right way (with sample)
-- [How to get the content from Lxml object](https://stackoverflow.com/questions/5395948/incredibly-basic-lxml-questions-getting-html-string-content-of-lxml-etree-elem) - StackOverflow article
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

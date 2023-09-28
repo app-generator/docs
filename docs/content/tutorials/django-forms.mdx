@@ -1,18 +1,22 @@
 ---
-sidebar_position: 4
-description: Learn how to manage forms in Django - For beginners
+title            : Django Forms 
+sidebar_label    : Django Forms
 ---
 
 # Django Forms
 
 <SubHeading>Learn how to manage forms in Django - For beginners</SubHeading>
 
-This page explains how to **manage and validate a form in Django** Framework. We assume the audience has already a Django project up and running. For those that start from nothing, feel free to access the resources mentioned below and come back here once the content is understood:
+This page explains how to **manage and validate a form in Django** Framework. We assume the audience has already a Django project up and running. 
+
+For those that start from nothing, feel free to access the resources mentioned below and come back here once the content is understood:
 
 - 👉 [How to install Django](django-how-to-install.mdx) - simple, tested steps to install Django
 - 👉 [Django for beginners](django-for-beginners.mdx) - a comprehensive tutorial that covers the basics
 
-> Topics covered by this tutorial
+![Django Forms - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> **Topics covered by this tutorial**
 
 - ✅ Create a new Django app
 - ✅ Define a new route
@@ -25,7 +29,7 @@ The video presentation of this tutorial can be found on Github:
 
 <YoutubeEmbed url="https://www.youtube.com/embed/te350w1WwfQ" title="Django For Beginners - How to add a new form" />
 
-## Create a new Application
+## ✅ Create a new Application
 
 > For this, we will use the `startapp` Django subcommand:
 
@@ -91,9 +95,7 @@ Once we restart the project, the new route `/forms` should be visible:
 
 ![Django Forms -  A Hello-World type route](../../../static/assets/django-forms-simple-route.jpg)
 
-\
-
-## Define a new form
+## ✅ Define a new form
 
 Inside the newly created app, we need to create a `forms` file and define the new Form Class object.
 
@@ -108,8 +110,6 @@ class HelloForm(forms.Form):
     message = forms.CharField()
     email   = forms.EmailField(required=False)
 ```
-
-\
 
 > Controller code - `forms/views.py`, the `index()` method
 
@@ -154,7 +154,6 @@ TEMPLATES = [
 ]
 ```
 
-\
 
 > HTML page - defined in `forms/templates` folder:
 
@@ -174,7 +173,6 @@ TEMPLATES = [
 
 If all fields are provided, on submit, we should see the `Form is valid` message.
 
-\
 
 > Update the form with a new field `ID` (numeric type):
 
@@ -195,7 +193,9 @@ class HelloForm(forms.Form):
 
 > Thanks for reading! For more topics, feel free to [contact](https://appseed.us/support) Appseed.
 
-## Resources
+## ✅ Resources 
 
-- Read more about [Django](https://www.djangoproject.com/) (official docs)
-- Start fast a new project using _development-ready_ [Django Starters](https://appseed.us/admin-dashboards/django)
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder

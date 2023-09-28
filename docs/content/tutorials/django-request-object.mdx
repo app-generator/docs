@@ -1,18 +1,21 @@
 ---
-sidebar_position: 4
-description: >-
-  Learn how to read and manage the information provided by an HTTP request in
-  Django
+title            : Django Request Object
+sidebar_label    : Django Request Object
 ---
 
 # Django Request Object
 
 <SubHeading>Learn how to read and manage the information provided by an HTTP request in Django</SubHeading>
 
-This page explains the `request` object provided by Django as the default argument in views. For those unfamiliar with Django, this web framework is written in Python by experienced developers using a **batteries-included** concept. For more information regarding this amazing web framework please access:
+This page explains the `request` object provided by Django as the default argument in views. 
+For those unfamiliar with Django, this web framework is written in Python by experienced developers using a **batteries-included** concept. 
+
+For more information regarding this amazing web framework please access:
 
 - [How to install Django](django-how-to-install.mdx) - simple, tested steps to install Django
 - [Django for beginners](django-for-beginners.mdx) - a comprehensive tutorial that covers the basics
+
+![Django Request Object - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
 
 Let's create a Django project and code our first view where the `request` object is exposed:
 
@@ -39,7 +42,7 @@ $ pip install django
 
 The above command will install the latest stable version of Django.
 
-### Build a Django Project <a href="#build-a-django-project" id="build-a-django-project"></a>
+## ✅ Build a Django Project
 
 A new project can be generated with ease in Django by using _**django-admin**_ that provides a collection of settings for the database, Django, and security layer.
 
@@ -77,7 +80,7 @@ At this point we should see the default Django page in the browser:
 
 ![Django - Default Project Page.](../../../static/assets/django-framework-cover.jpg)
 
-### Create New Application
+## ✅ Create New Application
 
 In the previous section, we've generated the core of the project that handles the configuration and now we will create the first Django application to serve a simple page to the users.
 
@@ -128,7 +131,7 @@ def hello(request):                      # <-- NEW
     return HttpResponse("Hello Django")  # <-- NEW
 ```
 
-### Request Object Properties
+## ✅ Request Object Properties
 
 The `request` object in Django comes with a few interesting properties:
 
@@ -185,7 +188,7 @@ Here is the script output executed using a local development server:
 
 ![Django Request Object - Provided Information.](../../../static/assets/djang-request-headers.jpg)
 
-### Read Request Variables
+## ✅ Read Request Variables
 
 Django provides dictionaries for `GET` and `POST` requests populated with all variables sent by the client. We can access the variables by `key` or using `get()` helper for both cases.
 
@@ -215,7 +218,9 @@ def parse_post(request):
 
 > Thanks for reading! For more topics, feel free to [contact](https://appseed.us/support) Appseed.
 
-### Resources
+## ✅ Resources 
 
-- Read more about [Django](https://www.djangoproject.com/) (official docs)
-- Start fast a new project using _development-ready_ [Django Starters](https://appseed.us/admin-dashboards/django)
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
