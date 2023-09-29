@@ -1,0 +1,52 @@
+---
+title         : How to write SQL-like Query in Django ORM
+sidebar_label : SQL-like Query
+slug          : how-to-write-sql-like-query-in-django-orm
+---
+
+# How to write SQL-like Query in Django ORM
+
+<SubHeading>Learn how to use Django ORM via SQL-like Queries</SubHeading>
+
+In Django, you can use the `__icontains` lookup to perform a SQL `LIKE` query to filter results based on a substring match. 
+This lookup allows you to search for records that contain a specific string anywhere within a text field. 
+
+![How to write SQL-like Query in Django ORM - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> Here's how you can write a SQL `LIKE` query using Django ORM:
+
+Assuming you have a Django model called `MyModel` and you want to perform a `LIKE` query on the `field_name` field:
+
+```python
+from myapp.models import MyModel
+
+# Use the __icontains lookup to perform a SQL LIKE query
+results = MyModel.objects.filter(field_name__icontains='search_term')
+```
+
+In the code above:
+
+- `MyModel` is your Django model.
+- `field_name` is the name of the field you want to search within.
+- `'search_term'` is the substring you want to search for.
+
+The `filter` method returns a QuerySet containing all records that match the `field_name` containing the specified `search_term`. 
+
+The `__icontains` lookup performs a case-insensitive search, so it will match records regardless of the case of the `search_term`.
+
+You can chain additional filters or query conditions to further refine your query. For example:
+
+```python
+results = MyModel.objects.filter(field_name__icontains='search_term', another_field=some_value)
+```
+
+This query will return records where `field_name` contains the `search_term` and `another_field` is equal to `some_value`.
+
+Remember to replace `MyModel`, `field_name`, `'search_term'`, and any other specific values with your actual model, field name, and search criteria.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
