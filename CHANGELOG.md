@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.62] 2023-09-29
+### Changes
+
+- Update [Django](https://docs.appseed.us/technologies/django/) Section
+  - [How to write SQL-like Query in Django ORM](https://docs.appseed.us/technologies/django/how-to-write-sql-like-query-in-django-orm/)
+  - [How to Write Raw SQL Queries in Django ORM](https://docs.appseed.us/technologies/django/how-to-write-raw-sql-queries-in-django-orm/)
+
 ## [1.0.61] 2023-09-28
 ### Changes
 
