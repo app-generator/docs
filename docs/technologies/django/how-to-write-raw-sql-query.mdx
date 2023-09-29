@@ -1,0 +1,68 @@
+---
+title         : How to write RAW SQL queries in Django ORM
+sidebar_label : SQL Raw Query
+slug          : how-to-write-raw-sql-queries-in-django-orm
+---
+
+# How to Write Raw SQL Queries in Django ORM
+
+<SubHeading>Learn how to use Django ORM via Raw SQL Queries</SubHeading>
+
+In Django, you can execute raw SQL queries using the `django.db.connection` object or by using the `RawSQL` expression. 
+
+![How to Write Raw SQL Queries in Django ORM - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> **Here's how to do both**:
+
+## ✅ Method 1: Using `django.db.connection`
+
+You can execute raw SQL queries using the `django.db.connection` object. This method is useful when you need to perform custom queries that don't fit within the typical ORM structure. 
+
+Here's an example:
+
+```python
+from django.db import connection
+
+# Your raw SQL query
+raw_sql = "SELECT * FROM your_table WHERE your_condition;"
+
+# Execute the query
+with connection.cursor() as cursor:
+    cursor.execute(raw_sql)
+    results = cursor.fetchall()
+```
+
+Replace `your_table` with the name of your database table and `your_condition` with the desired SQL condition.
+
+## ✅ Method 2: Using `RawSQL` expression
+
+The `RawSQL` expression allows you to include raw SQL in a query while still using the Django ORM. Here's an example of how to use it:
+
+```python
+from django.db.models import RawSQL
+from yourapp.models import YourModel
+
+# Your raw SQL expression
+raw_sql = RawSQL("SELECT * FROM your_table WHERE your_condition;", [])
+
+# Use the raw SQL expression in a query
+results = YourModel.objects.raw(raw_sql)
+```
+
+In this example:
+
+- `your_table` is the name of your database table.
+- `your_condition` is the SQL condition you want to apply.
+
+The `RawSQL` expression can be used in queries to include custom SQL expressions.
+
+Remember to replace `your_table`, `your_condition`, and `YourModel` with your actual table name, SQL condition, and model class, respectively.
+
+Using raw SQL queries should be done with caution, as it bypasses some of Django's built-in protections against SQL injection and can make your code less portable between different database backends. Always validate and sanitize user inputs when constructing raw SQL queries to prevent security risks.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure and Digital Ocean](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create an amazing landing page with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
