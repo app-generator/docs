@@ -1,0 +1,79 @@
+---
+title            : What is a Flask Blueprint
+sidebar_label    : Blueprints
+---
+
+# What is a Flask Blueprint
+
+<SubHeading>Flask Blueprints, a short introduction.</SubHeading>
+
+A **Flask Blueprint** is a way to organize a Flask web application into smaller, reusable components or modules. 
+It's a feature provided by the `Flask Web framework` to help you structure your application as it grows in complexity. 
+
+![What is a Flask Blueprint - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268566349-c41e65a5-2ab9-4b54-8cbc-350ab6da746c.png)
+
+**Blueprints** allow you to group related routes, views, templates, and static files into separate modules, making your Flask application more organized and maintainable.
+
+> Here are some **key aspects of Flask Blueprints**
+
+## ✅ **Modular Organization** 
+
+Blueprints enable you to break down your Flask application into smaller, self-contained modules. 
+
+Each module represents a specific part of your application, such as user authentication, blog management, or API endpoints.
+
+## ✅ **Reusability** 
+
+Once defined, a Blueprint can be easily reused in different parts of your application or even in other Flask projects. This promotes code reuse and modularity.
+
+## ✅ **Independence** 
+
+Blueprints are independent of the main application. They can be developed, tested, and maintained separately from the core application. This separation of concerns helps in keeping your codebase clean and manageable.
+
+## ✅ **Routing** 
+
+Blueprints allow you to define routes, URL patterns, and view functions just like you would in the main Flask application. These routes are scoped under the Blueprint, making it easy to organize and maintain a consistent URL structure.
+
+## ✅ **Templates** 
+
+You can associate templates with a Blueprint. This means that you can define template files specific to a Blueprint, allowing for better organization of your HTML files.
+
+## ✅ **Static Files** 
+
+Blueprints can also include static files (CSS, JavaScript, images, etc.), and Flask will automatically handle their routing and serving.
+
+## ✅ **Code Sample** 
+
+Here's an example of how to define and register a Flask Blueprint:
+
+```python
+from flask import Blueprint, render_template
+
+# Create a Blueprint instance
+blog_blueprint = Blueprint('blog', __name__)
+
+# Define a route within the Blueprint
+@blog_blueprint.route('/')
+def index():
+    return render_template('blog/index.html')
+
+# Register the Blueprint with the Flask application
+app.register_blueprint(blog_blueprint, url_prefix='/blog')
+```
+
+In this example, we create a Blueprint called "blog," define a route for the root URL ('/'), and associate a template with it. 
+
+We then register the Blueprint with the Flask application using `app.register_blueprint()`.
+
+## ✅ In Summary 
+
+By using Blueprints, you can structure your Flask application in a more organized and maintainable way, especially as it grows in size and complexity. 
+
+This modular approach also makes it easier for multiple developers to work on different parts of the application simultaneously.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
