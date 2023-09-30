@@ -1,0 +1,82 @@
+---
+title         : Conditional Middleware Execution
+sidebar_label : Conditional Middleware
+---
+
+# Conditional Middleware in Django
+
+<SubHeading>Django Conditional Middleware Execution, what is it, and how we can use it</SubHeading>
+
+**Conditional middleware execution in [Django](https://www.djangoproject.com/)** refers to the practice of enabling or disabling specific middleware components based on certain conditions or settings in your Django project. 
+
+It allows you to dynamically control which middleware runs for different parts of your application or under specific circumstances. This can be useful for fine-grained control over request and response processing.
+
+![Conditional Middleware Execution in Django - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+<br />
+
+> Here's an elaboration on the topic of **conditional middleware execution In Django**:
+
+## ✅ **Dynamic Middleware Configuration**
+   
+In [Django](https://www.djangoproject.com/), middleware components are defined in the `MIDDLEWARE` setting in your project's settings file (`settings.py`).
+
+You can use Python's conditional logic, such as `if` statements, to conditionally include or exclude middleware classes based on specific conditions.
+
+For example, you might want to enable certain middleware only in specific environments (e.g., development, production) or for specific URLs or URL patterns.
+
+## ✅ **Environment-Specific Middleware**
+
+You can configure middleware to run only in specific environments, like development, staging, or production. For instance, you may want to include debugging middleware only in development environments.
+   
+To achieve this, you can create different settings files for each environment (e.g., `settings_dev.py`, `settings_prod.py`) and specify different sets of middleware in each file. Then, based on your deployment configuration, you can load the appropriate settings file.
+
+## ✅ **URL-Dependent Middleware**
+
+You can conditionally enable middleware based on the URL or URL patterns being accessed. For instance, you might want to apply certain middleware to API endpoints but not to regular web pages.
+
+To do this, you can create custom middleware that examines the request's URL and selectively applies or skips certain middleware components.
+
+## ✅ **Middleware Based on Request Attributes**
+
+Middleware can inspect request attributes, such as headers, cookies, or user roles, to determine whether they should take action.
+   For example, you can create middleware that checks for a specific header or cookie and applies logic accordingly, like setting a custom language for the user based on their preferences.
+
+## ✅ **User Role or Permission-Based Middleware**
+
+You can use middleware to apply different behavior or security measures based on the roles or permissions of the authenticated user.
+
+Middleware can inspect the user's role or permissions and perform actions like applying rate limiting only to certain user roles or redirecting users to specific views based on their permissions.
+
+## ✅ **Custom Middleware Configuration Flag**
+
+You can introduce custom configuration flags or settings in your project's settings file to control middleware behavior.
+
+These flags can be used to enable or disable specific middleware components without modifying the middleware classes themselves. You can toggle these flags based on your application's requirements.
+
+Here's a `simplified example of how you might conditionally include middleware` in your `settings.py` based on an environment variable:
+
+```python
+MIDDLEWARE = [
+    # Common middleware components
+    
+    # Conditional inclusion of Debug Toolbar Middleware in development
+    'debug_toolbar.middleware.DebugToolbarMiddleware' if DEBUG else None,
+    
+    # Other middleware components
+]
+```
+
+In the above example, the `DebugToolbarMiddleware` is included in the `MIDDLEWARE` list only when the `DEBUG` setting is `True`. This ensures that the debugging toolbar is active only in development environments.
+
+## ✅ In Summary
+
+By leveraging **conditional middleware execution**, you can tailor the behavior of your **Django** application to specific scenarios, environments, or requirements, 
+providing greater flexibility and control over the request and response processing pipeline.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
