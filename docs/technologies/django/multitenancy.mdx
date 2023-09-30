@@ -14,24 +14,29 @@ Django provides a flexible environment that allows you to design and build multi
 
 > Here are some common methods for `implementing multitenancy in Django`:
 
-## **Shared Schema Approach**
+## ✅ **Shared Schema Approach**
 
-- In this approach, all tenants share the same database schema, but data is segregated using a tenant identifier in each table. This identifier associates each record with a specific tenant.
-- You can implement this approach using a middleware component that adds a `tenant_id` to each query based on the current tenant's context.
-- Libraries like `django-tenant-schemas` provide tools to manage shared-schema multitenancy.
+In this approach, all tenants share the same database schema, but data is segregated using a tenant identifier in each table. This identifier associates each record with a specific tenant.
 
-## **Isolated Schema Approach**
+You can implement this approach using a middleware component that adds a `tenant_id` to each query based on the current tenant's context.
 
-- Each tenant has its own database schema. This approach ensures complete data isolation between tenants, but it can be more resource-intensive.
-- Django allows you to set up multiple database connections in your settings, and you can dynamically switch between them based on the current tenant.
-- Libraries like `django-tenants` help with managing isolated-schema multitenancy.
+Libraries like `django-tenant-schemas` provide tools to manage shared-schema multitenancy.
 
-## **Dynamic Routing Approach**
+## ✅ **Isolated Schema Approach**
 
-- With this approach, you dynamically choose the database connection based on the current tenant during the request processing.
-- You can create custom middleware or decorators to switch between database connections for different tenants.
+Each tenant has its own database schema. This approach ensures complete data isolation between tenants, but it can be more resource-intensive.
 
-Here's a basic example of implementing multitenancy in Django using the shared schema approach:
+Django allows you to set up multiple database connections in your settings, and you can dynamically switch between them based on the current tenant.
+
+Libraries like `django-tenants` help with managing isolated-schema multitenancy.
+
+## ✅ **Dynamic Routing Approach**
+
+With this approach, you dynamically choose the database connection based on the current tenant during the request processing.
+
+You can create custom middleware or decorators to switch between database connections for different tenants.
+
+Here's a **basic example of implementing multitenancy in Django** using the shared schema approach:
 
 ```python
 # Middleware to set the current tenant based on the request
