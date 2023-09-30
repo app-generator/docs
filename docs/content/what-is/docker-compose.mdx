@@ -1,0 +1,72 @@
+---
+title            : What IS Docker Compose 
+sidebar_label    : Docker Compose
+---
+
+# What IS Docker Compose
+
+<SubHeading>Short introduction to Docker Compose, a tool for defining and running multi-container Docker applications</SubHeading>
+
+[Docker Compose](https://docs.docker.com/compose/) is a tool for defining and running multi-container Docker applications. 
+It allows you to define the services, networks, and volumes required for your application in a single YAML file called a "docker-compose.yml" file. 
+
+With **Docker Compose**, you can easily spin up complex applications composed of multiple containers, set their configurations, and manage their interactions.
+
+![What IS Docker Compose - Tutorial provied by AppSeed.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/271765773-431a0bc5-a77a-475a-baed-370b492f1b27.jpg)
+
+> Here are some **key aspects of Docker Compose**:
+
+## ✅ **Container Orchestration** 
+
+Docker Compose simplifies the process of managing multiple containers that need to work together as part of a single application. 
+
+It helps you avoid manually running individual `docker` commands to start and link containers.
+
+## ✅ **YAML Configuration** 
+
+You define your application's structure and dependencies in a human-readable YAML file (docker-compose.yml). 
+This file specifies the services (containers) you want to run, their configurations (such as environment variables and ports), and how they should interact with each other.
+
+## ✅ **Service Definitions** 
+
+In a Docker Compose file, you define "services," which are essentially containers. Each service can use a specific Docker image, set environment variables, expose ports, and define other settings.
+
+## ✅ **Networking** 
+
+Docker Compose automatically creates a bridge network for your application, allowing containers to communicate with each other using service names as hostnames. You can also define custom networks to isolate or group containers as needed.
+
+## ✅ **Volume Management** 
+
+You can specify volumes in the Compose file to persist data and share it between containers. This is particularly useful for databases or stateful applications.
+
+## ✅ **Easy Scaling** 
+
+Docker Compose makes it straightforward to scale your services up or down. You can specify the desired number of containers for a service, and Compose handles the replication.
+
+## ✅ **Environment Variables** 
+
+Compose allows you to set environment variables for containers in the Compose file, which is helpful for configuring applications with secrets, database URLs, or other dynamic values.
+
+## ✅ **Command-Line Interface (CLI)** 
+
+Docker Compose provides a simple CLI for managing your application. You can start, stop, and manage containers and services using commands like `docker-compose up`, `docker-compose down`, and `docker-compose scale`.
+
+## ✅ **Port Mapping** 
+
+You can define how container ports should be mapped to host ports in the Compose file, making it easy to expose your application to the host or external network.
+
+## ✅ **Extensibility** 
+
+While Compose is primarily used for development and testing environments, it can be integrated with other Docker orchestration tools like Docker Swarm and Kubernetes for production deployments.
+
+## ✅ In Summary
+
+Docker Compose is widely used by developers and DevOps teams to streamline the development and testing of applications composed of multiple containers. 
+It simplifies the process of configuring, launching, and managing complex containerized environments, making it an essential tool in the Docker ecosystem.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
