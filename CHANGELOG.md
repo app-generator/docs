@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.0.63] 2023-09-30
+### Changes
+
+- [Glossary of Programming Terms](https://docs.appseed.us/glossary/)
+- [Django Apps](https://docs.appseed.us/technologies/django/apps/)
+- [What is a Flask Blueprint](https://docs.appseed.us/technologies/flask/blueprints/)
+- [What IS Docker Compose](https://docs.appseed.us/content/what-is/docker-compose/)
+
+
 ## [1.0.62] 2023-09-29
 ### Changes
 
