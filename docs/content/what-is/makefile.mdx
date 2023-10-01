@@ -1,0 +1,100 @@
+---
+title            : What IS a Makefile 
+sidebar_label    : What IS a Makefile
+---
+
+# What IS a Makefile
+
+<SubHeading>Learn more about Makefiles, a popular tool for task automation in software development.</SubHeading>
+
+Makefiles are used for automating tasks, especially in software development. 
+They are widely used for compiling code, managing dependencies, and executing various commands in a consistent and efficient manner. 
+
+Makefiles are written in a domain-specific language and are interpreted by the `make` command-line utility. 
+
+Here's a deep dive into Makefiles, covering syntax, structure, use cases, and how to combine multiple Makefiles:
+
+## ✅ **Makefile Basics**
+   
+**Syntax**: A Makefile consists of a set of rules, each specifying a target, dependencies, and actions to be executed when building the target. The syntax for a rule is typically:
+
+```
+target: dependencies
+    action
+```
+
+**Whitespace**: Indentation is important in Makefiles, and it must be a tab character (not spaces) at the beginning of the action lines.
+
+## ✅ **Targets**
+
+A target represents the output that needs to be built or generated. It can be a binary, an object file, a documentation file, or any other file.
+
+Targets can also be phony, meaning they don't represent files but instead denote tasks to be executed.
+
+## ✅ **Dependencies**
+
+Dependencies are files or other targets that the current target relies on. If any dependency has changed since it was last built, the target will be rebuilt.
+
+Dependencies are listed after the colon in a rule.
+
+## ✅ **Actions/Commands**
+
+Actions are shell commands that are executed to build a target. They are indented with tabs.
+
+Make uses these commands to determine how to build a target based on its dependencies.
+
+## ✅ **Variables**
+
+Makefiles often use variables to store values that are reused throughout the Makefile. Variables can be defined and used with the `=` or `:=` assignment operators.
+
+Example: `CC = gcc`
+
+## ✅ **Comments**
+
+Comments in Makefiles start with `#` and continue until the end of the line.
+
+## ✅ **Use Cases for Makefiles**
+
+- **Compiling Code**: Makefiles are commonly used for compiling source code into executables or libraries. They define rules for compiling individual source files and linking them together.
+- **Dependency Management**: Makefiles are used to track dependencies between files and ensure that targets are rebuilt only when necessary.
+- **Testing**: Makefiles can automate running tests and reporting the results.
+- **Documentation**: Makefiles can generate documentation from source code comments.
+- **Deployment**: Makefiles can automate deployment tasks, such as copying files to a server or creating deployment packages.
+- **Cleaning**: Makefiles often include a "clean" target that removes generated files and intermediate build artifacts.
+
+## ✅ **Combining Multiple Makefiles**
+
+To combine multiple Makefiles, you can use the `include` directive to include one Makefile within another.
+
+- Example: `include common.mk`
+- This allows you to split your build process into multiple Makefiles for better organization and reusability.
+
+## ✅ **Advanced Makefile Features**
+
+Makefiles can include conditionals (`ifeq`, `ifdef`, etc.) to make decisions based on variable values or other conditions.
+
+They can also define functions and use pattern matching to create generic rules for building multiple targets.
+
+## ✅ **Resources for Learning**
+
+The `make` command has an extensive manual that you can access by running `man make` in your terminal.
+
+Studying open-source projects' Makefiles can be a valuable way to see real-world usage.
+
+Online tutorials and guides provide hands-on experience with writing Makefiles for various purposes.
+
+- [An Introduction to Makefiles](https://www.gnu.org/software/make/manual/html_node/Introduction.html)
+  - [A Simple Makefile](https://www.gnu.org/software/make/manual/html_node/Simple-Makefile.html)
+  - [How make Processes a Makefile](https://www.gnu.org/software/make/manual/html_node/How-Make-Works.html)
+
+## ✅ In Sumamry
+
+Makefiles are a powerful tool for automating tasks in a standardized way. 
+They are essential in many software development workflows, and mastering Makefile syntax and best practices can greatly enhance your ability to manage complex projects efficiently.
+
+## ✅ Resources 
+
+- 👉 Access [AppSeed](https://appseed.us/) and start your next project
+- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
