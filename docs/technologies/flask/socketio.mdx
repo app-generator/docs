@@ -35,14 +35,12 @@ Socket.IO finds application in various scenarios, including:
 
 If you're looking to develop real-time web applications, Socket.IO is an excellent choice. It offers simplicity, reliability, and efficiency, and is well-supported across different browsers and devices.
 
-<br />
 
 ## ✅ Using Socket.IO with Flask
 
 To use Socket.IO with Flask, we will utilize the `flask-socketio` package. In this tutorial, we will demonstrate how Socket.IO can update a card on a Flask dashboard. 
 We will utilize the Flask dashboard called [Flask Gradient Able](https://github.com/app-generator/flask-gradient-able).
 
-<br />
 
 ### Setting up Flask application
 
@@ -78,7 +76,6 @@ sample-flask-socketio$ .\venv\Scripts\activate       # on Windows
 Visit [`http://127.0.0.1:5000`](http://127.0.0.1:5000) on your browser.
 Create an account to view the homepage of the application. You can stop the flask server using `Ctrl + c`.
 
-<br />
 
 ### Integrating `Socket.IO` with `Flask`
 
@@ -159,7 +156,6 @@ To ensure that a connection can be established by your application:
 3. Log in to the application
 4. Open the developers console using `Ctrl + Shift + I` or `Command + Option + i` (on Mac).
 
-<br />
 
 ### Emitting and Receiving Events
 
@@ -194,7 +190,6 @@ def handle_message(data):
 
 Refresh your browser and check your Python terminal. You will observe that the message from the client is printed on the Python terminal.
 
-<br />
 
 #### Creating custom events
 
@@ -229,7 +224,6 @@ def handle_new_event(data):
 After making the changes to the code as mentioned, please refresh your browser and examine both your browser console and the Python terminal. 
 You will observe the events being handled by both sides of the application.
 
-<br />
 
 ## ✅ Real-Time Updates in Flask
 
@@ -275,7 +269,6 @@ def register_extensions(app):
 
 Please restart the Flask server and visit the homepage. This action will result in the addition of the `Sales` table to the database.
 
-<br />
 
 ### Implementing real-time updates using Socket.IO
 
@@ -335,7 +328,6 @@ curl -X POST -F product=product-name -F amount=product-amount -F status=Complete
 
 You can try adding entries to your database using the command mentioned earlier. Upon checking your browser console, you will observe that the data sent using `curl` is displayed in the console.
 
-<br />
 
 ### Updating the UI in response to Events
 
@@ -392,7 +384,6 @@ def index():
 When the server emits the `sales` event, it triggers the function responsible for updating the card elements on the homepage. 
 This function is automatically executed in response to the event and is responsible for handling the necessary updates to the card components based on the received data.
 
-<br />
 
 ## ✅ In Summary
 
@@ -404,11 +395,9 @@ Finally, we implemented real-time updates using Socket.IO, and we updated a card
 This tutorial has shown how easy it is to use Socket.IO with Flask to create real-time updates in web applications. 
 Socket.IO is a powerful tool that can be used to create a variety of real-time applications, such as chat applications, multiplayer games, and stock tickers.
 
-<br />
+## ✅ Resources
 
-## ✅ Resources 
-
-- 👉 Access [AppSeed](https://appseed.us/) and start your next project
-- 👉 [Deploy Projects on Aws, Azure, and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
 - 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
-- 👉 [Django App Generator](https://app-generator.dev/django/) - A 2nd generation App Builder
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
