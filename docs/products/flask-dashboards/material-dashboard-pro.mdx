@@ -1,41 +1,191 @@
 ---
-title:         Flask Material PRO - Premium Starter
-sidebar_label: Flask Material PRO
+title:         Flask Material BS4 PRO - Premium Starter
+sidebar_label: Flask Material BS4 PRO
 ---
 
-# [Flask Material PRO](https://appseed.us/product/material-dashboard-pro/flask/)
+# [Flask Material BS4 PRO](https://appseed.us/product/material-dashboard-pro/flask/)
 
-**Material Dashboard PRO** is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design. It is based on the popular Bootstrap 4 framework and comes packed with multiple third-party plugins. All components are built to fit perfectly with each other while aligning with the material concepts.
+**Flask** starter styled with **[Material Dashboard PRO](https://appseed.us/product/material-dashboard-pro/flask/)**, a premium `Bootstrap 4` KIT from `Creative-Tim`.
+The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
 
-> Features
+- 👉 [Flask Material BS4 PRO](https://appseed.us/product/material-dashboard-pro/flask/) - Product page
+- 👉 [Flask Material BS4 PRO](https://flask-material-dashboard-pro.appseed-srv1.com/) - LIVE Demo
 
-- Codebase - [Flask Dashboard Boilerplate](../../boilerplate-code/starters/flask-dashboard.mdx)
-- UI Kit: [Material Dashboard PRO](../../content/bootstrap-template/material-dashboard-pro.mdx) (premium version)
-- DBMS: SQLite, PostgreSQL (production)
-- DB Tools: SQLAlchemy ORM, Flask-Migrate (schema migrations)
-- Modular design with **Blueprints**
-- Session-Based authentication (via **flask_login**), Forms validation
-- Deployment scripts: Docker, Gunicorn / Nginx, HEROKU
+:::info **v1.0.7** - Release date `Jun 14, 2023`
+:::
 
-> Links
+## ✅ Features
 
-- [Material PRO Flask](https://appseed.us/product/material-dashboard-pro/flask/) - product page
-- [Material PRO Flask](https://github.com/app-generator/flask-dashboard-material-pro) - public repository used for bug tracking
-- [Material PRO Flask](https://flask-material-dashboard-pro.appseed-srv1.com/) - LIVE Demo
-- [Support](https://appseed.us/support): via **Github** (issues tracker) and [Discord](https://discord.gg/fZC6hup) - 24/7 LIVE Assistance.
+- `Up-to-date dependencies`
+- UI Kit: Material Dashboard (BS4 Version) by `Creative-Tim`
+- `Database`: `SQLite`, MySql
+  - Silent fallback to `SQLite`
+- `DB Tools`: SQLAlchemy ORM, `Flask-Migrate`
+- `Authentication`, Session Based, `OAuth` via **Github**
+- Docker, `Flask-Minify` (page compression)
+- `Deployment` 
+  - `CI/CD` flow via `Render`
 
-## What is Flask
 
-**Flask** is a lightweight [WSGI](../../content/what-is/wsgi.mdx) web application framework. It is designed to make getting started quick and easy, with the ability to scale up to complex applications. Classified as a microframework, Flask is written in Python and it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions.
+![Flask Material BS4 PRO - Premium Starter.](https://github.com/app-generator/assets/assets/51070104/a97e722c-b4ba-4348-b981-65eff97d7e33)
 
-> Read more about [Flask Framework](../../content/what-is/flask.mdx)
 
-## How to use the App
+## ✅ Environment
 
-- [Set up the environment](../../boilerplate-code/starters/flask-dashboard.mdx#environment) - prepare your workstation for **Flask**
-- [Compile the sources](../../boilerplate-code/starters/flask-dashboard.mdx#build-the-app-1) - start this **Flask** app in the local environment
-- [App Codebase](../../boilerplate-code/starters/flask-dashboard.mdx#app-codebase) - how the project files are organized
-- [App Configuration](../../boilerplate-code/starters/flask-dashboard.mdx#app-configuration) - how to configure this **Flask** application
+To use the starter, [Python3](https://www.python.org) should be installed properly in the workstation. 
+If you are not sure if Python is installed, please open a terminal and type `python --version`. Here is the full list with dependencies and tools required to build the app:
+
+- [Python3](https://www.python.org) - the programming language used to code the app
+- [GIT](https://git-scm.com) - used to clone the source code from the Github repository
+- Basic development tools (g++ compiler, python development libraries ..etc) used by Python to compile the app dependencies in your environment.
+- (Optional) `Docker` - a popular virtualization software
+
+
+## ✅ Start in `Docker`
+
+> 👉 **Step 1** - Download & Unzip the code (`requires a purchase` from the official [product](https://appseed.us/product/material-dashboard-pro/flask/) page)
+
+```bash
+$ unzip flask-material-dashboard-pro.zip
+$ cd flask-material-dashboard-pro
+```
+
+> 👉 **Step 2** - Start the APP in `Docker`
+
+```bash
+$ docker-compose up --build
+```
+
+Visit `http://localhost:5085` in your browser. The app should be up & running.
+
+
+## ✅ Manual Build
+
+> 👉 **Step 1** - Download & Unzip the code (`requires a purchase` from the official [product](https://appseed.us/product/material-dashboard-pro/flask/) page)
+
+```bash
+$ unzip flask-material-dashboard-pro.zip
+$ cd flask-material-dashboard-pro
+```
+
+### 👉 Set Up for `Unix`, `MacOS`
+
+> Install modules via `VENV`
+
+```bash
+$ virtualenv env
+$ source env/bin/activate
+$ pip3 install -r requirements.txt
+```
+
+> Set Up Flask Environment
+
+```bash
+$ export FLASK_APP=run.py
+$ export FLASK_ENV=development
+```
+
+> Start the app
+
+```bash
+$ flask run
+```
+
+At this point, the app runs at `http://127.0.0.1:5000/`.
+
+
+### 👉 Set Up for `Windows`
+
+> Install modules via `VENV` (windows)
+
+```
+$ virtualenv env
+$ .\env\Scripts\activate
+$ pip3 install -r requirements.txt
+```
+
+> Set Up Flask Environment
+
+```bash
+$ # CMD
+$ set FLASK_APP=run.py
+$ set FLASK_ENV=development
+$
+$ # Powershell
+$ $env:FLASK_APP = ".\run.py"
+$ $env:FLASK_ENV = "development"
+```
+
+> Start the app
+
+```bash
+$ flask run
+```
+
+At this point, the app runs at `http://127.0.0.1:5000/`.
+
+
+## ✅ Codebase
+
+The project is coded using a simple and intuitive structure presented below:
+
+```bash
+< PROJECT ROOT >
+   |
+   |-- apps/
+   |    |
+   |    |-- home/                           # A simple app that serve HTML files
+   |    |    |-- routes.py                  # Define app routes
+   |    |
+   |    |-- authentication/                 # Handles auth routes (login and register)
+   |    |    |-- routes.py                  # Define authentication routes
+   |    |    |-- models.py                  # Defines models
+   |    |    |-- forms.py                   # Define auth forms (login and register)
+   |    |
+   |    |-- static/
+   |    |    |-- <css, JS, images>          # CSS files, Javascripts files
+   |    |
+   |    |-- templates/                      # Templates used to render pages
+   |    |    |-- includes/                  # HTML chunks and components
+   |    |    |    |-- navigation.html       # Top menu component
+   |    |    |    |-- sidebar.html          # Sidebar component
+   |    |    |    |-- footer.html           # App Footer
+   |    |    |    |-- scripts.html          # Scripts common to all pages
+   |    |    |
+   |    |    |-- layouts/                   # Master pages
+   |    |    |    |-- base-fullscreen.html  # Used by Authentication pages
+   |    |    |    |-- base.html             # Used by common pages
+   |    |    |
+   |    |    |-- accounts/                  # Authentication pages
+   |    |    |    |-- login.html            # Login page
+   |    |    |    |-- register.html         # Register page
+   |    |    |
+   |    |    |-- home/                      # UI Kit Pages
+   |    |         |-- index.html            # Index page
+   |    |         |-- 404-page.html         # 404 page
+   |    |         |-- *.html                # All other pages
+   |    |
+   |  config.py                             # Set up the app
+   |    __init__.py                         # Initialize the app
+   |
+   |-- requirements.txt                     # App Dependencies
+   |
+   |-- .env                                 # Inject Configuration via Environment
+   |-- run.py                               # Start the app - WSGI gateway
+   |
+   |-- ************************************************************************
+```
+
+## ✅ Deploy on `Render`
+
+- Create a Blueprint instance
+  - Go to https://dashboard.render.com/blueprints this link.
+- Click `New Blueprint Instance` button.
+- Connect your `repo` which you want to deploy.
+- Fill the `Service Group Name` and click on `Update Existing Resources` button.
+- After that your deployment will start automatically.
+
+At this point, the product should be LIVE.
 
 ## ✅ Resources
 
