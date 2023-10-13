@@ -1,5 +1,5 @@
 {
-	"label": "FREE SAMPLES",
+	"label": "Free Samples",
 	"position": 7,
 	"collapsed": true,
 	"collapsible": true,	
@@ -7,6 +7,6 @@
 	"link": {
 		"type": "generated-index",
 		"slug": "free-samples",
-		"description": "Free coding samples for Django"
+		"description": "Free coding samples crafted in different technologies: React, Django, Flask, NodeJS."
 	}
 }
