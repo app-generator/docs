@@ -32,8 +32,8 @@ const customFields = {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: "AppSeed",
-	tagline: "App Generator - The official Documentation",
+	title: "AppSeed Documentation",
+	tagline: "AppSeed - The official Documentation",
 	url: "https://docs.appseed.us/",
 	baseUrl: "/",
 	onBrokenLinks: "throw",
