@@ -8,7 +8,7 @@
 - Update [Django](https://docs.appseed.us/technologies/django/) Section
   - [Manage the Codebase in Django](https://docs.appseed.us/technologies/django/manage-codebase/)
   - [Object-Relational Mapping and RAW Selects](https://docs.appseed.us/technologies/django/object-relational-mapping/)
-  - [DataBase Migrations in Django](https://docs.appseed.us/technologies/django/migrations/)  
+  - [DataBase Migrations in Django](https://docs.appseed.us/technologies/django/migrations/)
 
 ## [1.0.63] 2023-09-30
 ### Changes
