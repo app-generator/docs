@@ -1,0 +1,126 @@
+---
+title         : Object-Relational Mapping and RAW Selects in Django - Intro for Beginners
+sidebar_label : ORM & Raw Selects
+---
+
+# Object-Relational Mapping
+
+<SubHeading>Learn more about Object-Relational Mapping and RAW Selects in Django (Intro for Beginners).</SubHeading>
+
+[Django's Object-Relational Mapping](https://docs.djangoproject.com/en/4.2/topics/db/queries/) (`ORM`) is a powerful tool that allows you to interact with your database using Python code, 
+without writing SQL queries directly. 
+
+It abstracts the database and provides a high-level, Pythonic way of managing and querying data. 
+
+![Object-Relational Mapping and RAW Selects in Django - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> Here's a **comprehensive introduction to Django ORM**, along with samples and a brief introduction to raw **SQL selects**.
+
+## ✅ **Setting up Models**
+
+In Django, models represent your application's data structure. They are defined in Python and automatically generate the database schema. Here's an example of defining a simple model:
+
+```python
+from django.db import models
+
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+
+class Book(models.Model):
+    title = models.CharField(max_length=100)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    publication_date = models.DateField()
+```
+
+## ✅ **Creating Tables**
+
+After defining your models, you need to create database tables. Run the following command:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+This will create the necessary tables in your database.
+
+## ✅ **Querying with Django ORM**
+
+Django ORM provides a rich API for querying the database. Here are some common queries:
+
+>  **Filtering**
+
+```python
+# Retrieve all books with 'Django' in the title
+books = Book.objects.filter(title__icontains='Django')
+```
+
+> **Joins**
+
+```python
+# Retrieve books with their author's name
+books_with_author = Book.objects.select_related('author')
+```
+
+> **Aggregation**
+
+```python
+from django.db.models import Count
+# Count the number of books by each author
+author_book_count = Author.objects.annotate(num_books=Count('book'))
+```
+
+> **Sorting**
+
+```python
+# Sort books by publication date in descending order
+books = Book.objects.order_by('-publication_date')
+```
+
+> **Inserting Data**
+
+```python
+new_author = Author.objects.create(name='J.K. Rowling')
+new_book = Book.objects.create(title='Harry Potter', author=new_author, publication_date='1997-06-26')
+```
+
+> **Updating Data**
+
+```python
+book = Book.objects.get(title='Harry Potter')
+book.title = 'Harry Potter and the Philosopher\'s Stone'
+book.save()
+```
+
+> **Deleting Data**
+
+```python
+book = Book.objects.get(title='Harry Potter')
+book.delete()
+```
+
+## ✅ **Using Raw SQL Queries**
+
+While Django ORM is excellent for most tasks, there may be cases where you need to execute raw SQL queries. You can use the `connection` object for this purpose. For example:
+
+```python
+from django.db import connection
+
+def custom_sql_query():
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM myapp_book WHERE title = %s", ['Harry Potter'])
+        results = cursor.fetchall()
+    return results
+```
+
+Remember to use raw SQL sparingly, as it bypasses Django's security features and may make your code less portable.
+
+## ✅ In Summary
+
+These are the basics of Django ORM and using raw SQL queries in Django. It's a powerful tool that can make database interactions in your web application more manageable and Pythonic.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
