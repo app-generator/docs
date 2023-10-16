@@ -1,0 +1,107 @@
+---
+title         : Manage Django Codebase
+sidebar_label : Manage the Codebase
+---
+
+# Manage the Codebase
+
+<SubHeading>Learn how to manage the codebase for a Django Project.</SubHeading>
+
+**Managing a codebase**, especially in a [Django](https://www.djangoproject.com/) project, is essential for maintaining a well-organized and maintainable code. 
+
+![Manage Django Codebase - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> Here are some **tips on how to manage your Django codebase**:
+
+## ✅ **Codebase     Structure**
+
+Django projects typically follow a specific directory structure. Keep your project organized by following these conventions. For example:
+
+```bash
+myproject/
+├── myproject/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+├── myapp/
+│   ├── models.py
+│   ├── views.py
+│   ├── templates/
+│   ├── static/
+└── manage.py
+```
+
+## ✅ **Modularity**
+
+Break your code into small, reusable components. In Django, these are often called apps. Each app should have a clear purpose and can be reused in other projects if needed.
+
+## ✅ **Version Control**
+
+Use a version control system (e.g., Git) to track changes to your codebase. It helps you collaborate with others, track changes, and roll back to previous versions if necessary.
+
+## ✅ **Coding Standards**
+
+Follow Python's PEP 8 style guide and Django's coding style guidelines for consistent and readable code.
+
+## ✅ **Documentation**
+
+Comment your code, write docstrings, and maintain documentation to make your code understandable to other developers (and yourself in the future).
+
+## ✅ **Django Apps**
+
+Django encourages the use of apps for modularity. Create separate apps for different functionalities. This keeps your code organized and easier to manage.
+
+## ✅ **Models, Views, and Templates**
+
+Follow the "Model-View-Controller" (MVC) or "Model-View-Template" (MVT) pattern. Keep your business logic in models, presentation logic in views, and HTML templates separate from Python code.
+
+## ✅ **Keep Settings Separate**
+
+Keep your settings (especially sensitive information like secret keys) in a separate file or use environment variables for security.
+
+## ✅ **Database Migrations**
+
+Use Django's built-in migration system to manage database schema changes. This keeps your database in sync with your code.
+
+## ✅ **Testing**
+
+Write tests for your code. Django provides a testing framework. Automating tests ensures that changes don't break existing functionality.
+
+## ✅ **Continuous Integration (CI)**
+
+Use CI tools like Jenkins, Travis CI, or GitHub Actions to automate code testing and deployment. This ensures code quality and consistency.
+
+## ✅ **Code Reviews**
+
+If you're working in a team, perform code reviews. Reviewing code helps maintain code quality and ensures adherence to coding standards.
+
+## ✅ **Version Management**
+
+Use a versioning system for your project, such as Semantic Versioning (SemVer), to manage releases and updates.
+
+## ✅ **Dependencies**
+
+Manage project dependencies using a tool like `pip` and maintain a `requirements.txt` file.
+
+## ✅ **Error Handling**
+
+Implement proper error handling to make your application robust. Use Django's logging capabilities to track errors.
+
+## ✅ **Security**
+
+Be mindful of security best practices, such as input validation, SQL injection prevention, and protection against Cross-Site Scripting (XSS) attacks.
+
+## ✅ **Refactoring**
+
+Regularly refactor your code to eliminate duplication and improve its structure. Refactoring is a natural part of maintaining a codebase.
+
+## ✅ In Summary
+
+Remember that managing a codebase is an ongoing process. Regular maintenance, updates, and good coding practices will ensure your Django project remains stable and maintainable over time.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
