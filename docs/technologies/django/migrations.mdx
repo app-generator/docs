@@ -1,0 +1,101 @@
+---
+title         : How to manage the DataBase Migrations in Django
+sidebar_label : Migrations
+---
+
+# DataBase Migrations in Django
+
+<SubHeading>Learn how to mmigrate the Databases in Django.</SubHeading>
+
+**Managing database migrations** is a crucial part of [Django](https://www.djangoproject.com/) development. 
+Migrations allow you to evolve your database schema over time as your application's data model changes.
+
+![Learn how to mmigrate the Databases in Django - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> Here's a **step-by-step guide on how to manage database migrations in Django**:
+
+## ✅ **Creating a New Migration**
+
+When you make changes to your models (add, modify, or delete fields), you need to create a migration to update the database schema.
+
+```bash
+python manage.py makemigrations
+```
+
+This command examines your models and creates migration files in your app's `migrations` directory. These files contain the changes necessary to bring the database schema in sync with your models.
+
+## ✅ **Review the Migration Files**
+
+Open the generated migration files (located in your app's `migrations` directory) to review the proposed changes. 
+
+It's important to understand what the migration will do before applying it.
+
+## ✅ **Applying Migrations**
+
+To apply pending migrations and update the database schema, use the `migrate` command:
+
+```bash
+python manage.py migrate
+```
+
+This command will execute all pending migrations in the order they were created. Your database will now match your models.
+
+## ✅ **Applying a Specific Migration**
+
+If you want to apply a specific migration, you can provide its name or number as an argument:
+
+```bash
+python manage.py migrate your_app_name migration_name
+```
+
+## ✅ **Checking Migration Status**
+
+To check the status of migrations (which have been applied or not), you can use the following command:
+
+```bash
+python manage.py showmigrations
+```
+
+It will list all available migrations and indicate which ones have been applied.
+
+## ✅ **Reverting Migrations**
+
+If you need to reverse a migration, use the `migrate` command with the `--fake` option followed by the migration you want to revert:
+
+```bash
+python manage.py migrate your_app_name migration_name
+```
+
+## ✅ **Creating Initial Migrations**
+
+When you first create your Django project, you need to generate an initial migration to create the database schema based on your models:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+This sets up the initial state of the database schema.
+
+## ✅ **Dependencies Between Migrations**
+
+If you have migrations that depend on others, Django will handle them in the correct order by default. It's part of the migration framework to manage dependencies automatically.
+
+## ✅ **Schema Changes in Production**
+
+When dealing with a production database, be cautious. Make sure to back up your data before applying migrations, especially when making changes that could lead to data loss.
+
+## ✅ **Manual Schema Changes**
+
+In some cases, you may need to make manual schema changes (e.g., creating indexes or triggers). You can do this in a database-specific manner, but it's a good practice to document these changes in your project.
+
+## ✅ In Summary
+
+Managing database migrations is an essential aspect of maintaining a **Django** project. It allows you to keep your database schema in sync with your application's data model as it evolves over time.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
