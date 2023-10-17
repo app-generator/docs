@@ -1,0 +1,147 @@
+---
+title        : JavaScript (Vanilla JS) - The Basics
+sidebar_label: JavaScript (Vanilla JS)
+---
+
+# JavaScript (Vanilla JS) - The Basics
+
+<SubHeading>The Basics of JavaScript, often referred to as "Vanilla JavaScript" - introduction for beginners.</SubHeading>
+
+**JavaScript**, often referred to as `Vanilla JavaScript` when not combined with libraries or frameworks, is a versatile programming language that primarily runs in web browsers. 
+
+> Here are **some basics to get you started with Vanilla JavaScript**:
+
+## ✅ **Variables**
+
+In JavaScript, you can declare variables using `var`, `let`, or `const`. Use `let` or `const` for better variable scoping.
+
+```javascript
+let age = 25;
+const name = "John";
+```
+
+## ✅ **Data Types**
+
+JavaScript has several data types, including numbers, strings, booleans, arrays, objects, and more.
+
+```javascript
+let number = 42;
+let text = "Hello, World!";
+let isTrue = true;
+let fruits = ["apple", "banana", "cherry"];
+let person = { name: "John", age: 30 };
+```
+
+## ✅ **Functions**
+
+Functions are blocks of reusable code.
+
+```javascript
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+const greeting = greet("Alice");
+```
+
+## ✅ **Conditionals**
+
+You can use `if`, `else if`, and `else` to make decisions in your code.
+
+```javascript
+if (age >= 18) {
+  console.log("You are an adult.");
+} else {
+  console.log("You are a minor.");
+}
+```
+
+## ✅ **Loops**
+
+You can use loops like `for` and `while` for repetitive tasks.
+
+```javascript
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+let x = 0;
+while (x < 5) {
+  console.log(x);
+  x++;
+}
+```
+
+## ✅ **Arrays**
+
+Arrays are used to store collections of data.
+
+```javascript
+const colors = ["red", "green", "blue"];
+console.log(colors[0]); // Access the first element
+colors.push("yellow"); // Add an element
+```
+
+## ✅ **Objects**
+
+Objects are used to store key-value pairs.
+
+```javascript
+const person = { name: "Alice", age: 28 };
+console.log(person.name); // Access a property
+person.city = "New York"; // Add a property
+```
+
+## ✅ **DOM Manipulation**
+
+You can manipulate the Document Object Model (DOM) to change the content and structure of a web page.
+
+```javascript
+// Get an element by its ID
+const element = document.getElementById("my-element");
+element.innerHTML = "New content";
+```
+
+## ✅ **Event Handling**
+
+You can use JavaScript to respond to user interactions.
+
+```javascript
+document.getElementById("my-button").addEventListener("click", function () {
+  alert("Button clicked!");
+});
+```
+
+## ✅ **Asynchronous JavaScript**
+
+JavaScript supports asynchronous programming with `setTimeout`, `setInterval`, and AJAX requests.
+
+```javascript
+setTimeout(function () {
+  console.log("Delayed message");
+}, 2000);
+```
+
+## ✅ **Error Handling**
+
+Use `try...catch` to handle errors gracefully.
+
+```javascript
+try {
+  // Code that might throw an error
+} catch (error) {
+  console.error(error);
+}
+```
+
+## ✅ In Summary
+
+These are some foundational concepts for **getting started with Vanilla JavaScript**. 
+As you gain experience, you can explore more advanced topics like `closures`, `promises`, and modern `JavaScript` features introduced in ES6 and later.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
