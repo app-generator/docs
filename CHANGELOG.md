@@ -1,5 +1,18 @@
 # Change Log
 
+## [1.0.65] 2023-10-16
+### Changes
+
+- Added [Web Development](https://docs.appseed.us/content/web-development/) (New Section)
+  - [HTML and CSS](https://docs.appseed.us/content/web-development/html-css-basics/)
+  - [HTTP protocol](https://docs.appseed.us/content/web-development/http-protocol/)
+  - [JavaScript (Vanilla JS)](https://docs.appseed.us/content/web-development/javascript-vanilla-js/)
+  - [Server Client Architecture](https://docs.appseed.us/content/web-development/server-client-architecture/)
+- Update [Django](https://docs.appseed.us/technologies/django/) Section
+  - [Integrate Django Debug Toolbar](https://docs.appseed.us/technologies/django/integrate-debug-toolbar/)
+  - [Managing files in Django](https://docs.appseed.us/technologies/django/managing-files/)
+  - [Writing Tests in Django](https://docs.appseed.us/technologies/django/writing-tests/)
+
 ## [1.0.64] 2023-10-16
 ### Changes
 
