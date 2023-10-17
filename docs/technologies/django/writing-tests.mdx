@@ -1,0 +1,97 @@
+---
+title         : Writing Tests in Django
+sidebar_label : Writing Tests
+---
+
+# Writing Tests in Django
+
+<SubHeading>Learn how to write tests in Django (with coding sample)</SubHeading>
+
+**Writing Tests** in [Django](https://www.djangoproject.com/) is a fundamental practice to ensure your web application works as expected and to catch regressions when you make changes. 
+Django provides a testing framework to make this process easy. 
+
+Here's a **step-by-step guide on how to write tests in Django** with a coding sample:
+
+## ✅ **Create a Django Test Case**
+
+Django provides a `TestCase` class that you can use as the base for your test cases. Create a Python file for your tests, and in it, import the necessary modules and define your test class.
+
+```python
+from django.test import TestCase
+from .models import MyModel  # Import your models
+
+class MyModelTestCase(TestCase):
+    def setUp(self):
+        # Set up data for the tests
+        MyModel.objects.create(name="Test Item 1")
+        MyModel.objects.create(name="Test Item 2")
+
+    def test_model_method(self):
+        # Write your test code here
+        item = MyModel.objects.get(name="Test Item 1")
+        self.assertEqual(item.some_method(), expected_value)
+```
+
+## ✅ **Set Up Test Data:**
+
+In the `setUp` method, create any necessary data for your tests. This is where you prepare your database with initial data that your tests will use.
+
+## ✅ **Write Test Methods**
+
+In your test class, write test methods that check specific aspects of your application. 
+
+Use various assertion methods provided by `TestCase`, such as `assertEqual`, `assertNotEqual`, `assertTrue`, and others to verify that your code behaves as expected.
+
+## ✅ **Run the Tests:**
+
+To run your tests, use the following command:
+
+```bash
+python manage.py test your_app_name
+```
+
+Replace `your_app_name` with the name of your Django app. This command will discover and run all the test cases defined in your app.
+
+## ✅ **Coding Example**
+
+Let's say you have a simple model and you want to test one of its methods. Here's how you would do it:
+
+```python
+# models.py
+from django.db import models
+
+class MyModel(models.Model):
+    name = models.CharField(max_length=100)
+
+    def some_method(self):
+        return f"Hello, {self.name}"
+
+# tests.py
+from django.test import TestCase
+from .models import MyModel
+
+class MyModelTestCase(TestCase):
+    def setUp(self):
+        MyModel.objects.create(name="Test Item 1")
+        MyModel.objects.create(name="Test Item 2")
+
+    def test_some_method(self):
+        item = MyModel.objects.get(name="Test Item 1")
+        result = item.some_method()
+        self.assertEqual(result, "Hello, Test Item 1")
+```
+
+After running `python manage.py test your_app_name`, Django will execute the tests, and you'll see the results in your terminal.
+
+## ✅ In Summary
+
+**Writing tests in Django** is a best practice for ensuring the stability and correctness of your application as you make changes. 
+
+It's an integral part of the development process that can save you time and effort in the long run.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
