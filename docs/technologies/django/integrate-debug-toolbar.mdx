@@ -1,0 +1,100 @@
+---
+title         : Integrate Django Debug Toolbar
+sidebar_label : Integrate Debug Toolbar
+---
+
+# Integrate Django Debug Toolbar
+
+<SubHeading>Learn how to integrate Django Toolbar, a popular DEBUG library</SubHeading>
+
+Including third-party applications in your **Django** project, such as [django-debug-toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html), 
+can be a powerful way to extend the functionality of your application without reinventing the wheel. 
+
+Here's a **step-by-step guide** on how to include and use third-party applications like `django-debug-toolbar` in your project:
+
+## ✅ **Installation**
+
+To include a third-party application, you first need to install it. You can do this using `pip`, which is the package manager for Python. Open your terminal and run:
+
+```bash
+pip install django-debug-toolbar
+```
+
+Replace `django-debug-toolbar` with the name of the third-party package you want to install.
+
+## ✅ **Update `INSTALLED_APPS` Section**
+
+In your Django project's settings (usually found in `settings.py`), you need to add the third-party application to the `INSTALLED_APPS` list. For example, to include `django-debug-toolbar`, 
+add the following line to your settings:
+
+```python
+INSTALLED_APPS = [
+    # ...
+    'debug_toolbar',
+    # ...
+]
+```
+
+## ✅ **Configure the Application**
+
+Some third-party applications may require additional configuration. Refer to the documentation of the specific package you're installing to see if any configuration settings are necessary. 
+
+For `django-debug-toolbar`, you typically need to configure it to work only in development mode. Here's how to do that:
+
+```python
+if DEBUG:
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda request: True,
+    }
+```
+
+Ensure that `DEBUG` is set to `True` in your development settings and not in production.
+
+## ✅ **Include URLs**
+   
+Some applications may provide their URLs. If so, you need to include them in your project's `urls.py` file. 
+
+For example, `django-debug-toolbar` provides its URLs, so you can include them as follows:
+
+```python
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+        # ...
+    ]
+```
+
+## ✅ **Run Migrations**
+
+Some third-party applications, especially those that store data in the database, might require you to run migrations to create their database tables. Run the following command to apply migrations:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+## ✅ **Use the new Features**
+
+Now that you've installed and configured the third-party application, you can use its functionality in your Django project. 
+Refer to the documentation of the specific application to learn how to use it effectively.
+
+## ✅ **Test in Development**
+
+It's essential to thoroughly test the third-party application in your development environment before deploying it to a production server. Ensure it behaves as expected and doesn't introduce any issues.
+
+## ✅ In Summary
+
+Remember that different third-party applications may have unique installation and configuration instructions, so always refer to their official documentation for the most accurate and up-to-date information. 
+
+Including third-party applications can save you a lot of development time and add powerful features to your Django project.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
