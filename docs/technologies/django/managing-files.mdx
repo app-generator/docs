@@ -1,0 +1,126 @@
+---
+title         : Managing files in Django
+sidebar_label : Managing Files
+---
+
+# Managing files in Django
+
+<SubHeading>Learn how to manage files in Django (local development and production)</SubHeading>
+
+**Managing files** in a [Django](https://www.djangoproject.com/) Project involves handling file uploads, serving media files during development, and managing static files like CSS and JavaScript. 
+
+Here's a guide on **how to manage files in Django**:
+
+## ✅ **Setting Up the Project**
+
+Before you start managing files, ensure your Django project is set up correctly. In your project's settings (usually found in `settings.py`), make sure you have the following configurations:
+
+```python
+# settings.py
+
+# Media Settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Static Files Settings
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+```
+
+This configuration sets up the URLs and directories for media and static files.
+
+## ✅ **Uploads (Media Files)**
+
+If you need to handle file uploads, such as user profile pictures or document uploads, you need to define a model field to store these files and set up the media settings as mentioned above.
+
+For example, in a Django model:
+
+```python
+from django.db import models
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pics/')
+```
+
+In this example, `profile_picture` is an `ImageField` that will store uploaded images in a `profile_pics` directory within your `MEDIA_ROOT`.
+
+## ✅ **Form Handling for File Uploads**
+
+When handling file uploads in forms, use the `forms.FileField`:
+
+```python
+from django import forms
+
+class ProfilePictureForm(forms.Form):
+    profile_picture = forms.FileField()
+```
+
+## ✅ **Media Files in Development**
+
+During development, Django's built-in development server can serve media files for you. Ensure that the following is in your project's `urls.py`:
+
+```python
+# urls.py
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    # Your other URL patterns here
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+
+This setup is for development purposes only. In a production environment, you'd typically configure your web server (e.g., Nginx or Apache) to serve media files.
+
+## ✅ **Managing Static Files**
+
+   Static files, like CSS, JavaScript, and image assets, are typically placed in your app's `static` directory. Ensure your app is included in the `INSTALLED_APPS` list in `settings.py`.
+
+   For example, if your app is named `myapp`, you'd have a structure like this:
+
+   ```
+   myapp/
+   ├── static/
+   │   ├── myapp/
+   │   │   ├── css/
+   │   │   │   ├── styles.css
+   │   │   ├── js/
+   │   │   │   ├── script.js
+   └── ...
+   ```
+
+## ✅ **Linking to Static Files**
+
+To include static files in your templates, use the `{% load static %}` template tag at the top of your template and then link to the static files like this:
+
+```html
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/styles.css' %}">
+<script src="{% static 'myapp/js/script.js' %}"></script>
+```
+
+## ✅ **Collecting Static Files**
+
+Before deploying your project, you should collect all static files into a single directory. This is done using the following management command:
+
+```bash
+python manage.py collectstatic
+```
+
+It will copy all static files from your apps to the `STATIC_ROOT` directory defined in your settings.
+
+## ✅ In Summary
+
+By following these steps, you can effectively manage files in your Django project, including handling file uploads and serving both media and static files during development and production.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
