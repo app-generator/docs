@@ -1,0 +1,82 @@
+---
+title:         Python Site Generator
+sidebar_label: Site Generator
+---
+
+# Python Site Generator
+
+<SubHeading>Learn more about site generators in Python</SubHeading>
+
+A Python site generator, often referred to as a "static site generator," is a tool used to create static websites. 
+Unlike dynamic websites that generate content on the server for each visitor, static sites pre-generate all their pages and serve them as-is. 
+
+This approach offers advantages in terms of performance, security, and simplicity.
+
+Static site generators typically work by combining content, often written in markup or a lightweight templating language, with templates to generate HTML, CSS, and JavaScript files that make up the website. 
+
+Some popular **Python-Based static site generators** include:
+
+## ✅ **Pelican**
+
+[Pelican](https://docs.getpelican.com/) is a widely used static site generator that allows you to write content in Markdown, reStructuredText, or other formats and convert it into HTML.
+
+- Sample generator:
+```bash
+pelican-quickstart
+pelican content -o output -s pelicanconf.py
+```
+
+## ✅ **MkDocs**
+
+[MkDocs](https://www.mkdocs.org/) is a simple static site generator focused on creating documentation websites. It allows you to write documentation in Markdown and automatically generates an attractive site.
+
+- Sample generator:
+```bash
+mkdocs new my-project
+mkdocs build
+```
+
+## ✅ **Sphinx**
+
+[Sphinx](https://www.sphinx-doc.org/) is primarily used for generating documentation for Python projects, but it can be adapted for creating static sites. It uses reStructuredText and provides extensive customization options.
+
+- Sample generator:
+```bash
+sphinx-quickstart
+make html
+```
+
+## ✅ **Nikola**
+
+[Nikola](https://getnikola.com/) is a flexible static site generator that supports various markup formats and provides features like blogging, galleries, and multilingual sites.
+
+- Sample generator:
+
+```bash
+nikola init my-site
+nikola build
+```
+
+## ✅ **Lektor**
+
+[Lektor](https://www.getlektor.com/) is a content management system and static site generator combined. It offers a web-based admin interface and supports custom data models.
+
+- Sample generator:
+
+```bash
+lektor quickstart
+lektor build
+```
+
+## ✅ In Summary
+
+These are just a few examples of Python site generators. Depending on your specific requirements, you can choose the one that best fits your needs. 
+
+They allow you to create websites efficiently by separating content from presentation and generating static HTML pages, which can be easily deployed to web servers.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
