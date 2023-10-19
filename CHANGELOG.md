@@ -1,6 +1,12 @@
 # Change Log
 
-## [1.0.65] 2023-10-16
+## [1.0.66] 2023-10-19
+### Changes
+
+- Update [Rocket Django](https://docs.appseed.us/products/rocket/django/)
+  - New Sections: API, DataTables, Extended Profiles
+
+## [1.0.65] 2023-10-17
 ### Changes
 
 - Added [Web Development](https://docs.appseed.us/content/web-development/) (New Section)
