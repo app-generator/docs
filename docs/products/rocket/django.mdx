@@ -7,10 +7,182 @@ sidebar_label: Rocket Django
 
 <SubHeading>Open-source Django Starter styled with Tailwind and Flowbite.</SubHeading>
 
-@Todo
+This open-source starter incorporates a few modern technologies provided out-of-the-box, at a production-ready level. 
+[Rocket Django](https://github.com/app-generator/rocket-django) is actively versioned by AppSeed.
 
-<br />
+- 👉 [Rocket Django](https://rocket-django.onrender.com/) - `LIVE Demo`
+- 👉 [Rocket Django](https://github.com/app-generator/rocket-django) - `Source Code`
 
-## Resources
+![Rocket Django - Open-source Django Starter styled with Tailwind and Flowbite](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/276511947-84207026-b13d-4eff-bdf6-04a7b1a10c6c.jpg) 
 
-@Todo
+## ✅ Product Features 
+
+The codebase is shipped with basic features that are usually implemented in most of the projects: 
+
+- Up-to-date Dependencies
+- Tailwind/Flowbite Integration via WebPack
+- `Extended User Model`
+- [API](https://rocket-django.onrender.com/api/product/) via `DRF` 
+- [Charts](https://rocket-django.onrender.com/charts/)
+- [DataTables](https://rocket-django.onrender.com/tables/) (native Django) 
+- `Celery Beat`
+- Docker
+
+## ✅ Manual Build 
+
+> Download code
+
+```bash
+$ git clone https://github.com/app-generator/rocket-django.git
+$ cd rocket-django
+```
+ 
+> Install Node Modules 
+
+```
+$ npm i
+$ npm run build
+```
+
+> Install **Django** modules via `VENV`  
+
+```bash
+$ virtualenv env
+$ source env/bin/activate
+$ pip install -r requirements.txt
+```
+
+> Install **Tailwind/Flowbite** (separate terminal)
+
+```bash
+$ npm install
+$ npm run dev        
+```
+
+> Migrate DB
+
+```
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+
+> Create Superuser & Start the APP
+
+```
+$ python manage.py createsuperuser # create the admin
+$ python manage.py runserver       # start the project
+```
+
+At this point, we should be able to access **Rocket Django** in the browser. 
+
+
+## ✅ Codebase  
+
+```bash
+< PROJECT ROOT >
+   |
+   |-- core/                 # Project Settings 
+   |    |-- settings.py 
+   |    |-- wsgi.py     
+   |    |-- urls.py     
+   |
+   |-- home/                 # Presentation app 
+   |    |-- views.py         # serve the HOMEpage  
+   |    |-- urls.py     
+   |    |-- models.py
+   |
+   |-- apps/                 # Utility Apps 
+   |    |-- common/          # defines models & helpers
+   |    |    |-- models.py   
+   |    |    |-- util.py 
+   |    |-- users            # Handles Authentication 
+   |    |-- api              # DRF managed API
+   |    |-- charts           # Showcase Different Charts
+   |    |-- tables           # Implements DataTables
+   |    |-- tasks            # Celery, async processing
+   |
+   |-- templates/            # UI templates 
+   |-- static/               # Tailwind/Flowbite 
+   |    |-- src/             # 
+   |         |-- input.css   # CSS Styling
+   |
+   |-- Dockerfile            # Docker
+   |-- docker-compose.yml    # Docker 
+   |
+   |-- render.yml            # CI/CD for Render
+   |-- build.sh              # CI/CD for Render 
+   |
+   |-- manage.py             # Django Entry-Point
+   |-- requirements.txt      # dependencies
+   |-- .env                  # ENV File
+   |
+   |-- *************************************************
+```
+
+
+## ✅ Extended User Profile 
+
+Authenticated user are able to save their information and an IMAGE avatar. 
+The fields that manage the user information can be found in [apps/users/models.py](https://github.com/app-generator/rocket-django/blob/main/apps/users/models.py) 
+
+```python
+ROLE_CHOICES = (
+    ('admin'  , 'Admin'),
+    ('user'  , 'User'),
+)
+class Profile(models.Model):
+    user      = models.OneToOneField(User, on_delete=models.CASCADE)
+    role      = models.CharField(max_length=20, choices=ROLE_CHOICES, default='user')
+    full_name = models.CharField(max_length=255, null=True, blank=True)
+    country   = models.CharField(max_length=255, null=True, blank=True)
+    city      = models.CharField(max_length=255, null=True, blank=True)
+    zip_code  = models.CharField(max_length=255, null=True, blank=True)
+    address   = models.CharField(max_length=255, null=True, blank=True)
+    phone     = models.CharField(max_length=255, null=True, blank=True)
+    avatar    = models.ImageField(upload_to='avatar', null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+```
+
+Here is the correspondent UI (requires authentication) 
+
+![Rocket Django - Extended User Profile.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/276511951-8eaf56b6-a77a-44a1-afba-1db4e6d584bb.jpg)
+
+
+## ✅ API Via DRF 
+
+The [Products](https://github.com/app-generator/rocket-django/blob/main/apps/common/models.py) model is managed in two different ways: via API (powered by DRF) and a simple, intuitive DataTable view. 
+
+```python
+class Product(models.Model):
+    id    = models.AutoField(primary_key=True)
+    name  = models.CharField(max_length = 100) 
+    info  = models.CharField(max_length = 100, default = '')
+    price = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+```
+
+The authenticated users are able to submit products using the DRF UI: 
+
+![Rocket Django - API via DRF.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/276511957-e3eb8f75-316a-4c01-a3fe-0cbe6287c0da.jpg)
+
+
+## ✅ DataTables 
+
+`Products` information can be easily managed using the DataTable layout styled with Tailwind & Flowbite. Supported features: 
+
+- Create/Update/Delete 
+- Pagination
+- Search
+
+![Rocket Django - DataTables over the Product Table.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/276511955-5e279cab-6ee4-49a2-b584-b93b6c2a0f18.jpg)
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
