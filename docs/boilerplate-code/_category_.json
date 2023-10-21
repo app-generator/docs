@@ -1,5 +1,5 @@
 {
-	"label": "BOILERPLATE CODE",
+	"label": "Boilerplate Code",
 	"position": 6,
 	"className": "section-title",
 	"collapsed": true,
@@ -7,6 +7,6 @@
 	"link": {
 		"type": "generated-index",
 		"slug": "/boilerplate-code",
-		"description": "Here are the articles in this section"
+		"description": "Boilerplate Code & Starters actively supported by AppSeed."
 	}
 }

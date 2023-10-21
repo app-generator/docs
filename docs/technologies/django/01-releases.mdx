@@ -11,19 +11,27 @@ For newcomers, Django is a high-level, open-source Python web framework known fo
 
 ![Django Releases - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
 
-## **Django 4.2.6** (October, 2023):
+## ✅ **[Django 5](https://blog.appseed.us/django-5-release-summary-and-sample/)** `alpha 1` (September 18, 2023)
+
+- **Django 5.x** supports Python 3.10, 3.11, and 3.12
+- [Facets](https://docs.djangoproject.com/en/dev/ref/contrib/admin/filters/#facet-filters) processing updates
+- Simplified templates for form field rendering
+- Database-computed default values
+- Database generated model field
+
+## ✅ **Django 4.2.6** (October, 2023):
 
 - Django 4.2.6 fixes several bugs in 4.2.5
 - Fix Security Issue `CVE-2023-41164`
   - Potential denial of service vulnerability in django.utils.encoding.uri_to_iri()
 
-## **Django 4.2.4** (August, 2023):
+## ✅ **Django 4.2.4** (August, 2023):
 
 - Fixed a regression in Django 4.2 that caused a crash of QuerySet.aggregate() with aggregates referencing window functions (#34717).
 - Fixed a regression in Django 4.2 that caused a crash when grouping by a reference in a subquery (#34748).
 - Fixed a regression in Django 4.2 that caused aggregation over query that uses explicit grouping by multi-valued annotations to group against the wrong columns (#34750).
 
-## **Django 4.2.2** (June, 2023):
+## ✅ **Django 4.2.2** (June, 2023):
 
 BugFixes:
 
@@ -34,134 +42,134 @@ BugFixes:
 - Fixed a bug in Django 4.2 where makemigrations --update didn’t respect the --name option (#34568).
 - Fixed a performance regression in Django 4.2 when compiling queries without ordering (#34580).
 
-## **Django 4.2** (April, 2023):
+## ✅ **Django 4.2** (April, 2023):
 
 - Psycopg 3 support  
   - Django now supports psycopg version 3.1.8 or higher. To update your code, install the psycopg library, you don`t need to change the ENGINE as django.db.backends.postgresql supports both libraries.
 - Comments on columns and tables
   - The new `Field.db_comment` and `Meta.db_table_comment` options allow creating comments on columns and tables, respectively.
 
-## **Django 4.0** (December, 2021):
+## ✅ **Django 4.0** (December, 2021):
 
 - zoneinfo default timezone implementation
 - scrypt password hasher
 - Redis cache backend
 - Template based form rendering
 
-## **Django 3.2** (April 2021):
+## ✅ **Django 3.2** (April 2021):
 
 - Extended support for Python 3.9.
 - Introduced improved speed and performance enhancements.
 
-## **Django 3.1** (August 2020):
+## ✅ **Django 3.1** (August 2020):
 
 - Extended support for Python 3.8 and 3.9.
 - Introduced stricter database constraints.
 - Enhanced security features.
 
-## **Django 3.0** (December 2019):
+## ✅ **Django 3.0** (December 2019):
 
 - Dropped support for Python 3.5.
 - Added support for Python 3.8.
 - Introduced path converters in URL routing.
 
-## **Django 2.2** (April 2019):
+## ✅ **Django 2.2** (April 2019):
 
 - Extended support for Python 3.7 and 3.8.
 - Included database and performance improvements.
 
-## **Django 2.1** (August 2018):
+## ✅ **Django 2.1** (August 2018):
 
 - Added support for Python 3.7.
 - Included features like multi-database support and easier handling of static files.
 
-## **Django 2.0** (December 2017):
+## ✅ **Django 2.0** (December 2017):
 
 - Dropped support for Python 2.x.
 - Required Python 3.4 or later.
 - Included various improvements and updates.
 
-## **Django 1.11** (April 2017):
+## ✅ **Django 1.11** (April 2017):
 
 - Extended support for Python 3.6.
 - Introduced "subquery" expressions.
 - Included an easier way to format template text.
 
-## **Django 1.10** (August 2016):
+## ✅ **Django 1.10** (August 2016):
 
 - Introduced full support for Python 3.5.
 - Added features like template-based widget rendering.
 
-## **Django 1.9** (December 2015):
+## ✅ **Django 1.9** (December 2015):
 
 - Included support for PostgreSQL's "upsert" feature.
 - Improved password hashing.
 - Enhanced customizability of the admin interface.
 
-## **Django 1.8** (April 2015):
+## ✅ **Django 1.8** (April 2015):
 
 - Added support for the "Django Rest Framework."
 - Included native support for complex database types like JSON.
 - Other improvements.
 
-## **Django 1.7** (September 2014):
+## ✅ **Django 1.7** (September 2014):
 
 - Introduced the "migrations" framework as a core feature.
 - Allowed database schema changes to be version-controlled.
 
-## **Django 1.6** (November 2013):
+## ✅ **Django 1.6** (November 2013):
 
 - Brought significant improvements in testing and authentication.
 - Added support for database schema migrations.
 
-## **Django 1.5** (February 2013):
+## ✅ **Django 1.5** (February 2013):
 
 - Introduced custom user models.
 - Added a new timezone support model.
 - Configurable user authentication system.
 
-## **Django 1.4** (March 2012):
+## ✅ **Django 1.4** (March 2012):
 
 - Added timezone support.
 - Supported user-uploaded static files.
 - Improved scalability.
 
-## **Django 1.3** (March 2011):
+## ✅ **Django 1.3** (March 2011):
 
 - Added class-based views.
 - Improved file handling.
 - Better support for NoSQL databases.
 
-## **Django 1.2** (May 2010):
+## ✅ **Django 1.2** (May 2010):
 
 - Added support for multiple database connections.
 - Improved form handling.
 - Enhanced internationalization features.
 
-## **Django 1.1** (July 2009):
+## ✅ **Django 1.1** (July 2009):
 
 - Introduced features like aggregation and transaction-based testing.
 - Improved support for PostgreSQL.
 
-## **Django 1.0** (September 2008):
+## ✅ **Django 1.0** (September 2008):
 
 - First official stable release.
 - Included the admin interface, authentication, and many core features.
 
-## **Django 0.96** (March 2006):
+## ✅ **Django 0.96** (March 2006):
 
 - Focused on code quality and compatibility, laying the groundwork for future versions.
 
-## **Django 0.95** (January 2006):
+## ✅ **Django 0.95** (January 2006):
 
 - Added support for database migrations.
 - Improved documentation and template support.
 
-## **Django 0.91** (October 2005):
+## ✅ **Django 0.91** (October 2005):
 
 - Introduced features like the automatic admin interface and template inheritance.
 
-## **Django 0.90** (July 2005):
+## ✅ **Django 0.90** (July 2005):
 
 - First public release of Django.
 - Open-sourced under the BSD license.

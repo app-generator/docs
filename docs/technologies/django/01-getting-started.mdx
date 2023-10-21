@@ -13,13 +13,13 @@ Django can help us to code from simple, one-page websites, APIs, micro-services,
 It enables developers to build robust applications rapidly while helping developers to avoid security mistakes since Django takes security seriously. 
 Django is flexible and scalable and comes with a lot of tools prebuilt into it for example, its Object relation mapper (ORM), admin dashboard, user authentication and lots more.
 
+![Getting Started with Django - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
 Django adopts the MTV (Model Template View) architectural pattern. **Model** determines the data structure and is a handler between the database and the view. 
 **Template** keeps everything the browser renders, django uses a plain text template system. **View** communicates with the database using the model and sends the data to the template to be displayed. 
 
 The framework acts as a controller sending requests to the right view based on the URL configuration. 
 Django's MVT pattern emphasizes the separation of concerns and modularity, making it easier to develop and maintain web applications with a clear separation between business logic, data access, and presentation.
-
-![Getting Started with Django - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
 
 ## ✅ Why Using Django
 
@@ -40,7 +40,7 @@ This can help prevent dependency issues and also help in reproducibility.
 
 <br />
 
-### Creating a Virtual environment
+### 👉 Creating a Virtual environment
 
 * From the terminal, type the following commands
 
@@ -69,7 +69,7 @@ $ venv\Scripts\activate
 
 <br />
 
-### Installing Django
+### 👉 Installing Django
 
 Since our virtual environment is active we can install Django and start development. In your terminal run the following commands
 ```bash
@@ -84,7 +84,7 @@ A Django project is a collection of settings and configurations that define the 
 
 <br />
 
-### Creating the Project
+### 👉 Creating the Project
 
 A Django project is created using the `django-admin` command-line tool. `django-admin startproject <project-name>` is the command used to create a new Django project.
 
@@ -107,7 +107,7 @@ After running the command above, your directory structure will look like this. T
 
 <br />
 
-### Applying initial Database configuration
+### 👉 Applying initial Database configuration
 
 Django comes with some database configurations which can be found in `core/settings.py`, the default database configuration for Django is SQLite3. 
 Django is built to integrate with a lot of popular databases like MySQL, Postgresql, Oracle and so on. 
@@ -132,26 +132,26 @@ This starts up a Django server, open `http://127.0.0.1:8000/` in your browser, y
 
 In Django, an application is a self-contained module of code that provides specific functionality to a project. It is a collection of models, views, templates, and other related files that work together to implement a particular feature or set of features. An application is typically stored in its directory within the project's directory structure. Each application contains a set of files that define its functionality, including:
 
-* Models: A model is a Python class that defines the structure of a database table and the relationships between tables. Models are used to define the data structure of the application.
+- **Models**: A model is a Python class that defines the structure of a database table and the relationships between tables. Models are used to define the data structure of the application.
 
-* Views: A view is a Python function that processes HTTP requests and returns HTTP responses. Views are used to define the logic for handling user requests and rendering the appropriate response.
+- **Views**: A view is a Python function that processes HTTP requests and returns HTTP responses. Views are used to define the logic for handling user requests and rendering the appropriate response.
 
-* Templates: A template is an HTML file that defines the layout and structure of the application's web pages. Templates are used to define the presentation layer of the application.
+- **Templates**: A template is an HTML file that defines the layout and structure of the application's web pages. Templates are used to define the presentation layer of the application.
 
-* URLs: A URL is a string that maps to a view function. URLs are used to define the routing for the application.
+- **URLs**: A URL is a string that maps to a view function. URLs are used to define the routing for the application.
 
-* Static files: Static files are files such as CSS, JavaScript, and images that are used to define the presentation layer of the application.
+- **Static files**: Static files are files such as CSS, JavaScript, and images that are used to define the presentation layer of the application.
 
 <br />
 
-### Creating a Django APP
+### 👉 Creating a Django APP
 
 Using the `django-admin` command from the terminal, we will be creating a Django application inside the project directory. `django-admin startapp <app-name>` is the command used for creating new applications.
 
-* Run the command below on your terminal to create a Django application name example
+Run the command below on your terminal to create a Django application name example
 
 ```bash
-(venv) $ django-admin  startapp example
+(venv) $ django-admin startapp example
 ```
 
 With this, a new application called `example` has been created. The new folder structure for the project will become
@@ -180,7 +180,7 @@ Although we have created an application, the Django project does not recognize o
 
 <br />
 
-### Update Settings 
+### 👉 Update Settings 
 
 To connect `example` to the Django project `core`, open the file `core/settings.py` and add `example` to the `INSTALLED_APPS` list.
 
@@ -202,7 +202,7 @@ Now our Django project recognizes the `example` application.
 
 <br />
 
-### Updating Project Routes
+### 👉 Updating Project Routes
 
 Now that the Django project can recognize the `example` application, the next step is to give the application a route. By doing this we create a generic route that when visited, Django checks this application for resources to send back to the client.
 
@@ -223,7 +223,7 @@ If your Django server was running when this change was made, you would be having
 
 <br />
 
-### Serving an HTML Page
+### 👉 Serving an HTML Page
 
 * Edit the `core/settings file by adding a route to template files for Django to use in identifying resources to be sent as the response
 
@@ -394,7 +394,7 @@ The application just built will be deployed on [Render](https://render.com) and 
 
 <br />
 
-### Initial setup
+### 👉 Initial setup
 
 Before we can start deploying our project, we need to make some changes to our codebase.
 
@@ -479,7 +479,7 @@ The changes made above combine the configuration for Docker and deploying on ren
 
 <br />
 
-### Deploying Django on Render
+### 👉 Deploying Django on Render
 
 * In the root directory of your application, create a file name `build.sh` and add the following line
 ```bash
@@ -532,7 +532,7 @@ fi
 
 <br />
 
-### Running Django project on Docker
+### 👉 Running Django project on Docker
 
 The following steps will help you create a docker image and start up a docker container for your Django project
 
