@@ -1,0 +1,142 @@
+---
+title         : Integrate Forms in Django
+sidebar_label : Integrate Forms
+---
+
+# Integrate Forms in Django 
+
+<SubHeading>Learn how to manage Forms in Django</SubHeading>
+
+**Managing Forms in [Django](https://www.djangoproject.com/)** is an essential part of building web applications. 
+Let's dive deeper into managing forms in Django, providing more context and additional code examples for each approach.
+
+![Forms in Django - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+
+## ✅ **Django and Plain HTML**
+
+When working with plain HTML forms in Django, you have complete control over the form markup. You manually create HTML forms in your templates and handle the form data in your views.
+
+Here's a more detailed code example:
+
+```html
+<!-- template.html -->
+<form method="post" action="{% url 'form_view' %}">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Submit</button>
+</form>
+```
+
+```python
+# views.py
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+
+def form_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        # Process form data
+        # Redirect or render a response
+    else:
+        # Render an empty form
+        return render(request, 'template.html', {})
+```
+
+
+## ✅ **Django Native Forms**
+
+Django provides a more organized way to handle forms using `forms.py` to define forms. These forms are easier to work with and can perform automatic validation.
+
+Example Django form definition in `forms.py`:
+
+```python
+# forms.py
+from django import forms
+
+class MyForm(forms.Form):
+    name = forms.CharField()
+    email = forms.EmailField()
+```
+
+Example Django view using the form:
+
+```python
+# views.py
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from .forms import MyForm
+
+def form_view(request):
+    if request.method == 'POST':
+        form = MyForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            # Process form data
+            # Redirect or render a response
+    else:
+        form = MyForm()
+    return render(request, 'template.html', {'form': form})
+```
+
+In this example, we've defined a `MyForm` class in `forms.py`, which represents the form. The form is instantiated in the view, and its data is validated and processed if the request is a POST.
+
+
+## ✅ **Django Crispy Forms**
+
+Django Crispy Forms is a popular third-party package that simplifies rendering forms with Bootstrap styles. It doesn't change the way you define forms but makes form rendering more elegant.
+
+To use Crispy Forms, you'll need to install the package and add `'crispy_forms'` to your `INSTALLED_APPS` in `settings.py`. You can then use `{% load crispy_forms_tags %}` in your templates to apply Bootstrap styling to your forms.
+
+```html
+<!-- template.html -->
+{% load crispy_forms_tags %}
+<form method="post" action="{% url 'form_view' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Submit</button>
+</form>
+```
+
+Your form definition and view remain the same as in the native forms example.
+
+
+## ✅ **Django and HTMX**
+
+HTMX is a library that enables dynamic web applications with minimal JavaScript. You can use Django with HTMX to create forms and views that update without full page reloads.
+
+Here's an example of using HTMX in a template:
+
+```html
+<!-- template.html -->
+<form method="post" action="{% url 'form_view' %}" hx-post="true" hx-target="#form-container">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit" hx-trigger="click" hx-swap="outerHTML">Submit</button>
+</form>
+<div id="form-container"></div>
+```
+
+To use HTMX, you should include the HTMX library in your project. In this example, the `hx-post` attribute is used to submit the form without a full page reload, and `hx-target` specifies where the response should be placed.
+
+## ✅ In Summary
+
+These examples should provide you with a more detailed understanding of the different approaches to managing forms in Django. 
+Choose the one that best suits your project's needs and your level of expertise. 
+
+Django's native forms and Django Crispy Forms are often good starting points for beginners, while HTMX can add dynamic behavior with minimal JavaScript.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
