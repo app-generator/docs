@@ -1,0 +1,187 @@
+---
+title         : Django Crispy Forms
+sidebar_label : Crispy Forms
+---
+
+# Django Crispy Forms
+
+<SubHeading>Learn how to enhance a Django project with Crispy Forms</SubHeading>
+
+This page provides a step-by-step tutorial on **Integrating Crispy Forms in [Django](https://www.djangoproject.com/)**, from simple forms to large forms, and cover styling options like Bootstrap and Tailwind. 
+
+![Django Crispy Forms - Tutorial provided by AppSeed.](https://user-images.githubusercontent.com/51070104/268675023-54ea4ace-a8ad-442b-9b43-2ba12a6403ba.jpg)
+
+> Let's get started.
+
+
+## ✅ Set Up Django 
+
+If you haven't already, create a Django project and app. You can use the following commands:
+
+```bash
+django-admin startproject project_name
+cd project_name
+python manage.py startapp myapp
+```
+
+
+## ✅ Configure Crispy Forms
+
+Install Crispy Forms using pip:
+
+```bash
+pip install django-crispy-forms
+```
+
+Add `'crispy_forms'` to your `INSTALLED_APPS` in your project's `settings.py`:
+
+```python
+INSTALLED_APPS = [
+    # ...
+    'crispy_forms',
+]
+```
+
+Configure Crispy Forms to use a Bootstrap or Tailwind CSS framework. In this tutorial, we'll use Bootstrap. Add this to your `settings.py`:
+
+```python
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+```
+
+
+## ✅ Create a Simple Form
+
+Let's create a simple form with two fields, "Name" and "Email." First, define the form in `forms.py` within your app:
+
+```python
+# myapp/forms.py
+from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit, Row, Column
+
+class SimpleForm(forms.Form):
+    name = forms.CharField(label="Name")
+    email = forms.EmailField(label="Email")
+    
+    helper = FormHelper()
+    helper.layout = Layout(
+        Row(
+            Column('name', css_class='col-md-6'),
+            Column('email', css_class='col-md-6'),
+        ),
+        Submit('submit', 'Submit', css_class='btn-primary')
+    )
+```
+
+In this example, we use the `FormHelper` and `Layout` from Crispy Forms to customize the form's appearance. We've arranged the fields in a two-column layout.
+
+
+## ✅ Create the Django View
+
+Now, let's create a view that renders the form and a template to display it. In your `views.py`:
+
+```python
+# myapp/views.py
+from django.shortcuts import render
+from .forms import SimpleForm
+
+def simple_form_view(request):
+    if request.method == 'POST':
+        form = SimpleForm(request.POST)
+        if form.is_valid():
+            # Process form data
+            # Redirect or render a response
+    else:
+        form = SimpleForm()
+    
+    return render(request, 'simple_form.html', {'form': form})
+```
+
+In the `simple_form_view`, we handle both GET and POST requests. On GET, we create an empty form, and on POST, we validate the form data.
+
+
+## ✅ Create a Template
+
+Create a template to display the form. In your app's `templates` folder, create a file named `simple_form.html`:
+
+```html
+<!-- myapp/templates/simple_form.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Simple Form</h2>
+  <form method="post" class="mt-3">
+    {% csrf_token %}
+    {{ form|crispy }}
+  </form>
+{% endblock %}
+```
+
+
+## ✅ Adding Routing
+
+In your app's `urls.py`, define a URL pattern for the form view:
+
+```python
+# myapp/urls.py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('simple-form/', views.simple_form_view, name='simple_form'),
+]
+```
+
+
+## ✅ Styling Options (Bootstrap and Tailwind)
+
+With Crispy Forms configured, you can easily change the form's style to Bootstrap or Tailwind. To switch to Tailwind, modify your `settings.py`:
+
+```python
+CRISPY_TEMPLATE_PACK = 'tailwind'
+```
+
+Then, your forms will use the Tailwind CSS framework.
+
+## Start the Project
+
+Run the development server:
+
+```bash
+python manage.py runserver
+```
+
+Visit `http://127.0.0.1:8000/simple-form/` in your browser to see and submit the form.
+
+
+## ✅ In Summary
+
+In this tutorial, you've learned how to integrate Crispy Forms into a Django project:
+
+1. Installed and configured Crispy Forms.
+2. Created a simple form with customization using the `FormHelper` and `Layout`.
+3. Created a view and template to display and handle the form.
+4. Added URL patterns to access the form.
+5. Explored styling options with Bootstrap and Tailwind.
+
+**Styling Options:**
+
+- **Bootstrap**: Crispy Forms can style your forms using Bootstrap CSS classes. This provides a clean and responsive design.
+
+- **Tailwind CSS**: Tailwind is an alternative styling option, which gives you more flexibility in terms of design customization.
+
+**Limitations of Crispy Forms:**
+
+- Crispy Forms may not handle complex form layouts or styles out-of-the-box. You may need to customize the layout further if your form has intricate designs.
+
+- For very large and complex forms, it can be challenging to manage the layout and styling using Crispy Forms alone. In such cases, you may need to use custom CSS or additional frontend frameworks for better control.
+
+Remember that the flexibility and ease of use of Crispy Forms can greatly simplify form rendering and styling in your Django project, especially for smaller to medium-sized forms.
+
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
