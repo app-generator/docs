@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.67] 2023-10-25
+### Changes
+
+- Update [Django](https://docs.appseed.us/technologies/django/) Section
+  - [Django Crispy Forms](https://docs.appseed.us/technologies/django/crispy-forms/)
+  - [Form Libraries For Django](https://docs.appseed.us/technologies/django/form-libraries/)
+  - [Integrate Forms in Django](https://docs.appseed.us/technologies/django/integrate-forms/)
+
 ## [1.0.66] 2023-10-19
 ### Changes
 
