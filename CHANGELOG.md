@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.68] 2023-10-25
+### Changes
+
+- Update [Docker](https://docs.appseed.us/technologies/docker/) Section
+  - [Install Docker on MacOS](https://docs.appseed.us/technologies/docker/install-on-macos/)
+  - [Install Docker on Windows](https://docs.appseed.us/technologies/docker/install-on-windows/)
+
 ## [1.0.67] 2023-10-25
 ### Changes
 
