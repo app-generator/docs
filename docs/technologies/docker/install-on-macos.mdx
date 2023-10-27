@@ -1,0 +1,79 @@
+---
+title            : Install Docker on MacOS
+sidebar_label    : Install on MacOS
+---
+
+# Install Docker on MacOS
+
+<SubHeading>Learn how to install and use Docker on MacOS.</SubHeading>
+
+**Installing [Docker](https://www.docker.com/) on MacOS** involves a few steps, but it's relatively straightforward. 
+
+![Install Docker on Windows - Tutorial provided by AppSeed](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268558520-a87dbf5e-83a8-4daf-9b10-8417b58c60e1.png)
+
+> Here are the **steps to install Docker on MacOS**:
+
+## ✅ **Prerequisites**
+
+- Make sure you have a macOS version that supports Docker Desktop. Check the Docker documentation for the latest macOS requirements.
+- You need a Docker Hub account. You can sign up for one at [Docker Hub](https://hub.docker.com/).
+
+## ✅ **Download Docker Desktop**
+
+- Go to the Docker Desktop for Mac download page: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop)
+- Click the "Download for Mac" button to start the download.
+
+## ✅ **Install Docker Desktop**
+
+- Once the download is complete, open the .dmg file.
+- Drag the Docker icon to your Applications folder.
+- Start Docker Desktop from your Applications folder.
+
+## ✅ **Configure Docker Desktop**
+
+- After starting Docker Desktop, you'll see the Docker whale icon in your macOS menu bar. Click on it.
+- Sign in with your Docker Hub account credentials.
+
+## ✅ **Enable Kubernetes (Optional)**
+
+- If you plan to work with Kubernetes alongside Docker, you can enable it from the Docker Desktop settings.
+
+## ✅ **Test Your Installation**
+
+- Open a terminal (you can use Terminal.app or an alternative like iTerm).
+- Run a simple Docker command to verify the installation. For example, you can run:
+```sh
+docker --version
+```
+
+This should display the Docker version installed.
+
+## ✅ **Run a Docker Container**
+
+- Test Docker by running a simple container. For example, you can run a basic Nginx web server container:
+```sh
+docker run -d -p 80:80 nginx
+```
+
+This command starts an Nginx container in the background and maps port 80 from the container to port 80 on your macOS machine.
+
+## ✅ **Access the Container**
+
+- Open a web browser and navigate to http://localhost to see the default Nginx page. You should be able to access the web server running in your Docker container.
+
+## ✅ In Summary
+
+Explore Docker by running more containers and images. For example, you can try running a MySQL database, a WordPress site, or other applications from Docker Hub. 
+
+Docker Hub provides various Docker images that you can use as samples for testing.
+
+That's it! You've **successfully installed Docker on your macOS machine using Docker Desktop**. 
+
+You can now start experimenting with containers, building custom images, and using Docker for your development and testing needs.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)

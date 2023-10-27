@@ -1,0 +1,84 @@
+---
+title            : Install Docker on Windows
+sidebar_label    : Install on Windows
+---
+
+# Install Docker on Windows
+
+<SubHeading>Learn how to install and use Docker on Windows-based systems.</SubHeading>
+
+**Installing [Docker](https://www.docker.com/) on Windows** involves a few steps, but it's relatively straightforward. 
+
+Docker for Windows uses Windows Subsystem for Linux 2 (WSL 2) for its backend. 
+
+![Install Docker on Windows - Tutorial provided by AppSeed](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268558520-a87dbf5e-83a8-4daf-9b10-8417b58c60e1.png)
+
+> Here's a general guide on **how to install Docker on Windows**:
+
+## ✅ **Prerequisites**
+
+- You need a Windows 10 or Windows Server 2019 (or later) machine.
+- Ensure that you have Windows Subsystem for Linux (WSL) installed. You can enable it through PowerShell:
+
+```powershell
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
+
+## ✅ **Enable WSL 2**
+
+Docker Desktop for Windows uses WSL 2 as the backend. To enable it, open PowerShell as an administrator and run:
+
+```powershell
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+## ✅ **Download Docker Desktop**
+
+Download the Docker Desktop for Windows installer from the Docker website: [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop).
+
+## ✅ **Install Docker Desktop**
+
+Run the Docker Desktop installer and follow the installation wizard's instructions. It will install the necessary components, including Docker Engine, WSL 2, and Hyper-V.
+
+## ✅ **Configure Docker Desktop**
+
+Once installed, launch Docker Desktop. It will appear in your system tray. You may need to sign in with your Docker ID if you have one.
+
+## ✅ **Configure WSL Integration**
+
+Docker Desktop should automatically set up WSL 2 integration. You can configure it further by going to the "Settings" from the system tray icon and selecting "WSL" from the left sidebar. Make sure you have a WSL 2 Linux distribution installed.
+
+## ✅ **Test Installation**
+
+Open a PowerShell or Command Prompt and run a simple Docker command to verify the installation. For example, you can run:
+
+```powershell
+docker --version
+```
+
+This should display the Docker version installed.
+
+## ✅ **Run a Docker Container**
+
+Test Docker by running a simple container. For example, you can run a basic Nginx web server container:
+
+```powershell
+docker run -d -p 80:80 nginx
+```
+
+This command starts an Nginx container in the background and maps port 80 from the container to port 80 on your Windows machine.
+
+## ✅ **Access the Container**
+
+Open a web browser and navigate to `http://localhost` to see the default Nginx page. You should be able to access the web server running in your Docker container.
+
+That's it! You've **successfully installed and tested Docker on a Windows machine**. 
+
+You can now start exploring Docker further, build your own images, and run various containers for your development and testing needs.
+
+## ✅ Resources
+
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
+- 👉 Create landing pages with [Simpllo, an open-source site builder](https://www.simpllo.com/)
+- 👉 Build apps with [Django App Generator](https://app-generator.dev/django/) (free service)
