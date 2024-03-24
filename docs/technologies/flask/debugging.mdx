@@ -1,0 +1,99 @@
+# Debugging
+Flask debug mode is defined as a module that ensures insights regarding debug pushed as an extension for Flask during development of Flask application. This capability is incorporated as a part of development tools in developing any Flask application in a development server and option to enable it in production environment as well. the interactive traceback is one of the many great insight which allows any developer to look back into the code and asses what went wrong in order to effectively improve and fix the code. One effective and often known to be a best practice is to use debugger in development environment although one can also choose to use it in production, but only use it temporarily!
+
+### Why do we need a flask to debug mode?
+In order to effectively find and eliminate errors in the application being developed we need the debug mode the most so that once the errors are fixed the application can qualify to be the most valuable product and bug free application increases its own value immensely. Not only that the debug mode helps to improve the code quality but also helps you reach to a point in the code where there might be a possible break of the code.
+
+Let us know about possible errors through a simple example. In our code there is a mathematical calculation where we divide 2 numbers. Let us say that in some situations the denominator be zero. In this case the integer datatype might be incapable of handling such scenarios. Now, in a code where there are multiple modules, if is nearly impossible to find where the error has been arising from and even at a higher level, what is the error. Now in case of Flask server, if the debug mode is not ON, we would just see an error code like 404 or in some cases be Internal Server error etc. Now, finding out the type of error and where the error has generated is a herculean task! Now, in case of running the code with debug mode ON in Flask we will be able to traceback where the error has occurred and also what the error is.
+
+Flask server also provides an interactive tool to actually know what the value before the error was, has been encountered as it has the utility of executing python code from the browser and using that interactive tool one can easily get into the most granular level to find the issue and then fix it. Now, as a best practice we should never use debug mode in production. The reasons are as follows:
+
+- The main and the foremost reason is performance. When one uses debugging mode, there are chances of significantly slowing down the execution speed as the RAM utilization increases.
+- The next reason is a security breach which might be possible in case of using debug mode although there is a PIN attached to tracebacks, but possibility of security breach does exist and that too in production data!
+
+
+
+### How does Flask debug mode work?
+It is now time for us to look into the working of Flask debug mode as by this time we know the need of Flask debug mode. For the reference we will be using excerpts from built-in debugger of Flask application server i.e. Werkzeug development server. The in-built debugger is recommended to be used only in case of development stages. In production environment debugger allows execution of arbitrary python code and though protected by PIN can’t be relied on for security.
+
+First, we would need to set the environment to development by setting the FLASK_ENV variable. this is done by executing:
+
+```python
+set FLASK_ENV=development
+```
+### Advantages and disadvantages
+Not every concept is perfect and hence consists of pros and cons. Let’s review the pros and cons of Flask debug mode here:
+
+### Advantages
+
+- Flask Debug mode allows developers to locate any possible error and as well the location of the error, by logging a traceback of the error.
+- The Flask debug mode also enables developers to interactively run arbitrary python codes, so that one can resolve and get to the root cause on why an error happened.
+- All the utilities of debug mode allow developers to save time and energy.
+- In addition to the traceback, the text which an error points, enables easy interpretations!
+
+### Disadvantages
+- Flask’s debug mode, if left switched on in production leads to performance issues.
+- In production, usage of debug mode can lead to security issues, as one can run some arbitrary python codes to hack into sensitive “production” data.
+- Limited usage to development environment only!
+
+### Examples
+
+Here are the following examples mention below
+
+### Example #1
+Running with Environment as development:
+
+**Syntax** (debugMode.py is a python code that contains a flask application)
+
+In the command line:
+
+```python
+set FLASK_ENV=development
+python debugMode.py
+```
+**Output:**
+
+![de](https://github.com/app-generator/docs/assets/150575074/4ec54cbc-11df-4a04-a4c4-9d24a4ec62ea)
+
+### Example #2
+Running with Environment as production:
+
+**Syntax** (debugMode.py is a python code that contains a flask application)
+
+In the command line:
+
+```python
+set FLASK_ENV=production
+python debugMode.py
+```
+
+**Output:**
+
+![de1](https://github.com/app-generator/docs/assets/150575074/0f131c2a-01a1-4823-befc-8d7850de1b7e)
+
+### Example #3
+
+Running with error in code:
+
+
+Syntax (debugMode.py is a python code that contains a flask application with deliberate error)
+In python code:
+
+```python
+from flask import Flask
+appFlask = Flask(__name__)
+@appFlask.route('/home')
+def home():
+result = 10/0
+return 'We are learning HTTPS @ EduCBA'
+if __name__ == "__main__":
+appFlask.run(debug=True)
+
+```
+
+**Output:**
+
+![de2](https://github.com/app-generator/docs/assets/150575074/57c754c6-1922-4601-93a9-cb11eb88194c)
+
+### Conclusion
+Herewith this article, we have got an essence of how a debugger works and its advantages and disadvantages owing to the usage of the debugger in the development server. We also looked at a deliberate error to understand the stack trace of the error, particularly pointing out the point of generation of error!
