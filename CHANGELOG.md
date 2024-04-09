@@ -1,5 +1,10 @@
 # Change Log
 
+## [UNRELEASED]
+### Changes
+
+- [Debugging Flask](https://docs.appseed.us/technologies/flask/debugging/) `Guide for Developers`
+
 ## [1.0.68] 2023-10-25
 ### Changes
 
