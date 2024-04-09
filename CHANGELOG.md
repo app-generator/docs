@@ -3,6 +3,7 @@
 ## [UNRELEASED]
 ### Changes
 
+- [Access Local Services in Docker](https://docs.appseed.us/technologies/docker/access-local-services/) 
 - [Debugging Flask](https://docs.appseed.us/technologies/flask/debugging/) `Guide for Developers`
 
 ## [1.0.68] 2023-10-25

@@ -1,0 +1,31 @@
+---
+title            : Docker - Access Local Services 
+sidebar_label    : Access Local Services
+---
+
+# Docker - Access Local Services
+
+<SubHeading>Learn how to access host servcies from a docker container.</SubHeading>
+
+Sometimes, having a Dockerized project, we might need to access local sevices like Redis, MySql or PostgreSQL. 
+This use case is supported by Docker when we set in the environment the **hostname** to **host.docker.internal** instead of using the traditional `localhost` or `127.0.0.1` witch might lead to runtime errors like this:
+
+`connection to server at "localhost" (::1), port 5432 failed: Cannot assign requested address` 
+
+<br />
+
+> Some well-known local services we can access from a **Docker Container** 
+
+- **Redis**: port `6379`, hostname **host.docker.internal**, instead of `localhost`
+- **MySql**: port `3306`, hostname **host.docker.internal**, instead of `localhost`
+- **Postgresql**: port `5432`, hostname **host.docker.internal**, instead of `localhost`
+
+![Docker, Access Local Services - Tutorial provided by AppSeed](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/268558520-a87dbf5e-83a8-4daf-9b10-8417b58c60e1.png)
+
+<br />
+
+## ✅ Resources
+
+- 👉 Read more about [Docker](/technologies/docker/)
+- 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
+- 👉 [Deploy Projects on Aws, Azure and DO](https://www.docs.deploypro.dev/) via **DeployPRO**
