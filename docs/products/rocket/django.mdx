@@ -3,48 +3,86 @@ title        : Rocket Django - Open-Source Starter
 sidebar_label: Rocket Django
 ---
 
-# Rocket Django
+# [Rocket Django](https://appseed.us/product/rocket/django/)
 
 <SubHeading>Open-source Django Starter styled with Tailwind and Flowbite.</SubHeading>
 
-This open-source starter incorporates a few modern technologies provided out-of-the-box, at a production-ready level. 
-[Rocket Django](https://github.com/app-generator/rocket-django) is actively versioned by AppSeed.
+Open-source Django Starter that incorporates a few modern technologies provided out-of-the-box, at a production-ready level. 
+[Rocket Django](https://appseed.us/product/rocket/django) comes with API (via DRF), Charts, server-side DataTable, Celery for async tasks processing, and Docker support.    
 
 - 👉 [Rocket Django](https://rocket-django.onrender.com/) - `LIVE Demo`
-- 👉 [Rocket Django](https://github.com/app-generator/rocket-django) - `Source Code`
+- 👉 [Rocket Django](https://appseed.us/product/rocket/django/) - `Product Page`
 
-![Rocket Django - Open-source Django Starter styled with Tailwind and Flowbite](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/276511947-84207026-b13d-4eff-bdf6-04a7b1a10c6c.jpg) 
+![Rocket Django - Open-source Django Starter styled with Tailwind and Flowbite](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/272299949-6f4a8fd7-7cce-472a-9566-9519db338c7d.gif) 
 
-## ✅ Product Features 
+<br />
+
+## Features
 
 The codebase is shipped with basic features that are usually implemented in most of the projects: 
 
 - Up-to-date Dependencies
 - Tailwind/Flowbite Integration via WebPack
 - `Extended User Model`
-- [API](https://rocket-django.onrender.com/api/product/) via `DRF` 
+- API via `DRF` 
 - [Charts](https://rocket-django.onrender.com/charts/)
-- [DataTables](https://rocket-django.onrender.com/tables/) (native Django) 
-- `Celery Beat`
+- [DataTables](https://rocket-django.onrender.com/tables/) 
+- `Celery` (async processing)
 - Docker
 
-## ✅ Manual Build 
+<br />
 
-> Download code
+## System Requirements
+
+- [Python3](https://www.python.org) - the programming language used to code the app
+- [GIT](https://git-scm.com) - used to clone the source code from the Github repository
+- [NodeJS](https://nodejs.org/) v18.20.0 or above (for Tailwind set up)
+- [Docker](https://www.docker.com/) - a popular virtualization software
+
+<br />
+
+## Download Sources 
+
+The product can be downloaded from the [official page](https://appseed.us/product/rocket/django/) or GitHub using GIT:
 
 ```bash
 $ git clone https://github.com/app-generator/rocket-django.git
 $ cd rocket-django
 ```
- 
-> Install Node Modules 
 
-```
-$ npm i
-$ npm run build
+Once the sources are available in the local filesystem, we can start the project using `Docker` or `manual build`. 
+
+<br />
+
+## Start with `Docker`
+
+```bash
+# Optional (kill all existing containers)
+$ docker container kill $(docker ps -q) ; docker container rm $(docker ps -a -q) ; docker network prune -f 
+# Start the APP
+$ docker-compose up --build 
 ```
 
-> Install **Django** modules via `VENV`  
+Visit `http://localhost:5085` in your browser. The app should be up & running. The starter comes with two default users:
+
+- Ordinary user: `test` / `test@appseed.us` / `Pass12__` (the password)
+- Django SuperUser (admin): `admin` / `admin@appseed.us` / `Pass12__` (the password)
+
+Once authenticated with the above credentials, the sidebar shows different items. 
+
+<br />
+
+## Manual Build 
+
+> 👉 Create `.env` from `env.sample`
+
+```env
+DEBUG=False
+
+SECRET_KEY=<STRONG_KEY_HERE>
+```
+
+> 👉 Install **Django** modules via `VENV`  
 
 ```bash
 $ virtualenv env
@@ -52,31 +90,94 @@ $ source env/bin/activate
 $ pip install -r requirements.txt
 ```
 
-> Install **Tailwind/Flowbite** (separate terminal)
+> 👉 Install **Tailwind/Flowbite** (another terminal)
+
+Tested with **Node** `v18.20.0` (use at least this version or above)
 
 ```bash
 $ npm install
-$ npm run dev        
+$ npm run dev
+$ npx tailwindcss -i ./static/assets/style.css -o ./static/dist/css/output.css --watch # DEVELOPMENT (LIVE reload)
+$ npx tailwindcss -i ./static/assets/style.css -o ./static/dist/css/output.css         # PRODUCTION
 ```
 
-> Migrate DB
+> 👉 Migrate DB
 
-```
+```bash
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
 
-> Create Superuser & Start the APP
+> 👉 `Create Superuser` & Start the [Rocket Django](https://appseed.us/product/rocket/django/) Starter
 
-```
+```bash
 $ python manage.py createsuperuser # create the admin
 $ python manage.py runserver       # start the project
 ```
 
-At this point, we should be able to access **Rocket Django** in the browser. 
+At this point, we can start using the starter.
 
+<br />
 
-## ✅ Codebase  
+## Use MySql 
+
+By default, the starter uses SQLite for persistence. In order to use MySql, here are the steps: 
+
+- Start the MySql Server
+- Create a new DataBase
+- Create a new user with full privileges over the database 
+- Install the MySql Python Driver (used by Django to connect)
+  - `$ pip install mysqlclient`
+- Edit the `.env` with the SQL Driver Information & DB Credentials 
+
+```env
+
+DB_ENGINE=mysql
+DB_HOST=localhost
+DB_NAME=<DB_NAME_HERE>
+DB_USERNAME=<DB_USER_HERE>
+DB_PASS=<DB_PASS_HERE>
+DB_PORT=3306
+
+```
+
+Once the above settings are done, run the migration & create tables: 
+
+```bash
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+
+<br />
+
+## Production Build
+
+To use the starter in production mode, here are the steps: 
+
+- Set  **DEBUG=False** in `.env`
+- Execute `collectstatic` command
+  - `$ python manage.py collectstatic --no-input`
+
+As a model, feel free to take a look at [build.sh](./build.sh), the file executed by the CI/CD flow for Render:   
+
+<br />
+
+## **Deploy on Render**
+
+- Create a Blueprint instance
+  - Go to https://dashboard.render.com/blueprints this link.
+- Click `New Blueprint Instance` button.
+- Connect the `repo` that you want to deploy.
+- Fill the `Service Group Name` and click on the `Update Existing Resources` button.
+- Edit the Environment and [specify the PYTHON_VERSION](https://render.com/docs/python-version)
+  - Version `3.11.5` was used for **[this deployment](https://rocket-django.onrender.com/)**
+- After that, your deployment will start automatically.
+
+At this point, the product should be LIVE.
+
+<br />
+
+## Codebase 
 
 ```bash
 < PROJECT ROOT >
@@ -116,69 +217,10 @@ At this point, we should be able to access **Rocket Django** in the browser.
    |-- requirements.txt      # dependencies
    |-- .env                  # ENV File
    |
-   |-- *************************************************
-```
+   |-- *************************************************      
+```   
 
-
-## ✅ Extended User Profile 
-
-Authenticated user are able to save their information and an IMAGE avatar. 
-The fields that manage the user information can be found in [apps/users/models.py](https://github.com/app-generator/rocket-django/blob/main/apps/users/models.py) 
-
-```python
-ROLE_CHOICES = (
-    ('admin'  , 'Admin'),
-    ('user'  , 'User'),
-)
-class Profile(models.Model):
-    user      = models.OneToOneField(User, on_delete=models.CASCADE)
-    role      = models.CharField(max_length=20, choices=ROLE_CHOICES, default='user')
-    full_name = models.CharField(max_length=255, null=True, blank=True)
-    country   = models.CharField(max_length=255, null=True, blank=True)
-    city      = models.CharField(max_length=255, null=True, blank=True)
-    zip_code  = models.CharField(max_length=255, null=True, blank=True)
-    address   = models.CharField(max_length=255, null=True, blank=True)
-    phone     = models.CharField(max_length=255, null=True, blank=True)
-    avatar    = models.ImageField(upload_to='avatar', null=True, blank=True)
-
-    def __str__(self):
-        return self.user.username
-```
-
-Here is the correspondent UI (requires authentication) 
-
-![Rocket Django - Extended User Profile.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/276511951-8eaf56b6-a77a-44a1-afba-1db4e6d584bb.jpg)
-
-
-## ✅ API Via DRF 
-
-The [Products](https://github.com/app-generator/rocket-django/blob/main/apps/common/models.py) model is managed in two different ways: via API (powered by DRF) and a simple, intuitive DataTable view. 
-
-```python
-class Product(models.Model):
-    id    = models.AutoField(primary_key=True)
-    name  = models.CharField(max_length = 100) 
-    info  = models.CharField(max_length = 100, default = '')
-    price = models.IntegerField(blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-```
-
-The authenticated users are able to submit products using the DRF UI: 
-
-![Rocket Django - API via DRF.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/276511957-e3eb8f75-316a-4c01-a3fe-0cbe6287c0da.jpg)
-
-
-## ✅ DataTables 
-
-`Products` information can be easily managed using the DataTable layout styled with Tailwind & Flowbite. Supported features: 
-
-- Create/Update/Delete 
-- Pagination
-- Search
-
-![Rocket Django - DataTables over the Product Table.](https://github-production-user-asset-6210df.s3.amazonaws.com/51070104/276511955-5e279cab-6ee4-49a2-b584-b93b6c2a0f18.jpg)
+<br />
 
 ## ✅ Resources
 

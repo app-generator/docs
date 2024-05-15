@@ -1,8 +1,9 @@
 # Change Log
 
-## [UNRELEASED]
+## [1.0.69] 2024-05-15
 ### Changes
 
+- [Rocket Django](https://docs.appseed.us/products/rocket/django/)
 - [Access Local Services in Docker](https://docs.appseed.us/technologies/docker/access-local-services/) 
 - [Debugging Flask](https://docs.appseed.us/technologies/flask/debugging/) `Guide for Developers`
 
