@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.70] 2024-08-04
+### Changes
+
+- [Datta Able Django](https://appseed.us/product/datta-able/django/)
+- Update Footer Links for all dashboards (Flask & Django)
+
 ## [1.0.69] 2024-05-15
 ### Changes
 
