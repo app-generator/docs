@@ -1,6 +1,7 @@
 ---
 title:         Django Datta PRO - Premium Starter
 sidebar_label: Django Datta PRO
+canonical:     https://appseed.us/product/datta-able-pro/django/  
 ---
 
 # [Django Datta Able PRO](https://appseed.us/product/datta-able-pro/django/)
@@ -121,6 +122,49 @@ At this point, the app runs at `http://127.0.0.1:8000/`.
 
 <br />
 
+## Start Celery
+
+- Make sure you have a Redis Server running: `redis://localhost:6379`
+  - `$ redis-cli` and type `ping` 
+- In the base directory inside `tasks_scripts` folder you need to write your scripts file.
+- Run the celery command from the CLI.
+
+```bash
+$ export DJANGO_SETTINGS_MODULE="core.settings"  
+$ celery -A apps.tasks worker -l info -B
+```
+
+- You will see a new route `Apps -> Tasks` in the sidebar.
+- You can start and cancel any task from the UI.
+
+<br />
+
+## Tests
+
+> Software Prerequisites (Docker & NodeJS)
+
+- Check Docker installation by typing `docker info` on a terminal screen. 
+- Install NodeJS `v20.5.0` or above.
+  - check the installation via `node --version`
+
+> Running `tests` on **Linux/macOS**
+
+```bash
+$ test.sh
+```
+
+> Running `tests` on **Windows**
+
+```bash
+$ test.bat
+```
+
+The testing report is saved in the `test_reports` directory in **HTML and Video Format**.
+
+<YoutubeEmbed url="https://www.youtube.com/embed/6y6i2tNxs_0" title="Django Datta PRO - Automatized End-To-End Tests" />
+
+<br /> 
+
 ## Deploy on [Render](https://render.com/)
 
 - Create a Blueprint instance
@@ -135,4 +179,4 @@ At this point, the product should be LIVE.
 ## Resources
 
 - 👉 Access [AppSeed](https://appseed.us/) for more starters and support 
-- 👉 Get in touch for **[Custom Development Services](https://appseed.us/custom-development/)**
+- 👉 Get in touch for [Custom Development Services](https://appseed.us/custom-development/)
