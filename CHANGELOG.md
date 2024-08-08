@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.71] 2024-08-08 (unreleased)
+### Changes
+
+- Update [Django Datta PRO](https://docs.appseed.us/products/django-dashboards/datta-able-pro/)
+  - Added build steps 
+
 ## [1.0.70] 2024-08-04
 ### Changes
 
