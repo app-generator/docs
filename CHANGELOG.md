@@ -1,8 +1,10 @@
 # Change Log
 
-## [1.0.71] 2024-08-08 (unreleased)
+## [1.0.71] 2024-08-11 
 ### Changes
 
+- Update [Django Soft PRO](https://docs.appseed.us/products/django-dashboards/soft-ui-dashboard-pro/)
+  - Document API, Charts and dataTables 
 - Update [Django Datta PRO](https://docs.appseed.us/products/django-dashboards/datta-able-pro/)
   - Added build steps 
 

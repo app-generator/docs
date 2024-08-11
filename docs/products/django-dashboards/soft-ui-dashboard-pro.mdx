@@ -8,13 +8,13 @@ canonical:     https://appseed.us/product/argon-dashboard2-pro/django/
 
 <SubHeading>Premium Django Starter coded on top of Soft Dashboard PRO design (Premium Version).</SubHeading>
 
-**Django** starter styled with **[Soft Dashboard PRO](https://appseed.us/product/soft-ui-dashboard-pro/django/)**, a premium `Bootstrap 5` KIT from `Creative-Tim`.
+Premium **[Django Starter](https://appseed.us/admin-dashboards/django/)** styled with **[Soft Dashboard PRO](https://appseed.us/product/soft-ui-dashboard-pro/django/)**, a premium `Bootstrap 5` KIT from `Creative-Tim`.
 The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
 
 - 👉 [Soft UI Dashboard PRO Django](https://appseed.us/product/soft-ui-dashboard-pro/django/) - `Product Page`
 - 👉 [Soft UI Dashboard PRO Django](https://django-soft-dash-pro.onrender.com/) - `LIVE Demo`
 
-:::info [**v1.0.19**](https://github.com/app-generator/django-soft-ui-dashboard-pro/releases) - release date `2024-08-09`
+:::info [**v1.0.20**](https://github.com/app-generator/django-soft-ui-dashboard-pro/releases) - release date `2024-08-11`
 :::
 
 ## **Features**
@@ -25,9 +25,9 @@ The product is designed to deliver the best possible user experience with highly
   - `Session-Based authentication`
   - `Social Login`: **Github**
 - **User Extended profile**
-- **API** via DRF
-- DataTables
-- Charts
+- **[API](https://django-soft-dash-pro.onrender.com/api/sales/)** via DRF
+- [DataTables](https://django-soft-dash-pro.onrender.com/tables/)
+- [Charts](https://django-soft-dash-pro.onrender.com/charts/)
 - Celery (Async Tasks)
 - File Manager
 - `Docker`
@@ -134,6 +134,78 @@ $ celery -A apps.tasks worker -l info -B
 
 - You will see a new route `Apps -> Tasks` in the sidebar.
 - You can start and cancel any task from the UI.
+
+<br />
+
+## Modules 
+
+The starter comes with a few modules requested by our Discord Community: 
+
+- API 
+- DataTables 
+- Charts 
+- Extended User Profiles
+- Media Files Manger
+- Async tasks  
+
+In this Selection, we will document the core of these features. 
+
+### DB Models
+
+The information showcases and managed by the API Endpoint, DataTables and Charts is saved in `apps/common/models.py`. Here is the definition
+
+```python
+class Sales(models.Model):
+	ID = models.AutoField(primary_key=True)
+	Product = models.TextField(blank=True, null=True)
+	BuyerEmail = models.EmailField(blank=True, null=True)
+	PurchaseDate = models.DateField(blank=True, null=True)
+	Country = models.TextField(blank=True, null=True)
+	Price = models.FloatField(blank=True, null=True)
+	Refunded = models.CharField(max_length=20, choices=RefundedChoices.choices, default=RefundedChoices.NO)
+	Currency = models.CharField(max_length=10, choices=CurrencyChoices.choices, default=CurrencyChoices.USD)
+	Quantity = models.IntegerField(blank=True, null=True) 
+```
+
+The saved information can be managed and visualized in different ways: 
+
+- Structured (JSON) form via the [API](https://django-soft-dash-pro.onrender.com/api/sales/) 
+- [DataTable](https://django-soft-dash-pro.onrender.com/tables/): A paginated view enhanced with filters, search, and CSV export. 
+- Visual, through the [Apex Charts](https://django-soft-dash-pro.onrender.com/charts/)
+
+<br />
+
+### [Api via DRF](https://django-soft-dash-pro.onrender.com/api/sales/)
+
+The **API endpoint** incorporated in **Django Soft PRO** offers a simple way to manage the information: 
+
+- GET request is public (no authentication guard)
+- Mutating requests are protected by a header token availble for each registered user 
+
+For newcomers, `Django Rest Framework` (DRF) is a powerful and flexible toolkit built on top of Django for building Web APIs. 
+It provides a set of robust features that significantly simplify the process of creating RESTful interfaces.
+
+DRF integrates seamlessly with Django's ORM and authentication systems, leveraging Django's robustness while adding powerful API-specific features. 
+It supports both function-based and class-based views, with the latter offering a high level of code reuse through mixins and generic views.
+
+![Soft Dashboard PRO Django - API Endpoint](https://github.com/user-attachments/assets/5e389fd9-1b14-46ad-81cb-ead15de9b10f)
+
+<br />
+
+### [Enhanced DataTables](https://django-soft-dash-pro.onrender.com/tables/)
+
+Compared to a classic dataTable module, this feature comes with server-side pagination, search and a filtering system that allows to combine terms and rafinate the resourceLimits. 
+On the client signedCookie, the UI can interactively suppress columns and simplify the layout as per user need. 
+
+![Soft Dashboard PRO Django - Enhanced DataTables Module](https://github.com/user-attachments/assets/21219165-7296-456e-a8cb-692d58bbe088)
+
+<br />
+
+### [Charts View](https://django-soft-dash-pro.onrender.com/charts/)
+
+The Sales data is managed visually by the popular Apex Charts library using two layouts: bar and pie 
+
+![Soft Dashboard PRO Django - Charts (bar and pie) powered by Apex](https://github.com/user-attachments/assets/f37d986b-ceb3-4d01-bfc3-efe0cc7f6111)
 
 <br />
 
